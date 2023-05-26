@@ -1,8 +1,8 @@
 namespace InventorySystemGalaxy
 {
-    public partial class Form1 : Form
+    public partial class WelcomeMessageForm : Form
     {
-        public Form1()
+        public WelcomeMessageForm()
         {
             InitializeComponent();
         }
