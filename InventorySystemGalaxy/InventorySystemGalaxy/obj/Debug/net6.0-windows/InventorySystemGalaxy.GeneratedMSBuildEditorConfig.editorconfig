@@ -14,8 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InventorySystemGalaxy
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\
-=======
-build_property.ProjectDir = C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\
->>>>>>> 4dbb8c15b58cf595efcd2b139a6f0264aadd6b7d

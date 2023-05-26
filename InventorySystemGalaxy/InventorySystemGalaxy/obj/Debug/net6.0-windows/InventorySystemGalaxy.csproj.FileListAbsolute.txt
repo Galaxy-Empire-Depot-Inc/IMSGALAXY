@@ -17,3 +17,5 @@ C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySyste
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.LoginForm.resources
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Properties.Resources.resources
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.SplashScreen.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Warning_Message.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.WelcomeMessageForm.resources
