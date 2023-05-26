@@ -30,137 +30,97 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             panel1 = new Panel();
-            panel4 = new Panel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            panel3 = new Panel();
-            pictureBox2 = new PictureBox();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
+            customTextBox2 = new CustomTextBox();
+            customTextBox1 = new CustomTextBox();
+            customButton1 = new CustomButton();
             panel1.SuspendLayout();
-            panel4.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
+            panel1.BackColor = Color.RoyalBlue;
+            panel1.Controls.Add(customButton1);
+            panel1.Controls.Add(customTextBox2);
+            panel1.Controls.Add(customTextBox1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(5, 5);
+            panel1.Location = new Point(45, 45);
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(5);
-            panel1.Size = new Size(790, 590);
+            panel1.Size = new Size(281, 359);
             panel1.TabIndex = 0;
             // 
-            // panel4
+            // customTextBox2
             // 
-            panel4.Controls.Add(textBox2);
-            panel4.Controls.Add(textBox1);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(5, 367);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(780, 218);
-            panel4.TabIndex = 5;
+            customTextBox2.BorderStyle = BorderStyle.None;
+            customTextBox2.BottomBorderColor = Color.SlateBlue;
+            customTextBox2.BottomBorderOnFocusColor = Color.Blue;
+            customTextBox2.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            customTextBox2.Location = new Point(52, 203);
+            customTextBox2.Name = "customTextBox2";
+            customTextBox2.PasswordChar = '•';
+            customTextBox2.PlaceholderText = "Password";
+            customTextBox2.Size = new Size(179, 23);
+            customTextBox2.TabIndex = 1;
+            customTextBox2.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox2
+            // customTextBox1
             // 
-            textBox2.BackColor = Color.FromArgb(59, 116, 192);
-            textBox2.Font = new Font("SimSun", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(262, 106);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(238, 25);
-            textBox2.TabIndex = 1;
+            customTextBox1.BorderStyle = BorderStyle.None;
+            customTextBox1.BottomBorderColor = Color.SlateBlue;
+            customTextBox1.BottomBorderOnFocusColor = Color.Blue;
+            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            customTextBox1.Location = new Point(52, 154);
+            customTextBox1.Name = "customTextBox1";
+            customTextBox1.PlaceholderText = "Username";
+            customTextBox1.Size = new Size(179, 23);
+            customTextBox1.TabIndex = 0;
+            customTextBox1.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox1
+            // customButton1
             // 
-            textBox1.BackColor = Color.FromArgb(59, 116, 192);
-            textBox1.Font = new Font("SimSun", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(262, 65);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(238, 25);
-            textBox1.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(pictureBox2);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(5, 247);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(780, 120);
-            panel3.TabIndex = 4;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(340, 11);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(100, 100);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(pictureBox1);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(5, 5);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(15);
-            panel2.Size = new Size(780, 242);
-            panel2.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(15, 15);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(750, 212);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            customButton1.BackColor = Color.SlateBlue;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = FlatStyle.Flat;
+            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            customButton1.ForeColor = Color.White;
+            customButton1.HoverForeColor1 = SystemColors.ActiveCaptionText;
+            customButton1.HoverImage1 = Properties.Resources.icons8_login_64__1_;
+            customButton1.Image = Properties.Resources.icons8_login_96__1_;
+            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            customButton1.Location = new Point(52, 264);
+            customButton1.Name = "customButton1";
+            customButton1.NormalForeColor1 = Color.White;
+            customButton1.NormalImage1 = Properties.Resources.icons8_login_96__1_;
+            customButton1.Padding = new Padding(15, 0, 0, 0);
+            customButton1.Size = new Size(179, 46);
+            customButton1.TabIndex = 2;
+            customButton1.Text = "Login";
+            customButton1.Tooltip1 = null;
+            customButton1.UseVisualStyleBackColor = false;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 600);
+            BackColor = Color.White;
+            ClientSize = new Size(371, 449);
             Controls.Add(panel1);
             Font = new Font("SimSun", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "LoginForm";
-            Padding = new Padding(5);
+            Padding = new Padding(45);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
             panel1.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Panel panel2;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private Panel panel4;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Panel panel3;
+        private CustomTextBox customTextBox2;
+        private CustomTextBox customTextBox1;
+        private CustomButton customButton1;
     }
 }

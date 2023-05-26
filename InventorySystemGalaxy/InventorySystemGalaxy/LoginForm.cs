@@ -12,9 +12,12 @@ namespace InventorySystemGalaxy
 {
     public partial class LoginForm : Form
     {
+
         public LoginForm()
         {
+
             InitializeComponent();
+            panel1.BackColor = Color.FromArgb(100, 59, 116, 192);
         }
 
 

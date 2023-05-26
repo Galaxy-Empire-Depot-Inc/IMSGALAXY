@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rm6z6pTxii7kpLldgDVpgzpoACmqQi9IiaRsyjmdZEWpZNTg4lb2SFBggPCQoj2yEoZbN3MvyENVOre8SoVtZg==",
+  "dgSpecHash": "jN3j4yU94moRC6i4+LLjpZxbbCTuooA4/b+3200hFCghUos6u4Jh2goLqHG+x7D/NBLYGcT67tMlix4/deywMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
+  "projectFilePath": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
