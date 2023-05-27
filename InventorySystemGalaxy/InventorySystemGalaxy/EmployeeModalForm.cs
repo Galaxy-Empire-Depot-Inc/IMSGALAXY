@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace InventorySystemGalaxy
 {
-    public partial class Dashboard : Form
+    public partial class EmployeeModalForm : Form
     {
-        public Dashboard()
+        public EmployeeModalForm()
         {
             InitializeComponent();
+            bgPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
         }
-
-
     }
 }

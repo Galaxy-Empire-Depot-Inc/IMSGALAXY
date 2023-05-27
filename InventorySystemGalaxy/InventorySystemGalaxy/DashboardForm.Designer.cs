@@ -1,6 +1,6 @@
 ﻿namespace InventorySystemGalaxy
 {
-    partial class Dashboard
+    partial class DashboardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel9 = new Panel();

@@ -17,6 +17,8 @@ namespace InventorySystemGalaxy
                 loginForm.Show();
                 this.Hide();
             }
+            
+                
         }
     }
 }
