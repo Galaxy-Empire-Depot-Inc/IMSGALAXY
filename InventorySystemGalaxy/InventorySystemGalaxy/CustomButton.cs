@@ -19,6 +19,8 @@ namespace InventorySystemGalaxy
         private Color HoverForeColor;
         private Color NormalForeColor;
         private string Tooltip;
+        private Image onFocusLeaveImage;
+        private Image onFocusEnterImage;
         public CustomButton()
         {
             InitializeComponent();
@@ -33,6 +35,10 @@ namespace InventorySystemGalaxy
         public Color NormalForeColor1 { get => NormalForeColor; set => NormalForeColor = value; }
         [Category("Custom Button")]
         public string Tooltip1 { get => Tooltip; set => Tooltip = value; }
+        [Category("Custom Button")]
+        public Image OnFocusLeaveImage { get => onFocusLeaveImage; set => onFocusLeaveImage = value; }
+        [Category("Custom Button")]
+        public Image OnFocusEnterImage { get => onFocusEnterImage; set => onFocusEnterImage = value; }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
@@ -40,7 +46,7 @@ namespace InventorySystemGalaxy
         }
 
 
-            
+
 
         private void CustomButton_MouseHover(object sender, EventArgs e)
         {
@@ -54,10 +60,18 @@ namespace InventorySystemGalaxy
             Image = NormalImage;
             ForeColor = NormalForeColor;
             t1.Hide(this);
-         }
-                
+        }
 
-            
+        private void CustomButton_Enter(object sender, EventArgs e)
+        {
+            Image = onFocusEnterImage;
+        }
+
+        private void CustomButton_Leave(object sender, EventArgs e)
+        {
+            Image = onFocusLeaveImage;
+
+        }
     }
 
 

@@ -32,12 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             progressBarTick = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
+            pictureBox2 = new PictureBox();
             progressBar = new Panel();
             panel2 = new Panel();
+            label1 = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // progressBarTick
@@ -49,8 +49,8 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(progressBar);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
@@ -60,26 +60,15 @@
             panel1.Size = new Size(794, 594);
             panel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // pictureBox2
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(256, 88);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(266, 239);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("SimSun", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(170, 341);
-            label1.Name = "label1";
-            label1.Size = new Size(452, 96);
-            label1.TabIndex = 2;
-            label1.Text = "Galaxy Empire Inc.\r\nInventory System";
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(29, 69);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(735, 190);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
             // 
             // progressBar
             // 
@@ -97,6 +86,16 @@
             panel2.Size = new Size(784, 25);
             panel2.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("SimSun", 48F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(121, 277);
+            label1.Name = "label1";
+            label1.Size = new Size(555, 64);
+            label1.TabIndex = 5;
+            label1.Text = "Inventory System";
+            // 
             // SplashScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 12F);
@@ -113,7 +112,7 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -123,7 +122,8 @@
         private Panel panel1;
         private Panel progressBar;
         private Panel panel2;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Button button1;
         private Label label1;
     }
 }
