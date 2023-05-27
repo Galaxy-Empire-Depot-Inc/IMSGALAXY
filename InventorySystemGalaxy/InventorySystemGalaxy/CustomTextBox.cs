@@ -33,7 +33,7 @@ namespace InventorySystemGalaxy
         }
         //Hides the BorderStyle from control Property,
         //so to avoid people changing BorderStyle of the TextBox
-        [Browsable(false)]
+        /*[Browsable(false)]*/
         public new BorderStyle BorderStyle
         {
             get { return base.BorderStyle; }

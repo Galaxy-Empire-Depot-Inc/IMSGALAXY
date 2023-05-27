@@ -74,52 +74,52 @@ namespace InventorySystemGalaxy
 
         private void customButton1_Enter(object sender, EventArgs e)
         {
-            customButton1.BackColor = Color.FromArgb(74, 173, 255);
-            customButton1.ForeColor = Color.Black;
+            dashboardBtn.BackColor = Color.FromArgb(74, 173, 255);
+            dashboardBtn.ForeColor = Color.Black;
 
         }
 
         private void customButton1_Leave(object sender, EventArgs e)
         {
-            customButton1.BackColor = Color.FromArgb(59, 116, 192);
-            customButton1.ForeColor = Color.White;
+            dashboardBtn.BackColor = Color.FromArgb(59, 116, 192);
+            dashboardBtn.ForeColor = Color.White;
 
         }
 
         private void customButton2_Enter(object sender, EventArgs e)
         {
-            customButton2.BackColor = Color.FromArgb(74, 173, 255);
-            customButton2.ForeColor = Color.Black;
+            employeeBtn.BackColor = Color.FromArgb(74, 173, 255);
+            employeeBtn.ForeColor = Color.Black;
         }
 
         private void customButton2_Leave(object sender, EventArgs e)
         {
-            customButton2.BackColor = Color.FromArgb(59, 116, 192);
-            customButton2.ForeColor = Color.White;
+            employeeBtn.BackColor = Color.FromArgb(59, 116, 192);
+            employeeBtn.ForeColor = Color.White;
         }
 
         private void customButton3_Enter(object sender, EventArgs e)
         {
-            customButton3.BackColor = Color.FromArgb(74, 173, 255);
-            customButton3.ForeColor = Color.Black;
+            warehouseBtn.BackColor = Color.FromArgb(74, 173, 255);
+            warehouseBtn.ForeColor = Color.Black;
         }
 
         private void customButton3_Leave(object sender, EventArgs e)
         {
-            customButton3.BackColor = Color.FromArgb(59, 116, 192);
-            customButton3.ForeColor = Color.White;
+            warehouseBtn.BackColor = Color.FromArgb(59, 116, 192);
+            warehouseBtn.ForeColor = Color.White;
         }
 
         private void customButton4_Enter(object sender, EventArgs e)
         {
-            customButton4.BackColor = Color.FromArgb(74, 173, 255);
-            customButton4.ForeColor = Color.Black;
+            logoutBtn.BackColor = Color.FromArgb(74, 173, 255);
+            logoutBtn.ForeColor = Color.Black;
         }
 
         private void customButton4_Leave(object sender, EventArgs e)
         {
-            customButton4.BackColor = Color.FromArgb(59, 116, 192);
-            customButton4.ForeColor = Color.White;
+            logoutBtn.BackColor = Color.FromArgb(59, 116, 192);
+            logoutBtn.ForeColor = Color.White;
         }
     }
 }
