@@ -152,13 +152,10 @@
             customButton4.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             customButton4.ForeColor = Color.White;
             customButton4.HoverForeColor1 = Color.Black;
-            customButton4.HoverImage1 = Properties.Resources.icons8_logout_100__1___1_;
-            customButton4.Image = Properties.Resources.icons8_logout_100__2_;
             customButton4.ImageAlign = ContentAlignment.TopLeft;
             customButton4.Location = new Point(0, 399);
             customButton4.Name = "customButton4";
             customButton4.NormalForeColor1 = Color.White;
-            customButton4.NormalImage1 = Properties.Resources.icons8_logout_100__2_;
             customButton4.OnFocusEnterImage = null;
             customButton4.OnFocusLeaveImage = null;
             customButton4.Padding = new Padding(10);
@@ -179,13 +176,10 @@
             customButton3.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             customButton3.ForeColor = Color.White;
             customButton3.HoverForeColor1 = Color.Black;
-            customButton3.HoverImage1 = Properties.Resources.icons8_warehouse_80__1_;
-            customButton3.Image = Properties.Resources.icons8_warehouse_100__1_;
             customButton3.ImageAlign = ContentAlignment.TopLeft;
             customButton3.Location = new Point(0, 341);
             customButton3.Name = "customButton3";
             customButton3.NormalForeColor1 = Color.White;
-            customButton3.NormalImage1 = Properties.Resources.icons8_warehouse_100__1_;
             customButton3.OnFocusEnterImage = null;
             customButton3.OnFocusLeaveImage = null;
             customButton3.Padding = new Padding(10);
@@ -222,7 +216,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.icons8_user_144__2_;
+
             pictureBox1.Location = new Point(54, 67);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(90, 90);
@@ -237,15 +231,11 @@
             customButton1.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             customButton1.ForeColor = Color.White;
             customButton1.HoverForeColor1 = Color.Black;
-            customButton1.HoverImage1 = Properties.Resources.icons8_dashboard_64__1___1_;
-            customButton1.Image = Properties.Resources.icons8_dashboard_64__2_;
             customButton1.ImageAlign = ContentAlignment.TopLeft;
             customButton1.Location = new Point(0, 225);
             customButton1.Name = "customButton1";
             customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = Properties.Resources.icons8_dashboard_64__2_;
-            customButton1.OnFocusEnterImage = Properties.Resources.icons8_dashboard_64__1___1_;
-            customButton1.OnFocusLeaveImage = Properties.Resources.icons8_dashboard_64__2_;
+
             customButton1.Padding = new Padding(10);
             customButton1.Size = new Size(200, 58);
             customButton1.TabIndex = 1;
@@ -264,13 +254,12 @@
             customButton2.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             customButton2.ForeColor = Color.White;
             customButton2.HoverForeColor1 = Color.Black;
-            customButton2.HoverImage1 = Properties.Resources.icons8_user_144__3_;
-            customButton2.Image = Properties.Resources.icons8_user_144__2___1_;
+
             customButton2.ImageAlign = ContentAlignment.TopLeft;
             customButton2.Location = new Point(0, 283);
             customButton2.Name = "customButton2";
             customButton2.NormalForeColor1 = Color.White;
-            customButton2.NormalImage1 = Properties.Resources.icons8_user_144__2___1_;
+
             customButton2.OnFocusEnterImage = null;
             customButton2.OnFocusLeaveImage = null;
             customButton2.Padding = new Padding(10);
