@@ -8,10 +8,19 @@
     <Compile Update="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dialogs\WarningMessageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Dialogs\WelcomeMessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EmployeeForm.cs">
@@ -27,12 +36,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="WarningMessageDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="WelcomeMessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

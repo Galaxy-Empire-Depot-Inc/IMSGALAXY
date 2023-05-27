@@ -34,42 +34,43 @@
             panel9 = new Panel();
             panel15 = new Panel();
             producttable = new DataGridView();
-            itemCodeLabel = new DataGridViewTextBoxColumn();
-            imageLabel = new DataGridViewImageColumn();
-            descriptionLabel = new DataGridViewImageColumn();
             panel14 = new Panel();
             label11 = new Label();
             panel8 = new Panel();
             panel13 = new Panel();
-            customButton4 = new CustomButton();
+            btn_DisplayP = new CustomButton();
             panel12 = new Panel();
-            customButton3 = new CustomButton();
+            btn_DamageP = new CustomButton();
             panel11 = new Panel();
-            customButton2 = new CustomButton();
+            btn_AvailableP = new CustomButton();
             panel10 = new Panel();
-            customButton1 = new CustomButton();
+            btn_TotalP = new CustomButton();
             panel7 = new Panel();
             label10 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel3 = new Panel();
             pictureBox1 = new PictureBox();
-            label3 = new Label();
+            lbl_TotalP = new Label();
             label2 = new Label();
             panel4 = new Panel();
             pictureBox2 = new PictureBox();
-            label4 = new Label();
+            lbl_AvailableP = new Label();
             label5 = new Label();
             panel5 = new Panel();
             pictureBox3 = new PictureBox();
-            label6 = new Label();
+            lbl_DamageP = new Label();
             label7 = new Label();
             panel6 = new Panel();
             pictureBox4 = new PictureBox();
-            label8 = new Label();
+            lbl_DisplayP = new Label();
             label9 = new Label();
             panel2 = new Panel();
             label1 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            itemCodeLabel = new DataGridViewTextBoxColumn();
+            descriptionLabel = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
+            imageLabel = new DataGridViewImageColumn();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel9.SuspendLayout();
@@ -156,7 +157,7 @@
             producttable.BorderStyle = BorderStyle.None;
             producttable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             producttable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            producttable.Columns.AddRange(new DataGridViewColumn[] { itemCodeLabel, imageLabel, descriptionLabel });
+            producttable.Columns.AddRange(new DataGridViewColumn[] { itemCodeLabel, descriptionLabel, Category, imageLabel });
             producttable.Dock = DockStyle.Fill;
             producttable.GridColor = Color.White;
             producttable.Location = new Point(0, 0);
@@ -167,27 +168,6 @@
             producttable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             producttable.Size = new Size(580, 349);
             producttable.TabIndex = 0;
-            // 
-            // itemCodeLabel
-            // 
-            itemCodeLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            itemCodeLabel.HeaderText = "Item Code";
-            itemCodeLabel.Name = "itemCodeLabel";
-            itemCodeLabel.ReadOnly = true;
-            // 
-            // imageLabel
-            // 
-            imageLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            imageLabel.HeaderText = "Images";
-            imageLabel.Name = "imageLabel";
-            imageLabel.ReadOnly = true;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            descriptionLabel.HeaderText = "Description";
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.ReadOnly = true;
             // 
             // panel14
             // 
@@ -226,126 +206,130 @@
             // panel13
             // 
             panel13.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel13.Controls.Add(customButton4);
+            panel13.Controls.Add(btn_DisplayP);
             panel13.Location = new Point(0, 310);
             panel13.Name = "panel13";
             panel13.Size = new Size(194, 60);
             panel13.TabIndex = 1;
             // 
-            // customButton4
+            // btn_DisplayP
             // 
-            customButton4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            customButton4.BackColor = Color.FromArgb(59, 116, 192);
-            customButton4.FlatAppearance.BorderSize = 0;
-            customButton4.FlatStyle = FlatStyle.Flat;
-            customButton4.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton4.ForeColor = Color.White;
-            customButton4.HoverForeColor1 = Color.Black;
-            customButton4.HoverImage1 = null;
-            customButton4.Location = new Point(0, 0);
-            customButton4.Name = "customButton4";
-            customButton4.NormalForeColor1 = Color.White;
-            customButton4.NormalImage1 = null;
-            customButton4.OnFocusEnterImage = null;
-            customButton4.OnFocusLeaveImage = null;
-            customButton4.Size = new Size(192, 60);
-            customButton4.TabIndex = 0;
-            customButton4.Text = "Displayed Products";
-            customButton4.Tooltip1 = null;
-            customButton4.UseVisualStyleBackColor = false;
+            btn_DisplayP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_DisplayP.BackColor = Color.FromArgb(59, 116, 192);
+            btn_DisplayP.FlatAppearance.BorderSize = 0;
+            btn_DisplayP.FlatStyle = FlatStyle.Flat;
+            btn_DisplayP.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_DisplayP.ForeColor = Color.White;
+            btn_DisplayP.HoverForeColor1 = Color.Black;
+            btn_DisplayP.HoverImage1 = null;
+            btn_DisplayP.Location = new Point(0, 0);
+            btn_DisplayP.Name = "btn_DisplayP";
+            btn_DisplayP.NormalForeColor1 = Color.White;
+            btn_DisplayP.NormalImage1 = null;
+            btn_DisplayP.OnFocusEnterImage = null;
+            btn_DisplayP.OnFocusLeaveImage = null;
+            btn_DisplayP.Size = new Size(192, 60);
+            btn_DisplayP.TabIndex = 0;
+            btn_DisplayP.Text = "Displayed Products";
+            btn_DisplayP.Tooltip1 = null;
+            btn_DisplayP.UseVisualStyleBackColor = false;
+            btn_DisplayP.Click += btn_DisplayP_Click;
             // 
             // panel12
             // 
             panel12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel12.Controls.Add(customButton3);
+            panel12.Controls.Add(btn_DamageP);
             panel12.Location = new Point(0, 244);
             panel12.Name = "panel12";
             panel12.Size = new Size(194, 60);
             panel12.TabIndex = 1;
             // 
-            // customButton3
+            // btn_DamageP
             // 
-            customButton3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            customButton3.BackColor = Color.FromArgb(59, 116, 192);
-            customButton3.FlatAppearance.BorderSize = 0;
-            customButton3.FlatStyle = FlatStyle.Flat;
-            customButton3.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton3.ForeColor = Color.White;
-            customButton3.HoverForeColor1 = Color.Black;
-            customButton3.HoverImage1 = null;
-            customButton3.Location = new Point(0, 0);
-            customButton3.Name = "customButton3";
-            customButton3.NormalForeColor1 = Color.White;
-            customButton3.NormalImage1 = null;
-            customButton3.OnFocusEnterImage = null;
-            customButton3.OnFocusLeaveImage = null;
-            customButton3.Size = new Size(192, 60);
-            customButton3.TabIndex = 0;
-            customButton3.Text = "Damaged Products";
-            customButton3.Tooltip1 = null;
-            customButton3.UseVisualStyleBackColor = false;
+            btn_DamageP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_DamageP.BackColor = Color.FromArgb(59, 116, 192);
+            btn_DamageP.FlatAppearance.BorderSize = 0;
+            btn_DamageP.FlatStyle = FlatStyle.Flat;
+            btn_DamageP.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_DamageP.ForeColor = Color.White;
+            btn_DamageP.HoverForeColor1 = Color.Black;
+            btn_DamageP.HoverImage1 = null;
+            btn_DamageP.Location = new Point(0, 0);
+            btn_DamageP.Name = "btn_DamageP";
+            btn_DamageP.NormalForeColor1 = Color.White;
+            btn_DamageP.NormalImage1 = null;
+            btn_DamageP.OnFocusEnterImage = null;
+            btn_DamageP.OnFocusLeaveImage = null;
+            btn_DamageP.Size = new Size(192, 60);
+            btn_DamageP.TabIndex = 0;
+            btn_DamageP.Text = "Damaged Products";
+            btn_DamageP.Tooltip1 = null;
+            btn_DamageP.UseVisualStyleBackColor = false;
+            btn_DamageP.Click += btn_DamageP_Click;
             // 
             // panel11
             // 
             panel11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel11.Controls.Add(customButton2);
+            panel11.Controls.Add(btn_AvailableP);
             panel11.Location = new Point(1, 178);
             panel11.Name = "panel11";
             panel11.Size = new Size(194, 60);
             panel11.TabIndex = 1;
             // 
-            // customButton2
+            // btn_AvailableP
             // 
-            customButton2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            customButton2.BackColor = Color.FromArgb(59, 116, 192);
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatStyle = FlatStyle.Flat;
-            customButton2.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton2.ForeColor = Color.White;
-            customButton2.HoverForeColor1 = Color.Black;
-            customButton2.HoverImage1 = null;
-            customButton2.Location = new Point(0, 0);
-            customButton2.Name = "customButton2";
-            customButton2.NormalForeColor1 = Color.White;
-            customButton2.NormalImage1 = null;
-            customButton2.OnFocusEnterImage = null;
-            customButton2.OnFocusLeaveImage = null;
-            customButton2.Size = new Size(192, 60);
-            customButton2.TabIndex = 0;
-            customButton2.Text = "Available Products";
-            customButton2.Tooltip1 = null;
-            customButton2.UseVisualStyleBackColor = false;
+            btn_AvailableP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_AvailableP.BackColor = Color.FromArgb(59, 116, 192);
+            btn_AvailableP.FlatAppearance.BorderSize = 0;
+            btn_AvailableP.FlatStyle = FlatStyle.Flat;
+            btn_AvailableP.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_AvailableP.ForeColor = Color.White;
+            btn_AvailableP.HoverForeColor1 = Color.Black;
+            btn_AvailableP.HoverImage1 = null;
+            btn_AvailableP.Location = new Point(0, 0);
+            btn_AvailableP.Name = "btn_AvailableP";
+            btn_AvailableP.NormalForeColor1 = Color.White;
+            btn_AvailableP.NormalImage1 = null;
+            btn_AvailableP.OnFocusEnterImage = null;
+            btn_AvailableP.OnFocusLeaveImage = null;
+            btn_AvailableP.Size = new Size(192, 60);
+            btn_AvailableP.TabIndex = 0;
+            btn_AvailableP.Text = "Available Products";
+            btn_AvailableP.Tooltip1 = null;
+            btn_AvailableP.UseVisualStyleBackColor = false;
+            btn_AvailableP.Click += btn_AvailableP_Click;
             // 
             // panel10
             // 
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel10.Controls.Add(customButton1);
+            panel10.Controls.Add(btn_TotalP);
             panel10.Location = new Point(0, 112);
             panel10.Name = "panel10";
             panel10.Size = new Size(194, 60);
             panel10.TabIndex = 0;
             // 
-            // customButton1
+            // btn_TotalP
             // 
-            customButton1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            customButton1.BackColor = Color.FromArgb(59, 116, 192);
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton1.ForeColor = Color.White;
-            customButton1.HoverForeColor1 = Color.Black;
-            customButton1.HoverImage1 = null;
-            customButton1.Location = new Point(0, 0);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = null;
-            customButton1.OnFocusEnterImage = null;
-            customButton1.OnFocusLeaveImage = null;
-            customButton1.Size = new Size(192, 60);
-            customButton1.TabIndex = 0;
-            customButton1.Text = "Total Products";
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = false;
+            btn_TotalP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_TotalP.BackColor = Color.FromArgb(59, 116, 192);
+            btn_TotalP.FlatAppearance.BorderSize = 0;
+            btn_TotalP.FlatStyle = FlatStyle.Flat;
+            btn_TotalP.Font = new Font("SimSun", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_TotalP.ForeColor = Color.White;
+            btn_TotalP.HoverForeColor1 = Color.Black;
+            btn_TotalP.HoverImage1 = null;
+            btn_TotalP.Location = new Point(0, 0);
+            btn_TotalP.Name = "btn_TotalP";
+            btn_TotalP.NormalForeColor1 = Color.White;
+            btn_TotalP.NormalImage1 = null;
+            btn_TotalP.OnFocusEnterImage = null;
+            btn_TotalP.OnFocusLeaveImage = null;
+            btn_TotalP.Size = new Size(192, 60);
+            btn_TotalP.TabIndex = 0;
+            btn_TotalP.Text = "Total Products";
+            btn_TotalP.Tooltip1 = null;
+            btn_TotalP.UseVisualStyleBackColor = false;
+            btn_TotalP.Click += btn_TotalP_Click;
             // 
             // panel7
             // 
@@ -394,7 +378,7 @@
             // 
             panel3.BackColor = Color.FromArgb(45, 71, 154);
             panel3.Controls.Add(pictureBox1);
-            panel3.Controls.Add(label3);
+            panel3.Controls.Add(lbl_TotalP);
             panel3.Controls.Add(label2);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(8, 8);
@@ -413,18 +397,18 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // label3
+            // lbl_TotalP
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(124, 1);
-            label3.Name = "label3";
-            label3.Size = new Size(74, 37);
-            label3.TabIndex = 1;
-            label3.Text = "350";
-            label3.TextAlign = ContentAlignment.MiddleRight;
+            lbl_TotalP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbl_TotalP.AutoSize = true;
+            lbl_TotalP.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_TotalP.ForeColor = Color.White;
+            lbl_TotalP.Location = new Point(124, 1);
+            lbl_TotalP.Name = "lbl_TotalP";
+            lbl_TotalP.Size = new Size(74, 37);
+            lbl_TotalP.TabIndex = 1;
+            lbl_TotalP.Text = "350";
+            lbl_TotalP.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -443,7 +427,7 @@
             // 
             panel4.BackColor = Color.FromArgb(45, 71, 154);
             panel4.Controls.Add(pictureBox2);
-            panel4.Controls.Add(label4);
+            panel4.Controls.Add(lbl_AvailableP);
             panel4.Controls.Add(label5);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(206, 8);
@@ -462,18 +446,18 @@
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
-            // label4
+            // lbl_AvailableP
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(123, 1);
-            label4.Name = "label4";
-            label4.Size = new Size(74, 37);
-            label4.TabIndex = 4;
-            label4.Text = "350";
-            label4.TextAlign = ContentAlignment.MiddleRight;
+            lbl_AvailableP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbl_AvailableP.AutoSize = true;
+            lbl_AvailableP.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_AvailableP.ForeColor = Color.White;
+            lbl_AvailableP.Location = new Point(123, 1);
+            lbl_AvailableP.Name = "lbl_AvailableP";
+            lbl_AvailableP.Size = new Size(74, 37);
+            lbl_AvailableP.TabIndex = 4;
+            lbl_AvailableP.Text = "350";
+            lbl_AvailableP.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label5
             // 
@@ -492,7 +476,7 @@
             // 
             panel5.BackColor = Color.FromArgb(45, 71, 154);
             panel5.Controls.Add(pictureBox3);
-            panel5.Controls.Add(label6);
+            panel5.Controls.Add(lbl_DamageP);
             panel5.Controls.Add(label7);
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(404, 8);
@@ -511,18 +495,18 @@
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
             // 
-            // label6
+            // lbl_DamageP
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(123, 1);
-            label6.Name = "label6";
-            label6.Size = new Size(74, 37);
-            label6.TabIndex = 4;
-            label6.Text = "350";
-            label6.TextAlign = ContentAlignment.MiddleRight;
+            lbl_DamageP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbl_DamageP.AutoSize = true;
+            lbl_DamageP.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_DamageP.ForeColor = Color.White;
+            lbl_DamageP.Location = new Point(123, 1);
+            lbl_DamageP.Name = "lbl_DamageP";
+            lbl_DamageP.Size = new Size(74, 37);
+            lbl_DamageP.TabIndex = 4;
+            lbl_DamageP.Text = "350";
+            lbl_DamageP.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label7
             // 
@@ -541,7 +525,7 @@
             // 
             panel6.BackColor = Color.FromArgb(45, 71, 154);
             panel6.Controls.Add(pictureBox4);
-            panel6.Controls.Add(label8);
+            panel6.Controls.Add(lbl_DisplayP);
             panel6.Controls.Add(label9);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(602, 8);
@@ -560,18 +544,18 @@
             pictureBox4.TabIndex = 5;
             pictureBox4.TabStop = false;
             // 
-            // label8
+            // lbl_DisplayP
             // 
-            label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label8.AutoSize = true;
-            label8.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(123, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(74, 37);
-            label8.TabIndex = 4;
-            label8.Text = "350";
-            label8.TextAlign = ContentAlignment.MiddleRight;
+            lbl_DisplayP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbl_DisplayP.AutoSize = true;
+            lbl_DisplayP.Font = new Font("SimSun", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_DisplayP.ForeColor = Color.White;
+            lbl_DisplayP.Location = new Point(123, 0);
+            lbl_DisplayP.Name = "lbl_DisplayP";
+            lbl_DisplayP.Size = new Size(74, 37);
+            lbl_DisplayP.TabIndex = 4;
+            lbl_DisplayP.Text = "350";
+            lbl_DisplayP.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label9
             // 
@@ -608,6 +592,42 @@
             label1.TabIndex = 0;
             label1.Text = "Dashboard";
             // 
+            // itemCodeLabel
+            // 
+            itemCodeLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            itemCodeLabel.DataPropertyName = "item_code";
+            itemCodeLabel.HeaderText = "Item Code";
+            itemCodeLabel.Name = "itemCodeLabel";
+            itemCodeLabel.ReadOnly = true;
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            descriptionLabel.DataPropertyName = "description";
+            descriptionLabel.HeaderText = "Description";
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.ReadOnly = true;
+            descriptionLabel.Resizable = DataGridViewTriState.True;
+            descriptionLabel.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Category
+            // 
+            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Category.DataPropertyName = "category";
+            Category.HeaderText = "Category";
+            Category.Name = "Category";
+            Category.ReadOnly = true;
+            Category.Width = 96;
+            // 
+            // imageLabel
+            // 
+            imageLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            imageLabel.DataPropertyName = "picture";
+            imageLabel.HeaderText = "Images";
+            imageLabel.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            imageLabel.Name = "imageLabel";
+            imageLabel.ReadOnly = true;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
@@ -622,6 +642,7 @@
             Name = "Dashboard";
             Padding = new Padding(5);
             Text = "Dashboard";
+            Load += Dashboard_Load;
             panel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -660,19 +681,19 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel3;
         private PictureBox pictureBox1;
-        private Label label3;
+        private Label lbl_TotalP;
         private Label label2;
         private Panel panel4;
         private PictureBox pictureBox2;
-        private Label label4;
+        private Label lbl_AvailableP;
         private Label label5;
         private Panel panel5;
         private PictureBox pictureBox3;
-        private Label label6;
+        private Label lbl_DamageP;
         private Label label7;
         private Panel panel6;
         private PictureBox pictureBox4;
-        private Label label8;
+        private Label lbl_DisplayP;
         private Label label9;
         private Panel panel2;
         private Label label1;
@@ -684,18 +705,19 @@
         private Panel panel10;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel panel13;
-        private CustomButton customButton4;
+        private CustomButton btn_DisplayP;
         private Panel panel12;
-        private CustomButton customButton3;
+        private CustomButton btn_DamageP;
         private Panel panel11;
-        private CustomButton customButton2;
-        private CustomButton customButton1;
+        private CustomButton btn_AvailableP;
+        private CustomButton btn_TotalP;
         private Panel panel15;
         private DataGridView producttable;
         private Panel panel14;
         private Label label11;
         private DataGridViewTextBoxColumn itemCodeLabel;
+        private DataGridViewTextBoxColumn descriptionLabel;
+        private DataGridViewTextBoxColumn Category;
         private DataGridViewImageColumn imageLabel;
-        private DataGridViewImageColumn descriptionLabel;
     }
 }
