@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>InventorySystemGalaxy</id>
+    <version>1.0.0</version>
+    <authors>InventorySystemGalaxy</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\InventorySystemGalaxy.runtimeconfig.json" target="lib\net6.0-windows7.0\InventorySystemGalaxy.runtimeconfig.json" />
+    <file src="C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\InventorySystemGalaxy.dll" target="lib\net6.0-windows7.0\InventorySystemGalaxy.dll" />
+  </files>
+</package>

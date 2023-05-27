@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace InventorySystemGalaxy
+{
+    public partial class LoginForm : Form
+    {
+
+        public LoginForm()
+        {
+
+            InitializeComponent();
+            panel1.BackColor = Color.FromArgb(100, 59, 116, 192);
+        }
+
+
+    }
+}
