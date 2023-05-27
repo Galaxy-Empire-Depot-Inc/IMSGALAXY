@@ -15,6 +15,7 @@ namespace InventorySystemGalaxy
         public Warning_Message()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -24,6 +25,24 @@ namespace InventorySystemGalaxy
 
         private void LabelMessage_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void Warning_Message_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+
+        }
+
+        private void NoBtn_Click(object sender, EventArgs e)
+        {
+            Close();
 
         }
     }

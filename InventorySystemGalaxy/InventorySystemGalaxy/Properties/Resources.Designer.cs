@@ -113,6 +113,16 @@ namespace InventorySystemGalaxy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_close_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-close-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_dashboard_64__1___1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-dashboard-64 (1) (1)", resourceCulture);
@@ -193,9 +203,29 @@ namespace InventorySystemGalaxy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_maximize_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-maximize-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_minimize_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-minimize-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_minimize_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-minimize-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

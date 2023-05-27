@@ -121,5 +121,29 @@ namespace InventorySystemGalaxy
             logoutBtn.BackColor = Color.FromArgb(59, 116, 192);
             logoutBtn.ForeColor = Color.White;
         }
+
+        private void CloseBTN_Click(object sender, EventArgs e)
+        {
+
+            Warning_Message warningMessageDialog = new Warning_Message();
+            warningMessageDialog.ShowDialog();
+        }
+
+        private void MaxBtn_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void MinBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }
