@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
   <ItemGroup>
+<<<<<<< HEAD
+=======
     <Compile Update="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ButtonCustom.cs">
-      <SubType>Component</SubType>
+    <Compile Update="SplashScreen.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SplashScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
+>>>>>>> 5a56ad26d20f3394393fa68b394b6e58a03f96a4
     <Compile Update="Warning Message.cs">
       <SubType>Form</SubType>
     </Compile>
