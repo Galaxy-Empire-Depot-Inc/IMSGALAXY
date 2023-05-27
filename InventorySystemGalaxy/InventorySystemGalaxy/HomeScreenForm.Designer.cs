@@ -40,7 +40,7 @@
             logoutBtn = new CustomButton();
             warehouseBtn = new CustomButton();
             panel3 = new Panel();
-            label1 = new Label();
+            lbl_GreetUser = new Label();
             pictureBox1 = new PictureBox();
             dashboardBtn = new CustomButton();
             employeeBtn = new CustomButton();
@@ -207,7 +207,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label1);
+            panel3.Controls.Add(lbl_GreetUser);
             panel3.Controls.Add(pictureBox1);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
@@ -215,16 +215,16 @@
             panel3.Size = new Size(200, 225);
             panel3.TabIndex = 0;
             // 
-            // label1
+            // lbl_GreetUser
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 182);
-            label1.Name = "label1";
-            label1.Size = new Size(180, 27);
-            label1.TabIndex = 1;
-            label1.Text = "Hi, Username";
+            lbl_GreetUser.AutoSize = true;
+            lbl_GreetUser.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_GreetUser.ForeColor = Color.White;
+            lbl_GreetUser.Location = new Point(10, 182);
+            lbl_GreetUser.Name = "lbl_GreetUser";
+            lbl_GreetUser.Size = new Size(180, 27);
+            lbl_GreetUser.TabIndex = 1;
+            lbl_GreetUser.Text = "Hi, Username";
             // 
             // pictureBox1
             // 
@@ -322,7 +322,7 @@
         private Panel panel2;
         private Panel panel3;
         private CustomButton dashboardBtn;
-        private Label label1;
+        private Label lbl_GreetUser;
         private PictureBox pictureBox1;
         private CustomButton warehouseBtn;
         private CustomButton employeeBtn;
