@@ -56,11 +56,11 @@ namespace InventorySystemGalaxy
 
         private void customButton1_Click(object sender, EventArgs e)
         {
-            loadForm(new Dashboard());
+            loadForm(new DashboardForm());
         }
         private void customButton2_Click(object sender, EventArgs e)
         {
-
+            loadForm(new EmployeeForm());
         }
         private void customButton3_Click(object sender, EventArgs e)
         {
@@ -144,6 +144,11 @@ namespace InventorySystemGalaxy
         private void MinBtn_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void HomeScreenForm_Load(object sender, EventArgs e)
+        {
+            loadForm(new DashboardForm());
         }
     }
 }

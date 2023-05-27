@@ -11,23 +11,24 @@ using System.Windows.Forms;
 
 namespace InventorySystemGalaxy
 {
-    public partial class Dashboard : Form
+    public partial class DashboardForm : Form
     {
-
         MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
         MySqlCommand command;
         MySqlDataAdapter adapter;
         DataTable dt;
-
-
-        public Dashboard()
+        public DashboardForm()
         {
             InitializeComponent();
         }
 
+
+        
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
             LoadProductCounts();
+            
         }
 
         private void LoadProductCounts()
@@ -36,6 +37,7 @@ namespace InventorySystemGalaxy
             String CountAvailability = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE availability = 1";
             String CountDisplay = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE display = 1";
             String CountDamage = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE repair = 1";
+            
 
             conn.Open();
             command = new MySqlCommand(CountProduct, conn);

@@ -305,6 +305,7 @@
             Name = "HomeScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "HomeScreenForm";
+            Load += HomeScreenForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);

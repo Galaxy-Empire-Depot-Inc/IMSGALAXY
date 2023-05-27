@@ -12,7 +12,7 @@ namespace InventorySystemGalaxy
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new SplashScreen());
+            Application.Run(new HomeScreenForm());
 
         }
     }

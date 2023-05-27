@@ -63,6 +63,26 @@ namespace InventorySystemGalaxy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_100__1___1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-100 (1) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_100__2___1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-100 (2) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_cancel_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-cancel-100", resourceCulture);
@@ -376,6 +396,16 @@ namespace InventorySystemGalaxy.Properties {
         internal static System.Drawing.Bitmap icons8_x_150 {
             get {
                 object obj = ResourceManager.GetObject("icons8-x-150", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
