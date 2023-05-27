@@ -131,7 +131,7 @@ namespace InventorySystemGalaxy
 
         private void MaxBtn_Click(object sender, EventArgs e)
         {
-            if(WindowState == FormWindowState.Maximized)
+            if (WindowState == FormWindowState.Maximized)
             {
                 WindowState = FormWindowState.Normal;
             }

@@ -98,6 +98,7 @@
             // CloseBTN
             // 
             CloseBTN.BackColor = Color.FromArgb(231, 76, 60);
+            CloseBTN.Cursor = Cursors.Hand;
             CloseBTN.FlatAppearance.BorderSize = 0;
             CloseBTN.FlatStyle = FlatStyle.Flat;
             CloseBTN.Image = Properties.Resources.icons8_close_30;
@@ -111,6 +112,7 @@
             // MaxBtn
             // 
             MaxBtn.BackColor = Color.FromArgb(46, 204, 115);
+            MaxBtn.Cursor = Cursors.Hand;
             MaxBtn.FlatAppearance.BorderSize = 0;
             MaxBtn.FlatStyle = FlatStyle.Flat;
             MaxBtn.Image = Properties.Resources.icons8_maximize_30;
@@ -124,6 +126,7 @@
             // MinBtn
             // 
             MinBtn.BackColor = Color.FromArgb(241, 196, 15);
+            MinBtn.Cursor = Cursors.Hand;
             MinBtn.FlatAppearance.BorderSize = 0;
             MinBtn.FlatStyle = FlatStyle.Flat;
             MinBtn.Image = Properties.Resources.icons8_minimize_30;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Warning_Message));
             label1 = new Label();
             pictureBox1 = new PictureBox();
             LabelMessage = new Label();
@@ -85,6 +86,7 @@
             // YesBtn
             // 
             YesBtn.BackColor = Color.DarkSeaGreen;
+            YesBtn.Cursor = Cursors.Hand;
             YesBtn.FlatAppearance.BorderSize = 0;
             YesBtn.FlatStyle = FlatStyle.Flat;
             YesBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -102,6 +104,7 @@
             // NoBtn
             // 
             NoBtn.BackColor = Color.FromArgb(255, 128, 128);
+            NoBtn.Cursor = Cursors.Hand;
             NoBtn.FlatAppearance.BorderSize = 0;
             NoBtn.FlatStyle = FlatStyle.Flat;
             NoBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -128,6 +131,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Warning_Message";
             Text = "Warning_Message";
             Load += Warning_Message_Load;
