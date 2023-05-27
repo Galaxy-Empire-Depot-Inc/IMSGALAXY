@@ -1,9 +1,12 @@
-﻿using Org.BouncyCastle.Crypto.Macs;
+﻿using Microsoft.Scripting.Metadata;
+using Org.BouncyCastle.Crypto.Macs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Design;
+using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
@@ -17,10 +20,10 @@ namespace InventorySystemGalaxy
     {
         //Fields
         private Color backColor = Color.WhiteSmoke;
-        private Color iconColor = Color.MediumSlateBlue;
+        private Color iconColor = Color.CornflowerBlue;
         private Color listBackColor= Color.FromArgb(230,228,245);
         private Color listTextColor = Color.DimGray;
-        private Color bordercolor = Color.MediumSlateBlue;
+        private Color bordercolor = Color.CornflowerBlue;
         private int borderSize = 1;
 
         //Items
@@ -28,8 +31,67 @@ namespace InventorySystemGalaxy
         private Label labelText;
         private Button btnIcon;
 
+
+        public Color BackColor1 { get => backColor; set => backColor = value; }
+        public Color IconColor { get => iconColor; set => iconColor = value; }
+        public Color ListBackColor { get => listBackColor; set => listBackColor = value; }
+        public Color ListTextColor { get => listTextColor; set => listTextColor = value; }
+        public Color Bordercolor { get => bordercolor; set => bordercolor = value; }
+        public int BorderSize { get => borderSize; set => borderSize = value; }
+
         //Events
         public event EventHandler onSelectedIndexChanged;//Default Event
+
+        //->Data
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Localizable(true)]
+        [MergableProperty(false)]
+        public ComboBox.ObjectCollection Items
+        {
+            get
+            {
+                return cmbList.Items;
+            }
+        }
+
+        [DefaultValue(null)]
+        [RefreshProperties(RefreshProperties.Repaint),
+        AttributeProvider(typeof(IListSource))]
+        public new object DataSource
+        {
+            get { return cmbList.DataSource; }
+            set { cmbList.DataSource = value; }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public  int SelectedIndex
+        {
+            get
+            {
+                return cmbList.SelectedIndex;
+            }
+            set
+            {
+                cmbList.SelectedIndex=value;
+            }
+        }
+        [Browsable(false)]
+        [Bindable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public object SelectedItem
+        {
+            get
+            {
+                return cmbList.SelectedItem;
+            }
+            set
+            {
+                cmbList.SelectedItem = value;
+            }
+        }
+
 
         //Constructor
         public CustomComboBox()
@@ -42,7 +104,7 @@ namespace InventorySystemGalaxy
             this.SuspendLayout();
 
             //ComboBox: Dropdown List
-            cmbList.BackColor = backColor;
+            cmbList.BackColor = listBackColor;
             /*cmbList.Font = new Font(this.Si, 10F);*/
             cmbList.ForeColor = listTextColor;
             cmbList.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexChanged);//Default Event
@@ -89,32 +151,55 @@ namespace InventorySystemGalaxy
             };
         }
         //Event Methods
+
+        //->Default event
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (onSelectedIndexChanged != null)
+                onSelectedIndexChanged.Invoke(sender, e);
+            labelText.Text = cmbList.Text;
+
+        }
         private void Surface_Clicked(object sender, EventArgs e)
         {
             //Select Combo Box
             cmbList.Select();
             if (cmbList.DropDownStyle == ComboBoxStyle.DropDownList)
-                cmbList.DroppedDown = true;
+                cmbList.DroppedDown = true;//Open Dropdown List 
         }
 
         private void Icon_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            //Fields
+            int iconWidth = 14;
+            int iconHeight = 6;
+            var rectIcon = new Rectangle((btnIcon.Width-iconWidth)/2,(btnIcon.Height-iconHeight)/2,iconWidth,iconHeight);
+            Graphics graph = e.Graphics;
+
+            //Draw arrow down icon
+            using (GraphicsPath path=new GraphicsPath())
+            using (Pen pen= new Pen(iconColor,2))
+            {
+                graph.SmoothingMode=SmoothingMode.AntiAlias;
+                path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + (iconWidth / 2), rectIcon.Bottom);
+                path.AddLine(rectIcon.X+(iconWidth/2),rectIcon.Bottom,rectIcon.Right,rectIcon.Y);
+                graph.DrawPath(pen,path);
+            }
+
         }
 
         private void Icon_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            cmbList.Select();
+            cmbList.DroppedDown = true;
         }
 
-        private void ComboBox_TextChanged(object sender, EventArgs e)
+            private void ComboBox_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            labelText.Text=cmbList.Text;
         }
 
-        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

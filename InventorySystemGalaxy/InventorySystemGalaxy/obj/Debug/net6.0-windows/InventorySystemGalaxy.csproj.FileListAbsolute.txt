@@ -90,3 +90,6 @@ C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySyste
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.csproj.CopyComplete
 >>>>>>> 40c6e8f5e8056ed2672fddcb3fabb9c8db903c78
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.CustomComboBox.resources
+C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Dynamic.dll
+C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Scripting.Metadata.dll
+C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Scripting.dll

@@ -16,6 +16,7 @@ namespace InventorySystemGalaxy
         {
             InitializeComponent();
             bgPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
+            positionComboBox.SelectedIndex = 0;
         }
     }
 }
