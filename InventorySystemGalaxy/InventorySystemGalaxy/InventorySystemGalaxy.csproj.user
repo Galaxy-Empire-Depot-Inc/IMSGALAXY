@@ -8,8 +8,19 @@
     <Compile Update="CustomTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+<<<<<<< HEAD
     <Compile Update="ButtonCustom.cs">
       <SubType>Component</SubType>
+=======
+    <Compile Update="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="HomeScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SplashScreen.cs">
+      <SubType>Form</SubType>
+>>>>>>> b804d895067bcc7dbbe4cd0575b9735e557b42fc
     </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>

@@ -33,6 +33,8 @@
             // CustomButton
             // 
             Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Enter += CustomButton_Enter;
+            Leave += CustomButton_Leave;
             MouseLeave += CustomButton_MouseLeave;
             MouseHover += CustomButton_MouseHover;
             ResumeLayout(false);

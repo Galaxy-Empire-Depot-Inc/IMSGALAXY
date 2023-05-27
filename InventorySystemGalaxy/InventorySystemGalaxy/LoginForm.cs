@@ -17,9 +17,29 @@ namespace InventorySystemGalaxy
         {
 
             InitializeComponent();
-            panel1.BackColor = Color.FromArgb(100, 59, 116, 192);
+            /*panel1.BackColor = Color.FromArgb(100, 0, 0, 0);*/
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
 
+
+        private void customButton1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Call the button click event handler
+                loginBtn_Click(sender, e);
+                e.Handled = true; // Prevent further processing of the Enter key
+            }
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("YEHEY");
+        }
     }
 }

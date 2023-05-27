@@ -29,81 +29,112 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            panel1 = new Panel();
+            pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            loginBtn = new CustomButton();
             customTextBox2 = new CustomTextBox();
             customTextBox1 = new CustomTextBox();
-            customButton1 = new CustomButton();
-            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pictureBox3
             // 
-            panel1.BackColor = Color.RoyalBlue;
-            panel1.Controls.Add(customButton1);
-            panel1.Controls.Add(customTextBox2);
-            panel1.Controls.Add(customTextBox1);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(45, 45);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(281, 359);
-            panel1.TabIndex = 0;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(771, 8);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(20, 20);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(741, 8);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(20, 20);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 2;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.usericon1;
+            pictureBox2.Location = new Point(249, 91);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(300, 300);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 7;
+            pictureBox2.TabStop = false;
+            // 
+            // loginBtn
+            // 
+            loginBtn.BackColor = Color.FromArgb(0, 154, 215);
+            loginBtn.FlatAppearance.BorderSize = 0;
+            loginBtn.FlatStyle = FlatStyle.Flat;
+            loginBtn.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            loginBtn.ForeColor = Color.White;
+            loginBtn.HoverForeColor1 = SystemColors.ActiveCaptionText;
+            loginBtn.HoverImage1 = Properties.Resources.icons8_login_64__1_;
+            loginBtn.Image = Properties.Resources.icons8_login_96__1_;
+            loginBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            loginBtn.Location = new Point(309, 410);
+            loginBtn.Name = "loginBtn";
+            loginBtn.NormalForeColor1 = Color.White;
+            loginBtn.NormalImage1 = Properties.Resources.icons8_login_96__1_;
+            loginBtn.Padding = new Padding(15, 0, 0, 0);
+            loginBtn.Size = new Size(179, 43);
+            loginBtn.TabIndex = 6;
+            loginBtn.Text = "Login";
+            loginBtn.Tooltip1 = null;
+            loginBtn.UseVisualStyleBackColor = false;
+            loginBtn.Click += loginBtn_Click;
+            loginBtn.KeyDown += customButton1_KeyDown;
             // 
             // customTextBox2
             // 
             customTextBox2.BorderStyle = BorderStyle.None;
-            customTextBox2.BottomBorderColor = Color.SlateBlue;
-            customTextBox2.BottomBorderOnFocusColor = Color.Blue;
+            customTextBox2.BottomBorderColor = Color.LightSlateGray;
+            customTextBox2.BottomBorderOnFocusColor = Color.CornflowerBlue;
             customTextBox2.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox2.Location = new Point(52, 203);
+            customTextBox2.Location = new Point(292, 355);
             customTextBox2.Name = "customTextBox2";
             customTextBox2.PasswordChar = '•';
             customTextBox2.PlaceholderText = "Password";
-            customTextBox2.Size = new Size(179, 23);
-            customTextBox2.TabIndex = 1;
+            customTextBox2.Size = new Size(209, 30);
+            customTextBox2.TabIndex = 5;
             customTextBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // customTextBox1
             // 
             customTextBox1.BorderStyle = BorderStyle.None;
-            customTextBox1.BottomBorderColor = Color.SlateBlue;
-            customTextBox1.BottomBorderOnFocusColor = Color.Blue;
+            customTextBox1.BottomBorderColor = Color.LightSlateGray;
+            customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
             customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(52, 154);
+            customTextBox1.Location = new Point(292, 306);
             customTextBox1.Name = "customTextBox1";
             customTextBox1.PlaceholderText = "Username";
-            customTextBox1.Size = new Size(179, 23);
-            customTextBox1.TabIndex = 0;
+            customTextBox1.Size = new Size(209, 30);
+            customTextBox1.TabIndex = 4;
             customTextBox1.TextAlign = HorizontalAlignment.Center;
-            // 
-            // customButton1
-            // 
-            customButton1.BackColor = Color.SlateBlue;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            customButton1.ForeColor = Color.White;
-            customButton1.HoverForeColor1 = SystemColors.ActiveCaptionText;
-            customButton1.HoverImage1 = Properties.Resources.icons8_login_64__1_;
-            customButton1.Image = Properties.Resources.icons8_login_96__1_;
-            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            customButton1.Location = new Point(52, 264);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = Properties.Resources.icons8_login_96__1_;
-            customButton1.Padding = new Padding(15, 0, 0, 0);
-            customButton1.Size = new Size(179, 46);
-            customButton1.TabIndex = 2;
-            customButton1.Text = "Login";
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = false;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(371, 449);
-            Controls.Add(panel1);
+            ClientSize = new Size(800, 600);
+            Controls.Add(loginBtn);
+            Controls.Add(customTextBox2);
+            Controls.Add(customTextBox1);
+            Controls.Add(pictureBox4);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
             Font = new Font("SimSun", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -112,15 +143,19 @@
             Padding = new Padding(45);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
-            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox2;
+        private CustomButton loginBtn;
         private CustomTextBox customTextBox2;
         private CustomTextBox customTextBox1;
-        private CustomButton customButton1;
     }
 }
