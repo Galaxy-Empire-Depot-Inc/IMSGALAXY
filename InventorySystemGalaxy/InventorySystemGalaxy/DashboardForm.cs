@@ -13,7 +13,7 @@ namespace InventorySystemGalaxy
 {
     public partial class DashboardForm : Form
     {
-        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
+        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
         MySqlCommand command;
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -27,11 +27,11 @@ namespace InventorySystemGalaxy
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            LoadProductCounts();
+            /*LoadProductCounts();*/
             
         }
 
-        private void LoadProductCounts()
+        /*private void LoadProductCounts()
         {
             String CountProduct = "SELECT COUNT(*) AS NumberOFProducts FROM product_table";
             String CountAvailability = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE availability = 1";
@@ -90,7 +90,7 @@ namespace InventorySystemGalaxy
             }
 
             conn.Close();
-        }
+        }*/
 
         private void btn_TotalP_Click(object sender, EventArgs e)
         {

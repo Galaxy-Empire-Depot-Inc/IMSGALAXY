@@ -211,6 +211,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
+            MinimumSize = new Size(700, 700);
             Name = "EmployeeModalForm";
             Padding = new Padding(15);
             StartPosition = FormStartPosition.CenterParent;
