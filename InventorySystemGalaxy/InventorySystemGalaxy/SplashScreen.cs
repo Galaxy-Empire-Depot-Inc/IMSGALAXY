@@ -2,6 +2,7 @@ namespace InventorySystemGalaxy
 {
     public partial class SplashScreen : Form
     {
+
         public SplashScreen()
         {
             InitializeComponent();
@@ -16,7 +17,10 @@ namespace InventorySystemGalaxy
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
                 this.Hide();
+
             }
+            
+                
         }
     }
 }

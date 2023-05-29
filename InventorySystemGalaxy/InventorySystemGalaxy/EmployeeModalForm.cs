@@ -10,16 +10,13 @@ using System.Windows.Forms;
 
 namespace InventorySystemGalaxy
 {
-    public partial class Warning_Message : Form
+    public partial class EmployeeModalForm : Form
     {
-        public Warning_Message()
+        public EmployeeModalForm()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            bgPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
+            positionComboBox.SelectedIndex = 0;
         }
     }
 }

@@ -56,11 +56,11 @@ namespace InventorySystemGalaxy
 
         private void customButton1_Click(object sender, EventArgs e)
         {
-            loadForm(new Dashboard());
+            loadForm(new DashboardForm());
         }
         private void customButton2_Click(object sender, EventArgs e)
         {
-
+            loadForm(new EmployeeForm());
         }
         private void customButton3_Click(object sender, EventArgs e)
         {
@@ -74,52 +74,81 @@ namespace InventorySystemGalaxy
 
         private void customButton1_Enter(object sender, EventArgs e)
         {
-            customButton1.BackColor = Color.FromArgb(74, 173, 255);
-            customButton1.ForeColor = Color.Black;
+            dashboardBtn.BackColor = Color.FromArgb(74, 173, 255);
+            dashboardBtn.ForeColor = Color.Black;
 
         }
 
         private void customButton1_Leave(object sender, EventArgs e)
         {
-            customButton1.BackColor = Color.FromArgb(59, 116, 192);
-            customButton1.ForeColor = Color.White;
+            dashboardBtn.BackColor = Color.FromArgb(59, 116, 192);
+            dashboardBtn.ForeColor = Color.White;
 
         }
 
         private void customButton2_Enter(object sender, EventArgs e)
         {
-            customButton2.BackColor = Color.FromArgb(74, 173, 255);
-            customButton2.ForeColor = Color.Black;
+            employeeBtn.BackColor = Color.FromArgb(74, 173, 255);
+            employeeBtn.ForeColor = Color.Black;
         }
 
         private void customButton2_Leave(object sender, EventArgs e)
         {
-            customButton2.BackColor = Color.FromArgb(59, 116, 192);
-            customButton2.ForeColor = Color.White;
+            employeeBtn.BackColor = Color.FromArgb(59, 116, 192);
+            employeeBtn.ForeColor = Color.White;
         }
 
         private void customButton3_Enter(object sender, EventArgs e)
         {
-            customButton3.BackColor = Color.FromArgb(74, 173, 255);
-            customButton3.ForeColor = Color.Black;
+            warehouseBtn.BackColor = Color.FromArgb(74, 173, 255);
+            warehouseBtn.ForeColor = Color.Black;
         }
 
         private void customButton3_Leave(object sender, EventArgs e)
         {
-            customButton3.BackColor = Color.FromArgb(59, 116, 192);
-            customButton3.ForeColor = Color.White;
+            warehouseBtn.BackColor = Color.FromArgb(59, 116, 192);
+            warehouseBtn.ForeColor = Color.White;
         }
 
         private void customButton4_Enter(object sender, EventArgs e)
         {
-            customButton4.BackColor = Color.FromArgb(74, 173, 255);
-            customButton4.ForeColor = Color.Black;
+            logoutBtn.BackColor = Color.FromArgb(74, 173, 255);
+            logoutBtn.ForeColor = Color.Black;
         }
 
         private void customButton4_Leave(object sender, EventArgs e)
         {
-            customButton4.BackColor = Color.FromArgb(59, 116, 192);
-            customButton4.ForeColor = Color.White;
+            logoutBtn.BackColor = Color.FromArgb(59, 116, 192);
+            logoutBtn.ForeColor = Color.White;
+        }
+
+        private void CloseBTN_Click(object sender, EventArgs e)
+        {
+
+            Warning_Message warningMessageDialog = new Warning_Message();
+            warningMessageDialog.ShowDialog();
+        }
+
+        private void MaxBtn_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void MinBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void HomeScreenForm_Load(object sender, EventArgs e)
+        {
+            loadForm(new DashboardForm());
         }
     }
 }

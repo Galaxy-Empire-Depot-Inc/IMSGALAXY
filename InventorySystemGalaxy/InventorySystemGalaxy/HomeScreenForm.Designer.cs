@@ -33,23 +33,20 @@
             mainPanel = new Panel();
             panel4 = new Panel();
             panel5 = new Panel();
-            pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox4 = new PictureBox();
+            CloseBTN = new Button();
+            MaxBtn = new Button();
+            MinBtn = new Button();
             panel2 = new Panel();
-            customButton4 = new CustomButton();
-            customButton3 = new CustomButton();
+            logoutBtn = new CustomButton();
+            warehouseBtn = new CustomButton();
             panel3 = new Panel();
-            label1 = new Label();
+            lbl_GreetUser = new Label();
             pictureBox1 = new PictureBox();
-            customButton1 = new CustomButton();
-            customButton2 = new CustomButton();
+            dashboardBtn = new CustomButton();
+            employeeBtn = new CustomButton();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -88,120 +85,129 @@
             // 
             // panel5
             // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel5.BackColor = Color.Transparent;
-            panel5.Controls.Add(pictureBox3);
-            panel5.Controls.Add(pictureBox2);
-            panel5.Controls.Add(pictureBox4);
-            panel5.Location = new Point(723, 7);
+            panel5.Controls.Add(CloseBTN);
+            panel5.Controls.Add(MaxBtn);
+            panel5.Controls.Add(MinBtn);
+            panel5.Dock = DockStyle.Right;
+            panel5.Location = new Point(701, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(96, 30);
+            panel5.Size = new Size(123, 45);
             panel5.TabIndex = 3;
             // 
-            // pictureBox3
+            // CloseBTN
             // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(14, 5);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(20, 20);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 1;
-            pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
+            CloseBTN.BackColor = Color.FromArgb(231, 76, 60);
+            CloseBTN.Cursor = Cursors.Hand;
+            CloseBTN.FlatAppearance.BorderSize = 0;
+            CloseBTN.FlatStyle = FlatStyle.Flat;
+            CloseBTN.Image = Properties.Resources.icons8_close_30;
+            CloseBTN.Location = new Point(88, 7);
+            CloseBTN.Name = "CloseBTN";
+            CloseBTN.Size = new Size(30, 30);
+            CloseBTN.TabIndex = 2;
+            CloseBTN.UseVisualStyleBackColor = false;
+            CloseBTN.Click += CloseBTN_Click;
             // 
-            // pictureBox2
+            // MaxBtn
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(66, 5);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(20, 20);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
+            MaxBtn.BackColor = Color.FromArgb(46, 204, 115);
+            MaxBtn.Cursor = Cursors.Hand;
+            MaxBtn.FlatAppearance.BorderSize = 0;
+            MaxBtn.FlatStyle = FlatStyle.Flat;
+            MaxBtn.Image = Properties.Resources.icons8_maximize_30;
+            MaxBtn.Location = new Point(49, 7);
+            MaxBtn.Name = "MaxBtn";
+            MaxBtn.Size = new Size(30, 30);
+            MaxBtn.TabIndex = 1;
+            MaxBtn.UseVisualStyleBackColor = false;
+            MaxBtn.Click += MaxBtn_Click;
             // 
-            // pictureBox4
+            // MinBtn
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(40, 5);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(20, 20);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 2;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
+            MinBtn.BackColor = Color.FromArgb(241, 196, 15);
+            MinBtn.Cursor = Cursors.Hand;
+            MinBtn.FlatAppearance.BorderSize = 0;
+            MinBtn.FlatStyle = FlatStyle.Flat;
+            MinBtn.Image = Properties.Resources.icons8_minimize_30;
+            MinBtn.Location = new Point(8, 7);
+            MinBtn.Name = "MinBtn";
+            MinBtn.Size = new Size(30, 30);
+            MinBtn.TabIndex = 0;
+            MinBtn.UseVisualStyleBackColor = false;
+            MinBtn.Click += MinBtn_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(59, 116, 192);
-            panel2.Controls.Add(customButton4);
-            panel2.Controls.Add(customButton3);
+            panel2.Controls.Add(logoutBtn);
+            panel2.Controls.Add(warehouseBtn);
             panel2.Controls.Add(panel3);
-            panel2.Controls.Add(customButton1);
-            panel2.Controls.Add(customButton2);
+            panel2.Controls.Add(dashboardBtn);
+            panel2.Controls.Add(employeeBtn);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(200, 768);
             panel2.TabIndex = 0;
             // 
-            // customButton4
+            // logoutBtn
             // 
-            customButton4.FlatAppearance.BorderSize = 0;
-            customButton4.FlatStyle = FlatStyle.Flat;
-            customButton4.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton4.ForeColor = Color.White;
-            customButton4.HoverForeColor1 = Color.Black;
-            customButton4.HoverImage1 = Properties.Resources.icons8_logout_100__1___1_;
-            customButton4.Image = Properties.Resources.icons8_logout_100__2_;
-            customButton4.ImageAlign = ContentAlignment.TopLeft;
-            customButton4.Location = new Point(0, 399);
-            customButton4.Name = "customButton4";
-            customButton4.NormalForeColor1 = Color.White;
-            customButton4.NormalImage1 = Properties.Resources.icons8_logout_100__2_;
-            customButton4.OnFocusEnterImage = null;
-            customButton4.OnFocusLeaveImage = null;
-            customButton4.Padding = new Padding(10);
-            customButton4.Size = new Size(200, 58);
-            customButton4.TabIndex = 4;
-            customButton4.Text = "    Logout";
-            customButton4.TextAlign = ContentAlignment.MiddleLeft;
-            customButton4.Tooltip1 = null;
-            customButton4.UseVisualStyleBackColor = true;
-            customButton4.Click += customButton4_Click;
-            customButton4.Enter += customButton4_Enter;
-            customButton4.Leave += customButton4_Leave;
+            logoutBtn.FlatAppearance.BorderSize = 0;
+            logoutBtn.FlatStyle = FlatStyle.Flat;
+            logoutBtn.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            logoutBtn.ForeColor = Color.White;
+            logoutBtn.HoverForeColor1 = Color.Black;
+            logoutBtn.HoverImage1 = Properties.Resources.icons8_logout_100__1___1_;
+            logoutBtn.Image = Properties.Resources.icons8_logout_100__2_;
+            logoutBtn.ImageAlign = ContentAlignment.TopLeft;
+            logoutBtn.Location = new Point(0, 399);
+            logoutBtn.Name = "logoutBtn";
+            logoutBtn.NormalForeColor1 = Color.White;
+            logoutBtn.NormalImage1 = Properties.Resources.icons8_logout_100__2_;
+            logoutBtn.OnFocusEnterImage = Properties.Resources.icons8_logout_100__1___1_;
+            logoutBtn.OnFocusLeaveImage = Properties.Resources.icons8_logout_100__2_;
+            logoutBtn.Padding = new Padding(10);
+            logoutBtn.Size = new Size(200, 58);
+            logoutBtn.TabIndex = 4;
+            logoutBtn.Text = "    Logout";
+            logoutBtn.TextAlign = ContentAlignment.MiddleLeft;
+            logoutBtn.Tooltip1 = null;
+            logoutBtn.UseVisualStyleBackColor = true;
+            logoutBtn.Click += customButton4_Click;
+            logoutBtn.Enter += customButton4_Enter;
+            logoutBtn.Leave += customButton4_Leave;
             // 
-            // customButton3
+            // warehouseBtn
             // 
-            customButton3.FlatAppearance.BorderSize = 0;
-            customButton3.FlatStyle = FlatStyle.Flat;
-            customButton3.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton3.ForeColor = Color.White;
-            customButton3.HoverForeColor1 = Color.Black;
-            customButton3.HoverImage1 = Properties.Resources.icons8_warehouse_80__1_;
-            customButton3.Image = Properties.Resources.icons8_warehouse_100__1_;
-            customButton3.ImageAlign = ContentAlignment.TopLeft;
-            customButton3.Location = new Point(0, 341);
-            customButton3.Name = "customButton3";
-            customButton3.NormalForeColor1 = Color.White;
-            customButton3.NormalImage1 = Properties.Resources.icons8_warehouse_100__1_;
-            customButton3.OnFocusEnterImage = null;
-            customButton3.OnFocusLeaveImage = null;
-            customButton3.Padding = new Padding(10);
-            customButton3.Size = new Size(200, 58);
-            customButton3.TabIndex = 3;
-            customButton3.Text = "    Warehouse";
-            customButton3.TextAlign = ContentAlignment.MiddleLeft;
-            customButton3.Tooltip1 = null;
-            customButton3.UseVisualStyleBackColor = true;
-            customButton3.Click += customButton3_Click;
-            customButton3.Enter += customButton3_Enter;
-            customButton3.Leave += customButton3_Leave;
+            warehouseBtn.FlatAppearance.BorderSize = 0;
+            warehouseBtn.FlatStyle = FlatStyle.Flat;
+            warehouseBtn.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            warehouseBtn.ForeColor = Color.White;
+            warehouseBtn.HoverForeColor1 = Color.Black;
+            warehouseBtn.HoverImage1 = Properties.Resources.icons8_warehouse_80__1_;
+            warehouseBtn.Image = Properties.Resources.icons8_warehouse_100__1_;
+            warehouseBtn.ImageAlign = ContentAlignment.TopLeft;
+            warehouseBtn.Location = new Point(0, 341);
+            warehouseBtn.Name = "warehouseBtn";
+            warehouseBtn.NormalForeColor1 = Color.White;
+            warehouseBtn.NormalImage1 = Properties.Resources.icons8_warehouse_100__1_;
+            warehouseBtn.OnFocusEnterImage = Properties.Resources.icons8_warehouse_80__1_;
+            warehouseBtn.OnFocusLeaveImage = Properties.Resources.icons8_warehouse_100__1_;
+            warehouseBtn.Padding = new Padding(10);
+            warehouseBtn.Size = new Size(200, 58);
+            warehouseBtn.TabIndex = 3;
+            warehouseBtn.Text = "    Warehouse";
+            warehouseBtn.TextAlign = ContentAlignment.MiddleLeft;
+            warehouseBtn.Tooltip1 = null;
+            warehouseBtn.UseVisualStyleBackColor = true;
+            warehouseBtn.Click += customButton3_Click;
+            warehouseBtn.Enter += customButton3_Enter;
+            warehouseBtn.Leave += customButton3_Leave;
             // 
             // panel3
             // 
-            panel3.Controls.Add(label1);
+            panel3.Controls.Add(lbl_GreetUser);
             panel3.Controls.Add(pictureBox1);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
@@ -209,16 +215,16 @@
             panel3.Size = new Size(200, 225);
             panel3.TabIndex = 0;
             // 
-            // label1
+            // lbl_GreetUser
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 182);
-            label1.Name = "label1";
-            label1.Size = new Size(180, 27);
-            label1.TabIndex = 1;
-            label1.Text = "Hi, Username";
+            lbl_GreetUser.AutoSize = true;
+            lbl_GreetUser.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_GreetUser.ForeColor = Color.White;
+            lbl_GreetUser.Location = new Point(10, 182);
+            lbl_GreetUser.Name = "lbl_GreetUser";
+            lbl_GreetUser.Size = new Size(180, 27);
+            lbl_GreetUser.TabIndex = 1;
+            lbl_GreetUser.Text = "Hi, Username";
             // 
             // pictureBox1
             // 
@@ -230,59 +236,59 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // customButton1
+            // dashboardBtn
             // 
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton1.ForeColor = Color.White;
-            customButton1.HoverForeColor1 = Color.Black;
-            customButton1.HoverImage1 = Properties.Resources.icons8_dashboard_64__1___1_;
-            customButton1.Image = Properties.Resources.icons8_dashboard_64__2_;
-            customButton1.ImageAlign = ContentAlignment.TopLeft;
-            customButton1.Location = new Point(0, 225);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = Properties.Resources.icons8_dashboard_64__2_;
-            customButton1.OnFocusEnterImage = Properties.Resources.icons8_dashboard_64__1___1_;
-            customButton1.OnFocusLeaveImage = Properties.Resources.icons8_dashboard_64__2_;
-            customButton1.Padding = new Padding(10);
-            customButton1.Size = new Size(200, 58);
-            customButton1.TabIndex = 1;
-            customButton1.Text = "    Dashboard";
-            customButton1.TextAlign = ContentAlignment.MiddleLeft;
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = true;
-            customButton1.Click += customButton1_Click;
-            customButton1.Enter += customButton1_Enter;
-            customButton1.Leave += customButton1_Leave;
+            dashboardBtn.FlatAppearance.BorderSize = 0;
+            dashboardBtn.FlatStyle = FlatStyle.Flat;
+            dashboardBtn.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dashboardBtn.ForeColor = Color.White;
+            dashboardBtn.HoverForeColor1 = Color.Black;
+            dashboardBtn.HoverImage1 = Properties.Resources.icons8_dashboard_64__1___1_;
+            dashboardBtn.Image = Properties.Resources.icons8_dashboard_64__2_;
+            dashboardBtn.ImageAlign = ContentAlignment.TopLeft;
+            dashboardBtn.Location = new Point(0, 225);
+            dashboardBtn.Name = "dashboardBtn";
+            dashboardBtn.NormalForeColor1 = Color.White;
+            dashboardBtn.NormalImage1 = Properties.Resources.icons8_dashboard_64__2_;
+            dashboardBtn.OnFocusEnterImage = Properties.Resources.icons8_dashboard_64__1___1_;
+            dashboardBtn.OnFocusLeaveImage = Properties.Resources.icons8_dashboard_64__2_;
+            dashboardBtn.Padding = new Padding(10);
+            dashboardBtn.Size = new Size(200, 58);
+            dashboardBtn.TabIndex = 1;
+            dashboardBtn.Text = "    Dashboard";
+            dashboardBtn.TextAlign = ContentAlignment.MiddleLeft;
+            dashboardBtn.Tooltip1 = null;
+            dashboardBtn.UseVisualStyleBackColor = true;
+            dashboardBtn.Click += customButton1_Click;
+            dashboardBtn.Enter += customButton1_Enter;
+            dashboardBtn.Leave += customButton1_Leave;
             // 
-            // customButton2
+            // employeeBtn
             // 
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatStyle = FlatStyle.Flat;
-            customButton2.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton2.ForeColor = Color.White;
-            customButton2.HoverForeColor1 = Color.Black;
-            customButton2.HoverImage1 = Properties.Resources.icons8_user_144__3_;
-            customButton2.Image = Properties.Resources.icons8_user_144__2___1_;
-            customButton2.ImageAlign = ContentAlignment.TopLeft;
-            customButton2.Location = new Point(0, 283);
-            customButton2.Name = "customButton2";
-            customButton2.NormalForeColor1 = Color.White;
-            customButton2.NormalImage1 = Properties.Resources.icons8_user_144__2___1_;
-            customButton2.OnFocusEnterImage = null;
-            customButton2.OnFocusLeaveImage = null;
-            customButton2.Padding = new Padding(10);
-            customButton2.Size = new Size(200, 58);
-            customButton2.TabIndex = 2;
-            customButton2.Text = "    Employee";
-            customButton2.TextAlign = ContentAlignment.MiddleLeft;
-            customButton2.Tooltip1 = null;
-            customButton2.UseVisualStyleBackColor = true;
-            customButton2.Click += customButton2_Click;
-            customButton2.Enter += customButton2_Enter;
-            customButton2.Leave += customButton2_Leave;
+            employeeBtn.FlatAppearance.BorderSize = 0;
+            employeeBtn.FlatStyle = FlatStyle.Flat;
+            employeeBtn.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            employeeBtn.ForeColor = Color.White;
+            employeeBtn.HoverForeColor1 = Color.Black;
+            employeeBtn.HoverImage1 = Properties.Resources.icons8_user_144__3_;
+            employeeBtn.Image = Properties.Resources.icons8_user_144__2___1_;
+            employeeBtn.ImageAlign = ContentAlignment.TopLeft;
+            employeeBtn.Location = new Point(0, 283);
+            employeeBtn.Name = "employeeBtn";
+            employeeBtn.NormalForeColor1 = Color.White;
+            employeeBtn.NormalImage1 = Properties.Resources.icons8_user_144__2___1_;
+            employeeBtn.OnFocusEnterImage = Properties.Resources.icons8_user_144__3_;
+            employeeBtn.OnFocusLeaveImage = Properties.Resources.icons8_user_144__2___1_;
+            employeeBtn.Padding = new Padding(10);
+            employeeBtn.Size = new Size(200, 58);
+            employeeBtn.TabIndex = 2;
+            employeeBtn.Text = "    Employee";
+            employeeBtn.TextAlign = ContentAlignment.MiddleLeft;
+            employeeBtn.Tooltip1 = null;
+            employeeBtn.UseVisualStyleBackColor = true;
+            employeeBtn.Click += customButton2_Click;
+            employeeBtn.Enter += customButton2_Enter;
+            employeeBtn.Leave += customButton2_Leave;
             // 
             // HomeScreenForm
             // 
@@ -299,12 +305,10 @@
             Name = "HomeScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "HomeScreenForm";
+            Load += HomeScreenForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -317,17 +321,17 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private CustomButton customButton1;
-        private Label label1;
+        private CustomButton dashboardBtn;
+        private Label lbl_GreetUser;
         private PictureBox pictureBox1;
-        private CustomButton customButton3;
-        private CustomButton customButton2;
+        private CustomButton warehouseBtn;
+        private CustomButton employeeBtn;
         private Panel panel4;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
         private Panel panel5;
-        private CustomButton customButton4;
+        private CustomButton logoutBtn;
         private Panel mainPanel;
+        private Button CloseBTN;
+        private Button MaxBtn;
+        private Button MinBtn;
     }
 }
