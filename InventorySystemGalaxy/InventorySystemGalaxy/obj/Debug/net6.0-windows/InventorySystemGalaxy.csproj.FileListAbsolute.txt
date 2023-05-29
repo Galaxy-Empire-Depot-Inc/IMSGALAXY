@@ -93,3 +93,12 @@ C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Dynamic.dll
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Scripting.Metadata.dll
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Scripting.dll
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Dynamic.dll
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Scripting.Metadata.dll
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\Microsoft.Scripting.dll
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.CustomComboBox.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.DashboardForm.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.EmployeeForm.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.EmployeeModalForm.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Warehouse.resources
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.WarehouseModalForm.resources

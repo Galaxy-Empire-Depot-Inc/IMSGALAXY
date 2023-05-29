@@ -249,7 +249,7 @@
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel5.Controls.Add(pictureBox1);
             panel5.Controls.Add(customTextBox1);
-            panel5.Location = new Point(546, 42);
+            panel5.Location = new Point(553, 49);
             panel5.Name = "panel5";
             panel5.Size = new Size(240, 50);
             panel5.TabIndex = 0;
@@ -257,7 +257,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.images_removebg_preview;
-            pictureBox1.Location = new Point(13, 6);
+            pictureBox1.Location = new Point(20, 13);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(35, 35);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -270,7 +270,7 @@
             customTextBox1.BottomBorderColor = Color.LightSlateGray;
             customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
             customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(54, 18);
+            customTextBox1.Location = new Point(61, 25);
             customTextBox1.Name = "customTextBox1";
             customTextBox1.PlaceholderText = "Search";
             customTextBox1.Size = new Size(177, 23);
