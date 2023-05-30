@@ -30,33 +30,48 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeModalForm));
             bgPanel = new Panel();
-            positionComboBox = new CustomComboBox();
-            customTextBox9 = new CustomTextBox();
-            customTextBox10 = new CustomTextBox();
-            customTextBox7 = new CustomTextBox();
-            customTextBox8 = new CustomTextBox();
+            pictureBox2 = new PictureBox();
+            positionComboBox = new ComboBox();
+            statusComboBox = new CustomComboBox();
+            updateBtn = new CustomButton();
+            addBtn = new CustomButton();
+            passwordTextbox = new CustomTextBox();
+            usernameTextbox = new CustomTextBox();
+            label2 = new Label();
+            departmentTextBox = new CustomTextBox();
+            lastNameTextBox = new CustomTextBox();
+            idNumberTextBox = new CustomTextBox();
+            middleNameTextBox = new CustomTextBox();
             label1 = new Label();
-            customTextBox6 = new CustomTextBox();
-            customButton1 = new CustomButton();
+            contactNoTextBox = new CustomTextBox();
+            addPhotoBtn = new CustomButton();
             pictureBox1 = new PictureBox();
-            customTextBox1 = new CustomTextBox();
+            firstNameTextBox = new CustomTextBox();
             bgPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // bgPanel
             // 
             bgPanel.BackColor = Color.FromArgb(59, 116, 192);
+            bgPanel.Controls.Add(pictureBox2);
             bgPanel.Controls.Add(positionComboBox);
-            bgPanel.Controls.Add(customTextBox9);
-            bgPanel.Controls.Add(customTextBox10);
-            bgPanel.Controls.Add(customTextBox7);
-            bgPanel.Controls.Add(customTextBox8);
+            bgPanel.Controls.Add(statusComboBox);
+            bgPanel.Controls.Add(updateBtn);
+            bgPanel.Controls.Add(addBtn);
+            bgPanel.Controls.Add(passwordTextbox);
+            bgPanel.Controls.Add(usernameTextbox);
+            bgPanel.Controls.Add(label2);
+            bgPanel.Controls.Add(departmentTextBox);
+            bgPanel.Controls.Add(lastNameTextBox);
+            bgPanel.Controls.Add(idNumberTextBox);
+            bgPanel.Controls.Add(middleNameTextBox);
             bgPanel.Controls.Add(label1);
-            bgPanel.Controls.Add(customTextBox6);
-            bgPanel.Controls.Add(customButton1);
+            bgPanel.Controls.Add(contactNoTextBox);
+            bgPanel.Controls.Add(addPhotoBtn);
             bgPanel.Controls.Add(pictureBox1);
-            bgPanel.Controls.Add(customTextBox1);
+            bgPanel.Controls.Add(firstNameTextBox);
             bgPanel.Dock = DockStyle.Fill;
             bgPanel.Location = new Point(15, 15);
             bgPanel.Name = "bgPanel";
@@ -64,78 +79,188 @@
             bgPanel.Size = new Size(670, 670);
             bgPanel.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.icons8_close_30;
+            pictureBox2.Location = new Point(637, 10);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(20, 20);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 22;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // positionComboBox
             // 
-            positionComboBox.BackColor = Color.White;
-            positionComboBox.BackColor1 = Color.White;
-            positionComboBox.Bordercolor = Color.DeepSkyBlue;
-            positionComboBox.BorderSize = 2;
-            positionComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            positionComboBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            positionComboBox.ForeColor = Color.DimGray;
+            positionComboBox.Enabled = false;
             positionComboBox.FormattingEnabled = true;
-            positionComboBox.IconColor = Color.Teal;
             positionComboBox.Items.AddRange(new object[] { "--Position--", "Accounting", "Customer Service", "Information Technology", "Sales Supervisor", "Warehouse Manager", "Warehouse Staff", "HR Manager" });
-            positionComboBox.ListBackColor = Color.White;
-            positionComboBox.ListTextColor = Color.Black;
-            positionComboBox.Location = new Point(457, 322);
-            positionComboBox.MinimumSize = new Size(200, 0);
+            positionComboBox.Location = new Point(10, 351);
             positionComboBox.Name = "positionComboBox";
             positionComboBox.Size = new Size(200, 24);
-            positionComboBox.TabIndex = 13;
+            positionComboBox.TabIndex = 21;
+            positionComboBox.SelectionChangeCommitted += positionComboBox_SelectionChangeCommitted;
             // 
-            // customTextBox9
+            // statusComboBox
             // 
-            customTextBox9.BorderStyle = BorderStyle.None;
-            customTextBox9.BottomBorderColor = Color.Black;
-            customTextBox9.BottomBorderOnFocusColor = Color.Blue;
-            customTextBox9.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox9.Location = new Point(10, 365);
-            customTextBox9.Name = "customTextBox9";
-            customTextBox9.PlaceholderText = "Department";
-            customTextBox9.ReadOnly = true;
-            customTextBox9.Size = new Size(200, 24);
-            customTextBox9.TabIndex = 12;
-            customTextBox9.TextAlign = HorizontalAlignment.Center;
+            statusComboBox.BackColor = Color.White;
+            statusComboBox.BackColor1 = Color.White;
+            statusComboBox.Bordercolor = Color.DeepSkyBlue;
+            statusComboBox.BorderSize = 2;
+            statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            statusComboBox.Enabled = false;
+            statusComboBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            statusComboBox.ForeColor = Color.DimGray;
+            statusComboBox.FormattingEnabled = true;
+            statusComboBox.IconColor = Color.Teal;
+            statusComboBox.Items.AddRange(new object[] { "Inactive", "Active" });
+            statusComboBox.ListBackColor = Color.White;
+            statusComboBox.ListTextColor = Color.Black;
+            statusComboBox.Location = new Point(457, 304);
+            statusComboBox.MinimumSize = new Size(200, 0);
+            statusComboBox.Name = "statusComboBox";
+            statusComboBox.Size = new Size(200, 24);
+            statusComboBox.TabIndex = 20;
             // 
-            // customTextBox10
+            // updateBtn
             // 
-            customTextBox10.BorderStyle = BorderStyle.None;
-            customTextBox10.BottomBorderColor = Color.Black;
-            customTextBox10.BottomBorderOnFocusColor = Color.Blue;
-            customTextBox10.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox10.Location = new Point(457, 276);
-            customTextBox10.Name = "customTextBox10";
-            customTextBox10.PlaceholderText = "Last Name";
-            customTextBox10.Size = new Size(200, 24);
-            customTextBox10.TabIndex = 11;
-            customTextBox10.TextAlign = HorizontalAlignment.Center;
+            updateBtn.BackColor = Color.White;
+            updateBtn.FlatAppearance.BorderColor = Color.White;
+            updateBtn.FlatStyle = FlatStyle.Popup;
+            updateBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            updateBtn.HoverForeColor1 = Color.SteelBlue;
+            updateBtn.HoverImage1 = null;
+            updateBtn.Location = new Point(401, 627);
+            updateBtn.Name = "updateBtn";
+            updateBtn.NormalForeColor1 = Color.Black;
+            updateBtn.NormalImage1 = null;
+            updateBtn.OnFocusEnterImage = null;
+            updateBtn.OnFocusLeaveImage = null;
+            updateBtn.Size = new Size(125, 30);
+            updateBtn.TabIndex = 19;
+            updateBtn.Text = "Update";
+            updateBtn.Tooltip1 = null;
+            updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Visible = false;
             // 
-            // customTextBox7
+            // addBtn
             // 
-            customTextBox7.BorderStyle = BorderStyle.None;
-            customTextBox7.BottomBorderColor = Color.Black;
-            customTextBox7.BottomBorderOnFocusColor = Color.Blue;
-            customTextBox7.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox7.Location = new Point(232, 323);
-            customTextBox7.Name = "customTextBox7";
-            customTextBox7.PlaceholderText = "Id Number";
-            customTextBox7.Size = new Size(200, 24);
-            customTextBox7.TabIndex = 10;
-            customTextBox7.TextAlign = HorizontalAlignment.Center;
+            addBtn.BackColor = Color.White;
+            addBtn.FlatAppearance.BorderColor = Color.White;
+            addBtn.FlatStyle = FlatStyle.Popup;
+            addBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            addBtn.HoverForeColor1 = Color.SteelBlue;
+            addBtn.HoverImage1 = null;
+            addBtn.Location = new Point(532, 627);
+            addBtn.Name = "addBtn";
+            addBtn.NormalForeColor1 = Color.Black;
+            addBtn.NormalImage1 = null;
+            addBtn.OnFocusEnterImage = null;
+            addBtn.OnFocusLeaveImage = null;
+            addBtn.Size = new Size(125, 30);
+            addBtn.TabIndex = 18;
+            addBtn.Text = "Add";
+            addBtn.Tooltip1 = null;
+            addBtn.UseVisualStyleBackColor = false;
+            addBtn.Click += addBtn_Click;
             // 
-            // customTextBox8
+            // passwordTextbox
             // 
-            customTextBox8.BorderStyle = BorderStyle.None;
-            customTextBox8.BottomBorderColor = Color.Black;
-            customTextBox8.BottomBorderOnFocusColor = Color.Blue;
-            customTextBox8.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox8.Location = new Point(232, 276);
-            customTextBox8.Name = "customTextBox8";
-            customTextBox8.PlaceholderText = "Middle Name";
-            customTextBox8.Size = new Size(200, 24);
-            customTextBox8.TabIndex = 9;
-            customTextBox8.TextAlign = HorizontalAlignment.Center;
+            passwordTextbox.BorderStyle = BorderStyle.None;
+            passwordTextbox.BottomBorderColor = Color.Black;
+            passwordTextbox.BottomBorderOnFocusColor = Color.Blue;
+            passwordTextbox.Enabled = false;
+            passwordTextbox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            passwordTextbox.Location = new Point(232, 483);
+            passwordTextbox.Name = "passwordTextbox";
+            passwordTextbox.PlaceholderText = "Password";
+            passwordTextbox.Size = new Size(200, 24);
+            passwordTextbox.TabIndex = 16;
+            passwordTextbox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // usernameTextbox
+            // 
+            usernameTextbox.BorderStyle = BorderStyle.None;
+            usernameTextbox.BottomBorderColor = Color.Black;
+            usernameTextbox.BottomBorderOnFocusColor = Color.Blue;
+            usernameTextbox.Enabled = false;
+            usernameTextbox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            usernameTextbox.Location = new Point(10, 483);
+            usernameTextbox.Name = "usernameTextbox";
+            usernameTextbox.PlaceholderText = "Username";
+            usernameTextbox.Size = new Size(200, 24);
+            usernameTextbox.TabIndex = 15;
+            usernameTextbox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("SimSun", 20.25F, FontStyle.Underline, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(13, 403);
+            label2.Name = "label2";
+            label2.Size = new Size(236, 27);
+            label2.TabIndex = 14;
+            label2.Text = "User Information";
+            // 
+            // departmentTextBox
+            // 
+            departmentTextBox.BorderStyle = BorderStyle.None;
+            departmentTextBox.BottomBorderColor = Color.Black;
+            departmentTextBox.BottomBorderOnFocusColor = Color.Blue;
+            departmentTextBox.Enabled = false;
+            departmentTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            departmentTextBox.Location = new Point(232, 351);
+            departmentTextBox.Name = "departmentTextBox";
+            departmentTextBox.PlaceholderText = "Department";
+            departmentTextBox.ReadOnly = true;
+            departmentTextBox.Size = new Size(200, 24);
+            departmentTextBox.TabIndex = 12;
+            departmentTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lastNameTextBox
+            // 
+            lastNameTextBox.BorderStyle = BorderStyle.None;
+            lastNameTextBox.BottomBorderColor = Color.Black;
+            lastNameTextBox.BottomBorderOnFocusColor = Color.Blue;
+            lastNameTextBox.Enabled = false;
+            lastNameTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lastNameTextBox.Location = new Point(457, 257);
+            lastNameTextBox.Name = "lastNameTextBox";
+            lastNameTextBox.PlaceholderText = "Last Name";
+            lastNameTextBox.Size = new Size(200, 24);
+            lastNameTextBox.TabIndex = 11;
+            lastNameTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // idNumberTextBox
+            // 
+            idNumberTextBox.BorderStyle = BorderStyle.None;
+            idNumberTextBox.BottomBorderColor = Color.Black;
+            idNumberTextBox.BottomBorderOnFocusColor = Color.Blue;
+            idNumberTextBox.Enabled = false;
+            idNumberTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            idNumberTextBox.Location = new Point(232, 304);
+            idNumberTextBox.Name = "idNumberTextBox";
+            idNumberTextBox.PlaceholderText = "Id Number";
+            idNumberTextBox.Size = new Size(200, 24);
+            idNumberTextBox.TabIndex = 10;
+            idNumberTextBox.TextAlign = HorizontalAlignment.Center;
+            idNumberTextBox.TextChanged += idNumberTextBox_TextChanged;
+            // 
+            // middleNameTextBox
+            // 
+            middleNameTextBox.BorderStyle = BorderStyle.None;
+            middleNameTextBox.BottomBorderColor = Color.Black;
+            middleNameTextBox.BottomBorderOnFocusColor = Color.Blue;
+            middleNameTextBox.Enabled = false;
+            middleNameTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            middleNameTextBox.Location = new Point(232, 257);
+            middleNameTextBox.Name = "middleNameTextBox";
+            middleNameTextBox.PlaceholderText = "Middle Name";
+            middleNameTextBox.Size = new Size(200, 24);
+            middleNameTextBox.TabIndex = 9;
+            middleNameTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -149,62 +274,70 @@
             label1.TabIndex = 8;
             label1.Text = "Account Information";
             // 
-            // customTextBox6
+            // contactNoTextBox
             // 
-            customTextBox6.BorderStyle = BorderStyle.None;
-            customTextBox6.BottomBorderColor = Color.Black;
-            customTextBox6.BottomBorderOnFocusColor = Color.Blue;
-            customTextBox6.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox6.Location = new Point(10, 322);
-            customTextBox6.Name = "customTextBox6";
-            customTextBox6.PlaceholderText = "Contact No.";
-            customTextBox6.Size = new Size(200, 24);
-            customTextBox6.TabIndex = 5;
-            customTextBox6.TextAlign = HorizontalAlignment.Center;
+            contactNoTextBox.BorderStyle = BorderStyle.None;
+            contactNoTextBox.BottomBorderColor = Color.Black;
+            contactNoTextBox.BottomBorderOnFocusColor = Color.Blue;
+            contactNoTextBox.Enabled = false;
+            contactNoTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            contactNoTextBox.Location = new Point(10, 303);
+            contactNoTextBox.Name = "contactNoTextBox";
+            contactNoTextBox.PlaceholderText = "Contact No.";
+            contactNoTextBox.Size = new Size(200, 24);
+            contactNoTextBox.TabIndex = 5;
+            contactNoTextBox.TextAlign = HorizontalAlignment.Center;
             // 
-            // customButton1
+            // addPhotoBtn
             // 
-            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton1.HoverForeColor1 = Color.Empty;
-            customButton1.HoverImage1 = null;
-            customButton1.Location = new Point(13, 222);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.Empty;
-            customButton1.NormalImage1 = null;
-            customButton1.OnFocusEnterImage = null;
-            customButton1.OnFocusLeaveImage = null;
-            customButton1.Size = new Size(125, 30);
-            customButton1.TabIndex = 2;
-            customButton1.Text = "Add Photo";
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = true;
+            addPhotoBtn.BackColor = Color.White;
+            addPhotoBtn.FlatAppearance.BorderColor = Color.White;
+            addPhotoBtn.FlatStyle = FlatStyle.Popup;
+            addPhotoBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            addPhotoBtn.HoverForeColor1 = Color.SteelBlue;
+            addPhotoBtn.HoverImage1 = null;
+            addPhotoBtn.Location = new Point(13, 203);
+            addPhotoBtn.Name = "addPhotoBtn";
+            addPhotoBtn.NormalForeColor1 = Color.Black;
+            addPhotoBtn.NormalImage1 = null;
+            addPhotoBtn.OnFocusEnterImage = null;
+            addPhotoBtn.OnFocusLeaveImage = null;
+            addPhotoBtn.Size = new Size(125, 30);
+            addPhotoBtn.TabIndex = 2;
+            addPhotoBtn.Text = "Add Photo";
+            addPhotoBtn.Tooltip1 = null;
+            addPhotoBtn.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(13, 80);
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.icons8_user_144__1_;
+            pictureBox1.Location = new Point(13, 61);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(125, 125);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // customTextBox1
+            // firstNameTextBox
             // 
-            customTextBox1.BorderStyle = BorderStyle.None;
-            customTextBox1.BottomBorderColor = Color.Black;
-            customTextBox1.BottomBorderOnFocusColor = Color.Blue;
-            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(10, 276);
-            customTextBox1.Name = "customTextBox1";
-            customTextBox1.PlaceholderText = "First Name";
-            customTextBox1.Size = new Size(200, 24);
-            customTextBox1.TabIndex = 0;
-            customTextBox1.TextAlign = HorizontalAlignment.Center;
+            firstNameTextBox.BorderStyle = BorderStyle.None;
+            firstNameTextBox.BottomBorderColor = Color.Black;
+            firstNameTextBox.BottomBorderOnFocusColor = Color.Blue;
+            firstNameTextBox.Enabled = false;
+            firstNameTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            firstNameTextBox.Location = new Point(10, 257);
+            firstNameTextBox.Name = "firstNameTextBox";
+            firstNameTextBox.PlaceholderText = "First Name";
+            firstNameTextBox.Size = new Size(200, 24);
+            firstNameTextBox.TabIndex = 0;
+            firstNameTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // EmployeeModalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(59, 116, 192);
+            BackColor = Color.White;
             ClientSize = new Size(700, 700);
             Controls.Add(bgPanel);
             Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -216,8 +349,10 @@
             Padding = new Padding(15);
             StartPosition = FormStartPosition.CenterParent;
             Text = "EmployeeModalForm";
+            Load += EmployeeModalForm_Load;
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -225,15 +360,22 @@
         #endregion
 
         private Panel bgPanel;
-        private CustomTextBox customTextBox9;
-        private CustomTextBox customTextBox10;
-        private CustomTextBox customTextBox7;
-        private CustomTextBox customTextBox8;
         private Label label1;
-        private CustomTextBox customTextBox6;
-        private CustomButton customButton1;
+        private CustomButton addPhotoBtn;
         private PictureBox pictureBox1;
-        private CustomTextBox customTextBox1;
-        private CustomComboBox positionComboBox;
+        private CustomButton addBtn;
+        private Label label2;
+        public CustomButton updateBtn;
+        public CustomTextBox departmentTextBox;
+        public CustomTextBox lastNameTextBox;
+        public CustomTextBox idNumberTextBox;
+        public CustomTextBox middleNameTextBox;
+        public CustomTextBox contactNoTextBox;
+        public CustomTextBox firstNameTextBox;
+        public CustomTextBox passwordTextbox;
+        public CustomTextBox usernameTextbox;
+        public CustomComboBox statusComboBox;
+        private ComboBox positionComboBox;
+        private PictureBox pictureBox2;
     }
 }

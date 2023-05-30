@@ -36,5 +36,35 @@ namespace InventorySystemGalaxy
             employeeModalForm.ShowDialog();
             this.Hide();
         }
+
+
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void employeeTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
