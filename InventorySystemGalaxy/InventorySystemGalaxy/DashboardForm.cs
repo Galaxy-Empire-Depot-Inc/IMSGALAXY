@@ -28,7 +28,9 @@ namespace InventorySystemGalaxy
         private void Dashboard_Load(object sender, EventArgs e)
         {
             LoadProductCounts();
-            
+            String getProductsQuery = "SELECT item_code, description, picture, category FROM product_table";
+            LoadTableData loadTable = new LoadTableData(conn, command, adapter, dt, producttable, getProductsQuery);
+
         }
 
         private void LoadProductCounts()

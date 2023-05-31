@@ -66,7 +66,6 @@
             // 
             // mainPanel
             // 
-            mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(200, 45);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(824, 723);
@@ -225,6 +224,7 @@
             lbl_GreetUser.Size = new Size(180, 27);
             lbl_GreetUser.TabIndex = 1;
             lbl_GreetUser.Text = "Hi, Username";
+            lbl_GreetUser.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 

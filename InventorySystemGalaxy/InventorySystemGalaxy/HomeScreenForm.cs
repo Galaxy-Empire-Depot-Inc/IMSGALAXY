@@ -60,7 +60,7 @@ namespace InventorySystemGalaxy
         }
         private void customButton2_Click(object sender, EventArgs e)
         {
-            loadForm(new EmployeeForm());
+
         }
         private void customButton3_Click(object sender, EventArgs e)
         {
@@ -148,6 +148,8 @@ namespace InventorySystemGalaxy
 
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
+            //LoginForm loginForm = new LoginForm();
+            lbl_GreetUser.Text = "Hi, @" + LoginForm.getUserName;
             loadForm(new DashboardForm());
         }
     }
