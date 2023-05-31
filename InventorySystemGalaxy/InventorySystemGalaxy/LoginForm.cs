@@ -9,14 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using Google.Cloud.Firestore;
+using InventorySystemGalaxy.Classes;
 
 namespace InventorySystemGalaxy
 {
     public partial class LoginForm : Form
     {
 
+<<<<<<< HEAD
         MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
         public static String getUserName;
+=======
+        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
+
+
+>>>>>>> 9f8b4407e6595af3b51886765d86c538b49dad1f
         public LoginForm()
         {
 
@@ -64,8 +72,7 @@ namespace InventorySystemGalaxy
             try
             {
 
-
-                if (UserTxtBox.Text == "")
+                /*if (UserTxtBox.Text == "")
                 {
                     MessageBox.Show("INPUT USERNAME");
                 }
@@ -81,7 +88,7 @@ namespace InventorySystemGalaxy
                     String username, password;
                     username = UserTxtBox.Text;
                     password = PassTxtBox.Text;
-                    string query = "SELECT * FROM admin_user WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_password = '" + PassTxtBox.Text + "'";
+                    string query = "SELECT * FROM admin_table WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_pass = '" + PassTxtBox.Text + "'";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
 
                     DataTable dataTable = new DataTable();
@@ -107,9 +114,40 @@ namespace InventorySystemGalaxy
 
                     }
 
+                }*/
+
+
+                /*string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+                FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");
+
+                MessageBox.Show("Successfully Bitch");*/
+
+                string username = UserTxtBox.Text;
+                string userpass = PassTxtBox.Text;
+
+                var db = FireStoreHelper.firestoreDb;
+                DocumentReference documentReference = db.Collection("Admin_User").Document(username);
+                AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
+
+                if (adminData != null)
+                {
+
+                    if (userpass == adminData.adminPassword)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("FAILED TO LOGIN");
+                    }
+
                 }
-
-
+                else
+                {
+                    MessageBox.Show("No data found");
+                }
 
 
             }

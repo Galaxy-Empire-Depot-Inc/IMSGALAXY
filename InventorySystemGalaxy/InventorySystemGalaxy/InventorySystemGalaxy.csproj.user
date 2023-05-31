@@ -38,10 +38,11 @@
     <Compile Update="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <Compile Update="WarehouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WarehouseModalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

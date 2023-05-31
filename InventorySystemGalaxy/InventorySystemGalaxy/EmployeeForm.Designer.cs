@@ -45,10 +45,10 @@
             dateModifiedLabel = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
             panel4 = new Panel();
-            customButton1 = new CustomButton();
             panel5 = new Panel();
             pictureBox1 = new PictureBox();
             customTextBox1 = new CustomTextBox();
+            customButton1 = new CustomButton();
             panel2 = new Panel();
             label1 = new Label();
             panel1.SuspendLayout();
@@ -73,6 +73,7 @@
             panel1.Padding = new Padding(5);
             panel1.Size = new Size(814, 713);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // panel6
             // 
@@ -83,6 +84,7 @@
             panel6.Padding = new Padding(5);
             panel6.Size = new Size(804, 543);
             panel6.TabIndex = 2;
+            panel6.Paint += panel6_Paint;
             // 
             // employeeTable
             // 
@@ -106,6 +108,7 @@
             employeeTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeTable.Size = new Size(794, 533);
             employeeTable.TabIndex = 0;
+            employeeTable.CellContentClick += employeeTable_CellContentClick;
             // 
             // idNumberLabel
             // 
@@ -207,18 +210,53 @@
             panel3.Padding = new Padding(5);
             panel3.Size = new Size(804, 110);
             panel3.TabIndex = 1;
+            panel3.Paint += panel3_Paint;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(59, 116, 192);
-            panel4.Controls.Add(customButton1);
             panel4.Controls.Add(panel5);
+            panel4.Controls.Add(customButton1);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(5, 5);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(5);
             panel4.Size = new Size(794, 100);
             panel4.TabIndex = 0;
+            panel4.Paint += panel4_Paint;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel5.Controls.Add(pictureBox1);
+            panel5.Controls.Add(customTextBox1);
+            panel5.Location = new Point(551, 47);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(240, 50);
+            panel5.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.images_removebg_preview;
+            pictureBox1.Location = new Point(20, 13);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(35, 35);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // customTextBox1
+            // 
+            customTextBox1.BorderStyle = BorderStyle.None;
+            customTextBox1.BottomBorderColor = Color.LightSlateGray;
+            customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
+            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            customTextBox1.Location = new Point(61, 25);
+            customTextBox1.Name = "customTextBox1";
+            customTextBox1.PlaceholderText = "Search";
+            customTextBox1.Size = new Size(177, 23);
+            customTextBox1.TabIndex = 0;
+            customTextBox1.TextAlign = HorizontalAlignment.Center;
             // 
             // customButton1
             // 
@@ -244,39 +282,6 @@
             customButton1.UseVisualStyleBackColor = true;
             customButton1.Click += customButton1_Click;
             // 
-            // panel5
-            // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel5.Controls.Add(pictureBox1);
-            panel5.Controls.Add(customTextBox1);
-            panel5.Location = new Point(546, 42);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(240, 50);
-            panel5.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.images_removebg_preview;
-            pictureBox1.Location = new Point(13, 6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(35, 35);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // customTextBox1
-            // 
-            customTextBox1.BorderStyle = BorderStyle.None;
-            customTextBox1.BottomBorderColor = Color.LightSlateGray;
-            customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
-            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(54, 18);
-            customTextBox1.Name = "customTextBox1";
-            customTextBox1.PlaceholderText = "Search";
-            customTextBox1.Size = new Size(177, 23);
-            customTextBox1.TabIndex = 0;
-            customTextBox1.TextAlign = HorizontalAlignment.Center;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.AliceBlue;
@@ -287,6 +292,7 @@
             panel2.Padding = new Padding(5);
             panel2.Size = new Size(804, 50);
             panel2.TabIndex = 0;
+            panel2.Paint += panel2_Paint;
             // 
             // label1
             // 
@@ -298,6 +304,7 @@
             label1.Size = new Size(124, 27);
             label1.TabIndex = 1;
             label1.Text = "Employee";
+            label1.Click += label1_Click;
             // 
             // EmployeeForm
             // 
@@ -309,6 +316,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(824, 723);
             MinimumSize = new Size(824, 723);
             Name = "EmployeeForm";
             Padding = new Padding(5);
