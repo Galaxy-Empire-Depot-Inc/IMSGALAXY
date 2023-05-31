@@ -233,7 +233,6 @@
             btn_DisplayP.Text = "Displayed Products";
             btn_DisplayP.Tooltip1 = null;
             btn_DisplayP.UseVisualStyleBackColor = false;
-            btn_DisplayP.Click += btn_DisplayP_Click;
             // 
             // panel12
             // 
@@ -265,7 +264,6 @@
             btn_DamageP.Text = "Damaged Products";
             btn_DamageP.Tooltip1 = null;
             btn_DamageP.UseVisualStyleBackColor = false;
-            btn_DamageP.Click += btn_DamageP_Click;
             // 
             // panel11
             // 
@@ -297,7 +295,6 @@
             btn_AvailableP.Text = "Available Products";
             btn_AvailableP.Tooltip1 = null;
             btn_AvailableP.UseVisualStyleBackColor = false;
-            btn_AvailableP.Click += btn_AvailableP_Click;
             // 
             // panel10
             // 
@@ -329,7 +326,6 @@
             btn_TotalP.Text = "Total Products";
             btn_TotalP.Tooltip1 = null;
             btn_TotalP.UseVisualStyleBackColor = false;
-            btn_TotalP.Click += btn_TotalP_Click;
             // 
             // panel7
             // 
