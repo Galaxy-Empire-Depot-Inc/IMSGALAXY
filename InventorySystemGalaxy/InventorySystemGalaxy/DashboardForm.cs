@@ -27,13 +27,18 @@ namespace InventorySystemGalaxy
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+           // LoadProductCounts();
+            
+=======
            /* LoadProductCounts();*/
 
+>>>>>>> bf6e96075adcfe91673b24b028256b84390ec8ec
         }
 
         private void LoadProductCounts()
         {
-            String CountProduct = "SELECT COUNT(*) AS NumberOFProducts FROM product_table";
+           /* String CountProduct = "SELECT COUNT(*) AS NumberOFProducts FROM product_table";
             String CountAvailability = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE availability = 1";
             String CountDisplay = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE display = 1";
             String CountDamage = "SELECT COUNT(*) AS NumberOFProducts FROM product_table WHERE repair = 1";
@@ -89,7 +94,11 @@ namespace InventorySystemGalaxy
                 lbl_DamageP.Text = reader4.GetString(0);
             }
 
+<<<<<<< HEAD
+            conn.Close();*/
+=======
             conn.Close();
+>>>>>>> bf6e96075adcfe91673b24b028256b84390ec8ec
         }
 
         private void btn_TotalP_Click(object sender, EventArgs e)
