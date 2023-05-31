@@ -27,8 +27,13 @@ namespace InventorySystemGalaxy
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
            // LoadProductCounts();
             
+=======
+           /* LoadProductCounts();*/
+
+>>>>>>> bf6e96075adcfe91673b24b028256b84390ec8ec
         }
 
         private void LoadProductCounts()
@@ -89,7 +94,11 @@ namespace InventorySystemGalaxy
                 lbl_DamageP.Text = reader4.GetString(0);
             }
 
+<<<<<<< HEAD
             conn.Close();*/
+=======
+            conn.Close();
+>>>>>>> bf6e96075adcfe91673b24b028256b84390ec8ec
         }
 
         private void btn_TotalP_Click(object sender, EventArgs e)

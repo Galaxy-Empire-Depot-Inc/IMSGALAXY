@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace InventorySystemGalaxy
 {
-    [DefaultEvent("OnSelectedIndexChanged")]
+    [DefaultEvent(nameof(SelectedIndexChanged))]
     public partial class CustomComboBox : ComboBox
     {
         //Fields
@@ -44,6 +44,8 @@ namespace InventorySystemGalaxy
 
         //->Data
 
+     
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Localizable(true)]
         [MergableProperty(false)]
@@ -66,7 +68,7 @@ namespace InventorySystemGalaxy
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public  int SelectedIndex
+        public int SelectedIndex
         {
             get
             {
@@ -91,6 +93,9 @@ namespace InventorySystemGalaxy
                 cmbList.SelectedItem = value;
             }
         }
+
+        
+        
 
 
         //Constructor
