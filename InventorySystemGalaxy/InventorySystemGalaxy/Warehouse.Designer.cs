@@ -30,17 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Warehouse));
             label1 = new Label();
-            customButton1 = new CustomButton();
+            BTN_AddModal = new CustomButton();
             panel5 = new Panel();
             panel4 = new Panel();
             panel7 = new Panel();
+            customComboBox1 = new CustomComboBox();
             pictureBox1 = new PictureBox();
             customTextBox1 = new CustomTextBox();
             panel3 = new Panel();
-            employeeTable = new DataGridView();
-            panel6 = new Panel();
-            panel2 = new Panel();
-            panel1 = new Panel();
+            warehouseTable = new DataGridView();
             sortLabel = new DataGridViewTextBoxColumn();
             itemCodeLabel = new DataGridViewTextBoxColumn();
             refCodeLabel = new DataGridViewTextBoxColumn();
@@ -56,13 +54,17 @@
             srpLabel = new DataGridViewTextBoxColumn();
             downPaymentLabel = new DataGridViewTextBoxColumn();
             warehouseLabel = new DataGridViewTextBoxColumn();
+            Category = new DataGridViewTextBoxColumn();
             qtyLabel = new DataGridViewTextBoxColumn();
             boxLabel = new DataGridViewTextBoxColumn();
+            panel6 = new Panel();
+            panel2 = new Panel();
+            panel1 = new Panel();
             panel4.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)employeeTable).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)warehouseTable).BeginInit();
             panel6.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -73,72 +75,98 @@
             label1.AutoSize = true;
             label1.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlDark;
-            label1.Location = new Point(8, 16);
+            label1.Location = new Point(6, 12);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(208, 27);
             label1.TabIndex = 1;
             label1.Text = "Warehouse(ALL)";
             // 
-            // customButton1
+            // BTN_AddModal
             // 
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            customButton1.ForeColor = Color.White;
-            customButton1.HoverForeColor1 = Color.Black;
-            customButton1.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
-            customButton1.Image = Properties.Resources.icons8_add_100__1___1_;
-            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            customButton1.Location = new Point(7, 42);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
-            customButton1.OnFocusEnterImage = null;
-            customButton1.OnFocusLeaveImage = null;
-            customButton1.Padding = new Padding(10);
-            customButton1.Size = new Size(115, 50);
-            customButton1.TabIndex = 1;
-            customButton1.Text = "   New";
-            customButton1.TextAlign = ContentAlignment.MiddleLeft;
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = true;
+            BTN_AddModal.FlatStyle = FlatStyle.Flat;
+            BTN_AddModal.Font = new Font("SimSun", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            BTN_AddModal.ForeColor = Color.White;
+            BTN_AddModal.HoverForeColor1 = Color.Black;
+            BTN_AddModal.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
+            BTN_AddModal.Image = Properties.Resources.icons8_add_100__1___1_;
+            BTN_AddModal.ImageAlign = ContentAlignment.MiddleLeft;
+            BTN_AddModal.Location = new Point(6, 23);
+            BTN_AddModal.Margin = new Padding(2);
+            BTN_AddModal.Name = "BTN_AddModal";
+            BTN_AddModal.NormalForeColor1 = Color.White;
+            BTN_AddModal.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
+            BTN_AddModal.OnFocusEnterImage = null;
+            BTN_AddModal.OnFocusLeaveImage = null;
+            BTN_AddModal.Padding = new Padding(8);
+            BTN_AddModal.Size = new Size(114, 45);
+            BTN_AddModal.TabIndex = 1;
+            BTN_AddModal.Text = "   New";
+            BTN_AddModal.TextAlign = ContentAlignment.MiddleLeft;
+            BTN_AddModal.Tooltip1 = null;
+            BTN_AddModal.UseVisualStyleBackColor = true;
+            BTN_AddModal.Click += BTN_AddModal_Click;
             // 
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel5.Location = new Point(1135, 47);
+            panel5.Location = new Point(925, 35);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(240, 50);
+            panel5.Size = new Size(180, 38);
             panel5.TabIndex = 0;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(59, 116, 192);
             panel4.Controls.Add(panel7);
-            panel4.Controls.Add(customButton1);
+            panel4.Controls.Add(BTN_AddModal);
             panel4.Controls.Add(panel5);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(5, 5);
+            panel4.Location = new Point(4, 4);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Padding = new Padding(5);
-            panel4.Size = new Size(920, 100);
+            panel4.Padding = new Padding(4);
+            panel4.Size = new Size(798, 74);
             panel4.TabIndex = 0;
             // 
             // panel7
             // 
             panel7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel7.Controls.Add(customComboBox1);
             panel7.Controls.Add(pictureBox1);
             panel7.Controls.Add(customTextBox1);
-            panel7.Location = new Point(680, 49);
+            panel7.Location = new Point(395, 30);
+            panel7.Margin = new Padding(2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(240, 50);
+            panel7.Size = new Size(397, 38);
             panel7.TabIndex = 1;
+            // 
+            // customComboBox1
+            // 
+            customComboBox1.BackColor = Color.WhiteSmoke;
+            customComboBox1.BackColor1 = Color.WhiteSmoke;
+            customComboBox1.Bordercolor = Color.CornflowerBlue;
+            customComboBox1.BorderSize = 1;
+            customComboBox1.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            customComboBox1.ForeColor = Color.DimGray;
+            customComboBox1.FormattingEnabled = true;
+            customComboBox1.IconColor = Color.CornflowerBlue;
+            customComboBox1.ListBackColor = Color.FromArgb(230, 228, 245);
+            customComboBox1.ListTextColor = Color.DimGray;
+            customComboBox1.Location = new Point(186, 10);
+            customComboBox1.MinimumSize = new Size(200, 0);
+            customComboBox1.Name = "customComboBox1";
+            customComboBox1.Size = new Size(208, 24);
+            customComboBox1.TabIndex = 2;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.images_removebg_preview;
-            pictureBox1.Location = new Point(13, 6);
+            pictureBox1.Location = new Point(2, 4);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(35, 35);
+            pictureBox1.Size = new Size(34, 34);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -149,10 +177,11 @@
             customTextBox1.BottomBorderColor = Color.LightSlateGray;
             customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
             customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(54, 18);
+            customTextBox1.Location = new Point(40, 11);
+            customTextBox1.Margin = new Padding(2);
             customTextBox1.Name = "customTextBox1";
             customTextBox1.PlaceholderText = "Search";
-            customTextBox1.Size = new Size(177, 23);
+            customTextBox1.Size = new Size(133, 24);
             customTextBox1.TabIndex = 0;
             customTextBox1.TextAlign = HorizontalAlignment.Center;
             // 
@@ -161,68 +190,36 @@
             panel3.BackColor = Color.Snow;
             panel3.Controls.Add(panel4);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(5, 55);
+            panel3.Location = new Point(4, 42);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(5);
-            panel3.Size = new Size(930, 110);
+            panel3.Padding = new Padding(4);
+            panel3.Size = new Size(806, 82);
             panel3.TabIndex = 1;
             // 
-            // employeeTable
+            // warehouseTable
             // 
-            employeeTable.AllowUserToAddRows = false;
-            employeeTable.AllowUserToDeleteRows = false;
-            employeeTable.AllowUserToOrderColumns = true;
-            employeeTable.AllowUserToResizeColumns = false;
-            employeeTable.AllowUserToResizeRows = false;
-            employeeTable.BackgroundColor = Color.White;
-            employeeTable.BorderStyle = BorderStyle.Fixed3D;
-            employeeTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            employeeTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            employeeTable.Columns.AddRange(new DataGridViewColumn[] { sortLabel, itemCodeLabel, refCodeLabel, pictureLabel, colorLabel, descriptionLabel, avLabel, wattsLabel, sizeLabel, ctnSizeLLabel, ctnSizeWLabel, ctnSizeHLabel, srpLabel, downPaymentLabel, warehouseLabel, qtyLabel, boxLabel });
-            employeeTable.Dock = DockStyle.Fill;
-            employeeTable.GridColor = Color.White;
-            employeeTable.Location = new Point(5, 5);
-            employeeTable.Name = "employeeTable";
-            employeeTable.ReadOnly = true;
-            employeeTable.RowHeadersVisible = false;
-            employeeTable.RowTemplate.Height = 100;
-            employeeTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeTable.Size = new Size(920, 588);
-            employeeTable.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(employeeTable);
-            panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(5, 165);
-            panel6.Name = "panel6";
-            panel6.Padding = new Padding(5);
-            panel6.Size = new Size(930, 598);
-            panel6.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.AliceBlue;
-            panel2.Controls.Add(label1);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(5, 5);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(5);
-            panel2.Size = new Size(930, 50);
-            panel2.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(panel6);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(5);
-            panel1.Size = new Size(940, 768);
-            panel1.TabIndex = 1;
+            warehouseTable.AllowUserToAddRows = false;
+            warehouseTable.AllowUserToDeleteRows = false;
+            warehouseTable.AllowUserToResizeColumns = false;
+            warehouseTable.AllowUserToResizeRows = false;
+            warehouseTable.BackgroundColor = Color.White;
+            warehouseTable.BorderStyle = BorderStyle.Fixed3D;
+            warehouseTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            warehouseTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            warehouseTable.Columns.AddRange(new DataGridViewColumn[] { sortLabel, itemCodeLabel, refCodeLabel, pictureLabel, colorLabel, descriptionLabel, avLabel, wattsLabel, sizeLabel, ctnSizeLLabel, ctnSizeWLabel, ctnSizeHLabel, srpLabel, downPaymentLabel, warehouseLabel, Category, qtyLabel, boxLabel });
+            warehouseTable.Dock = DockStyle.Fill;
+            warehouseTable.GridColor = Color.White;
+            warehouseTable.Location = new Point(4, 4);
+            warehouseTable.Margin = new Padding(2);
+            warehouseTable.Name = "warehouseTable";
+            warehouseTable.ReadOnly = true;
+            warehouseTable.RowHeadersVisible = false;
+            warehouseTable.RowTemplate.Height = 100;
+            warehouseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            warehouseTable.Size = new Size(798, 577);
+            warehouseTable.TabIndex = 0;
+            warehouseTable.CellContentClick += employeeTable_CellContentClick;
             // 
             // sortLabel
             // 
@@ -230,7 +227,7 @@
             sortLabel.HeaderText = "类别Sort";
             sortLabel.Name = "sortLabel";
             sortLabel.ReadOnly = true;
-            sortLabel.Width = 96;
+            sortLabel.Width = 72;
             // 
             // itemCodeLabel
             // 
@@ -238,7 +235,7 @@
             itemCodeLabel.HeaderText = "Item Code";
             itemCodeLabel.Name = "itemCodeLabel";
             itemCodeLabel.ReadOnly = true;
-            itemCodeLabel.Width = 104;
+            itemCodeLabel.Width = 56;
             // 
             // refCodeLabel
             // 
@@ -246,7 +243,7 @@
             refCodeLabel.HeaderText = "工厂型号 Ref.code";
             refCodeLabel.Name = "refCodeLabel";
             refCodeLabel.ReadOnly = true;
-            refCodeLabel.Width = 96;
+            refCodeLabel.Width = 78;
             // 
             // pictureLabel
             // 
@@ -254,7 +251,7 @@
             pictureLabel.HeaderText = "图片 Picture";
             pictureLabel.Name = "pictureLabel";
             pictureLabel.ReadOnly = true;
-            pictureLabel.Width = 140;
+            pictureLabel.Width = 98;
             // 
             // colorLabel
             // 
@@ -264,7 +261,7 @@
             colorLabel.ReadOnly = true;
             colorLabel.Resizable = DataGridViewTriState.True;
             colorLabel.SortMode = DataGridViewColumnSortMode.NotSortable;
-            colorLabel.Width = 55;
+            colorLabel.Width = 42;
             // 
             // descriptionLabel
             // 
@@ -274,7 +271,7 @@
             descriptionLabel.ReadOnly = true;
             descriptionLabel.Resizable = DataGridViewTriState.True;
             descriptionLabel.SortMode = DataGridViewColumnSortMode.NotSortable;
-            descriptionLabel.Width = 120;
+            descriptionLabel.Width = 91;
             // 
             // avLabel
             // 
@@ -284,7 +281,7 @@
             avLabel.ReadOnly = true;
             avLabel.Resizable = DataGridViewTriState.True;
             avLabel.SortMode = DataGridViewColumnSortMode.NotSortable;
-            avLabel.Width = 55;
+            avLabel.Width = 42;
             // 
             // wattsLabel
             // 
@@ -294,7 +291,7 @@
             wattsLabel.ReadOnly = true;
             wattsLabel.Resizable = DataGridViewTriState.True;
             wattsLabel.SortMode = DataGridViewColumnSortMode.NotSortable;
-            wattsLabel.Width = 84;
+            wattsLabel.Width = 64;
             // 
             // sizeLabel
             // 
@@ -302,7 +299,7 @@
             sizeLabel.HeaderText = "尺寸 ᶲSize(mm)";
             sizeLabel.Name = "sizeLabel";
             sizeLabel.ReadOnly = true;
-            sizeLabel.Width = 129;
+            sizeLabel.Width = 103;
             // 
             // ctnSizeLLabel
             // 
@@ -310,7 +307,7 @@
             ctnSizeLLabel.HeaderText = "Ctn Size L";
             ctnSizeLLabel.Name = "ctnSizeLLabel";
             ctnSizeLLabel.ReadOnly = true;
-            ctnSizeLLabel.Width = 88;
+            ctnSizeLLabel.Width = 72;
             // 
             // ctnSizeWLabel
             // 
@@ -318,7 +315,7 @@
             ctnSizeWLabel.HeaderText = "Ctn Size W";
             ctnSizeWLabel.Name = "ctnSizeWLabel";
             ctnSizeWLabel.ReadOnly = true;
-            ctnSizeWLabel.Width = 88;
+            ctnSizeWLabel.Width = 72;
             // 
             // ctnSizeHLabel
             // 
@@ -326,7 +323,7 @@
             ctnSizeHLabel.HeaderText = "Ctn Size H";
             ctnSizeHLabel.Name = "ctnSizeHLabel";
             ctnSizeHLabel.ReadOnly = true;
-            ctnSizeHLabel.Width = 88;
+            ctnSizeHLabel.Width = 72;
             // 
             // srpLabel
             // 
@@ -334,7 +331,7 @@
             srpLabel.HeaderText = "S.R.P";
             srpLabel.Name = "srpLabel";
             srpLabel.ReadOnly = true;
-            srpLabel.Width = 72;
+            srpLabel.Width = 60;
             // 
             // downPaymentLabel
             // 
@@ -342,7 +339,7 @@
             downPaymentLabel.HeaderText = "D.P";
             downPaymentLabel.Name = "downPaymentLabel";
             downPaymentLabel.ReadOnly = true;
-            downPaymentLabel.Width = 56;
+            downPaymentLabel.Width = 48;
             // 
             // warehouseLabel
             // 
@@ -350,7 +347,15 @@
             warehouseLabel.HeaderText = "Warehouse";
             warehouseLabel.Name = "warehouseLabel";
             warehouseLabel.ReadOnly = true;
-            warehouseLabel.Width = 104;
+            warehouseLabel.Width = 84;
+            // 
+            // Category
+            // 
+            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Category.HeaderText = "Category";
+            Category.Name = "Category";
+            Category.ReadOnly = true;
+            Category.Width = 78;
             // 
             // qtyLabel
             // 
@@ -358,7 +363,7 @@
             qtyLabel.HeaderText = "Quantity";
             qtyLabel.Name = "qtyLabel";
             qtyLabel.ReadOnly = true;
-            qtyLabel.Width = 96;
+            qtyLabel.Width = 78;
             // 
             // boxLabel
             // 
@@ -366,26 +371,64 @@
             boxLabel.HeaderText = "Box(per pieces)";
             boxLabel.Name = "boxLabel";
             boxLabel.ReadOnly = true;
-            boxLabel.Width = 88;
+            boxLabel.Width = 72;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(warehouseTable);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(4, 124);
+            panel6.Margin = new Padding(2);
+            panel6.Name = "panel6";
+            panel6.Padding = new Padding(4);
+            panel6.Size = new Size(806, 585);
+            panel6.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.AliceBlue;
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(4, 4);
+            panel2.Margin = new Padding(2);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(4);
+            panel2.Size = new Size(806, 38);
+            panel2.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(panel6);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panel2);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(5, 5);
+            panel1.Margin = new Padding(2);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(4);
+            panel1.Size = new Size(814, 713);
+            panel1.TabIndex = 1;
             // 
             // Warehouse
             // 
-            AutoScaleDimensions = new SizeF(8F, 16F);
+            AutoScaleDimensions = new SizeF(6F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(940, 768);
+            ClientSize = new Size(824, 723);
             Controls.Add(panel1);
-            Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("SimSun", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 3, 4, 3);
-            MinimumSize = new Size(940, 768);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(618, 542);
             Name = "Warehouse";
+            Padding = new Padding(5);
             Text = "Warehouse";
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)employeeTable).EndInit();
+            ((System.ComponentModel.ISupportInitialize)warehouseTable).EndInit();
             panel6.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -397,11 +440,11 @@
 
         private Label label1;
 
-        private CustomButton customButton1;
+        private CustomButton BTN_AddModal;
         private Panel panel5;
         private Panel panel4;
         private Panel panel3;
-        private DataGridView employeeTable;
+        private DataGridView warehouseTable;
         private Panel panel6;
         private Panel panel2;
         private Panel panel1;
@@ -423,7 +466,9 @@
         private DataGridViewTextBoxColumn srpLabel;
         private DataGridViewTextBoxColumn downPaymentLabel;
         private DataGridViewTextBoxColumn warehouseLabel;
+        private DataGridViewTextBoxColumn Category;
         private DataGridViewTextBoxColumn qtyLabel;
         private DataGridViewTextBoxColumn boxLabel;
+        private CustomComboBox customComboBox1;
     }
 }

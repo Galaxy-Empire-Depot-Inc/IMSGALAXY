@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseModalForm));
             bgPanel = new Panel();
+            WarehouseCB = new CustomComboBox();
+            qtyTextBox = new CustomTextBox();
+            LabelProductModal = new Label();
             dpTextBox = new CustomTextBox();
             srpTextBox = new CustomTextBox();
             boxTextBox = new CustomTextBox();
@@ -44,18 +47,23 @@
             descriptionTextBox = new CustomTextBox();
             refTextBox = new CustomTextBox();
             sortTextBox = new CustomTextBox();
-            addBtn = new CustomButton();
-            warehouseComboBox = new CustomComboBox();
+            Add_UpdateBTN = new CustomButton();
+            CategoryCB = new CustomComboBox();
             label1 = new Label();
-            customButton1 = new CustomButton();
-            pictureBox1 = new PictureBox();
+            AddPhotoBTN = new CustomButton();
+            SelectImagePB = new PictureBox();
+            CloseModal = new Button();
             bgPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SelectImagePB).BeginInit();
             SuspendLayout();
             // 
             // bgPanel
             // 
             bgPanel.BackColor = Color.FromArgb(59, 116, 192);
+            bgPanel.Controls.Add(CloseModal);
+            bgPanel.Controls.Add(WarehouseCB);
+            bgPanel.Controls.Add(qtyTextBox);
+            bgPanel.Controls.Add(LabelProductModal);
             bgPanel.Controls.Add(dpTextBox);
             bgPanel.Controls.Add(srpTextBox);
             bgPanel.Controls.Add(boxTextBox);
@@ -70,11 +78,11 @@
             bgPanel.Controls.Add(descriptionTextBox);
             bgPanel.Controls.Add(refTextBox);
             bgPanel.Controls.Add(sortTextBox);
-            bgPanel.Controls.Add(addBtn);
-            bgPanel.Controls.Add(warehouseComboBox);
+            bgPanel.Controls.Add(Add_UpdateBTN);
+            bgPanel.Controls.Add(CategoryCB);
             bgPanel.Controls.Add(label1);
-            bgPanel.Controls.Add(customButton1);
-            bgPanel.Controls.Add(pictureBox1);
+            bgPanel.Controls.Add(AddPhotoBTN);
+            bgPanel.Controls.Add(SelectImagePB);
             bgPanel.Dock = DockStyle.Fill;
             bgPanel.Location = new Point(13, 12);
             bgPanel.Margin = new Padding(3, 2, 3, 2);
@@ -85,14 +93,61 @@
             bgPanel.Size = new Size(660, 374);
             bgPanel.TabIndex = 1;
             // 
+            // WarehouseCB
+            // 
+            WarehouseCB.BackColor = Color.White;
+            WarehouseCB.BackColor1 = Color.White;
+            WarehouseCB.Bordercolor = Color.DeepSkyBlue;
+            WarehouseCB.BorderSize = 2;
+            WarehouseCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            WarehouseCB.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            WarehouseCB.ForeColor = Color.DimGray;
+            WarehouseCB.FormattingEnabled = true;
+            WarehouseCB.IconColor = Color.Teal;
+            WarehouseCB.Items.AddRange(new object[] { "--Warehouse--", "TMS", "STORE", "WAREHOUSE" });
+            WarehouseCB.ListBackColor = Color.White;
+            WarehouseCB.ListTextColor = Color.Black;
+            WarehouseCB.Location = new Point(449, 214);
+            WarehouseCB.Margin = new Padding(3, 2, 3, 2);
+            WarehouseCB.MinimumSize = new Size(172, 0);
+            WarehouseCB.Name = "WarehouseCB";
+            WarehouseCB.Size = new Size(176, 24);
+            WarehouseCB.TabIndex = 25;
+            // 
+            // qtyTextBox
+            // 
+            qtyTextBox.BorderStyle = BorderStyle.None;
+            qtyTextBox.BottomBorderColor = Color.Black;
+            qtyTextBox.BottomBorderOnFocusColor = Color.Blue;
+            qtyTextBox.Cursor = Cursors.IBeam;
+            qtyTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            qtyTextBox.Location = new Point(207, 219);
+            qtyTextBox.Margin = new Padding(3, 2, 3, 2);
+            qtyTextBox.Name = "qtyTextBox";
+            qtyTextBox.PlaceholderText = "Box";
+            qtyTextBox.Size = new Size(38, 19);
+            qtyTextBox.TabIndex = 24;
+            qtyTextBox.Text = "Qty";
+            qtyTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // LabelProductModal
+            // 
+            LabelProductModal.AutoSize = true;
+            LabelProductModal.Location = new Point(12, 351);
+            LabelProductModal.Name = "LabelProductModal";
+            LabelProductModal.Size = new Size(0, 12);
+            LabelProductModal.TabIndex = 23;
+            LabelProductModal.Visible = false;
+            // 
             // dpTextBox
             // 
             dpTextBox.BorderStyle = BorderStyle.None;
             dpTextBox.BottomBorderColor = Color.Black;
             dpTextBox.BottomBorderOnFocusColor = Color.Blue;
+            dpTextBox.Cursor = Cursors.IBeam;
             dpTextBox.Enabled = false;
             dpTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dpTextBox.Location = new Point(323, 220);
+            dpTextBox.Location = new Point(444, 180);
             dpTextBox.Margin = new Padding(3, 2, 3, 2);
             dpTextBox.Name = "dpTextBox";
             dpTextBox.PlaceholderText = "D.P";
@@ -106,8 +161,9 @@
             srpTextBox.BorderStyle = BorderStyle.None;
             srpTextBox.BottomBorderColor = Color.Black;
             srpTextBox.BottomBorderOnFocusColor = Color.Blue;
+            srpTextBox.Cursor = Cursors.IBeam;
             srpTextBox.Font = new Font("SimSun", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            srpTextBox.Location = new Point(207, 220);
+            srpTextBox.Location = new Point(444, 139);
             srpTextBox.Margin = new Padding(3, 2, 3, 2);
             srpTextBox.Name = "srpTextBox";
             srpTextBox.PlaceholderText = "零售价 S.R.P";
@@ -122,6 +178,7 @@
             boxTextBox.BorderStyle = BorderStyle.None;
             boxTextBox.BottomBorderColor = Color.Black;
             boxTextBox.BottomBorderOnFocusColor = Color.Blue;
+            boxTextBox.Cursor = Cursors.IBeam;
             boxTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             boxTextBox.Location = new Point(150, 220);
             boxTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -137,6 +194,7 @@
             sizeTextBox.BorderStyle = BorderStyle.None;
             sizeTextBox.BottomBorderColor = Color.Black;
             sizeTextBox.BottomBorderOnFocusColor = Color.Blue;
+            sizeTextBox.Cursor = Cursors.IBeam;
             sizeTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             sizeTextBox.Location = new Point(323, 181);
             sizeTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -152,6 +210,7 @@
             ctnWTextBox.BorderStyle = BorderStyle.None;
             ctnWTextBox.BottomBorderColor = Color.Black;
             ctnWTextBox.BottomBorderOnFocusColor = Color.Blue;
+            ctnWTextBox.Cursor = Cursors.IBeam;
             ctnWTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             ctnWTextBox.Location = new Point(262, 181);
             ctnWTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -167,6 +226,7 @@
             ctnHTextBox.BorderStyle = BorderStyle.None;
             ctnHTextBox.BottomBorderColor = Color.Black;
             ctnHTextBox.BottomBorderOnFocusColor = Color.Blue;
+            ctnHTextBox.Cursor = Cursors.IBeam;
             ctnHTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             ctnHTextBox.Location = new Point(207, 181);
             ctnHTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -182,6 +242,7 @@
             ctnLTextBox.BorderStyle = BorderStyle.None;
             ctnLTextBox.BottomBorderColor = Color.Black;
             ctnLTextBox.BottomBorderOnFocusColor = Color.Blue;
+            ctnLTextBox.Cursor = Cursors.IBeam;
             ctnLTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             ctnLTextBox.Location = new Point(150, 181);
             ctnLTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -197,8 +258,9 @@
             wattsTextBox.BorderStyle = BorderStyle.None;
             wattsTextBox.BottomBorderColor = Color.Black;
             wattsTextBox.BottomBorderOnFocusColor = Color.Blue;
+            wattsTextBox.Cursor = Cursors.IBeam;
             wattsTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            wattsTextBox.Location = new Point(544, 139);
+            wattsTextBox.Location = new Point(544, 138);
             wattsTextBox.Margin = new Padding(3, 2, 3, 2);
             wattsTextBox.Name = "wattsTextBox";
             wattsTextBox.PlaceholderText = "功率 Watts";
@@ -212,12 +274,13 @@
             avTextbox.BorderStyle = BorderStyle.None;
             avTextbox.BottomBorderColor = Color.Black;
             avTextbox.BottomBorderOnFocusColor = Color.Blue;
+            avTextbox.Cursor = Cursors.IBeam;
             avTextbox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            avTextbox.Location = new Point(444, 139);
+            avTextbox.Location = new Point(574, 182);
             avTextbox.Margin = new Padding(3, 2, 3, 2);
             avTextbox.Name = "avTextbox";
             avTextbox.PlaceholderText = "电源AV";
-            avTextbox.Size = new Size(72, 19);
+            avTextbox.Size = new Size(51, 19);
             avTextbox.TabIndex = 12;
             avTextbox.TextAlign = HorizontalAlignment.Center;
             avTextbox.KeyDown += avTextbox_KeyDown;
@@ -227,6 +290,7 @@
             colorTextBox.BorderStyle = BorderStyle.None;
             colorTextBox.BottomBorderColor = Color.Black;
             colorTextBox.BottomBorderOnFocusColor = Color.Blue;
+            colorTextBox.Cursor = Cursors.IBeam;
             colorTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             colorTextBox.Location = new Point(262, 139);
             colorTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -242,6 +306,7 @@
             itemCodeTextBox.BorderStyle = BorderStyle.None;
             itemCodeTextBox.BottomBorderColor = Color.Black;
             itemCodeTextBox.BottomBorderOnFocusColor = Color.Blue;
+            itemCodeTextBox.Cursor = Cursors.IBeam;
             itemCodeTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             itemCodeTextBox.Location = new Point(150, 139);
             itemCodeTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -257,6 +322,7 @@
             descriptionTextBox.BorderStyle = BorderStyle.None;
             descriptionTextBox.BottomBorderColor = Color.Black;
             descriptionTextBox.BottomBorderOnFocusColor = Color.Blue;
+            descriptionTextBox.Cursor = Cursors.IBeam;
             descriptionTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             descriptionTextBox.Location = new Point(444, 101);
             descriptionTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -272,6 +338,7 @@
             refTextBox.BorderStyle = BorderStyle.None;
             refTextBox.BottomBorderColor = Color.Black;
             refTextBox.BottomBorderOnFocusColor = Color.Blue;
+            refTextBox.Cursor = Cursors.IBeam;
             refTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             refTextBox.Location = new Point(262, 101);
             refTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -287,6 +354,7 @@
             sortTextBox.BorderStyle = BorderStyle.None;
             sortTextBox.BottomBorderColor = Color.Black;
             sortTextBox.BottomBorderOnFocusColor = Color.Blue;
+            sortTextBox.Cursor = Cursors.IBeam;
             sortTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             sortTextBox.Location = new Point(150, 101);
             sortTextBox.Margin = new Padding(3, 2, 3, 2);
@@ -297,47 +365,49 @@
             sortTextBox.TextAlign = HorizontalAlignment.Center;
             sortTextBox.KeyDown += sortTextBox_KeyDown;
             // 
-            // addBtn
+            // Add_UpdateBTN
             // 
-            addBtn.BackColor = Color.White;
-            addBtn.FlatStyle = FlatStyle.Popup;
-            addBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            addBtn.HoverForeColor1 = Color.SteelBlue;
-            addBtn.HoverImage1 = null;
-            addBtn.Location = new Point(538, 331);
-            addBtn.Margin = new Padding(3, 2, 3, 2);
-            addBtn.Name = "addBtn";
-            addBtn.NormalForeColor1 = Color.Black;
-            addBtn.NormalImage1 = null;
-            addBtn.OnFocusEnterImage = null;
-            addBtn.OnFocusLeaveImage = null;
-            addBtn.Size = new Size(111, 32);
-            addBtn.TabIndex = 22;
-            addBtn.Text = "Add";
-            addBtn.Tooltip1 = null;
-            addBtn.UseVisualStyleBackColor = false;
+            Add_UpdateBTN.BackColor = Color.White;
+            Add_UpdateBTN.Cursor = Cursors.Hand;
+            Add_UpdateBTN.FlatStyle = FlatStyle.Popup;
+            Add_UpdateBTN.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Add_UpdateBTN.HoverForeColor1 = Color.SteelBlue;
+            Add_UpdateBTN.HoverImage1 = null;
+            Add_UpdateBTN.Location = new Point(538, 331);
+            Add_UpdateBTN.Margin = new Padding(3, 2, 3, 2);
+            Add_UpdateBTN.Name = "Add_UpdateBTN";
+            Add_UpdateBTN.NormalForeColor1 = Color.Black;
+            Add_UpdateBTN.NormalImage1 = null;
+            Add_UpdateBTN.OnFocusEnterImage = null;
+            Add_UpdateBTN.OnFocusLeaveImage = null;
+            Add_UpdateBTN.Size = new Size(111, 32);
+            Add_UpdateBTN.TabIndex = 22;
+            Add_UpdateBTN.Text = "Add";
+            Add_UpdateBTN.Tooltip1 = null;
+            Add_UpdateBTN.UseVisualStyleBackColor = false;
+            Add_UpdateBTN.Click += Add_UpdateBTN_Click;
             // 
-            // warehouseComboBox
+            // CategoryCB
             // 
-            warehouseComboBox.BackColor = Color.White;
-            warehouseComboBox.BackColor1 = Color.White;
-            warehouseComboBox.Bordercolor = Color.DeepSkyBlue;
-            warehouseComboBox.BorderSize = 2;
-            warehouseComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            warehouseComboBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            warehouseComboBox.ForeColor = Color.DimGray;
-            warehouseComboBox.FormattingEnabled = true;
-            warehouseComboBox.IconColor = Color.Teal;
-            warehouseComboBox.Items.AddRange(new object[] { "--Warehouse--", "TMS", "STORE", "WAREHOUSE" });
-            warehouseComboBox.ListBackColor = Color.White;
-            warehouseComboBox.ListTextColor = Color.Black;
-            warehouseComboBox.Location = new Point(444, 181);
-            warehouseComboBox.Margin = new Padding(3, 2, 3, 2);
-            warehouseComboBox.MinimumSize = new Size(172, 0);
-            warehouseComboBox.Name = "warehouseComboBox";
-            warehouseComboBox.Size = new Size(181, 24);
-            warehouseComboBox.TabIndex = 13;
-            warehouseComboBox.KeyDown += warehouseComboBox_KeyDown;
+            CategoryCB.BackColor = Color.White;
+            CategoryCB.BackColor1 = Color.White;
+            CategoryCB.Bordercolor = Color.DeepSkyBlue;
+            CategoryCB.BorderSize = 2;
+            CategoryCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            CategoryCB.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            CategoryCB.ForeColor = Color.DimGray;
+            CategoryCB.FormattingEnabled = true;
+            CategoryCB.IconColor = Color.Teal;
+            CategoryCB.Items.AddRange(new object[] { "--Category--", "GS Ceiling and Chandelier Lights", "GS Crystal Lights", "GS Fan", "GS Panel Lights", "GS Strip Lights", "New Chandelier Lights" });
+            CategoryCB.ListBackColor = Color.White;
+            CategoryCB.ListTextColor = Color.Black;
+            CategoryCB.Location = new Point(262, 214);
+            CategoryCB.Margin = new Padding(3, 2, 3, 2);
+            CategoryCB.MinimumSize = new Size(172, 0);
+            CategoryCB.Name = "CategoryCB";
+            CategoryCB.Size = new Size(181, 24);
+            CategoryCB.TabIndex = 13;
+            CategoryCB.KeyDown += warehouseComboBox_KeyDown;
             // 
             // label1
             // 
@@ -351,36 +421,50 @@
             label1.TabIndex = 8;
             label1.Text = "Product Information";
             // 
-            // customButton1
+            // AddPhotoBTN
             // 
-            customButton1.BackColor = Color.White;
-            customButton1.FlatStyle = FlatStyle.Popup;
-            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customButton1.HoverForeColor1 = Color.SteelBlue;
-            customButton1.HoverImage1 = null;
-            customButton1.Location = new Point(11, 178);
-            customButton1.Margin = new Padding(3, 2, 3, 2);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.Black;
-            customButton1.NormalImage1 = null;
-            customButton1.OnFocusEnterImage = null;
-            customButton1.OnFocusLeaveImage = null;
-            customButton1.Size = new Size(107, 24);
-            customButton1.TabIndex = 2;
-            customButton1.Text = "Add Photo";
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = false;
+            AddPhotoBTN.BackColor = Color.FromArgb(59, 116, 192);
+            AddPhotoBTN.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            AddPhotoBTN.ForeColor = SystemColors.ControlLightLight;
+            AddPhotoBTN.HoverForeColor1 = Color.SteelBlue;
+            AddPhotoBTN.HoverImage1 = null;
+            AddPhotoBTN.Location = new Point(3, 176);
+            AddPhotoBTN.Margin = new Padding(3, 2, 3, 2);
+            AddPhotoBTN.Name = "AddPhotoBTN";
+            AddPhotoBTN.NormalForeColor1 = Color.Black;
+            AddPhotoBTN.NormalImage1 = null;
+            AddPhotoBTN.OnFocusEnterImage = null;
+            AddPhotoBTN.OnFocusLeaveImage = null;
+            AddPhotoBTN.Size = new Size(133, 27);
+            AddPhotoBTN.TabIndex = 2;
+            AddPhotoBTN.Text = "Add Photo";
+            AddPhotoBTN.Tooltip1 = null;
+            AddPhotoBTN.UseVisualStyleBackColor = false;
+            AddPhotoBTN.Click += AddPhotoBTN_Click;
             // 
-            // pictureBox1
+            // SelectImagePB
             // 
-            pictureBox1.Image = Properties.Resources.icons8_product_100;
-            pictureBox1.Location = new Point(11, 64);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(107, 100);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            SelectImagePB.Cursor = Cursors.Hand;
+            SelectImagePB.Image = Properties.Resources.icons8_image_100;
+            SelectImagePB.Location = new Point(17, 64);
+            SelectImagePB.Margin = new Padding(3, 2, 3, 2);
+            SelectImagePB.Name = "SelectImagePB";
+            SelectImagePB.Size = new Size(107, 100);
+            SelectImagePB.SizeMode = PictureBoxSizeMode.StretchImage;
+            SelectImagePB.TabIndex = 1;
+            SelectImagePB.TabStop = false;
+            // 
+            // CloseModal
+            // 
+            CloseModal.FlatAppearance.BorderSize = 0;
+            CloseModal.FlatStyle = FlatStyle.Flat;
+            CloseModal.Image = Properties.Resources.icons8_cancel_30;
+            CloseModal.Location = new Point(624, 2);
+            CloseModal.Name = "CloseModal";
+            CloseModal.Size = new Size(35, 23);
+            CloseModal.TabIndex = 26;
+            CloseModal.UseVisualStyleBackColor = true;
+            CloseModal.Click += CloseModal_click;
             // 
             // WarehouseModalForm
             // 
@@ -400,22 +484,22 @@
             Text = "WarehouseModalForm";
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SelectImagePB).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel bgPanel;
-        private CustomComboBox warehouseComboBox;
+        private CustomComboBox CategoryCB;
         private CustomTextBox avTextbox;
         private CustomTextBox descriptionTextBox;
         private CustomTextBox colorTextBox;
         private CustomTextBox refTextBox;
         private Label label1;
         private CustomTextBox itemCodeTextBox;
-        private CustomButton customButton1;
-        private PictureBox pictureBox1;
+        private CustomButton AddPhotoBTN;
+        private PictureBox SelectImagePB;
         private CustomTextBox sortTextBox;
         private CustomTextBox srpTextBox;
         private CustomTextBox ctnHTextBox;
@@ -425,6 +509,10 @@
         private CustomTextBox wattsTextBox;
         private CustomTextBox dpTextBox;
         private CustomTextBox boxTextBox;
-        private CustomButton addBtn;
+        private CustomButton Add_UpdateBTN;
+        private Label LabelProductModal;
+        private CustomTextBox qtyTextBox;
+        private CustomComboBox WarehouseCB;
+        private Button CloseModal;
     }
 }

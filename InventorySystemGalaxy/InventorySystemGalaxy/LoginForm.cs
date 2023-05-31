@@ -15,7 +15,7 @@ namespace InventorySystemGalaxy
     public partial class LoginForm : Form
     {
 
-        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
+        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
 
 
         public LoginForm()
@@ -77,7 +77,7 @@ namespace InventorySystemGalaxy
                     String username, password;
                     username = UserTxtBox.Text;
                     password = PassTxtBox.Text;
-                    string query = "SELECT * FROM admin_user WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_password = '" + PassTxtBox.Text + "'";
+                    string query = "SELECT * FROM admin_table WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_pass = '" + PassTxtBox.Text + "'";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
 
                     DataTable dataTable = new DataTable();

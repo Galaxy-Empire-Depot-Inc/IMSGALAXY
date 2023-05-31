@@ -16,5 +16,16 @@ namespace InventorySystemGalaxy
         {
             InitializeComponent();
         }
+
+        private void BTN_AddModal_Click(object sender, EventArgs e)
+        {
+            WarehouseModalForm modalForm = new WarehouseModalForm();
+            modalForm.ShowDialog();
+        }
+
+        private void employeeTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
