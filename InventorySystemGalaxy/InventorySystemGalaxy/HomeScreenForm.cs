@@ -64,7 +64,7 @@ namespace InventorySystemGalaxy
         }
         private void customButton3_Click(object sender, EventArgs e)
         {
-            loadForm(new Warehouse());
+            loadForm(new WarehouseForm());
         }
 
         private void customButton4_Click(object sender, EventArgs e)
