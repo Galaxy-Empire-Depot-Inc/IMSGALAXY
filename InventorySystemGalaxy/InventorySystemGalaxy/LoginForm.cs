@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using Google.Cloud.Firestore;
+using InventorySystemGalaxy.Classes;
 
 namespace InventorySystemGalaxy
 {
@@ -63,8 +65,7 @@ namespace InventorySystemGalaxy
             try
             {
 
-
-                if (UserTxtBox.Text == "")
+                /*if (UserTxtBox.Text == "")
                 {
                     MessageBox.Show("INPUT USERNAME");
                 }
@@ -103,9 +104,40 @@ namespace InventorySystemGalaxy
 
                     }
 
+                }*/
+
+
+                /*string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
+                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+                FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");
+
+                MessageBox.Show("Successfully Bitch");*/
+
+                string username = UserTxtBox.Text;
+                string userpass = PassTxtBox.Text;
+
+                var db = FireStoreHelper.firestoreDb;
+                DocumentReference documentReference = db.Collection("Admin_User").Document(username);
+                AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
+
+                if (adminData != null)
+                {
+
+                    if (userpass == adminData.adminPassword)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("FAILED TO LOGIN");
+                    }
+
                 }
-
-
+                else
+                {
+                    MessageBox.Show("No data found");
+                }
 
 
             }
