@@ -18,10 +18,14 @@ namespace InventorySystemGalaxy
     {
 
 <<<<<<< HEAD
+       // MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
+=======
+<<<<<<< HEAD
         MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
         public static String getUserName;
 =======
         MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
+>>>>>>> dc3502728d3742ed5d119e66b29bd8274b0552c0
 
 
 >>>>>>> 9f8b4407e6595af3b51886765d86c538b49dad1f
@@ -127,16 +131,16 @@ namespace InventorySystemGalaxy
                 string username = UserTxtBox.Text;
                 string userpass = PassTxtBox.Text;
 
-                var db = FireStoreHelper.firestoreDb;
+
                 DocumentReference documentReference = db.Collection("Admin_User").Document(username);
                 AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
 
                 if (adminData != null)
                 {
 
-                    if (userpass == adminData.adminPassword)
+                    if (userpass == adminData.pass)
                     {
-
+                        MessageBox.Show("LOGIN");
                     }
                     else
                     {
@@ -151,9 +155,9 @@ namespace InventorySystemGalaxy
 
 
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Not Connected");
+                MessageBox.Show(ex.Message);
             }
         }
 
