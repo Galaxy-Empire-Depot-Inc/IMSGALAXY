@@ -108,6 +108,7 @@
             UserTxtBox.Size = new Size(209, 30);
             UserTxtBox.TabIndex = 4;
             UserTxtBox.TextAlign = HorizontalAlignment.Center;
+            UserTxtBox.KeyPress += UserTxtBox_KeyPress;
             // 
             // panel1
             // 
@@ -186,10 +187,10 @@
         private PictureBox pictureBox2;
         private CustomButton loginBtn;
         private CustomTextBox PassTxtBox;
-        private CustomTextBox UserTxtBox;
         private Panel panel1;
         private Panel panel2;
         private Button CloseBTN;
         private Button MinBtn;
+        private CustomTextBox UserTxtBox;
     }
 }
