@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseModalForm));
             bgPanel = new Panel();
+            CloseModal = new Button();
             WarehouseCB = new CustomComboBox();
             qtyTextBox = new CustomTextBox();
             LabelProductModal = new Label();
@@ -52,7 +53,6 @@
             label1 = new Label();
             AddPhotoBTN = new CustomButton();
             SelectImagePB = new PictureBox();
-            CloseModal = new Button();
             bgPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SelectImagePB).BeginInit();
             SuspendLayout();
@@ -93,6 +93,18 @@
             bgPanel.Size = new Size(660, 374);
             bgPanel.TabIndex = 1;
             // 
+            // CloseModal
+            // 
+            CloseModal.FlatAppearance.BorderSize = 0;
+            CloseModal.FlatStyle = FlatStyle.Flat;
+            CloseModal.Image = Properties.Resources.icons8_cancel_30;
+            CloseModal.Location = new Point(624, 2);
+            CloseModal.Name = "CloseModal";
+            CloseModal.Size = new Size(35, 23);
+            CloseModal.TabIndex = 26;
+            CloseModal.UseVisualStyleBackColor = true;
+            CloseModal.Click += CloseModal_click;
+            // 
             // WarehouseCB
             // 
             WarehouseCB.BackColor = Color.White;
@@ -104,14 +116,14 @@
             WarehouseCB.ForeColor = Color.DimGray;
             WarehouseCB.FormattingEnabled = true;
             WarehouseCB.IconColor = Color.Teal;
-            WarehouseCB.Items.AddRange(new object[] { "--Warehouse--", "TMS", "STORE", "WAREHOUSE" });
+            WarehouseCB.Items.AddRange(new object[] { "--Warehouse--", "TMS", "STORE", "MLB" });
             WarehouseCB.ListBackColor = Color.White;
             WarehouseCB.ListTextColor = Color.Black;
-            WarehouseCB.Location = new Point(449, 214);
+            WarehouseCB.Location = new Point(145, 220);
             WarehouseCB.Margin = new Padding(3, 2, 3, 2);
             WarehouseCB.MinimumSize = new Size(172, 0);
             WarehouseCB.Name = "WarehouseCB";
-            WarehouseCB.Size = new Size(176, 24);
+            WarehouseCB.Size = new Size(243, 24);
             WarehouseCB.TabIndex = 25;
             // 
             // qtyTextBox
@@ -120,12 +132,12 @@
             qtyTextBox.BottomBorderColor = Color.Black;
             qtyTextBox.BottomBorderOnFocusColor = Color.Blue;
             qtyTextBox.Cursor = Cursors.IBeam;
-            qtyTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            qtyTextBox.Location = new Point(207, 219);
+            qtyTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            qtyTextBox.Location = new Point(245, 260);
             qtyTextBox.Margin = new Padding(3, 2, 3, 2);
             qtyTextBox.Name = "qtyTextBox";
             qtyTextBox.PlaceholderText = "Box";
-            qtyTextBox.Size = new Size(38, 19);
+            qtyTextBox.Size = new Size(90, 30);
             qtyTextBox.TabIndex = 24;
             qtyTextBox.Text = "Qty";
             qtyTextBox.TextAlign = HorizontalAlignment.Center;
@@ -147,12 +159,12 @@
             dpTextBox.Cursor = Cursors.IBeam;
             dpTextBox.Enabled = false;
             dpTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dpTextBox.Location = new Point(444, 180);
+            dpTextBox.Location = new Point(539, 140);
             dpTextBox.Margin = new Padding(3, 2, 3, 2);
             dpTextBox.Name = "dpTextBox";
             dpTextBox.PlaceholderText = "D.P";
             dpTextBox.ReadOnly = true;
-            dpTextBox.Size = new Size(104, 19);
+            dpTextBox.Size = new Size(99, 30);
             dpTextBox.TabIndex = 21;
             dpTextBox.TextAlign = HorizontalAlignment.Center;
             // 
@@ -162,16 +174,17 @@
             srpTextBox.BottomBorderColor = Color.Black;
             srpTextBox.BottomBorderOnFocusColor = Color.Blue;
             srpTextBox.Cursor = Cursors.IBeam;
-            srpTextBox.Font = new Font("SimSun", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            srpTextBox.Location = new Point(444, 139);
+            srpTextBox.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            srpTextBox.Location = new Point(543, 98);
             srpTextBox.Margin = new Padding(3, 2, 3, 2);
             srpTextBox.Name = "srpTextBox";
             srpTextBox.PlaceholderText = "零售价 S.R.P";
-            srpTextBox.Size = new Size(93, 19);
+            srpTextBox.Size = new Size(95, 30);
             srpTextBox.TabIndex = 19;
             srpTextBox.TextAlign = HorizontalAlignment.Center;
             srpTextBox.TextChanged += srpTextBox_TextChanged;
             srpTextBox.KeyDown += srpTextBox_KeyDown;
+            srpTextBox.KeyPress += srpTextBox_KeyPress;
             // 
             // boxTextBox
             // 
@@ -179,12 +192,12 @@
             boxTextBox.BottomBorderColor = Color.Black;
             boxTextBox.BottomBorderOnFocusColor = Color.Blue;
             boxTextBox.Cursor = Cursors.IBeam;
-            boxTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            boxTextBox.Location = new Point(150, 220);
+            boxTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            boxTextBox.Location = new Point(146, 260);
             boxTextBox.Margin = new Padding(3, 2, 3, 2);
             boxTextBox.Name = "boxTextBox";
             boxTextBox.PlaceholderText = "Box";
-            boxTextBox.Size = new Size(38, 19);
+            boxTextBox.Size = new Size(55, 30);
             boxTextBox.TabIndex = 20;
             boxTextBox.TextAlign = HorizontalAlignment.Center;
             boxTextBox.KeyDown += boxTextBox_KeyDown;
@@ -196,11 +209,11 @@
             sizeTextBox.BottomBorderOnFocusColor = Color.Blue;
             sizeTextBox.Cursor = Cursors.IBeam;
             sizeTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            sizeTextBox.Location = new Point(323, 181);
+            sizeTextBox.Location = new Point(315, 179);
             sizeTextBox.Margin = new Padding(3, 2, 3, 2);
             sizeTextBox.Name = "sizeTextBox";
             sizeTextBox.PlaceholderText = "尺寸 ᶲSize(mm)";
-            sizeTextBox.Size = new Size(104, 19);
+            sizeTextBox.Size = new Size(323, 30);
             sizeTextBox.TabIndex = 15;
             sizeTextBox.TextAlign = HorizontalAlignment.Center;
             sizeTextBox.KeyDown += sizeTextBox_KeyDown;
@@ -211,12 +224,12 @@
             ctnWTextBox.BottomBorderColor = Color.Black;
             ctnWTextBox.BottomBorderOnFocusColor = Color.Blue;
             ctnWTextBox.Cursor = Cursors.IBeam;
-            ctnWTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ctnWTextBox.Location = new Point(262, 181);
+            ctnWTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ctnWTextBox.Location = new Point(568, 260);
             ctnWTextBox.Margin = new Padding(3, 2, 3, 2);
             ctnWTextBox.Name = "ctnWTextBox";
             ctnWTextBox.PlaceholderText = "Ctn W";
-            ctnWTextBox.Size = new Size(38, 19);
+            ctnWTextBox.Size = new Size(70, 30);
             ctnWTextBox.TabIndex = 17;
             ctnWTextBox.TextAlign = HorizontalAlignment.Center;
             ctnWTextBox.KeyDown += ctnWTextBox_KeyDown;
@@ -227,12 +240,12 @@
             ctnHTextBox.BottomBorderColor = Color.Black;
             ctnHTextBox.BottomBorderOnFocusColor = Color.Blue;
             ctnHTextBox.Cursor = Cursors.IBeam;
-            ctnHTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ctnHTextBox.Location = new Point(207, 181);
+            ctnHTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ctnHTextBox.Location = new Point(463, 260);
             ctnHTextBox.Margin = new Padding(3, 2, 3, 2);
             ctnHTextBox.Name = "ctnHTextBox";
             ctnHTextBox.PlaceholderText = "Ctn H";
-            ctnHTextBox.Size = new Size(38, 19);
+            ctnHTextBox.Size = new Size(70, 30);
             ctnHTextBox.TabIndex = 18;
             ctnHTextBox.TextAlign = HorizontalAlignment.Center;
             ctnHTextBox.KeyDown += ctnHTextBox_KeyDown;
@@ -243,12 +256,12 @@
             ctnLTextBox.BottomBorderColor = Color.Black;
             ctnLTextBox.BottomBorderOnFocusColor = Color.Blue;
             ctnLTextBox.Cursor = Cursors.IBeam;
-            ctnLTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ctnLTextBox.Location = new Point(150, 181);
+            ctnLTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            ctnLTextBox.Location = new Point(366, 260);
             ctnLTextBox.Margin = new Padding(3, 2, 3, 2);
             ctnLTextBox.Name = "ctnLTextBox";
             ctnLTextBox.PlaceholderText = "Ctn L";
-            ctnLTextBox.Size = new Size(38, 18);
+            ctnLTextBox.Size = new Size(70, 30);
             ctnLTextBox.TabIndex = 16;
             ctnLTextBox.TextAlign = HorizontalAlignment.Center;
             ctnLTextBox.KeyDown += ctnLTextBox_KeyDown;
@@ -260,11 +273,11 @@
             wattsTextBox.BottomBorderOnFocusColor = Color.Blue;
             wattsTextBox.Cursor = Cursors.IBeam;
             wattsTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            wattsTextBox.Location = new Point(544, 138);
+            wattsTextBox.Location = new Point(214, 179);
             wattsTextBox.Margin = new Padding(3, 2, 3, 2);
             wattsTextBox.Name = "wattsTextBox";
             wattsTextBox.PlaceholderText = "功率 Watts";
-            wattsTextBox.Size = new Size(81, 19);
+            wattsTextBox.Size = new Size(90, 30);
             wattsTextBox.TabIndex = 14;
             wattsTextBox.TextAlign = HorizontalAlignment.Center;
             wattsTextBox.KeyDown += wattsTextBox_KeyDown;
@@ -275,12 +288,12 @@
             avTextbox.BottomBorderColor = Color.Black;
             avTextbox.BottomBorderOnFocusColor = Color.Blue;
             avTextbox.Cursor = Cursors.IBeam;
-            avTextbox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            avTextbox.Location = new Point(574, 182);
+            avTextbox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            avTextbox.Location = new Point(145, 179);
             avTextbox.Margin = new Padding(3, 2, 3, 2);
             avTextbox.Name = "avTextbox";
             avTextbox.PlaceholderText = "电源AV";
-            avTextbox.Size = new Size(51, 19);
+            avTextbox.Size = new Size(55, 30);
             avTextbox.TabIndex = 12;
             avTextbox.TextAlign = HorizontalAlignment.Center;
             avTextbox.KeyDown += avTextbox_KeyDown;
@@ -291,14 +304,15 @@
             colorTextBox.BottomBorderColor = Color.Black;
             colorTextBox.BottomBorderOnFocusColor = Color.Blue;
             colorTextBox.Cursor = Cursors.IBeam;
-            colorTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            colorTextBox.Location = new Point(262, 139);
+            colorTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            colorTextBox.Location = new Point(145, 140);
             colorTextBox.Margin = new Padding(3, 2, 3, 2);
             colorTextBox.Name = "colorTextBox";
             colorTextBox.PlaceholderText = "颜色 Color";
-            colorTextBox.Size = new Size(165, 19);
+            colorTextBox.Size = new Size(155, 30);
             colorTextBox.TabIndex = 10;
             colorTextBox.TextAlign = HorizontalAlignment.Center;
+            colorTextBox.TextChanged += colorTextBox_TextChanged;
             colorTextBox.KeyDown += colorTextBox_KeyDown;
             // 
             // itemCodeTextBox
@@ -307,12 +321,12 @@
             itemCodeTextBox.BottomBorderColor = Color.Black;
             itemCodeTextBox.BottomBorderOnFocusColor = Color.Blue;
             itemCodeTextBox.Cursor = Cursors.IBeam;
-            itemCodeTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            itemCodeTextBox.Location = new Point(150, 139);
+            itemCodeTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            itemCodeTextBox.Location = new Point(266, 98);
             itemCodeTextBox.Margin = new Padding(3, 2, 3, 2);
             itemCodeTextBox.Name = "itemCodeTextBox";
             itemCodeTextBox.PlaceholderText = "Item Code";
-            itemCodeTextBox.Size = new Size(95, 19);
+            itemCodeTextBox.Size = new Size(100, 30);
             itemCodeTextBox.TabIndex = 5;
             itemCodeTextBox.TextAlign = HorizontalAlignment.Center;
             itemCodeTextBox.KeyDown += itemCodeTextBox_KeyDown;
@@ -324,11 +338,11 @@
             descriptionTextBox.BottomBorderOnFocusColor = Color.Blue;
             descriptionTextBox.Cursor = Cursors.IBeam;
             descriptionTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            descriptionTextBox.Location = new Point(444, 101);
+            descriptionTextBox.Location = new Point(306, 140);
             descriptionTextBox.Margin = new Padding(3, 2, 3, 2);
             descriptionTextBox.Name = "descriptionTextBox";
             descriptionTextBox.PlaceholderText = "规格 Description";
-            descriptionTextBox.Size = new Size(181, 19);
+            descriptionTextBox.Size = new Size(227, 30);
             descriptionTextBox.TabIndex = 11;
             descriptionTextBox.TextAlign = HorizontalAlignment.Center;
             descriptionTextBox.KeyDown += descriptionTextBox_KeyDown;
@@ -339,12 +353,12 @@
             refTextBox.BottomBorderColor = Color.Black;
             refTextBox.BottomBorderOnFocusColor = Color.Blue;
             refTextBox.Cursor = Cursors.IBeam;
-            refTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            refTextBox.Location = new Point(262, 101);
+            refTextBox.Font = new Font("Microsoft Sans Serif", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            refTextBox.Location = new Point(372, 98);
             refTextBox.Margin = new Padding(3, 2, 3, 2);
             refTextBox.Name = "refTextBox";
             refTextBox.PlaceholderText = "工厂型号 Ref.code";
-            refTextBox.Size = new Size(165, 19);
+            refTextBox.Size = new Size(165, 30);
             refTextBox.TabIndex = 9;
             refTextBox.TextAlign = HorizontalAlignment.Center;
             refTextBox.KeyDown += refTextBox_KeyDown;
@@ -355,12 +369,12 @@
             sortTextBox.BottomBorderColor = Color.Black;
             sortTextBox.BottomBorderOnFocusColor = Color.Blue;
             sortTextBox.Cursor = Cursors.IBeam;
-            sortTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            sortTextBox.Location = new Point(150, 101);
+            sortTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            sortTextBox.Location = new Point(145, 98);
             sortTextBox.Margin = new Padding(3, 2, 3, 2);
             sortTextBox.Name = "sortTextBox";
             sortTextBox.PlaceholderText = "类别Sort";
-            sortTextBox.Size = new Size(95, 19);
+            sortTextBox.Size = new Size(115, 30);
             sortTextBox.TabIndex = 0;
             sortTextBox.TextAlign = HorizontalAlignment.Center;
             sortTextBox.KeyDown += sortTextBox_KeyDown;
@@ -401,11 +415,11 @@
             CategoryCB.Items.AddRange(new object[] { "--Category--", "GS Ceiling and Chandelier Lights", "GS Crystal Lights", "GS Fan", "GS Panel Lights", "GS Strip Lights", "New Chandelier Lights" });
             CategoryCB.ListBackColor = Color.White;
             CategoryCB.ListTextColor = Color.Black;
-            CategoryCB.Location = new Point(262, 214);
+            CategoryCB.Location = new Point(394, 220);
             CategoryCB.Margin = new Padding(3, 2, 3, 2);
             CategoryCB.MinimumSize = new Size(172, 0);
             CategoryCB.Name = "CategoryCB";
-            CategoryCB.Size = new Size(181, 24);
+            CategoryCB.Size = new Size(244, 24);
             CategoryCB.TabIndex = 13;
             CategoryCB.KeyDown += warehouseComboBox_KeyDown;
             // 
@@ -428,7 +442,7 @@
             AddPhotoBTN.ForeColor = SystemColors.ControlLightLight;
             AddPhotoBTN.HoverForeColor1 = Color.SteelBlue;
             AddPhotoBTN.HoverImage1 = null;
-            AddPhotoBTN.Location = new Point(3, 176);
+            AddPhotoBTN.Location = new Point(5, 188);
             AddPhotoBTN.Margin = new Padding(3, 2, 3, 2);
             AddPhotoBTN.Name = "AddPhotoBTN";
             AddPhotoBTN.NormalForeColor1 = Color.Black;
@@ -446,25 +460,13 @@
             // 
             SelectImagePB.Cursor = Cursors.Hand;
             SelectImagePB.Image = Properties.Resources.icons8_image_100;
-            SelectImagePB.Location = new Point(17, 64);
+            SelectImagePB.Location = new Point(19, 76);
             SelectImagePB.Margin = new Padding(3, 2, 3, 2);
             SelectImagePB.Name = "SelectImagePB";
             SelectImagePB.Size = new Size(107, 100);
             SelectImagePB.SizeMode = PictureBoxSizeMode.StretchImage;
             SelectImagePB.TabIndex = 1;
             SelectImagePB.TabStop = false;
-            // 
-            // CloseModal
-            // 
-            CloseModal.FlatAppearance.BorderSize = 0;
-            CloseModal.FlatStyle = FlatStyle.Flat;
-            CloseModal.Image = Properties.Resources.icons8_cancel_30;
-            CloseModal.Location = new Point(624, 2);
-            CloseModal.Name = "CloseModal";
-            CloseModal.Size = new Size(35, 23);
-            CloseModal.TabIndex = 26;
-            CloseModal.UseVisualStyleBackColor = true;
-            CloseModal.Click += CloseModal_click;
             // 
             // WarehouseModalForm
             // 
@@ -479,9 +481,11 @@
             Margin = new Padding(3, 2, 3, 2);
             MinimumSize = new Size(686, 398);
             Name = "WarehouseModalForm";
+            Opacity = 0.9D;
             Padding = new Padding(13, 12, 13, 12);
             StartPosition = FormStartPosition.CenterParent;
             Text = "WarehouseModalForm";
+            Load += WarehouseModalForm_Load;
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SelectImagePB).EndInit();

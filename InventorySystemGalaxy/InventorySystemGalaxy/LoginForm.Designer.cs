@@ -108,6 +108,7 @@
             UserTxtBox.Size = new Size(209, 30);
             UserTxtBox.TabIndex = 4;
             UserTxtBox.TextAlign = HorizontalAlignment.Center;
+            UserTxtBox.KeyPress += UserTxtBox_KeyPress;
             // 
             // panel1
             // 
@@ -175,6 +176,7 @@
             Padding = new Padding(45);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
+            Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -186,10 +188,10 @@
         private PictureBox pictureBox2;
         private CustomButton loginBtn;
         private CustomTextBox PassTxtBox;
-        private CustomTextBox UserTxtBox;
         private Panel panel1;
         private Panel panel2;
         private Button CloseBTN;
         private Button MinBtn;
+        private CustomTextBox UserTxtBox;
     }
 }
