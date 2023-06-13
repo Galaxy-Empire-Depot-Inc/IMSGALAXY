@@ -13,8 +13,8 @@ namespace InventorySystemGalaxy.Classes
         [FirestoreProperty]
         public int id { get; set; }
         [FirestoreProperty]
-        public string username { get; set; }
+        public string Username { get; set; }
         [FirestoreProperty]
-        public string password { get; set; }
+        public string Password { get; set; }
     }
 }
