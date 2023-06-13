@@ -176,6 +176,7 @@
             Padding = new Padding(45);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
+            Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
