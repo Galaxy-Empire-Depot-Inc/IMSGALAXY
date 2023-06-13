@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeMessageForm));
             panel1 = new Panel();
             button1 = new Button();
             label1 = new Label();
@@ -78,6 +79,7 @@
             Controls.Add(button1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "WelcomeMessageForm";
             ResumeLayout(false);
             PerformLayout();

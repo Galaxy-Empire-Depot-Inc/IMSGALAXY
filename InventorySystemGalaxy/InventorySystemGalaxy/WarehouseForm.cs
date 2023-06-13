@@ -16,5 +16,12 @@ namespace InventorySystemGalaxy
         {
             InitializeComponent();
         }
+
+        private void ShowModal_Click(object sender, EventArgs e)
+        {
+            WarehouseModalForm warehouseModalForm = new WarehouseModalForm();
+            warehouseModalForm.ShowDialog();
+            warehouseModalForm.StartPosition = FormStartPosition.CenterParent;
+        }
     }
 }

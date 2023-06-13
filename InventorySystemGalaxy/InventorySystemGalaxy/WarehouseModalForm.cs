@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Cloud.Firestore;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,19 +10,24 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Cloud.Storage.V1;
+
 
 namespace InventorySystemGalaxy
 {
     public partial class WarehouseModalForm : Form
     {
 
-        static MySqlConnection connection = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
-        MySqlCommand command;
+        FirestoreDb db;
+
+        /*static MySqlConnection connection = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
+        MySqlCommand command;*/
 
         public WarehouseModalForm()
         {
             InitializeComponent();
             CategoryCB.SelectedIndex = 0;
+            WarehouseCB.SelectedIndex = 0;
 
         }
 
@@ -140,41 +146,75 @@ namespace InventorySystemGalaxy
 
         private void srpTextBox_TextChanged(object sender, EventArgs e)
         {
-            double srp;
+            /*double srp;
             double dp;
             string srpText = srpTextBox.Text;
             srp = double.Parse(srpText);
             dp = (double)(srp * .50);
-            dpTextBox.Text = dp.ToString();
+            dpTextBox.Text = dp.ToString();*/
 
         }
 
         private void Add_UpdateBTN_Click(object sender, EventArgs e)
         {
 
+            //addProduct();
+            addStorageImage();
+
+            // DocumentReference documentReference = db.Collection("product")
+        }
+
+        private async void addStorageImage()
+        {
+            if (SelectImagePB.Image != null)
+            {
+                // Convert the image to byte array
+                byte[] imageBytes = null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    SelectImagePB.Image.Save(ms, SelectImagePB.Image.RawFormat);
+                    imageBytes = ms.ToArray();
+                }
+
+                // Upload the image to Firebase Storage
+                string bucketName = "imsgalaxy-f7419.appspot.com";
+                string destinationPath = "images/";
+
+                StorageClient storage = StorageClient.Create();
+                using (MemoryStream stream = new MemoryStream(imageBytes))
+                {
+                    await storage.UploadObjectAsync(bucketName, destinationPath, null, stream);
+                }
+
+                MessageBox.Show("Image uploaded successfully!");
+            }
+            else
+            {
+                MessageBox.Show("No image selected!");
+            }
         }
 
         private void searchQuery()
         {
-            string searchQuery = "SELECT item_code FROM product_table WHERE item_code='" + itemCodeTextBox.Text + "'";
-            MySqlDataAdapter adapter = new MySqlDataAdapter(searchQuery, connection);
+            /* string searchQuery = "SELECT item_code FROM product_table WHERE item_code='" + itemCodeTextBox.Text + "'";
+             MySqlDataAdapter adapter = new MySqlDataAdapter(searchQuery, connection);
 
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            if (dataTable.Rows.Count > 0)
-            {
-                MessageBox.Show("Item Code is already taken");
-            }
-            else
-            {
-                addProduct();
-            }
+             DataTable dataTable = new DataTable();
+             adapter.Fill(dataTable);
+             if (dataTable.Rows.Count > 0)
+             {
+                 MessageBox.Show("Item Code is already taken");
+             }
+             else
+             {
+                 addProduct();
+             }*/
         }
 
-        public void addProduct()
+        void addProduct()
         {
 
-            Image pictureImage = SelectImagePB.Image;
+            /*Image pictureImage = SelectImagePB.Image;
             ImageConverter Converter = new ImageConverter();
             var ImageConvert = Converter.ConvertTo(pictureImage, typeof(byte[]));
 
@@ -245,8 +285,48 @@ namespace InventorySystemGalaxy
                 }
                 connection.Close();
 
-            }
+            }*/
 
+            string ITEMCODE = itemCodeTextBox.Text;
+            string selectedWarehouse = WarehouseCB.GetItemText(WarehouseCB.SelectedItem);
+            string selectedCategory = WarehouseCB.GetItemText(CategoryCB.SelectedItem);
+
+            if (WarehouseCB.SelectedIndex == 0 || CategoryCB.SelectedIndex == 0)
+            {
+
+                MessageBox.Show("SELECT ITEm");
+
+
+            }
+            else
+            {
+                DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
+                Dictionary<string, object> dict = new Dictionary<string, object>()
+                {
+
+                    {"Sort", sortTextBox.Text},
+                    {"Item_code", itemCodeTextBox.Text},
+                    {"Ref_code", refTextBox.Text},
+                    {"Srp", srpTextBox.Text},
+                    {"Colour", colorTextBox.Text},
+                    {"Description", descriptionTextBox.Text},
+                    {"Dp", dpTextBox.Text},
+                    {"Av", avTextbox.Text},
+                    {"Watts", wattsTextBox.Text},
+                    {"ProductSize", sizeTextBox.Text},
+                    {"Warehouse", selectedWarehouse},
+                    {"Category", selectedCategory},
+                    {"Box", boxTextBox.Text},
+                    {"Qty", qtyTextBox.Text},
+                    {"CtlH", ctnHTextBox.Text},
+                    {"CtlW", ctnWTextBox.Text},
+                    {"CtlL", ctnLTextBox.Text}
+                };
+
+                documentReference.SetAsync(dict);
+                MessageBox.Show("ADDED SUCCESSFULLY");
+
+            }
 
         }
 
@@ -283,9 +363,35 @@ namespace InventorySystemGalaxy
             SelectImagePB.Image = null;
         }
 
-        private void CloseModal_click (object sender, EventArgs e)
+        private void CloseModal_click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void WarehouseModalForm_Load(object sender, EventArgs e)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            db = FirestoreDb.Create("imsgalaxy-f7419");
+        }
+
+        private void colorTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void srpTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // Allowing only one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

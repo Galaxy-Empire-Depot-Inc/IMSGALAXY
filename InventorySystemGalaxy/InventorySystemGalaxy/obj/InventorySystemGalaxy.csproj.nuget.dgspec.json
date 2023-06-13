@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[3.3.0, )"
             },
+            "Google.Cloud.Storage.V1": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.33, )"

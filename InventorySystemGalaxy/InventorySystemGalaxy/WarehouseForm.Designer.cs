@@ -30,19 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseForm));
             label1 = new Label();
-            customButton1 = new CustomButton();
+            ShowModal = new CustomButton();
             panel1 = new Panel();
             panel6 = new Panel();
             employeeTable = new DataGridView();
-            panel3 = new Panel();
-            panel4 = new Panel();
-            panel5 = new Panel();
-            pictureBox1 = new PictureBox();
-            customTextBox1 = new CustomTextBox();
-            panel2 = new Panel();
-            pictureBox2 = new PictureBox();
-            panel7 = new Panel();
-            customTextBox2 = new CustomTextBox();
             sortLabel = new DataGridViewTextBoxColumn();
             itemCodeLabel = new DataGridViewTextBoxColumn();
             refCodeLabel = new DataGridViewTextBoxColumn();
@@ -60,16 +51,25 @@
             dpLabel = new DataGridViewTextBoxColumn();
             boxLabel = new DataGridViewTextBoxColumn();
             qtyLabel = new DataGridViewTextBoxColumn();
+            panel3 = new Panel();
+            panel4 = new Panel();
+            panel7 = new Panel();
+            pictureBox2 = new PictureBox();
+            customTextBox2 = new CustomTextBox();
+            panel5 = new Panel();
+            pictureBox1 = new PictureBox();
+            customTextBox1 = new CustomTextBox();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)employeeTable).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -83,28 +83,29 @@
             label1.TabIndex = 1;
             label1.Text = "Warehouse(ALL)";
             // 
-            // customButton1
+            // ShowModal
             // 
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            customButton1.ForeColor = Color.White;
-            customButton1.HoverForeColor1 = Color.Black;
-            customButton1.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
-            customButton1.Image = Properties.Resources.icons8_add_100__1___1_;
-            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            customButton1.Location = new Point(7, 42);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
-            customButton1.OnFocusEnterImage = null;
-            customButton1.OnFocusLeaveImage = null;
-            customButton1.Padding = new Padding(10);
-            customButton1.Size = new Size(115, 50);
-            customButton1.TabIndex = 1;
-            customButton1.Text = "   New";
-            customButton1.TextAlign = ContentAlignment.MiddleLeft;
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = true;
+            ShowModal.FlatStyle = FlatStyle.Flat;
+            ShowModal.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            ShowModal.ForeColor = Color.White;
+            ShowModal.HoverForeColor1 = Color.Black;
+            ShowModal.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
+            ShowModal.Image = Properties.Resources.icons8_add_100__1___1_;
+            ShowModal.ImageAlign = ContentAlignment.MiddleLeft;
+            ShowModal.Location = new Point(7, 42);
+            ShowModal.Name = "ShowModal";
+            ShowModal.NormalForeColor1 = Color.White;
+            ShowModal.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
+            ShowModal.OnFocusEnterImage = null;
+            ShowModal.OnFocusLeaveImage = null;
+            ShowModal.Padding = new Padding(10);
+            ShowModal.Size = new Size(115, 50);
+            ShowModal.TabIndex = 1;
+            ShowModal.Text = "   New";
+            ShowModal.TextAlign = ContentAlignment.MiddleLeft;
+            ShowModal.Tooltip1 = null;
+            ShowModal.UseVisualStyleBackColor = true;
+            ShowModal.Click += ShowModal_Click;
             // 
             // panel1
             // 
@@ -151,107 +152,6 @@
             employeeTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeTable.Size = new Size(794, 533);
             employeeTable.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.Snow;
-            panel3.Controls.Add(panel4);
-            panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(5, 55);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(5);
-            panel3.Size = new Size(804, 110);
-            panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.FromArgb(59, 116, 192);
-            panel4.Controls.Add(panel7);
-            panel4.Controls.Add(panel5);
-            panel4.Controls.Add(customButton1);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(5, 5);
-            panel4.Name = "panel4";
-            panel4.Padding = new Padding(5);
-            panel4.Size = new Size(794, 100);
-            panel4.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel5.Controls.Add(pictureBox1);
-            panel5.Controls.Add(customTextBox1);
-            panel5.Location = new Point(1140, 52);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(240, 50);
-            panel5.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.images_removebg_preview;
-            pictureBox1.Location = new Point(20, 13);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(35, 35);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            // 
-            // customTextBox1
-            // 
-            customTextBox1.BorderStyle = BorderStyle.None;
-            customTextBox1.BottomBorderColor = Color.LightSlateGray;
-            customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
-            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(61, 25);
-            customTextBox1.Name = "customTextBox1";
-            customTextBox1.PlaceholderText = "Search";
-            customTextBox1.Size = new Size(177, 23);
-            customTextBox1.TabIndex = 0;
-            customTextBox1.TextAlign = HorizontalAlignment.Center;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.AliceBlue;
-            panel2.Controls.Add(label1);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(5, 5);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(5);
-            panel2.Size = new Size(804, 50);
-            panel2.TabIndex = 0;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.images_removebg_preview;
-            pictureBox2.Location = new Point(20, 13);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(35, 35);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
-            // 
-            // panel7
-            // 
-            panel7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel7.Controls.Add(pictureBox2);
-            panel7.Controls.Add(customTextBox2);
-            panel7.Location = new Point(546, 42);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(240, 50);
-            panel7.TabIndex = 2;
-            // 
-            // customTextBox2
-            // 
-            customTextBox2.BorderStyle = BorderStyle.None;
-            customTextBox2.BottomBorderColor = Color.LightSlateGray;
-            customTextBox2.BottomBorderOnFocusColor = Color.CornflowerBlue;
-            customTextBox2.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox2.Location = new Point(61, 25);
-            customTextBox2.Name = "customTextBox2";
-            customTextBox2.PlaceholderText = "Search";
-            customTextBox2.Size = new Size(177, 23);
-            customTextBox2.TabIndex = 0;
-            customTextBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // sortLabel
             // 
@@ -373,6 +273,107 @@
             qtyLabel.Name = "qtyLabel";
             qtyLabel.ReadOnly = true;
             // 
+            // panel3
+            // 
+            panel3.BackColor = Color.Snow;
+            panel3.Controls.Add(panel4);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(5, 55);
+            panel3.Name = "panel3";
+            panel3.Padding = new Padding(5);
+            panel3.Size = new Size(804, 110);
+            panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(59, 116, 192);
+            panel4.Controls.Add(panel7);
+            panel4.Controls.Add(panel5);
+            panel4.Controls.Add(ShowModal);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(5, 5);
+            panel4.Name = "panel4";
+            panel4.Padding = new Padding(5);
+            panel4.Size = new Size(794, 100);
+            panel4.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            panel7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel7.Controls.Add(pictureBox2);
+            panel7.Controls.Add(customTextBox2);
+            panel7.Location = new Point(546, 42);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(240, 50);
+            panel7.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.images_removebg_preview;
+            pictureBox2.Location = new Point(20, 13);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(35, 35);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            // 
+            // customTextBox2
+            // 
+            customTextBox2.BorderStyle = BorderStyle.None;
+            customTextBox2.BottomBorderColor = Color.LightSlateGray;
+            customTextBox2.BottomBorderOnFocusColor = Color.CornflowerBlue;
+            customTextBox2.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            customTextBox2.Location = new Point(61, 25);
+            customTextBox2.Name = "customTextBox2";
+            customTextBox2.PlaceholderText = "Search";
+            customTextBox2.Size = new Size(177, 23);
+            customTextBox2.TabIndex = 0;
+            customTextBox2.TextAlign = HorizontalAlignment.Center;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel5.Controls.Add(pictureBox1);
+            panel5.Controls.Add(customTextBox1);
+            panel5.Location = new Point(1140, 52);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(240, 50);
+            panel5.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.images_removebg_preview;
+            pictureBox1.Location = new Point(20, 13);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(35, 35);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // customTextBox1
+            // 
+            customTextBox1.BorderStyle = BorderStyle.None;
+            customTextBox1.BottomBorderColor = Color.LightSlateGray;
+            customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
+            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            customTextBox1.Location = new Point(61, 25);
+            customTextBox1.Name = "customTextBox1";
+            customTextBox1.PlaceholderText = "Search";
+            customTextBox1.Size = new Size(177, 23);
+            customTextBox1.TabIndex = 0;
+            customTextBox1.TextAlign = HorizontalAlignment.Center;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.AliceBlue;
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(5, 5);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(5);
+            panel2.Size = new Size(804, 50);
+            panel2.TabIndex = 0;
+            // 
             // WarehouseForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
@@ -392,19 +393,19 @@
             ((System.ComponentModel.ISupportInitialize)employeeTable).EndInit();
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel7.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Label label1;
-        private CustomButton customButton1;
+        private CustomButton ShowModal;
         private Panel panel1;
         private Panel panel6;
         private DataGridView employeeTable;

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sRucdpkNPtgWffEWyGF/bon+ADTzpW5qHCzYhWxaUKD3iD0yvjjx5dBt1u+sU1dAkWztD1Rt30rc8B/kltkWMg==",
+  "dgSpecHash": "PcL69jyFrk2mPkGN0kt1RJKDKpNGTblNBXgow1ILgz6yNPzuLyAy+YZy+Uw9mXnESp996k5Zz7g5RLjZ+Middg==",
   "success": true,
   "projectFilePath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
   "expectedPackageFiles": [
@@ -8,12 +8,15 @@
     "C:\\Users\\jhoey\\.nuget\\packages\\google.api.commonprotos\\2.7.0\\google.api.commonprotos.2.7.0.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.api.gax\\4.3.1\\google.api.gax.4.3.1.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.api.gax.grpc\\4.3.1\\google.api.gax.grpc.4.3.1.nupkg.sha512",
-    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis\\1.58.0\\google.apis.1.58.0.nupkg.sha512",
-    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis.auth\\1.58.0\\google.apis.auth.1.58.0.nupkg.sha512",
-    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis.core\\1.58.0\\google.apis.core.1.58.0.nupkg.sha512",
+    "C:\\Users\\jhoey\\.nuget\\packages\\google.api.gax.rest\\4.3.1\\google.api.gax.rest.4.3.1.nupkg.sha512",
+    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis\\1.60.0\\google.apis.1.60.0.nupkg.sha512",
+    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis.auth\\1.60.0\\google.apis.auth.1.60.0.nupkg.sha512",
+    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis.core\\1.60.0\\google.apis.core.1.60.0.nupkg.sha512",
+    "C:\\Users\\jhoey\\.nuget\\packages\\google.apis.storage.v1\\1.60.0.2742\\google.apis.storage.v1.1.60.0.2742.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.cloud.firestore\\3.3.0\\google.cloud.firestore.3.3.0.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.cloud.firestore.v1\\3.3.0\\google.cloud.firestore.v1.3.3.0.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.cloud.location\\2.0.0\\google.cloud.location.2.0.0.nupkg.sha512",
+    "C:\\Users\\jhoey\\.nuget\\packages\\google.cloud.storage.v1\\4.5.0\\google.cloud.storage.v1.4.5.0.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.longrunning\\3.0.0\\google.longrunning.3.0.0.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\grpc.auth\\2.51.0\\grpc.auth.2.51.0.nupkg.sha512",
@@ -58,12 +61,5 @@
     "C:\\Users\\jhoey\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

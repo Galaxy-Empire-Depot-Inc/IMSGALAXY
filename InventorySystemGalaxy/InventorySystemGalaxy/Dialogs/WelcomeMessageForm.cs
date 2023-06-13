@@ -24,7 +24,7 @@ namespace InventorySystemGalaxy
             thread = new Thread(openForm);
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-            
+
             /*HomeScreenForm HMSF = new HomeScreenForm();
             HMSF.ShowDialog();
             LoginForm LoginForm = new LoginForm();

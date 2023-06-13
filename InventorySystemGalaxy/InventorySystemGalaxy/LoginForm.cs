@@ -17,18 +17,16 @@ namespace InventorySystemGalaxy
     public partial class LoginForm : Form
     {
 
-<<<<<<< HEAD
-       // MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
-=======
-<<<<<<< HEAD
+        FirestoreDb db;
+
+
+        // MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
+
         MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
         public static String getUserName;
-=======
-        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
->>>>>>> dc3502728d3742ed5d119e66b29bd8274b0552c0
 
+        //MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
 
->>>>>>> 9f8b4407e6595af3b51886765d86c538b49dad1f
         public LoginForm()
         {
 
@@ -56,7 +54,7 @@ namespace InventorySystemGalaxy
         private void loginBtn_Click(object sender, EventArgs e)
         {
             LoginData();
-            
+
         }
 
         private void CloseBTN_Click(object sender, EventArgs e)
@@ -70,89 +68,51 @@ namespace InventorySystemGalaxy
 
         }
 
-        public void LoginData()
+        async void LoginData()
         {
 
             try
             {
 
-                /*if (UserTxtBox.Text == "")
-                {
-                    MessageBox.Show("INPUT USERNAME");
-                }
-                else if (PassTxtBox.Text == "")
-                {
-                    MessageBox.Show("INPUT Password");
-                }
-                else
-                {
-
-                    getUserName = UserTxtBox.Text;
-
-                    String username, password;
-                    username = UserTxtBox.Text;
-                    password = PassTxtBox.Text;
-                    string query = "SELECT * FROM admin_table WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_pass = '" + PassTxtBox.Text + "'";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    if (dataTable.Rows.Count > 0)
-                    {
-                        username = UserTxtBox.Text;
-                        password = PassTxtBox.Text;
-
-                        // MessageBox.Show("LOGIN CORRECT");
-
-                        WelcomeMessageForm messageBoxDialog = new WelcomeMessageForm();
-                        messageBoxDialog.ShowDialog();
-                        this.Close();
-                        ClearTxtBoxes();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("INCORRECT DETAILS", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ClearTxtBoxes();
-
-                    }
-
-                }*/
-
-
-                /*string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
-                Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
-                FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");
-
-                MessageBox.Show("Successfully Bitch");*/
-
                 string username = UserTxtBox.Text;
                 string userpass = PassTxtBox.Text;
 
-
                 DocumentReference documentReference = db.Collection("Admin_User").Document(username);
-                AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
+                //   DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
 
-                if (adminData != null)
+                AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
+                 
+                if(adminData != null) 
                 {
 
-                    if (userpass == adminData.pass)
+                    if (userpass == adminData.password)
                     {
-                        MessageBox.Show("LOGIN");
+
+                        WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
+                        this.Hide();
+                        welcomeMessageForm.ShowDialog();
+
                     }
                     else
                     {
-                        MessageBox.Show("FAILED TO LOGIN");
+                        MessageBox.Show("INCORRECT");
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("No data found");
+                    MessageBox.Show("Not FOUND");
                 }
 
+                /*if (documentSnapshot.Exists)
+                {
+                    AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
+                    MessageBox.Show("LOGIN");
+                }
+                else
+                {
+                    MessageBox.Show("NOT LOGIN");
+                }*/
 
             }
             catch (Exception ex)
@@ -191,6 +151,13 @@ namespace InventorySystemGalaxy
             {
                 LoginData();
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            db = FirestoreDb.Create("imsgalaxy-f7419");
         }
     }
 }
