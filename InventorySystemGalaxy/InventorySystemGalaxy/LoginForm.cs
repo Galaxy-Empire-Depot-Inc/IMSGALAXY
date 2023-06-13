@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using Google.Cloud.Firestore;
 
 namespace InventorySystemGalaxy
 {
     public partial class LoginForm : Form
     {
+        
 
-        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
+            FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");
 
 
         public LoginForm()
@@ -60,59 +62,61 @@ namespace InventorySystemGalaxy
 
         public void LoginData()
         {
-            try
-            {
+            /* try
+             {
 
 
-                if (UserTxtBox.Text == "")
-                {
-                    MessageBox.Show("INPUT USERNAME");
-                }
-                else if (PassTxtBox.Text == "")
-                {
-                    MessageBox.Show("INPUT Password");
-                }
-                else
-                {
-                    String username, password;
-                    username = UserTxtBox.Text;
-                    password = PassTxtBox.Text;
-                    string query = "SELECT * FROM admin_table WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_pass = '" + PassTxtBox.Text + "'";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                 if (UserTxtBox.Text == "")
+                 {
+                     MessageBox.Show("INPUT USERNAME");
+                 }
+                 else if (PassTxtBox.Text == "")
+                 {
+                     MessageBox.Show("INPUT Password");
+                 }
+                 else
+                 {
+                     String username, password;
+                     username = UserTxtBox.Text;
+                     password = PassTxtBox.Text;
+                     string query = "SELECT * FROM admin_table WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_pass = '" + PassTxtBox.Text + "'";
+                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
 
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                     DataTable dataTable = new DataTable();
+                     adapter.Fill(dataTable);
 
-                    if (dataTable.Rows.Count > 0)
-                    {
-                        username = UserTxtBox.Text;
-                        password = PassTxtBox.Text;
+                     if (dataTable.Rows.Count > 0)
+                     {
+                         username = UserTxtBox.Text;
+                         password = PassTxtBox.Text;
 
-                        // MessageBox.Show("LOGIN CORRECT");
+                         // MessageBox.Show("LOGIN CORRECT");
 
-                        WelcomeMessageForm messageBoxDialog = new WelcomeMessageForm();
-                        messageBoxDialog.ShowDialog();
-                        this.Close();
-                        ClearTxtBoxes();
+                         WelcomeMessageForm messageBoxDialog = new WelcomeMessageForm();
+                         messageBoxDialog.ShowDialog();
+                         this.Close();
+                         ClearTxtBoxes();
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("INCORRECT DETAILS", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ClearTxtBoxes();
+                     }
+                     else
+                     {
+                         MessageBox.Show("INCORRECT DETAILS", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         ClearTxtBoxes();
 
-                    }
+                     }
 
-                }
-
-
+                 }
 
 
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Not Connected");
-            }
+
+
+             }
+             catch (MySqlException ex)
+             {
+                 MessageBox.Show("Not Connected");
+             }*/
+
+            
         }
 
         private void ClearTxtBoxes()
@@ -137,6 +141,20 @@ namespace InventorySystemGalaxy
             {
 
                 LoginData();
+
+            }
+        }
+
+        async void GetData()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            DocumentReference documentReference=db.Collection("Admin_User").Document(UserTxtBox.Text);
+            DocumentSnapshot snapshot=await documentReference.GetSnapshotAsync();
+
+            if(snapshot.Exists)
+            {
+                Dictionary<string, object> admin = snapshot.ToDictionary(); 
 
             }
         }
