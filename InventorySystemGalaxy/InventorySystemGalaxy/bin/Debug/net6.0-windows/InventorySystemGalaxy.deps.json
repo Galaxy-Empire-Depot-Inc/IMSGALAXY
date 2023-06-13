@@ -10,6 +10,10 @@
         "dependencies": {
           "DynamicLanguageRuntime": "1.3.3",
           "Google.Cloud.Firestore": "3.3.0",
+<<<<<<< HEAD
+=======
+          "Google.Cloud.Firestore.V1": "3.3.0",
+>>>>>>> 237cdd8127faa25b149fc488e5db276b425f8d92
           "Google.Cloud.Storage.V1": "4.5.0",
           "MySql.Data": "8.0.33"
         },

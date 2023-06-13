@@ -45,11 +45,11 @@
             label1 = new Label();
             contactNoTextBox = new CustomTextBox();
             addPhotoBtn = new CustomButton();
-            pictureBox1 = new PictureBox();
+            imagePictureBox = new PictureBox();
             firstNameTextBox = new CustomTextBox();
             bgPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imagePictureBox).BeginInit();
             SuspendLayout();
             // 
             // bgPanel
@@ -70,7 +70,7 @@
             bgPanel.Controls.Add(label1);
             bgPanel.Controls.Add(contactNoTextBox);
             bgPanel.Controls.Add(addPhotoBtn);
-            bgPanel.Controls.Add(pictureBox1);
+            bgPanel.Controls.Add(imagePictureBox);
             bgPanel.Controls.Add(firstNameTextBox);
             bgPanel.Dock = DockStyle.Fill;
             bgPanel.Location = new Point(15, 15);
@@ -92,7 +92,6 @@
             // 
             // positionComboBox
             // 
-            positionComboBox.Enabled = false;
             positionComboBox.FormattingEnabled = true;
             positionComboBox.Items.AddRange(new object[] { "--Position--", "Accounting", "Customer Service", "Information Technology", "Sales Supervisor", "Warehouse Manager", "Warehouse Staff", "HR Manager" });
             positionComboBox.Location = new Point(10, 351);
@@ -108,7 +107,6 @@
             statusComboBox.Bordercolor = Color.DeepSkyBlue;
             statusComboBox.BorderSize = 2;
             statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            statusComboBox.Enabled = false;
             statusComboBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             statusComboBox.ForeColor = Color.DimGray;
             statusComboBox.FormattingEnabled = true;
@@ -169,7 +167,6 @@
             passwordTextbox.BorderStyle = BorderStyle.None;
             passwordTextbox.BottomBorderColor = Color.Black;
             passwordTextbox.BottomBorderOnFocusColor = Color.Blue;
-            passwordTextbox.Enabled = false;
             passwordTextbox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             passwordTextbox.Location = new Point(232, 483);
             passwordTextbox.Name = "passwordTextbox";
@@ -183,7 +180,6 @@
             usernameTextbox.BorderStyle = BorderStyle.None;
             usernameTextbox.BottomBorderColor = Color.Black;
             usernameTextbox.BottomBorderOnFocusColor = Color.Blue;
-            usernameTextbox.Enabled = false;
             usernameTextbox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             usernameTextbox.Location = new Point(10, 483);
             usernameTextbox.Name = "usernameTextbox";
@@ -209,7 +205,6 @@
             departmentTextBox.BorderStyle = BorderStyle.None;
             departmentTextBox.BottomBorderColor = Color.Black;
             departmentTextBox.BottomBorderOnFocusColor = Color.Blue;
-            departmentTextBox.Enabled = false;
             departmentTextBox.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             departmentTextBox.Location = new Point(232, 351);
             departmentTextBox.Name = "departmentTextBox";
@@ -224,7 +219,6 @@
             lastNameTextBox.BorderStyle = BorderStyle.None;
             lastNameTextBox.BottomBorderColor = Color.Black;
             lastNameTextBox.BottomBorderOnFocusColor = Color.Blue;
-            lastNameTextBox.Enabled = false;
             lastNameTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lastNameTextBox.Location = new Point(457, 257);
             lastNameTextBox.Name = "lastNameTextBox";
@@ -238,7 +232,6 @@
             idNumberTextBox.BorderStyle = BorderStyle.None;
             idNumberTextBox.BottomBorderColor = Color.Black;
             idNumberTextBox.BottomBorderOnFocusColor = Color.Blue;
-            idNumberTextBox.Enabled = false;
             idNumberTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             idNumberTextBox.Location = new Point(232, 304);
             idNumberTextBox.Name = "idNumberTextBox";
@@ -253,7 +246,6 @@
             middleNameTextBox.BorderStyle = BorderStyle.None;
             middleNameTextBox.BottomBorderColor = Color.Black;
             middleNameTextBox.BottomBorderOnFocusColor = Color.Blue;
-            middleNameTextBox.Enabled = false;
             middleNameTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             middleNameTextBox.Location = new Point(232, 257);
             middleNameTextBox.Name = "middleNameTextBox";
@@ -279,7 +271,6 @@
             contactNoTextBox.BorderStyle = BorderStyle.None;
             contactNoTextBox.BottomBorderColor = Color.Black;
             contactNoTextBox.BottomBorderOnFocusColor = Color.Blue;
-            contactNoTextBox.Enabled = false;
             contactNoTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             contactNoTextBox.Location = new Point(10, 303);
             contactNoTextBox.Name = "contactNoTextBox";
@@ -307,24 +298,26 @@
             addPhotoBtn.Text = "Add Photo";
             addPhotoBtn.Tooltip1 = null;
             addPhotoBtn.UseVisualStyleBackColor = false;
+            addPhotoBtn.Click += addPhotoBtn_Click;
             // 
-            // pictureBox1
+            // imagePictureBox
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.icons8_user_144__1_;
-            pictureBox1.Location = new Point(13, 61);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 125);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            imagePictureBox.BackColor = Color.Transparent;
+            imagePictureBox.Image = Properties.Resources.icons8_user_144__1_;
+            imagePictureBox.Location = new Point(13, 61);
+            imagePictureBox.Name = "imagePictureBox";
+            imagePictureBox.Size = new Size(125, 125);
+            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            imagePictureBox.TabIndex = 1;
+            imagePictureBox.TabStop = false;
+            imagePictureBox.DragDrop += imagePictureBox_DragDrop;
+            imagePictureBox.DragEnter += imagePictureBox_DragEnter;
             // 
             // firstNameTextBox
             // 
             firstNameTextBox.BorderStyle = BorderStyle.None;
             firstNameTextBox.BottomBorderColor = Color.Black;
             firstNameTextBox.BottomBorderOnFocusColor = Color.Blue;
-            firstNameTextBox.Enabled = false;
             firstNameTextBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             firstNameTextBox.Location = new Point(10, 257);
             firstNameTextBox.Name = "firstNameTextBox";
@@ -353,7 +346,7 @@
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imagePictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -362,7 +355,7 @@
         private Panel bgPanel;
         private Label label1;
         private CustomButton addPhotoBtn;
-        private PictureBox pictureBox1;
+        private PictureBox imagePictureBox;
         private CustomButton addBtn;
         private Label label2;
         public CustomButton updateBtn;

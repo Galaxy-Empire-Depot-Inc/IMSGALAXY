@@ -149,7 +149,7 @@ namespace InventorySystemGalaxy
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
             //LoginForm loginForm = new LoginForm();
-            lbl_GreetUser.Text = "Hi, @" + LoginForm.getUserName;
+/*            lbl_GreetUser.Text = "Hi, @" + LoginForm.getUserName;*/
             loadForm(new DashboardForm());
         }
     }
