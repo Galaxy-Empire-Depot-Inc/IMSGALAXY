@@ -11,7 +11,7 @@ namespace InventorySystemGalaxy
         [STAThread]
         static void Main()
         {
-<<<<<<< HEAD
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
 
@@ -19,12 +19,10 @@ namespace InventorySystemGalaxy
             ApplicationConfiguration.Initialize();
             Application.Run(new SplashScreen());
  
-=======
-            ApplicationConfiguration.Initialize();
-            Application.Run(new EmployeeForm());
 
+            //ApplicationConfiguration.Initialize();
+            //Application.Run(new EmployeeForm());
 
->>>>>>> 237cdd8127faa25b149fc488e5db276b425f8d92
 
 
         }

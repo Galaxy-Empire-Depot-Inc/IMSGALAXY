@@ -21,11 +21,15 @@ namespace InventorySystemGalaxy
     public partial class LoginForm : Form
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 
             FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");
 =======
 <<<<<<< HEAD
+=======
+
+>>>>>>> d4d70dc644b50c8e08abc8ced41cce6d27cdd5c0
 
         FirestoreDb db;
 >>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
@@ -38,9 +42,9 @@ namespace InventorySystemGalaxy
 
         //MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
 
-=======
+
         FirestoreDb firestoreDb;
->>>>>>> 237cdd8127faa25b149fc488e5db276b425f8d92
+
         public LoginForm()
         {
 
@@ -93,6 +97,7 @@ namespace InventorySystemGalaxy
             string username = UserTxtBox.Text.Trim();
             string password = PassTxtBox.Text;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                  if (UserTxtBox.Text == "")
                  {
@@ -148,6 +153,10 @@ namespace InventorySystemGalaxy
 =======
 <<<<<<< HEAD
                 string username = UserTxtBox.Text;
+=======
+
+               // string username = UserTxtBox.Text;
+>>>>>>> d4d70dc644b50c8e08abc8ced41cce6d27cdd5c0
                 string userpass = PassTxtBox.Text;
 
                 DocumentReference documentReference = db.Collection("Admin_User").Document(username);
@@ -158,7 +167,7 @@ namespace InventorySystemGalaxy
                 if(adminData != null) 
                 {
 
-                    if (userpass == adminData.password)
+                    if (userpass == adminData.Password)
                     {
 
                         WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
@@ -187,8 +196,8 @@ namespace InventorySystemGalaxy
                     MessageBox.Show("NOT LOGIN");
                 }*/
 
-=======
-            DocumentReference docRef = firestoreDb.Collection("Admin_User").Document(username);
+
+            /*DocumentReference docRef = firestoreDb.Collection("Admin_User").Document(username);
             AdminData data = docRef.GetSnapshotAsync().Result.ConvertTo<AdminData>();
 
 
@@ -202,12 +211,12 @@ namespace InventorySystemGalaxy
                 {
                     MessageBox.Show("Failed");
                 }
->>>>>>> 237cdd8127faa25b149fc488e5db276b425f8d92
+
             }
             else
             {
                 MessageBox.Show("Tang ina Mo");
-            }
+            }*/
 
 
 >>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
@@ -262,15 +271,14 @@ namespace InventorySystemGalaxy
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
-=======
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
+
+            /*string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            firestoreDb = FirestoreDb.Create("imsgalaxy-f7419");
->>>>>>> 237cdd8127faa25b149fc488e5db276b425f8d92
+            firestoreDb = FirestoreDb.Create("imsgalaxy-f7419");*/
         }
 >>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
     }
