@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EX8U6QxLg3tU+wkbPd4m6JGz/EJ9AM8YRr4WWX+W769B+RH43Z6VaBJHm+TNjPtCGr0epaeMO2Kt5kwE6IpFCw==",
+  "dgSpecHash": "6eYb0ddPMdNVDJWMTuo75fCoqW5sZkFyl/kva2bkxVGY4yEf1YeUggAhInpoNqhKMCE5tjY9mwOBDWtYJMQWbw==",
   "success": true,
   "projectFilePath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
   "expectedPackageFiles": [
@@ -61,12 +61,5 @@
     "C:\\Users\\jhoey\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\jhoey\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
