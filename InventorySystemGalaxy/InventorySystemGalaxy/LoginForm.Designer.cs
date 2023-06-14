@@ -191,6 +191,6 @@
         private Panel panel2;
         private Button CloseBTN;
         private Button MinBtn;
-        private CustomTextBox UserTxtBox;
+        public CustomTextBox UserTxtBox;
     }
 }

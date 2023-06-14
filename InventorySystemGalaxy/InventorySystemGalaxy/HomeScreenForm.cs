@@ -151,6 +151,11 @@ namespace InventorySystemGalaxy
             //LoginForm loginForm = new LoginForm();
 /*            lbl_GreetUser.Text = "Hi, @" + LoginForm.getUserName;*/
             loadForm(new DashboardForm());
+
+            LoginForm loginForm = new LoginForm();
+            lbl_GreetUser.Text = "Hi, " + loginForm.UserTxtBox.Text;
+
+
         }
     }
 }

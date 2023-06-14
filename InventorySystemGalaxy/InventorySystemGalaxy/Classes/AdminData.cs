@@ -11,7 +11,7 @@ namespace InventorySystemGalaxy.Classes
     internal class AdminData
     {
         [FirestoreProperty]
-        public int id { get; set; }
+        public int ID { get; set; }
         [FirestoreProperty]
         public string Username { get; set; }
         [FirestoreProperty]

@@ -19,6 +19,8 @@ namespace InventorySystemGalaxy
     {
 
         FirestoreDb db;
+        //FirestoreDb db = FirestoreDb.Create("<project-id>");
+        StorageClient storageClient = StorageClient.Create();
 
         /*static MySqlConnection connection = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
         MySqlCommand command;*/
@@ -166,7 +168,7 @@ namespace InventorySystemGalaxy
 
         private async void addStorageImage()
         {
-            if (SelectImagePB.Image != null)
+            /*if (SelectImagePB.Image != null)
             {
                 // Convert the image to byte array
                 byte[] imageBytes = null;
@@ -191,24 +193,43 @@ namespace InventorySystemGalaxy
             else
             {
                 MessageBox.Show("No image selected!");
+            }*/
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string imagePath = openFileDialog.FileName;
+
+                // Upload the image
+                string imageUrl = await UploadImageToStorage(imagePath);
+
+                // Save the URL in Firestore
+                DocumentReference documentReference = db.Collection("images").Document();
+                await documentReference.SetAsync(new { ImageUrl = imageUrl });
+
+                MessageBox.Show("Image uploaded successfully!");
             }
+
         }
+
+        async Task<string> UploadImageToStorage(string imagePath)
+        {
+            // Generate a unique file name for the image
+            string fileName = Guid.NewGuid().ToString();
+
+            // Upload the image to Cloud Storage
+            await storageClient.UploadObjectAsync("imsgalaxy-f7419.appspot.com", fileName, null, File.OpenRead(imagePath));
+
+            // Get the public URL of the uploaded image
+            string imageUrl = $"https://storage.googleapis.com/imsgalaxy-f7419.appspot.com/{fileName}";
+
+            return imageUrl;
+        }
+
 
         private void searchQuery()
         {
-            /* string searchQuery = "SELECT item_code FROM product_table WHERE item_code='" + itemCodeTextBox.Text + "'";
-             MySqlDataAdapter adapter = new MySqlDataAdapter(searchQuery, connection);
 
-             DataTable dataTable = new DataTable();
-             adapter.Fill(dataTable);
-             if (dataTable.Rows.Count > 0)
-             {
-                 MessageBox.Show("Item Code is already taken");
-             }
-             else
-             {
-                 addProduct();
-             }*/
         }
 
         void addProduct()
