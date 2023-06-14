@@ -10,45 +10,20 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using Google.Cloud.Firestore;
-<<<<<<< HEAD
-=======
+
+
 using InventorySystemGalaxy.Classes;
 using Google.Cloud.Firestore.V1;
->>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
+
 
 namespace InventorySystemGalaxy
 {
     public partial class LoginForm : Form
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-
-<<<<<<< HEAD
-        FirestoreDb db;
-        public static string username;
-=======
-            FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> d4d70dc644b50c8e08abc8ced41cce6d27cdd5c0
 
         FirestoreDb db;
->>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
 
-
-        // MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
-
-        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
-        public static String getUserName;
-
-        //MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
-
-
-        FirestoreDb firestoreDb;
->>>>>>> 4d71dce0076a8a08d1c42cdb9aa434519af6de75
+        public static string username, userpass;
 
         public LoginForm()
         {
@@ -95,116 +70,22 @@ namespace InventorySystemGalaxy
 
         async void LoginData()
         {
-<<<<<<< HEAD
-            /* try
-             {
-=======
->>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
+            
+                username = UserTxtBox.Text;
 
-            username = UserTxtBox.Text;
-            string password = PassTxtBox.Text;
+                userpass = PassTxtBox.Text;
 
-<<<<<<< HEAD
+
             DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
 
-            if (documentSnapshot.Exists)
-            {
-                AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
-                if (username == adminData.Username && password == adminData.Password)
-                {
-                    WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
-                    this.Hide();
-                    welcomeMessageForm.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("INCORRECT");
-                }
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-                 if (UserTxtBox.Text == "")
-                 {
-                     MessageBox.Show("INPUT USERNAME");
-                 }
-                 else if (PassTxtBox.Text == "")
-                 {
-                     MessageBox.Show("INPUT Password");
-                 }
-                 else
-                 {
-                     String username, password;
-                     username = UserTxtBox.Text;
-                     password = PassTxtBox.Text;
-                     string query = "SELECT * FROM admin_table WHERE admin_user = '" + UserTxtBox.Text + "' AND admin_pass = '" + PassTxtBox.Text + "'";
-                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-
-                     DataTable dataTable = new DataTable();
-                     adapter.Fill(dataTable);
-
-                     if (dataTable.Rows.Count > 0)
-                     {
-                         username = UserTxtBox.Text;
-                         password = PassTxtBox.Text;
-
-                         // MessageBox.Show("LOGIN CORRECT");
-
-                         WelcomeMessageForm messageBoxDialog = new WelcomeMessageForm();
-                         messageBoxDialog.ShowDialog();
-                         this.Close();
-                         ClearTxtBoxes();
-
-                     }
-                     else
-                     {
-                         MessageBox.Show("INCORRECT DETAILS", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                         ClearTxtBoxes();
-
-                     }
-
-                 }
-
-
-
-
-             }
-             catch (MySqlException ex)
-             {
-                 MessageBox.Show("Not Connected");
-             }*/
-
-            
-=======
-<<<<<<< HEAD
-                string username = UserTxtBox.Text;
-=======
-
-               // string username = UserTxtBox.Text;
->>>>>>> d4d70dc644b50c8e08abc8ced41cce6d27cdd5c0
-                string userpass = PassTxtBox.Text;
->>>>>>> 4d71dce0076a8a08d1c42cdb9aa434519af6de75
-
-                //MessageBox.Show("EXIST");
-
-            }
-            else
-            {
-                MessageBox.Show("NOT FOUND");
-
-            }
-
-            /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
-            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
-
-             AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
+            AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
 
             if (adminData != null)
             {
 
-                if (password == adminData.Password)
+                if (userpass == adminData.Password)
                 {
-
                     WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
                     this.Hide();
                     welcomeMessageForm.ShowDialog();
@@ -219,42 +100,8 @@ namespace InventorySystemGalaxy
             else
             {
                 MessageBox.Show("Not FOUND");
-            }*/
-
-            /*if (documentSnapshot.Exists)
-            {
-                AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
-                MessageBox.Show("LOGIN");
             }
-            else
-            {
-                MessageBox.Show("NOT LOGIN");
-            }*/
 
-
-            /*DocumentReference docRef = firestoreDb.Collection("Admin_User").Document(username);
-            AdminData data = docRef.GetSnapshotAsync().Result.ConvertTo<AdminData>();
-
-
-            if (data != null)
-            {
-                if (password == data.Password)
-                {
-                    MessageBox.Show("Success");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Tang ina Mo");
-            }*/
-
-
->>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
         }
 
         private void ClearTxtBoxes()
@@ -281,7 +128,6 @@ namespace InventorySystemGalaxy
             }
         }
 
-<<<<<<< HEAD
         async void GetData()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
@@ -295,7 +141,6 @@ namespace InventorySystemGalaxy
 
             }
         }
-=======
         private void UserTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -312,6 +157,5 @@ namespace InventorySystemGalaxy
             db = FirestoreDb.Create("imsgalaxy-f7419");
 
         }
->>>>>>> c7113623bb0a2168a1c31d0a973d1d1f6494e8d8
     }
 }

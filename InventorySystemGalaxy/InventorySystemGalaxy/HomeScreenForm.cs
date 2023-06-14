@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace InventorySystemGalaxy
 {
     public partial class HomeScreenForm : Form
     {
+
+        FirestoreDb db;
+
         public HomeScreenForm()
         {
             InitializeComponent();
@@ -146,14 +151,26 @@ namespace InventorySystemGalaxy
             WindowState = FormWindowState.Minimized;
         }
 
-        private void HomeScreenForm_Load(object sender, EventArgs e)
+        async void LoadUserName()
         {
-            //LoginForm loginForm = new LoginForm();
-/*            lbl_GreetUser.Text = "Hi, @" + LoginForm.getUserName;*/
+            DocumentReference documentReference = db.Collection("Admin_User").Document(LoginForm.username);
+            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+            string username = documentSnapshot.GetValue<string>("Username");
+            lbl_GreetUser.Text = "Hi, " + username;
+
+        }
+
+        private async void HomeScreenForm_Load(object sender, EventArgs e)
+        {
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            db = FirestoreDb.Create("imsgalaxy-f7419");
+
+            LoadUserName();
             loadForm(new DashboardForm());
 
-            LoginForm loginForm = new LoginForm();
-            lbl_GreetUser.Text = "Hi, " + loginForm.UserTxtBox.Text;
+            
 
 
         }
