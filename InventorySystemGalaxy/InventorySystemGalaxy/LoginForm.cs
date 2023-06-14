@@ -18,19 +18,8 @@ namespace InventorySystemGalaxy
     public partial class LoginForm : Form
     {
 
-
         FirestoreDb db;
-
-
-        // MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
-
-        MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
-        public static String getUserName;
-
-        //MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
-
-
-        FirestoreDb firestoreDb;
+        public static string username;
 
         public LoginForm()
         {
@@ -64,7 +53,9 @@ namespace InventorySystemGalaxy
 
         private void CloseBTN_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            Warning_Message warning_Message = new Warning_Message();
+            warning_Message.ShowDialog();
         }
 
         private void MinBtn_Click(object sender, EventArgs e)
@@ -76,49 +67,71 @@ namespace InventorySystemGalaxy
         async void LoginData()
         {
 
-            string username = UserTxtBox.Text.Trim();
+            username = UserTxtBox.Text;
             string password = PassTxtBox.Text;
 
+            DocumentReference documentReference = db.Collection("Admin_User").Document(username);
+            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
 
-               // string username = UserTxtBox.Text;
-                string userpass = PassTxtBox.Text;
+            if (documentSnapshot.Exists)
+            {
+                AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
+                if (username == adminData.Username && password == adminData.Password)
+                {
+                    WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
+                    this.Hide();
+                    welcomeMessageForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("INCORRECT");
+                }
 
-                DocumentReference documentReference = db.Collection("Admin_User").Document(username);
-                //   DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+                //MessageBox.Show("EXIST");
 
-                AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
-                 
-                if(adminData != null) 
+            }
+            else
+            {
+                MessageBox.Show("NOT FOUND");
+
+            }
+
+            /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
+            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+
+             AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
+
+            if (adminData != null)
+            {
+
+                if (password == adminData.Password)
                 {
 
-                    if (userpass == adminData.Password)
-                    {
-
-                        WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
-                        this.Hide();
-                        welcomeMessageForm.ShowDialog();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("INCORRECT");
-                    }
+                    WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
+                    this.Hide();
+                    welcomeMessageForm.ShowDialog();
 
                 }
                 else
                 {
-                    MessageBox.Show("Not FOUND");
+                    MessageBox.Show("INCORRECT");
                 }
 
-                /*if (documentSnapshot.Exists)
-                {
-                    AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
-                    MessageBox.Show("LOGIN");
-                }
-                else
-                {
-                    MessageBox.Show("NOT LOGIN");
-                }*/
+            }
+            else
+            {
+                MessageBox.Show("Not FOUND");
+            }*/
+
+            /*if (documentSnapshot.Exists)
+            {
+                AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
+                MessageBox.Show("LOGIN");
+            }
+            else
+            {
+                MessageBox.Show("NOT LOGIN");
+            }*/
 
 
             /*DocumentReference docRef = firestoreDb.Collection("Admin_User").Document(username);
@@ -184,9 +197,6 @@ namespace InventorySystemGalaxy
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
 
-            /*string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            firestoreDb = FirestoreDb.Create("imsgalaxy-f7419");*/
         }
     }
 }
