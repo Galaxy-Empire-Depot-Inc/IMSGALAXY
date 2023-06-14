@@ -108,7 +108,6 @@
             UserTxtBox.Size = new Size(209, 30);
             UserTxtBox.TabIndex = 4;
             UserTxtBox.TextAlign = HorizontalAlignment.Center;
-            UserTxtBox.KeyPress += UserTxtBox_KeyPress;
             // 
             // panel1
             // 
