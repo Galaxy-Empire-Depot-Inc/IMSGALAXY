@@ -45,7 +45,8 @@ namespace InventorySystemGalaxy.Classes
         [FirestoreProperty]
         public double CtlL { get; set; }
 
-
+        [FirestoreProperty]
+        public string imageUrl { get; set; }
 
     }
 }

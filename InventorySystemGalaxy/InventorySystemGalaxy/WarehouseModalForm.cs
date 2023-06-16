@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Storage.V1;
+using System.Collections;
 
 
 namespace InventorySystemGalaxy
@@ -19,11 +20,14 @@ namespace InventorySystemGalaxy
     {
 
         FirestoreDb db;
-        //FirestoreDb db = FirestoreDb.Create("<project-id>");
         StorageClient storageClient = StorageClient.Create();
+        Image image;
+        string fileName, imageUrl;
+        string bucketName = "imsgalaxy-f7419.appspot.com";
 
-        /*static MySqlConnection connection = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
-        MySqlCommand command;*/
+        DocumentReference documentReference;
+
+
 
         public WarehouseModalForm()
         {
@@ -148,12 +152,7 @@ namespace InventorySystemGalaxy
 
         private void srpTextBox_TextChanged(object sender, EventArgs e)
         {
-            /*double srp;
-            double dp;
-            string srpText = srpTextBox.Text;
-            srp = double.Parse(srpText);
-            dp = (double)(srp * .50);
-            dpTextBox.Text = dp.ToString();*/
+
 
         }
 
@@ -161,7 +160,9 @@ namespace InventorySystemGalaxy
         {
 
             //addProduct();
-            addStorageImage();
+            //addStorageImage();
+
+            addProduct();
 
             // DocumentReference documentReference = db.Collection("product")
         }
@@ -195,7 +196,7 @@ namespace InventorySystemGalaxy
                 MessageBox.Show("No image selected!");
             }*/
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            /*OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string imagePath = openFileDialog.FileName;
@@ -208,28 +209,52 @@ namespace InventorySystemGalaxy
                 await documentReference.SetAsync(new { ImageUrl = imageUrl });
 
                 MessageBox.Show("Image uploaded successfully!");
-            }
+            }*/
+
+            //retrieve Image 
+            DocumentReference docRef = db.Collection("images").Document("JUDING");
+            DocumentSnapshot snapshot = docRef.GetSnapshotAsync().Result;
+            string imageUrl = snapshot.GetValue<string>("imageUrl");
+
+            // Create a client to interact with Cloud Storage
+            var storageClient = StorageClient.Create();
+
+            // Get the filename from the image URL
+            string fileName = Path.GetFileName(imageUrl);
+
+            // Download the image from Cloud Storage
+            var downloadStream = new MemoryStream();
+            storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+            downloadStream.Position = 0;
+
+            // Create an Image object from the downloaded image data
+            Image downloadedImage = Image.FromStream(downloadStream);
+
+            // Display the image in the PictureBox
+            SelectImagePB.Image = downloadedImage;
+
 
         }
 
         async Task<string> UploadImageToStorage(string imagePath)
         {
             // Generate a unique file name for the image
-            string fileName = Guid.NewGuid().ToString();
+           // string fileName = Guid.NewGuid().ToString();
+
+            string fileName = $"{Guid.NewGuid()}.jpg";
 
             // Upload the image to Cloud Storage
-            await storageClient.UploadObjectAsync("imsgalaxy-f7419.appspot.com", fileName, null, File.OpenRead(imagePath));
+            //await storageClient.UploadObjectAsync("imsgalaxy-f7419.appspot.com", fileName, null, File.OpenRead(imagePath));
+
+            using (var fileStream = File.OpenRead(imagePath))
+            {
+                storageClient.UploadObject("imsgalaxy-f7419.appspot.com", fileName, null, fileStream);
+            }
 
             // Get the public URL of the uploaded image
             string imageUrl = $"https://storage.googleapis.com/imsgalaxy-f7419.appspot.com/{fileName}";
 
             return imageUrl;
-        }
-
-
-        private void searchQuery()
-        {
-
         }
 
         void addProduct()
@@ -315,12 +340,29 @@ namespace InventorySystemGalaxy
             if (WarehouseCB.SelectedIndex == 0 || CategoryCB.SelectedIndex == 0)
             {
 
-                MessageBox.Show("SELECT ITEm");
+                MessageBox.Show("SELECT ITEM");
 
 
             }
             else
             {
+
+                image = SelectImagePB.Image;
+                //Generate unique FileName.jpg
+                string fileName = $"{Guid.NewGuid()}.jpg";
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] imageData = memoryStream.ToArray();
+
+                    // Upload the image to Cloud Storage
+                    storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+                }
+                  
+                //get the link of the image in cloudstorage
+                imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
+
                 DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
                 Dictionary<string, object> dict = new Dictionary<string, object>()
                 {
@@ -341,11 +383,13 @@ namespace InventorySystemGalaxy
                     {"Qty", qtyTextBox.Text},
                     {"CtlH", ctnHTextBox.Text},
                     {"CtlW", ctnWTextBox.Text},
-                    {"CtlL", ctnLTextBox.Text}
+                    {"CtlL", ctnLTextBox.Text},
+                    { "imageUrl", imageUrl }
                 };
 
                 documentReference.SetAsync(dict);
                 MessageBox.Show("ADDED SUCCESSFULLY");
+                ClearForm();
 
             }
 
@@ -354,14 +398,60 @@ namespace InventorySystemGalaxy
         private void AddPhotoBTN_Click(object sender, EventArgs e)
         {
 
+            OpenFileDialog();
+
+
+            /*OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.JPG;*.PNG;*.bmp;)|*.JPG;*PNG;";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                SelectImagePB.Image = new Bitmap(open.FileName);
+                //LabelProductModal.Text = Image.FromFile(open.FileName).ToString();
+                //MessageBox.Show(Image.FromFile(open.FileName).ToString());
+
+                //Get the Image from PictureBox
+                Image image = SelectImagePB.Image;
+                //Generate unique FileName.jpg
+                string fileName = $"{Guid.NewGuid()}.jpg";
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] imageData = memoryStream.ToArray();
+
+                    // Upload the image to Cloud Storage
+                    storageClient.UploadObject("imsgalaxy-f7419.appspot.com", fileName, "image/jpeg", new MemoryStream(imageData));
+                }
+
+                //get the link of the image in cloudstorage
+                string imageUrl = $"https://storage.googleapis.com/{"imsgalaxy-f7419.appspot.com"}/{fileName}";
+
+                //extract the data from cloud storage
+                Dictionary<string, object> data = new Dictionary<string, object>
+                {
+                    { "imageUrl", imageUrl }
+                };
+
+                //save the link(from cloud storage) to  the firestore
+                DocumentReference docRef = db.Collection("images").Document("JUDING");
+                docRef.SetAsync(data);
+                MessageBox.Show("Success");
+                SelectImagePB.Image = Properties.Resources.icons8_image_100;
+
+
+            }*/
+
+        }
+
+        void OpenFileDialog()
+        {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files(*.JPG;*.PNG;*.bmp;)|*.JPG;*PNG;";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 SelectImagePB.Image = new Bitmap(open.FileName);
-                LabelProductModal.Text = Image.FromFile(open.FileName).ToString();
-
             }
+
         }
 
         private void ClearForm()
@@ -381,7 +471,8 @@ namespace InventorySystemGalaxy
             boxTextBox.Text = "";
             WarehouseCB.SelectedIndex = 0;
             CategoryCB.SelectedIndex = 0;
-            SelectImagePB.Image = null;
+            SelectImagePB.Image = Properties.Resources.icons8_image_100;
+
         }
 
         private void CloseModal_click(object sender, EventArgs e)
