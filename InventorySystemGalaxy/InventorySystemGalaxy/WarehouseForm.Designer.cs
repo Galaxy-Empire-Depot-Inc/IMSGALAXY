@@ -134,6 +134,7 @@
             WarehouseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             WarehouseTable.Size = new Size(794, 533);
             WarehouseTable.TabIndex = 0;
+            WarehouseTable.CellDoubleClick += WarehouseTable_CellDoubleClick;
             // 
             // panel3
             // 

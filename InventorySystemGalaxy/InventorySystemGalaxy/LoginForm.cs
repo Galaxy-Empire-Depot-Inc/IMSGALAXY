@@ -68,13 +68,9 @@ namespace InventorySystemGalaxy
         async void LoginData()
         {
 
-<<<<<<< HEAD
-           username = UserTxtBox.Text;
-           userpass = PassTxtBox.Text;
-=======
             username = UserTxtBox.Text;
             userpass = PassTxtBox.Text;
->>>>>>> c5c6ecb25ff6e873faac66dd003d4aaf5a525229
+
 
             /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();*/
@@ -111,59 +107,6 @@ namespace InventorySystemGalaxy
             {
                 MessageBox.Show("NOT FOUND!");
             }
-
-
-            /*            DocumentReference documentReference = db.Collection("Admin_User").Document(username);
-                        DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
-
-                        AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
-
-                        if (adminData != null)
-                        {
-
-                            if (userpass == adminData.Password)
-                            {
-                                WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
-                                this.Hide();
-                                welcomeMessageForm.ShowDialog();
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("INCORRECT");
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Not FOUND");
-                        }
-
-
-
-                        }*/
-
-
-            /*DocumentReference docRef = firestoreDb.Collection("Admin_User").Document(username);
-            AdminData data = docRef.GetSnapshotAsync().Result.ConvertTo<AdminData>();
-
-
-            if (data != null)
-            {
-                if (password == data.Password)
-                {
-                    MessageBox.Show("Success");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Tang ina Mo");
-            }*/
 
         }
 

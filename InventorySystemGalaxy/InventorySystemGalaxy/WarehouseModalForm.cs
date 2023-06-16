@@ -240,7 +240,7 @@ namespace InventorySystemGalaxy
         async Task<string> UploadImageToStorage(string imagePath)
         {
             // Generate a unique file name for the image
-           // string fileName = Guid.NewGuid().ToString();
+            // string fileName = Guid.NewGuid().ToString();
 
             string fileName = $"{Guid.NewGuid()}.jpg";
 
@@ -360,7 +360,7 @@ namespace InventorySystemGalaxy
                     // Upload the image to Cloud Storage
                     storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
                 }
-                  
+
                 //get the link of the image in cloudstorage
                 imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
 

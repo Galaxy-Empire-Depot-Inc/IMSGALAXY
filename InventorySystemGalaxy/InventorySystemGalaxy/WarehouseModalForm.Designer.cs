@@ -136,10 +136,9 @@
             qtyTextBox.Location = new Point(245, 260);
             qtyTextBox.Margin = new Padding(3, 2, 3, 2);
             qtyTextBox.Name = "qtyTextBox";
-            qtyTextBox.PlaceholderText = "Box";
+            qtyTextBox.PlaceholderText = "Qty";
             qtyTextBox.Size = new Size(90, 30);
             qtyTextBox.TabIndex = 24;
-            qtyTextBox.Text = "Qty";
             qtyTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // LabelProductModal
@@ -495,28 +494,28 @@
         #endregion
 
         private Panel bgPanel;
-        private CustomComboBox CategoryCB;
-        private CustomTextBox avTextbox;
-        private CustomTextBox descriptionTextBox;
-        private CustomTextBox colorTextBox;
-        private CustomTextBox refTextBox;
         private Label label1;
-        private CustomTextBox itemCodeTextBox;
         private CustomButton AddPhotoBTN;
-        private PictureBox SelectImagePB;
-        private CustomTextBox sortTextBox;
-        private CustomTextBox srpTextBox;
-        private CustomTextBox ctnHTextBox;
-        private CustomTextBox ctnWTextBox;
-        private CustomTextBox ctnLTextBox;
-        private CustomTextBox sizeTextBox;
-        private CustomTextBox wattsTextBox;
-        private CustomTextBox dpTextBox;
-        private CustomTextBox boxTextBox;
-        private CustomButton Add_UpdateBTN;
         private Label LabelProductModal;
-        private CustomTextBox qtyTextBox;
-        private CustomComboBox WarehouseCB;
         private Button CloseModal;
+        public CustomButton Add_UpdateBTN;
+        public CustomTextBox refTextBox;
+        public CustomTextBox itemCodeTextBox;
+        public CustomTextBox sortTextBox;
+        public CustomTextBox srpTextBox;
+        public CustomTextBox avTextbox;
+        public CustomTextBox descriptionTextBox;
+        public CustomTextBox colorTextBox;
+        public CustomTextBox ctnHTextBox;
+        public CustomTextBox ctnWTextBox;
+        public CustomTextBox ctnLTextBox;
+        public CustomTextBox sizeTextBox;
+        public CustomTextBox wattsTextBox;
+        public CustomTextBox dpTextBox;
+        public CustomTextBox boxTextBox;
+        public CustomTextBox qtyTextBox;
+        public CustomComboBox CategoryCB;
+        public CustomComboBox WarehouseCB;
+        public PictureBox SelectImagePB;
     }
 }
