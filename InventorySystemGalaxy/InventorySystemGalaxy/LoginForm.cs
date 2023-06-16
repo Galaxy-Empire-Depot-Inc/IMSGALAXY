@@ -10,11 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using Google.Cloud.Firestore;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
 using InventorySystemGalaxy.Classes;
 using Google.Cloud.Firestore.V1;
 
@@ -23,35 +19,20 @@ namespace InventorySystemGalaxy
 {
     public partial class LoginForm : Form
     {
-<<<<<<< HEAD
+
 
         FirestoreDb db;
 
         public static string username, userpass;
-=======
 
-        FirestoreDb db;
-        public static string username;
-
-            /*FirestoreDb db = FirestoreDb.Create("imsgalaxy - f7419");*/
-
-
-
-        /*FirestoreDb db;*/
-
-
-
-        // MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
 
         MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12619718; UID=sql12619718; PASSWORD=FzBpKXqUFl");
         public static String getUserName;
 
-        //MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
 
 
-        FirestoreDb firestoreDb;
 
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
+ 
 
         public LoginForm()
         {
@@ -98,20 +79,18 @@ namespace InventorySystemGalaxy
 
         async void LoginData()
         {
-<<<<<<< HEAD
-            
-                username = UserTxtBox.Text;
 
-                userpass = PassTxtBox.Text;
+            username = UserTxtBox.Text;
+
+           userpass = PassTxtBox.Text;
 
 
             DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
-=======
 
 
-            string username = UserTxtBox.Text;
-            string password = PassTxtBox.Text;
+
+            
 
             /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
@@ -146,9 +125,9 @@ namespace InventorySystemGalaxy
             }*/
 
 
-            DocumentReference documentReference = db.Collection("Admin_User").Document(username);
+/*            DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
+
 
             AdminData adminData = documentReference.GetSnapshotAsync().Result.ConvertTo<AdminData>();
 
@@ -171,19 +150,9 @@ namespace InventorySystemGalaxy
             else
             {
                 MessageBox.Show("Not FOUND");
-<<<<<<< HEAD
-=======
-            }
 
-            /*if (documentSnapshot.Exists)
-            {
-                AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
-                MessageBox.Show("LOGIN");
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
-            }
+            }*/
 
-<<<<<<< HEAD
-=======
 
             /*DocumentReference docRef = firestoreDb.Collection("Admin_User").Document(username);
             AdminData data = docRef.GetSnapshotAsync().Result.ConvertTo<AdminData>();
@@ -208,7 +177,6 @@ namespace InventorySystemGalaxy
 
 
 
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
         }
 
         private void ClearTxtBoxes()
@@ -235,10 +203,7 @@ namespace InventorySystemGalaxy
             }
         }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
         async void GetData()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
@@ -252,10 +217,7 @@ namespace InventorySystemGalaxy
 
             }
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
         private void UserTxtBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -272,9 +234,6 @@ namespace InventorySystemGalaxy
             db = FirestoreDb.Create("imsgalaxy-f7419");
 
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8784edfd2206e9d7841a1ec3d73dc5c03e2b065e
     }
 }
