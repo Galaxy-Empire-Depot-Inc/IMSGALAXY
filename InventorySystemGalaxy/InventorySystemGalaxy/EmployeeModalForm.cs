@@ -14,6 +14,7 @@ using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
 using Google.Protobuf.Collections;
 using Google.Cloud.Storage.V1;
+using Google.Apis.Auth.OAuth2;
 
 namespace InventorySystemGalaxy
 {
@@ -36,7 +37,7 @@ namespace InventorySystemGalaxy
             positionComboBox.SelectedIndex = 0;
             passwordTextbox.Text = "@GalaxyEmpire";
             statusComboBox.SelectedIndex = 1;
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad.json";
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             firestore = FirestoreDb.Create("imsgalaxy-f7419");
             imagePictureBox.AllowDrop = true;
@@ -93,6 +94,7 @@ namespace InventorySystemGalaxy
         private void addBtn_Click(object sender, EventArgs e)
         {
             addEmployee();
+            saveImage();
         }
 
         private void getImageFromGallery()
@@ -129,53 +131,8 @@ namespace InventorySystemGalaxy
 
         private void saveImage()
         {
-           
+             
         }
-
-        private FirestoreDb CreateFirestoreClient()
-        {
-            string projectId = "imsgalaxy-f7419";
-            string pathToServiceAccountKey = "imsgalaxy-f7419-firebase-adminsdk-eusnr-02750ac5ad";
-
-            FirestoreDb db = FirestoreDb.Create(projectId, new FirestoreClientBuilder
-            {
-                CredentialsPath = pathToServiceAccountKey
-            }.Build());
-
-            return db;
-        }
-
-        private string UploadImageToStorage(string imagePath)
-        {
-            string projectId = "imsgalaxy-f7419";
-            string bucketName = "gs://imsgalaxy-f7419.appspot.com";
-            string objectName = img;
-
-            var storage = StorageClient.Create();
-            storage.UploadObject(bucketName, objectName, null, File.OpenRead(imagePath));
-
-            imageUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o/{objectName}?alt=media";
-
-            return imageUrl;
-        }
-
-        private async Task InsertImageIntoFirestore(string imageUrl)
-        {
-            FirestoreDb db = CreateFirestoreClient();
-
-            // Assuming you have a collection named "images" and a document ID for the image
-            DocumentReference docRef = db.Collection("images").Document("imageId");
-
-            // Create a dictionary with the URL value
-            Dictionary<string, object> imageData = new Dictionary<string, object>
-    {
-        { "imageUrl", imageUrl }
-    };
-
-            // Set the data in the Firestore document
-            await docRef.SetAsync(imageData);
-        }
-
 
     }
 
