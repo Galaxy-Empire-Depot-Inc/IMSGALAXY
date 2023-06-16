@@ -33,24 +33,7 @@
             ShowModal = new CustomButton();
             panel1 = new Panel();
             panel6 = new Panel();
-            employeeTable = new DataGridView();
-            sortLabel = new DataGridViewTextBoxColumn();
-            itemCodeLabel = new DataGridViewTextBoxColumn();
-            refCodeLabel = new DataGridViewTextBoxColumn();
-            colorLabel = new DataGridViewTextBoxColumn();
-            imagesLabel = new DataGridViewImageColumn();
-            descriptionLabel = new DataGridViewTextBoxColumn();
-            avLabel = new DataGridViewTextBoxColumn();
-            wattsLabel = new DataGridViewTextBoxColumn();
-            sizeLabel = new DataGridViewTextBoxColumn();
-            ctnLLabel = new DataGridViewTextBoxColumn();
-            CtnHLabel = new DataGridViewTextBoxColumn();
-            ctnWLabel = new DataGridViewTextBoxColumn();
-            warehouseLabel = new DataGridViewTextBoxColumn();
-            srpLabel = new DataGridViewTextBoxColumn();
-            dpLabel = new DataGridViewTextBoxColumn();
-            boxLabel = new DataGridViewTextBoxColumn();
-            qtyLabel = new DataGridViewTextBoxColumn();
+            WarehouseTable = new DataGridView();
             panel3 = new Panel();
             panel4 = new Panel();
             panel7 = new Panel();
@@ -62,7 +45,7 @@
             panel2 = new Panel();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)employeeTable).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)WarehouseTable).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel7.SuspendLayout();
@@ -122,7 +105,7 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(employeeTable);
+            panel6.Controls.Add(WarehouseTable);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(5, 165);
             panel6.Name = "panel6";
@@ -130,148 +113,27 @@
             panel6.Size = new Size(804, 543);
             panel6.TabIndex = 2;
             // 
-            // employeeTable
+            // WarehouseTable
             // 
-            employeeTable.AllowUserToAddRows = false;
-            employeeTable.AllowUserToDeleteRows = false;
-            employeeTable.AllowUserToOrderColumns = true;
-            employeeTable.AllowUserToResizeColumns = false;
-            employeeTable.AllowUserToResizeRows = false;
-            employeeTable.BackgroundColor = Color.White;
-            employeeTable.BorderStyle = BorderStyle.Fixed3D;
-            employeeTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            employeeTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            employeeTable.Columns.AddRange(new DataGridViewColumn[] { sortLabel, itemCodeLabel, refCodeLabel, colorLabel, imagesLabel, descriptionLabel, avLabel, wattsLabel, sizeLabel, ctnLLabel, CtnHLabel, ctnWLabel, warehouseLabel, srpLabel, dpLabel, boxLabel, qtyLabel });
-            employeeTable.Dock = DockStyle.Fill;
-            employeeTable.GridColor = Color.White;
-            employeeTable.Location = new Point(5, 5);
-            employeeTable.Name = "employeeTable";
-            employeeTable.ReadOnly = true;
-            employeeTable.RowHeadersVisible = false;
-            employeeTable.RowTemplate.Height = 100;
-            employeeTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeTable.Size = new Size(794, 533);
-            employeeTable.TabIndex = 0;
-            // 
-            // sortLabel
-            // 
-            sortLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            sortLabel.HeaderText = "Sort";
-            sortLabel.Name = "sortLabel";
-            sortLabel.ReadOnly = true;
-            // 
-            // itemCodeLabel
-            // 
-            itemCodeLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            itemCodeLabel.HeaderText = "Item Code";
-            itemCodeLabel.Name = "itemCodeLabel";
-            itemCodeLabel.ReadOnly = true;
-            // 
-            // refCodeLabel
-            // 
-            refCodeLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            refCodeLabel.HeaderText = "Ref. Code";
-            refCodeLabel.Name = "refCodeLabel";
-            refCodeLabel.ReadOnly = true;
-            // 
-            // colorLabel
-            // 
-            colorLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colorLabel.HeaderText = "Color";
-            colorLabel.Name = "colorLabel";
-            colorLabel.ReadOnly = true;
-            // 
-            // imagesLabel
-            // 
-            imagesLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            imagesLabel.HeaderText = "Images";
-            imagesLabel.Name = "imagesLabel";
-            imagesLabel.ReadOnly = true;
-            imagesLabel.Width = 140;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            descriptionLabel.HeaderText = "Description";
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.ReadOnly = true;
-            // 
-            // avLabel
-            // 
-            avLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            avLabel.HeaderText = "A.V";
-            avLabel.Name = "avLabel";
-            avLabel.ReadOnly = true;
-            // 
-            // wattsLabel
-            // 
-            wattsLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            wattsLabel.HeaderText = "Watts";
-            wattsLabel.Name = "wattsLabel";
-            wattsLabel.ReadOnly = true;
-            // 
-            // sizeLabel
-            // 
-            sizeLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            sizeLabel.HeaderText = "Size(mm)";
-            sizeLabel.Name = "sizeLabel";
-            sizeLabel.ReadOnly = true;
-            // 
-            // ctnLLabel
-            // 
-            ctnLLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ctnLLabel.HeaderText = "Ctn L";
-            ctnLLabel.Name = "ctnLLabel";
-            ctnLLabel.ReadOnly = true;
-            // 
-            // CtnHLabel
-            // 
-            CtnHLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CtnHLabel.HeaderText = "Ctn H";
-            CtnHLabel.Name = "CtnHLabel";
-            CtnHLabel.ReadOnly = true;
-            // 
-            // ctnWLabel
-            // 
-            ctnWLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ctnWLabel.HeaderText = "Ctn W";
-            ctnWLabel.Name = "ctnWLabel";
-            ctnWLabel.ReadOnly = true;
-            // 
-            // warehouseLabel
-            // 
-            warehouseLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            warehouseLabel.HeaderText = "Warehouse";
-            warehouseLabel.Name = "warehouseLabel";
-            warehouseLabel.ReadOnly = true;
-            // 
-            // srpLabel
-            // 
-            srpLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            srpLabel.HeaderText = "S.R.P";
-            srpLabel.Name = "srpLabel";
-            srpLabel.ReadOnly = true;
-            // 
-            // dpLabel
-            // 
-            dpLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dpLabel.HeaderText = "D.P";
-            dpLabel.Name = "dpLabel";
-            dpLabel.ReadOnly = true;
-            // 
-            // boxLabel
-            // 
-            boxLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            boxLabel.HeaderText = "Box";
-            boxLabel.Name = "boxLabel";
-            boxLabel.ReadOnly = true;
-            // 
-            // qtyLabel
-            // 
-            qtyLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            qtyLabel.HeaderText = "Qty";
-            qtyLabel.Name = "qtyLabel";
-            qtyLabel.ReadOnly = true;
+            WarehouseTable.AllowUserToAddRows = false;
+            WarehouseTable.AllowUserToDeleteRows = false;
+            WarehouseTable.AllowUserToOrderColumns = true;
+            WarehouseTable.AllowUserToResizeColumns = false;
+            WarehouseTable.AllowUserToResizeRows = false;
+            WarehouseTable.BackgroundColor = Color.White;
+            WarehouseTable.BorderStyle = BorderStyle.Fixed3D;
+            WarehouseTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            WarehouseTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            WarehouseTable.Dock = DockStyle.Fill;
+            WarehouseTable.GridColor = Color.White;
+            WarehouseTable.Location = new Point(5, 5);
+            WarehouseTable.Name = "WarehouseTable";
+            WarehouseTable.ReadOnly = true;
+            WarehouseTable.RowHeadersVisible = false;
+            WarehouseTable.RowTemplate.Height = 100;
+            WarehouseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            WarehouseTable.Size = new Size(794, 533);
+            WarehouseTable.TabIndex = 0;
             // 
             // panel3
             // 
@@ -388,9 +250,10 @@
             Name = "WarehouseForm";
             Padding = new Padding(5);
             Text = "WarehouseForm";
+            Load += WarehouseForm_Load;
             panel1.ResumeLayout(false);
             panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)employeeTable).EndInit();
+            ((System.ComponentModel.ISupportInitialize)WarehouseTable).EndInit();
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
@@ -408,7 +271,7 @@
         private CustomButton ShowModal;
         private Panel panel1;
         private Panel panel6;
-        private DataGridView employeeTable;
+        private DataGridView WarehouseTable;
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
@@ -418,22 +281,5 @@
         private Panel panel7;
         private PictureBox pictureBox2;
         private CustomTextBox customTextBox2;
-        private DataGridViewTextBoxColumn sortLabel;
-        private DataGridViewTextBoxColumn itemCodeLabel;
-        private DataGridViewTextBoxColumn refCodeLabel;
-        private DataGridViewTextBoxColumn colorLabel;
-        private DataGridViewImageColumn imagesLabel;
-        private DataGridViewTextBoxColumn descriptionLabel;
-        private DataGridViewTextBoxColumn avLabel;
-        private DataGridViewTextBoxColumn wattsLabel;
-        private DataGridViewTextBoxColumn sizeLabel;
-        private DataGridViewTextBoxColumn ctnLLabel;
-        private DataGridViewTextBoxColumn CtnHLabel;
-        private DataGridViewTextBoxColumn ctnWLabel;
-        private DataGridViewTextBoxColumn warehouseLabel;
-        private DataGridViewTextBoxColumn srpLabel;
-        private DataGridViewTextBoxColumn dpLabel;
-        private DataGridViewTextBoxColumn boxLabel;
-        private DataGridViewTextBoxColumn qtyLabel;
     }
 }
