@@ -45,11 +45,11 @@
             label1 = new Label();
             contactNoTextBox = new CustomTextBox();
             addPhotoBtn = new CustomButton();
-            imagePictureBox = new PictureBox();
+            employeePictureBox = new PictureBox();
             firstNameTextBox = new CustomTextBox();
             bgPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)imagePictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeePictureBox).BeginInit();
             SuspendLayout();
             // 
             // bgPanel
@@ -70,7 +70,7 @@
             bgPanel.Controls.Add(label1);
             bgPanel.Controls.Add(contactNoTextBox);
             bgPanel.Controls.Add(addPhotoBtn);
-            bgPanel.Controls.Add(imagePictureBox);
+            bgPanel.Controls.Add(employeePictureBox);
             bgPanel.Controls.Add(firstNameTextBox);
             bgPanel.Dock = DockStyle.Fill;
             bgPanel.Location = new Point(15, 15);
@@ -300,18 +300,18 @@
             addPhotoBtn.UseVisualStyleBackColor = false;
             addPhotoBtn.Click += addPhotoBtn_Click;
             // 
-            // imagePictureBox
+            // employeePictureBox
             // 
-            imagePictureBox.BackColor = Color.Transparent;
-            imagePictureBox.Image = Properties.Resources.icons8_user_144__1_;
-            imagePictureBox.Location = new Point(13, 61);
-            imagePictureBox.Name = "imagePictureBox";
-            imagePictureBox.Size = new Size(125, 125);
-            imagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            imagePictureBox.TabIndex = 1;
-            imagePictureBox.TabStop = false;
-            imagePictureBox.DragDrop += imagePictureBox_DragDrop;
-            imagePictureBox.DragEnter += imagePictureBox_DragEnter;
+            employeePictureBox.BackColor = Color.Transparent;
+            employeePictureBox.Image = Properties.Resources.icons8_user_144__1_;
+            employeePictureBox.Location = new Point(13, 61);
+            employeePictureBox.Name = "employeePictureBox";
+            employeePictureBox.Size = new Size(125, 125);
+            employeePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            employeePictureBox.TabIndex = 1;
+            employeePictureBox.TabStop = false;
+            employeePictureBox.DragDrop += imagePictureBox_DragDrop;
+            employeePictureBox.DragEnter += imagePictureBox_DragEnter;
             // 
             // firstNameTextBox
             // 
@@ -346,7 +346,7 @@
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)imagePictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeePictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -355,7 +355,7 @@
         private Panel bgPanel;
         private Label label1;
         private CustomButton addPhotoBtn;
-        private PictureBox imagePictureBox;
+        private PictureBox employeePictureBox;
         private CustomButton addBtn;
         private Label label2;
         public CustomButton updateBtn;
