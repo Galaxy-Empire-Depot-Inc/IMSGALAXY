@@ -211,6 +211,7 @@ namespace InventorySystemGalaxy
                 MessageBox.Show("Image uploaded successfully!");
             }*/
 
+
             //retrieve Image 
             DocumentReference docRef = db.Collection("images").Document("JUDING");
             DocumentSnapshot snapshot = docRef.GetSnapshotAsync().Result;
