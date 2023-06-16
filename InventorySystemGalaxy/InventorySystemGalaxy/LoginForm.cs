@@ -68,8 +68,13 @@ namespace InventorySystemGalaxy
         async void LoginData()
         {
 
+<<<<<<< HEAD
            username = UserTxtBox.Text;
            userpass = PassTxtBox.Text;
+=======
+            username = UserTxtBox.Text;
+            userpass = PassTxtBox.Text;
+>>>>>>> c5c6ecb25ff6e873faac66dd003d4aaf5a525229
 
             /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();*/
@@ -190,12 +195,12 @@ namespace InventorySystemGalaxy
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-            DocumentReference documentReference=db.Collection("Admin_User").Document(UserTxtBox.Text);
-            DocumentSnapshot snapshot=await documentReference.GetSnapshotAsync();
+            DocumentReference documentReference = db.Collection("Admin_User").Document(UserTxtBox.Text);
+            DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
 
-            if(snapshot.Exists)
+            if (snapshot.Exists)
             {
-                Dictionary<string, object> admin = snapshot.ToDictionary(); 
+                Dictionary<string, object> admin = snapshot.ToDictionary();
 
             }
         }

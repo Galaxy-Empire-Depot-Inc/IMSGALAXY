@@ -11,10 +11,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Firestore;
-using Google.Cloud.Firestore.V1;
-using Google.Protobuf.Collections;
 using Google.Cloud.Storage.V1;
-using Google.Apis.Auth.OAuth2;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace InventorySystemGalaxy
 {
@@ -24,6 +24,10 @@ namespace InventorySystemGalaxy
         FirestoreDb firestore;
         string imageUrl;
         string img;
+        /*StorageClient storageClient=StorageClient.Create();*/
+        Image image;
+        string id;
+        string bucketName = "imsgalaxy-f7419.appspot.com";
         public EmployeeModalForm()
         {
             InitializeComponent();
@@ -40,8 +44,8 @@ namespace InventorySystemGalaxy
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             firestore = FirestoreDb.Create("imsgalaxy-f7419");
-            imagePictureBox.AllowDrop = true;
-            
+            employeePictureBox.AllowDrop = true;
+
 
         }
 
@@ -72,7 +76,8 @@ namespace InventorySystemGalaxy
 
         public void addEmployee()
         {
-            CollectionReference collectionReference = firestore.Collection("Employee");
+            id = idNumberTextBox.Text;
+            DocumentReference documentReference = firestore.Collection("Employee").Document(id);
             Dictionary<string, object> data1 = new Dictionary<string, object>()
             {
                 {"FirstName",firstNameTextBox.Text },
@@ -84,9 +89,10 @@ namespace InventorySystemGalaxy
                 {"Position",positionComboBox.SelectedItem },
                 {"Department",departmentTextBox.Text },
                 {"Username",usernameTextbox.Text },
-                {"Password",passwordTextbox.Text }
+                {"Password",passwordTextbox.Text },
+                {"imageUrl",imageUrl }
             };
-            collectionReference.AddAsync(data1);
+            documentReference.SetAsync(data1);
             MessageBox.Show("Added Successfully");
 
         }
@@ -94,7 +100,7 @@ namespace InventorySystemGalaxy
         private void addBtn_Click(object sender, EventArgs e)
         {
             addEmployee();
-            saveImage();
+            /*saveImage();*/
         }
 
         private void getImageFromGallery()
@@ -103,7 +109,7 @@ namespace InventorySystemGalaxy
             open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                imagePictureBox.Image = new Bitmap(open.FileName);
+                employeePictureBox.Image = new Bitmap(open.FileName);
                 img = open.FileName;
             }
         }
@@ -120,7 +126,7 @@ namespace InventorySystemGalaxy
             {
                 var fileNames = data as string[];
                 if (fileNames.Length > 0)
-                    imagePictureBox.Image = Image.FromFile(fileNames[0]);
+                    employeePictureBox.Image = Image.FromFile(fileNames[0]);
             }
         }
 
@@ -131,7 +137,24 @@ namespace InventorySystemGalaxy
 
         private void saveImage()
         {
-             
+            
+
+            /*image = employeePictureBox.Image;
+            //Generate unique FileName.jpg
+            string fileName = $"{Guid.NewGuid()}.jpg";
+
+            using (var memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] imageData = memoryStream.ToArray();
+
+                // Upload the image to Cloud Storage
+                storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+            }
+
+            //get the link of the image in cloudstorage
+            imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";*/
+
         }
 
     }
