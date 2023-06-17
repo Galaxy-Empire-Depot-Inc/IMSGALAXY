@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Cloud.Firestore;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,40 +14,40 @@ namespace InventorySystemGalaxy
 {
     public partial class DashboardForm : Form
     {
-        /*MySqlConnection conn = new MySqlConnection("SERVER=sql12.freesqldatabase.com; DATABASE=sql12622083; UID=sql12622083; PASSWORD=C4kTB5qYR6");
-        MySqlCommand command;
-        MySqlDataAdapter adapter;
-        DataTable dt;*/
+
+        FirestoreDb db;
+
         public DashboardForm()
         {
             InitializeComponent();
         }
 
-
-
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
 
-
-
-            /*LoadProductCounts();
-
-            String getProductsQuery = "SELECT item_code, description, picture, category FROM product_table";
-            LoadTableData loadTable = new LoadTableData(conn, command, adapter, dt, producttable, getProductsQuery);*/
-
-
-            /*LoadProductCounts();
-            String getProductsQuery = "SELECT item_code, description, picture, category FROM product_table";
-            LoadTableData loadTable = new LoadTableData(conn, command, adapter, dt, producttable, getProductsQuery);*/
-
-
-           // LoadProductCounts();
-            
-
-           /* LoadProductCounts();*/
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            db = FirestoreDb.Create("imsgalaxy-f7419");
+            Display();
 
         }
+
+        async void Display()
+        {
+            // Specify the collection reference for which you want to count the documents
+            CollectionReference collectionRef = db.Collection("Products");
+
+            // Query for all documents in the collection
+            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+
+            // Get the count of documents in the snapshot
+            int documentCount = snapshot.Count;
+
+            // Assuming you have a Label control named "lblCount" in your form
+            // Set the count as the text of the label
+            lbl_TotalP.Text = documentCount.ToString();
+        }
+
     }
  
 }

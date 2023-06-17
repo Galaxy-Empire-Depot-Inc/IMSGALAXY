@@ -173,9 +173,9 @@
             logoutBtn.TextAlign = ContentAlignment.MiddleLeft;
             logoutBtn.Tooltip1 = null;
             logoutBtn.UseVisualStyleBackColor = true;
-            logoutBtn.Click += customButton4_Click;
-            logoutBtn.Enter += customButton4_Enter;
-            logoutBtn.Leave += customButton4_Leave;
+            logoutBtn.Click += logoutBtn_Click;
+            logoutBtn.Enter += logoutBtn_Enter;
+            logoutBtn.Leave += logoutBtn_Leave;
             // 
             // warehouseBtn
             // 

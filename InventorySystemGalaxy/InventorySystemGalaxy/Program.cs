@@ -17,11 +17,14 @@ namespace InventorySystemGalaxy
 
             //FireStoreHelper.SetEnvironmentVariable();
             ApplicationConfiguration.Initialize();
+<<<<<<< HEAD
             Application.Run(new LoginForm());
  
+=======
+>>>>>>> ab80740c571ba39f68ead8380ef10712b4524abd
 
-            //ApplicationConfiguration.Initialize();
-            //Application.Run(new EmployeeForm());
+            Application.Run(new SplashScreen());
+
 
 
 
