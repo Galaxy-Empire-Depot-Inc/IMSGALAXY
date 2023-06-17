@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using InventorySystemGalaxy.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,9 +73,10 @@ namespace InventorySystemGalaxy
             loadForm(new WarehouseForm());
         }
 
-        private void customButton4_Click(object sender, EventArgs e)
+        private void logoutBtn_Click(object sender, EventArgs e)
         {
-
+            LogoutMessage logoutMessage = new LogoutMessage();
+            logoutMessage.ShowDialog();
         }
 
         private void customButton1_Enter(object sender, EventArgs e)
@@ -115,13 +117,13 @@ namespace InventorySystemGalaxy
             warehouseBtn.ForeColor = Color.White;
         }
 
-        private void customButton4_Enter(object sender, EventArgs e)
+        private void logoutBtn_Enter(object sender, EventArgs e)
         {
             logoutBtn.BackColor = Color.FromArgb(74, 173, 255);
             logoutBtn.ForeColor = Color.Black;
         }
 
-        private void customButton4_Leave(object sender, EventArgs e)
+        private void logoutBtn_Leave(object sender, EventArgs e)
         {
             logoutBtn.BackColor = Color.FromArgb(59, 116, 192);
             logoutBtn.ForeColor = Color.White;

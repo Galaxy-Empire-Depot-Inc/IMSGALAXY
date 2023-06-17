@@ -38,7 +38,7 @@
             panel4 = new Panel();
             panel7 = new Panel();
             pictureBox2 = new PictureBox();
-            customTextBox2 = new CustomTextBox();
+            searchText = new CustomTextBox();
             panel5 = new Panel();
             pictureBox1 = new PictureBox();
             customTextBox1 = new CustomTextBox();
@@ -164,7 +164,7 @@
             // 
             panel7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel7.Controls.Add(pictureBox2);
-            panel7.Controls.Add(customTextBox2);
+            panel7.Controls.Add(searchText);
             panel7.Location = new Point(546, 42);
             panel7.Name = "panel7";
             panel7.Size = new Size(240, 50);
@@ -180,18 +180,19 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
-            // customTextBox2
+            // searchText
             // 
-            customTextBox2.BorderStyle = BorderStyle.None;
-            customTextBox2.BottomBorderColor = Color.LightSlateGray;
-            customTextBox2.BottomBorderOnFocusColor = Color.CornflowerBlue;
-            customTextBox2.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox2.Location = new Point(61, 25);
-            customTextBox2.Name = "customTextBox2";
-            customTextBox2.PlaceholderText = "Search";
-            customTextBox2.Size = new Size(177, 23);
-            customTextBox2.TabIndex = 0;
-            customTextBox2.TextAlign = HorizontalAlignment.Center;
+            searchText.BorderStyle = BorderStyle.None;
+            searchText.BottomBorderColor = Color.LightSlateGray;
+            searchText.BottomBorderOnFocusColor = Color.CornflowerBlue;
+            searchText.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            searchText.Location = new Point(61, 25);
+            searchText.Name = "searchText";
+            searchText.PlaceholderText = "Search";
+            searchText.Size = new Size(177, 23);
+            searchText.TabIndex = 0;
+            searchText.TextAlign = HorizontalAlignment.Center;
+            searchText.TextChanged += searchText_TextChanged;
             // 
             // panel5
             // 
@@ -281,6 +282,6 @@
         private Panel panel2;
         private Panel panel7;
         private PictureBox pictureBox2;
-        private CustomTextBox customTextBox2;
+        private CustomTextBox searchText;
     }
 }

@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace InventorySystemGalaxy
 {
@@ -20,6 +21,7 @@ namespace InventorySystemGalaxy
     {
 
         FirestoreDb db;
+        DataTable dataTable;
         public WarehouseForm()
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace InventorySystemGalaxy
             CollectionReference collectionRef = db.Collection("Products");
             QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
 
-            DataTable dataTable = new DataTable();
+            dataTable = new DataTable();
             dataTable.Columns.Add("Sort");
             dataTable.Columns.Add("Item Code");
             dataTable.Columns.Add("Reference Code");
@@ -56,6 +58,7 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("CTN L");
             dataTable.Columns.Add("CTN W");
             dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Availability");
             dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
 
             //set the property of every column
@@ -77,7 +80,7 @@ namespace InventorySystemGalaxy
                     System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
                     dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
                         data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
-                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlL"], downloadedImage);
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Availability"], downloadedImage);
                     // Add more fields as needed
                 }
             }
@@ -123,10 +126,10 @@ namespace InventorySystemGalaxy
         {
 
             WarehouseModalForm warehouseModal = new WarehouseModalForm();
-            
+
             //Change the text in button
             warehouseModal.Add_UpdateBTN.Text = "Update";
-            
+
             //Display the Data into Modal
             warehouseModal.sortTextBox.Text = this.WarehouseTable.CurrentRow.Cells["Sort"].Value.ToString();
             warehouseModal.itemCodeTextBox.Text = this.WarehouseTable.CurrentRow.Cells["Item code"].Value.ToString();
@@ -144,12 +147,23 @@ namespace InventorySystemGalaxy
             warehouseModal.ctnHTextBox.Text = this.WarehouseTable.CurrentRow.Cells["CTN H"].Value.ToString();
             warehouseModal.ctnWTextBox.Text = this.WarehouseTable.CurrentRow.Cells["CTN W"].Value.ToString();
 
+            //get value from custombox
             string CategorySelected = this.WarehouseTable.CurrentRow.Cells["Category"].Value.ToString();
             string WarehouseSelected = this.WarehouseTable.CurrentRow.Cells["Warehouse"].Value.ToString();
 
+            //View Only Textboxes
+            warehouseModal.itemCodeTextBox.ReadOnly = true;
+            warehouseModal.refTextBox.ReadOnly = true;
+            warehouseModal.descriptionTextBox.ReadOnly = true;
+            warehouseModal.colorTextBox.ReadOnly = true;
+            warehouseModal.ctnHTextBox.ReadOnly = true;
+            warehouseModal.ctnLTextBox.ReadOnly = true;
+            warehouseModal.ctnWTextBox.ReadOnly = true;
+            warehouseModal.sortTextBox.ReadOnly = true;
+            warehouseModal.sizeTextBox.ReadOnly = true;
 
             //Conditional statement for Warehouse Selected Data
-            if(WarehouseSelected == "TMS")
+            if (WarehouseSelected == "TMS")
             {
                 warehouseModal.WarehouseCB.SelectedIndex = 1;
             }
@@ -188,7 +202,8 @@ namespace InventorySystemGalaxy
                 warehouseModal.CategoryCB.SelectedIndex = 6;
             }
 
-
+            
+            //display image when row selected
             if (e.RowIndex >= 0 && WarehouseTable.Rows[e.RowIndex].Cells["Image"].Value is System.Drawing.Image)
             {
                 // Retrieve the image from the selected row
@@ -201,5 +216,43 @@ namespace InventorySystemGalaxy
             warehouseModal.ShowDialog(this);
 
         }
+
+        private async void searchText_TextChanged(object sender, EventArgs e)
+        {
+            /*string search = searchText.Text;
+
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                // If the search text is empty or whitespace, show all data
+                WarehouseTable.DataSource = dataTable;
+            }
+            else
+            {
+                // Filter the data based on the search text using Firestore query
+                CollectionReference collectionRef = db.Collection("Products");
+                Query query = collectionRef.WhereEqualTo("Item_code", search);
+                QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+
+                List<DocumentSnapshot> filteredDocuments = querySnapshot.Documents.ToList();
+
+                DataTable filteredDataTable = dataTable.Clone(); // Create a clone of the original DataTable structure
+
+                foreach (DocumentSnapshot documentSnapshot in filteredDocuments)
+                {
+                    if (documentSnapshot.Exists)
+                    {
+                        Dictionary<string, object> documentData = documentSnapshot.ToDictionary();
+                        DataRow newRow = filteredDataTable.Rows.Add();
+                        foreach (var kvp in documentData)
+                        {
+                            newRow[kvp.Key] = kvp.Value;
+                        }
+                    }
+                }
+
+                WarehouseTable.DataSource = filteredDataTable;
+            }*/
+        }
+
     }
 }

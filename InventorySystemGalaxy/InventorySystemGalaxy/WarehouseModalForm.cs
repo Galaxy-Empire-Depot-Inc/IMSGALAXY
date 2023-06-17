@@ -162,9 +162,87 @@ namespace InventorySystemGalaxy
             //addProduct();
             //addStorageImage();
 
-            addProduct();
+            
+
+            if (Add_UpdateBTN.Text == "Update")
+            {
+                //MessageBox.Show("Update");
+                UpdateProduct();
+            }
+            else
+            {
+                //MessageBox.Show("Add");
+                addProduct();
+            }
+
 
             // DocumentReference documentReference = db.Collection("product")
+        }
+
+        private void UpdateProduct()
+        {
+            string ITEMCODE = itemCodeTextBox.Text;
+            string selectedWarehouse = WarehouseCB.GetItemText(WarehouseCB.SelectedItem);
+            string selectedCategory = WarehouseCB.GetItemText(CategoryCB.SelectedItem);
+
+            if (WarehouseCB.SelectedIndex == 0 || CategoryCB.SelectedIndex == 0)
+            {
+
+                MessageBox.Show("No Warehouse/Category Selected");
+
+
+            }
+            else
+            {
+
+                image = SelectImagePB.Image;
+                //Generate unique FileName.jpg
+                string fileName = $"{Guid.NewGuid()}.jpg";
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] imageData = memoryStream.ToArray();
+
+                    // Upload the image to Cloud Storage
+                    storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+                }
+
+                //get the link of the image in cloudstorage
+                imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
+
+                DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
+
+                Dictionary<string, object> dict = new Dictionary<string, object>()
+                {
+
+                    {"Sort", sortTextBox.Text},
+                    {"Item_code", itemCodeTextBox.Text},
+                    {"Ref_code", refTextBox.Text},
+                    {"Srp", srpTextBox.Text},
+                    {"Colour", colorTextBox.Text},
+                    {"Description", descriptionTextBox.Text},
+                    {"Dp", dpTextBox.Text},
+                    {"Av", avTextbox.Text},
+                    {"Watts", wattsTextBox.Text},
+                    {"ProductSize", sizeTextBox.Text},
+                    {"Warehouse", selectedWarehouse},
+                    {"Category", selectedCategory},
+                    {"Box", boxTextBox.Text},
+                    {"Qty", qtyTextBox.Text},
+                    {"CtlH", ctnHTextBox.Text},
+                    {"CtlW", ctnWTextBox.Text},
+                    {"CtlL", ctnLTextBox.Text},
+                    {"Availability", "Available" },
+                    { "imageUrl", imageUrl }
+
+                };
+
+                documentReference.UpdateAsync(dict);
+                MessageBox.Show("UPDATED SUCCESSFULLY");
+                ClearForm();
+
+            }
         }
 
         private async void addStorageImage()
@@ -258,7 +336,7 @@ namespace InventorySystemGalaxy
             return imageUrl;
         }
 
-        void addProduct()
+        async void addProduct()
         {
 
             /*Image pictureImage = SelectImagePB.Image;
@@ -341,7 +419,7 @@ namespace InventorySystemGalaxy
             if (WarehouseCB.SelectedIndex == 0 || CategoryCB.SelectedIndex == 0)
             {
 
-                MessageBox.Show("SELECT ITEM");
+                MessageBox.Show("No Warehouse/Category Selected");
 
 
             }
@@ -365,7 +443,15 @@ namespace InventorySystemGalaxy
                 imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
 
                 DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
-                Dictionary<string, object> dict = new Dictionary<string, object>()
+                DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
+
+                if (snapshot.Exists)
+                {
+                    MessageBox.Show("ITEM CODE ALREADY EXIST");
+                }
+                else
+                {
+                    Dictionary<string, object> dict = new Dictionary<string, object>()
                 {
 
                     {"Sort", sortTextBox.Text},
@@ -385,12 +471,15 @@ namespace InventorySystemGalaxy
                     {"CtlH", ctnHTextBox.Text},
                     {"CtlW", ctnWTextBox.Text},
                     {"CtlL", ctnLTextBox.Text},
+                    {"Availability", "Available" },
                     { "imageUrl", imageUrl }
+
                 };
 
-                documentReference.SetAsync(dict);
-                MessageBox.Show("ADDED SUCCESSFULLY");
-                ClearForm();
+                    documentReference.SetAsync(dict);
+                    MessageBox.Show("ADDED SUCCESSFULLY");
+                    ClearForm();
+                }
 
             }
 
@@ -470,6 +559,9 @@ namespace InventorySystemGalaxy
             descriptionTextBox.Text = "";
             qtyTextBox.Text = "";
             boxTextBox.Text = "";
+            ctnHTextBox.Text = "";
+            ctnWTextBox.Text = "";
+            ctnLTextBox.Text = "";
             WarehouseCB.SelectedIndex = 0;
             CategoryCB.SelectedIndex = 0;
             SelectImagePB.Image = Properties.Resources.icons8_image_100;
