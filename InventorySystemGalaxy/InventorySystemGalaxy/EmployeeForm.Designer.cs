@@ -32,17 +32,6 @@
             panel1 = new Panel();
             panel6 = new Panel();
             employeeTable = new DataGridView();
-            idNumberLabel = new DataGridViewTextBoxColumn();
-            nameLabel = new DataGridViewTextBoxColumn();
-            contactNoLabel = new DataGridViewTextBoxColumn();
-            imagesLabel = new DataGridViewImageColumn();
-            positionLabel = new DataGridViewTextBoxColumn();
-            departmentLabel = new DataGridViewTextBoxColumn();
-            statusLabel = new DataGridViewTextBoxColumn();
-            userIdLabel = new DataGridViewTextBoxColumn();
-            passwordLabel = new DataGridViewTextBoxColumn();
-            dateCreateLabel = new DataGridViewTextBoxColumn();
-            dateModifiedLabel = new DataGridViewTextBoxColumn();
             panel3 = new Panel();
             panel4 = new Panel();
             panel5 = new Panel();
@@ -73,7 +62,6 @@
             panel1.Padding = new Padding(5);
             panel1.Size = new Size(814, 713);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // panel6
             // 
@@ -84,7 +72,6 @@
             panel6.Padding = new Padding(5);
             panel6.Size = new Size(804, 543);
             panel6.TabIndex = 2;
-            panel6.Paint += panel6_Paint;
             // 
             // employeeTable
             // 
@@ -97,7 +84,6 @@
             employeeTable.BorderStyle = BorderStyle.Fixed3D;
             employeeTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             employeeTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            employeeTable.Columns.AddRange(new DataGridViewColumn[] { idNumberLabel, nameLabel, contactNoLabel, imagesLabel, positionLabel, departmentLabel, statusLabel, userIdLabel, passwordLabel, dateCreateLabel, dateModifiedLabel });
             employeeTable.Dock = DockStyle.Fill;
             employeeTable.GridColor = Color.White;
             employeeTable.Location = new Point(5, 5);
@@ -108,97 +94,6 @@
             employeeTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeTable.Size = new Size(794, 533);
             employeeTable.TabIndex = 0;
-            employeeTable.CellContentClick += employeeTable_CellContentClick;
-            // 
-            // idNumberLabel
-            // 
-            idNumberLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idNumberLabel.DataPropertyName = "employee_idNumber";
-            idNumberLabel.HeaderText = "ID Number";
-            idNumberLabel.Name = "idNumberLabel";
-            idNumberLabel.ReadOnly = true;
-            // 
-            // nameLabel
-            // 
-            nameLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameLabel.DataPropertyName = "employee_fullname";
-            nameLabel.HeaderText = "Full name";
-            nameLabel.Name = "nameLabel";
-            nameLabel.ReadOnly = true;
-            // 
-            // contactNoLabel
-            // 
-            contactNoLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            contactNoLabel.DataPropertyName = "employee_contactno";
-            contactNoLabel.HeaderText = "Contact Number";
-            contactNoLabel.Name = "contactNoLabel";
-            contactNoLabel.ReadOnly = true;
-            // 
-            // imagesLabel
-            // 
-            imagesLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            imagesLabel.DataPropertyName = "employee_image";
-            imagesLabel.HeaderText = "Images";
-            imagesLabel.Name = "imagesLabel";
-            imagesLabel.ReadOnly = true;
-            imagesLabel.Resizable = DataGridViewTriState.True;
-            imagesLabel.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // positionLabel
-            // 
-            positionLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            positionLabel.DataPropertyName = "employee_position";
-            positionLabel.HeaderText = "Position";
-            positionLabel.Name = "positionLabel";
-            positionLabel.ReadOnly = true;
-            // 
-            // departmentLabel
-            // 
-            departmentLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            departmentLabel.DataPropertyName = "employee_department";
-            departmentLabel.HeaderText = "Department";
-            departmentLabel.Name = "departmentLabel";
-            departmentLabel.ReadOnly = true;
-            // 
-            // statusLabel
-            // 
-            statusLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            statusLabel.DataPropertyName = "employee_status";
-            statusLabel.HeaderText = "Status";
-            statusLabel.Name = "statusLabel";
-            statusLabel.ReadOnly = true;
-            // 
-            // userIdLabel
-            // 
-            userIdLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            userIdLabel.DataPropertyName = "employee_userid";
-            userIdLabel.HeaderText = "User ID";
-            userIdLabel.Name = "userIdLabel";
-            userIdLabel.ReadOnly = true;
-            // 
-            // passwordLabel
-            // 
-            passwordLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            passwordLabel.DataPropertyName = "employee_password";
-            passwordLabel.HeaderText = "Password";
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.ReadOnly = true;
-            // 
-            // dateCreateLabel
-            // 
-            dateCreateLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateCreateLabel.DataPropertyName = "employee_date_created";
-            dateCreateLabel.HeaderText = "Date Created";
-            dateCreateLabel.Name = "dateCreateLabel";
-            dateCreateLabel.ReadOnly = true;
-            // 
-            // dateModifiedLabel
-            // 
-            dateModifiedLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateModifiedLabel.DataPropertyName = "employee_date_modified";
-            dateModifiedLabel.HeaderText = "Date Modified";
-            dateModifiedLabel.Name = "dateModifiedLabel";
-            dateModifiedLabel.ReadOnly = true;
             // 
             // panel3
             // 
@@ -210,7 +105,6 @@
             panel3.Padding = new Padding(5);
             panel3.Size = new Size(804, 110);
             panel3.TabIndex = 1;
-            panel3.Paint += panel3_Paint;
             // 
             // panel4
             // 
@@ -223,7 +117,6 @@
             panel4.Padding = new Padding(5);
             panel4.Size = new Size(794, 100);
             panel4.TabIndex = 0;
-            panel4.Paint += panel4_Paint;
             // 
             // panel5
             // 
@@ -292,7 +185,6 @@
             panel2.Padding = new Padding(5);
             panel2.Size = new Size(804, 50);
             panel2.TabIndex = 0;
-            panel2.Paint += panel2_Paint;
             // 
             // label1
             // 
@@ -304,7 +196,6 @@
             label1.Size = new Size(124, 27);
             label1.TabIndex = 1;
             label1.Text = "Employee";
-            label1.Click += label1_Click;
             // 
             // EmployeeForm
             // 
@@ -322,6 +213,7 @@
             Padding = new Padding(5);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EmployeeForm";
+            Load += EmployeeForm_Load;
             panel1.ResumeLayout(false);
             panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)employeeTable).EndInit();
@@ -347,16 +239,5 @@
         private Panel panel6;
         private CustomButton customButton1;
         private DataGridView employeeTable;
-        private DataGridViewTextBoxColumn idNumberLabel;
-        private DataGridViewTextBoxColumn nameLabel;
-        private DataGridViewTextBoxColumn contactNoLabel;
-        private DataGridViewImageColumn imagesLabel;
-        private DataGridViewTextBoxColumn positionLabel;
-        private DataGridViewTextBoxColumn departmentLabel;
-        private DataGridViewTextBoxColumn statusLabel;
-        private DataGridViewTextBoxColumn userIdLabel;
-        private DataGridViewTextBoxColumn passwordLabel;
-        private DataGridViewTextBoxColumn dateCreateLabel;
-        private DataGridViewTextBoxColumn dateModifiedLabel;
     }
 }

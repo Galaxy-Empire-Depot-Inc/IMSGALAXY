@@ -1,5 +1,6 @@
 ﻿using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
+using Google.Cloud.Storage.V1;
 using InventorySystemGalaxy.Classes;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
@@ -61,22 +62,44 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("Warehouse");
             dataTable.Columns.Add("Category");
             dataTable.Columns.Add("QTY");
+            dataTable.Columns.Add("Image", typeof(Image));
+
 
             // dataTable.Columns.Add("Image", typeof(Image));
 
 
             foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
             {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
                 if (documentSnapshot.Exists)
                 {
                     var data = documentSnapshot.ToDictionary();
-                   // byte[] imageData = Convert.FromBase64String(data["imageUrl"].ToString());
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+
+
+                    // byte[] imageData = Convert.FromBase64String(data["imageUrl"].ToString());
                     //Image image = byteArrayToImage(imageData);
                     dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
-                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Qty"]);
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Qty"], downloadedImage);
                     // Add more fields as needed
                 }
             }
+            /*WarehouseTable.Columns["Image"].DefaultCellStyle = new DataGridViewCellStyle()
+            {
+
+                Alignment = DataGridViewContentAlignment.MiddleCenter,
+                Padding = new Padding(5),
+                //ImageLayout = DataGridViewImageCellLayout.Zoom
+            };*/
 
             WarehouseTable.DataSource = dataTable;
 

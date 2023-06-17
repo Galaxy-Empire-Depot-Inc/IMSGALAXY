@@ -24,7 +24,7 @@ namespace InventorySystemGalaxy
         FirestoreDb firestore;
         string imageUrl;
         string img;
-        /*StorageClient storageClient=StorageClient.Create();*/
+        StorageClient storageClient = StorageClient.Create();
         Image image;
         string id;
         string bucketName = "imsgalaxy-f7419.appspot.com";
@@ -76,6 +76,21 @@ namespace InventorySystemGalaxy
 
         public void addEmployee()
         {
+            image = employeePictureBox.Image;
+            //Generate unique FileName.jpg
+            string fileName = $"{Guid.NewGuid()}.jpg";
+
+            using (var memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] imageData = memoryStream.ToArray();
+
+                // Upload the image to Cloud Storage
+                storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+            }
+
+            //get the link of the image in cloudstorage
+            imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
             id = idNumberTextBox.Text;
             DocumentReference documentReference = firestore.Collection("Employee").Document(id);
             Dictionary<string, object> data1 = new Dictionary<string, object>()
@@ -100,7 +115,6 @@ namespace InventorySystemGalaxy
         private void addBtn_Click(object sender, EventArgs e)
         {
             addEmployee();
-            /*saveImage();*/
         }
 
         private void getImageFromGallery()
@@ -135,27 +149,6 @@ namespace InventorySystemGalaxy
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void saveImage()
-        {
-            
-
-            /*image = employeePictureBox.Image;
-            //Generate unique FileName.jpg
-            string fileName = $"{Guid.NewGuid()}.jpg";
-
-            using (var memoryStream = new MemoryStream())
-            {
-                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] imageData = memoryStream.ToArray();
-
-                // Upload the image to Cloud Storage
-                storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
-            }
-
-            //get the link of the image in cloudstorage
-            imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";*/
-
-        }
 
     }
 
