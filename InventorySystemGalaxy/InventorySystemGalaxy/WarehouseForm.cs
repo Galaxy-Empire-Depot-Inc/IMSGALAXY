@@ -1,12 +1,14 @@
 ﻿using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
 using Google.Cloud.Storage.V1;
+using Google.Type;
 using InventorySystemGalaxy.Classes;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,9 +24,22 @@ namespace InventorySystemGalaxy
 
         FirestoreDb db;
         DataTable dataTable;
+        private List<DocumentSnapshot> data;
+        CollectionReference collectionReference;
+        private List<DocumentSnapshot> searchResults;
         public WarehouseForm()
         {
             InitializeComponent();
+            FirestoreDbBuilder builder = new FirestoreDbBuilder
+            {
+                ProjectId = "imsgalaxy-f7419",
+                // Add additional configuration as needed
+            };
+            db = builder.Build();
+
+            WarehouseTable.DataSource = data;
+            GetDataFromFirestore();
+
         }
 
         private void ShowModal_Click(object sender, EventArgs e)
@@ -53,13 +68,6 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("ProductSize");
             dataTable.Columns.Add("Warehouse");
             dataTable.Columns.Add("Category");
-<<<<<<< HEAD
-            dataTable.Columns.Add("QTY");
-            dataTable.Columns.Add("Image", typeof(Image));
-
-
-            // dataTable.Columns.Add("Image", typeof(Image));
-=======
             dataTable.Columns.Add("Box");
             dataTable.Columns.Add("Quantity");
             dataTable.Columns.Add("CTN L");
@@ -67,7 +75,6 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("CTN H");
             dataTable.Columns.Add("Availability");
             dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
->>>>>>> ab80740c571ba39f68ead8380ef10712b4524abd
 
             //set the property of every column
 
@@ -85,31 +92,13 @@ namespace InventorySystemGalaxy
                     var downloadStream = new MemoryStream();
                     storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
                     downloadStream.Position = 0;
-<<<<<<< HEAD
-                    Image downloadedImage = Image.FromStream(downloadStream);
-
-
-
-                    // byte[] imageData = Convert.FromBase64String(data["imageUrl"].ToString());
-                    //Image image = byteArrayToImage(imageData);
-                    dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
-                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Qty"], downloadedImage);
-=======
                     System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
                     dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
                         data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
                         data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Availability"], downloadedImage);
->>>>>>> ab80740c571ba39f68ead8380ef10712b4524abd
                     // Add more fields as needed
                 }
             }
-            /*WarehouseTable.Columns["Image"].DefaultCellStyle = new DataGridViewCellStyle()
-            {
-
-                Alignment = DataGridViewContentAlignment.MiddleCenter,
-                Padding = new Padding(5),
-                //ImageLayout = DataGridViewImageCellLayout.Zoom
-            };*/
 
 
             // Handle the CellFormatting event
@@ -228,7 +217,7 @@ namespace InventorySystemGalaxy
                 warehouseModal.CategoryCB.SelectedIndex = 6;
             }
 
-            
+
             //display image when row selected
             if (e.RowIndex >= 0 && WarehouseTable.Rows[e.RowIndex].Cells["Image"].Value is System.Drawing.Image)
             {
@@ -242,43 +231,30 @@ namespace InventorySystemGalaxy
             warehouseModal.ShowDialog(this);
 
         }
-
-        private async void searchText_TextChanged(object sender, EventArgs e)
+        private async void GetDataFromFirestore()
         {
-            /*string search = searchText.Text;
+            CollectionReference collectionRef = db.Collection("Products");
 
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                // If the search text is empty or whitespace, show all data
-                WarehouseTable.DataSource = dataTable;
-            }
-            else
-            {
-                // Filter the data based on the search text using Firestore query
-                CollectionReference collectionRef = db.Collection("Products");
-                Query query = collectionRef.WhereEqualTo("Item_code", search);
-                QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-
-                List<DocumentSnapshot> filteredDocuments = querySnapshot.Documents.ToList();
-
-                DataTable filteredDataTable = dataTable.Clone(); // Create a clone of the original DataTable structure
-
-                foreach (DocumentSnapshot documentSnapshot in filteredDocuments)
-                {
-                    if (documentSnapshot.Exists)
-                    {
-                        Dictionary<string, object> documentData = documentSnapshot.ToDictionary();
-                        DataRow newRow = filteredDataTable.Rows.Add();
-                        foreach (var kvp in documentData)
-                        {
-                            newRow[kvp.Key] = kvp.Value;
-                        }
-                    }
-                }
-
-                WarehouseTable.DataSource = filteredDataTable;
-            }*/
+            // Perform the query to retrieve data from Firestore
+            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+            data = snapshot.Documents.ToList();
         }
+
+        private void searchText_TextChanged(object sender, EventArgs e)
+        {
+            
+            string searchTerm = searchText.Text.Trim().ToLower();
+
+            List<DocumentSnapshot> filteredData = data.Where(document =>
+            {
+                // Replace "your-field" with the field you want to filter by
+                string fieldValue = document.GetValue<string>("Item_code");
+                return fieldValue.ToLower().Contains(searchTerm);
+            }).ToList();
+
+            WarehouseTable.DataSource = filteredData;
+        }
+
 
     }
 }
