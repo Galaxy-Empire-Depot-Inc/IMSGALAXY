@@ -37,7 +37,7 @@
             panel3 = new Panel();
             panel4 = new Panel();
             panel7 = new Panel();
-            pictureBox2 = new PictureBox();
+            SearchBTN = new PictureBox();
             searchText = new CustomTextBox();
             panel5 = new Panel();
             pictureBox1 = new PictureBox();
@@ -49,7 +49,7 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SearchBTN).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -163,22 +163,23 @@
             // panel7
             // 
             panel7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel7.Controls.Add(pictureBox2);
+            panel7.Controls.Add(SearchBTN);
             panel7.Controls.Add(searchText);
             panel7.Location = new Point(546, 42);
             panel7.Name = "panel7";
             panel7.Size = new Size(240, 50);
             panel7.TabIndex = 2;
             // 
-            // pictureBox2
+            // SearchBTN
             // 
-            pictureBox2.Image = Properties.Resources.images_removebg_preview;
-            pictureBox2.Location = new Point(20, 13);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(35, 35);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
+            SearchBTN.Image = Properties.Resources.images_removebg_preview;
+            SearchBTN.Location = new Point(20, 13);
+            SearchBTN.Name = "SearchBTN";
+            SearchBTN.Size = new Size(35, 35);
+            SearchBTN.SizeMode = PictureBoxSizeMode.StretchImage;
+            SearchBTN.TabIndex = 1;
+            SearchBTN.TabStop = false;
+            SearchBTN.Click += SearchBTN_Click;
             // 
             // searchText
             // 
@@ -259,7 +260,7 @@
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SearchBTN).EndInit();
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -281,7 +282,7 @@
         private CustomTextBox customTextBox1;
         private Panel panel2;
         private Panel panel7;
-        private PictureBox pictureBox2;
+        private PictureBox SearchBTN;
         private CustomTextBox searchText;
     }
 }

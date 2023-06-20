@@ -238,9 +238,13 @@ namespace InventorySystemGalaxy
 
                 };
 
-                documentReference.UpdateAsync(dict);
-                MessageBox.Show("UPDATED SUCCESSFULLY");
-                ClearForm();
+
+                if(MessageBox.Show("Do you want to Update this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    documentReference.UpdateAsync(dict);
+                    MessageBox.Show("UPDATED SUCCESSFULLY");
+                    ClearForm();
+                }
 
             }
         }
@@ -476,9 +480,14 @@ namespace InventorySystemGalaxy
 
                 };
 
-                    documentReference.SetAsync(dict);
-                    MessageBox.Show("ADDED SUCCESSFULLY");
-                    ClearForm();
+                    if (MessageBox.Show("Do you want to Update this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        documentReference.SetAsync(dict);
+                        MessageBox.Show("ADDED SUCCESSFULLY");
+                        ClearForm();
+                    }
+
+                    
                 }
 
             }

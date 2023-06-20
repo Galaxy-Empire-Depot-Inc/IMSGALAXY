@@ -21,7 +21,7 @@ namespace InventorySystemGalaxy
     {
 
         FirestoreDb db;
-        DataTable dataTable;
+        DataTable dataTable, dt1;
         public WarehouseForm()
         {
             InitializeComponent();
@@ -202,7 +202,7 @@ namespace InventorySystemGalaxy
                 warehouseModal.CategoryCB.SelectedIndex = 6;
             }
 
-            
+
             //display image when row selected
             if (e.RowIndex >= 0 && WarehouseTable.Rows[e.RowIndex].Cells["Image"].Value is System.Drawing.Image)
             {
@@ -254,5 +254,107 @@ namespace InventorySystemGalaxy
             }*/
         }
 
+
+        // Populate DataGridView with Firestore data
+        /*private async Task Search(string searchTerm)
+        {
+            FirestoreDataGrid grid = new FirestoreDataGrid(dataGridView1);
+
+            // Query Firestore for documents that match the search term
+            Query query = db.Collection("your_collection_name")
+                        .WhereEqualTo("field_name", searchTerm);
+
+            await grid.BindAsync(query);
+        }*/
+
+        // Search Firestore and update the DataGridView
+        private async Task SearchAndUpdateDataGridView(string searchTerm)
+        {
+            // Manually query Firestore for documents that match the search term
+            Query query = db.Collection("Products")
+                            .WhereEqualTo("Item_code", searchTerm);
+
+            // Execute the query and retrieve the matching documents
+            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+            List<DocumentSnapshot> documents = querySnapshot.Documents.ToList();
+
+            // Clear the DataGridView
+            //WarehouseTable.Rows.Clear();
+
+            dt1 = new DataTable();
+            dt1.Columns.Add("Sort");
+            dt1.Columns.Add("Item Code");
+            dt1.Columns.Add("Reference Code");
+            dt1.Columns.Add("SRP");
+            dt1.Columns.Add("Colour");
+            dt1.Columns.Add("Description");
+            dt1.Columns.Add("DP");
+            dt1.Columns.Add("AV");
+            dt1.Columns.Add("Watts");
+            dt1.Columns.Add("ProductSize");
+            dt1.Columns.Add("Warehouse");
+            dt1.Columns.Add("Category");
+            dt1.Columns.Add("Box");
+            dt1.Columns.Add("Quantity");
+            dt1.Columns.Add("CTN L");
+            dt1.Columns.Add("CTN W");
+            dt1.Columns.Add("CTN H");
+            dt1.Columns.Add("Availability");
+            dt1.Columns.Add("Image", typeof(System.Drawing.Image));
+
+            // Populate the DataGridView with the search results
+            foreach (DocumentSnapshot document in documents)
+            {
+
+                string imageUrl = document.GetValue<string>("imageUrl");
+
+
+                if (document.Exists)
+                {
+                    // Extract data from the Firestore document and add it to the DataGridView
+                    // Example: Assuming you have "field1" and "field2" in your Firestore documents
+                    /*string sortValue = document.GetValue<string>("Sort");
+                    string itemCodeValue = document.GetValue<string>("field2");
+                    string RefCodeValue = document.GetValue<string>("field2");
+                    string srpValue = document.GetValue<string>("field2");
+                    string colourValue = document.GetValue<string>("field2");
+                    string DescriptionValue = document.GetValue<string>("field2");
+                    string DpValue = document.GetValue<string>("field2");
+                    string AvValue = document.GetValue<string>("field2");
+                    string WattsValue = document.GetValue<string>("field2");
+                    string productSizeValue = document.GetValue<string>("field2");
+                    string warehouseCategory = document.GetValue<string>("field2");
+                    string categoryValue = document.GetValue<string>("field2");
+                    string boxValue = document.GetValue<string>("field2");
+                    string qtyValue = document.GetValue<string>("field2");
+                    string ctnHValue = document.GetValue<string>("field2");
+                    string ctnLValue = document.GetValue<string>("field2");
+                    string ctnWValue = document.GetValue<string>("field2");
+                    string availabiltiyValue = document.GetValue<string>("field2");*/
+
+                    var data = document.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
+                    dt1.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Availability"], downloadedImage);
+
+                }
+            }
+
+            WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+            WarehouseTable.DataSource = dt1;
+        }
+
+        private async void SearchBTN_Click(object sender, EventArgs e)
+        {
+            string searchTerm = searchText.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
+        }
     }
 }
