@@ -281,26 +281,26 @@ namespace InventorySystemGalaxy
             // Clear the DataGridView
             //WarehouseTable.Rows.Clear();
 
-            dt1 = new DataTable();
-            dt1.Columns.Add("Sort");
-            dt1.Columns.Add("Item Code");
-            dt1.Columns.Add("Reference Code");
-            dt1.Columns.Add("SRP");
-            dt1.Columns.Add("Colour");
-            dt1.Columns.Add("Description");
-            dt1.Columns.Add("DP");
-            dt1.Columns.Add("AV");
-            dt1.Columns.Add("Watts");
-            dt1.Columns.Add("ProductSize");
-            dt1.Columns.Add("Warehouse");
-            dt1.Columns.Add("Category");
-            dt1.Columns.Add("Box");
-            dt1.Columns.Add("Quantity");
-            dt1.Columns.Add("CTN L");
-            dt1.Columns.Add("CTN W");
-            dt1.Columns.Add("CTN H");
-            dt1.Columns.Add("Availability");
-            dt1.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Availability");
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
 
             // Populate the DataGridView with the search results
             foreach (DocumentSnapshot document in documents)
@@ -340,15 +340,16 @@ namespace InventorySystemGalaxy
                     storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
                     downloadStream.Position = 0;
                     System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
-                    dt1.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                    dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
                         data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
                         data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Availability"], downloadedImage);
 
                 }
+               
             }
 
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
-            WarehouseTable.DataSource = dt1;
+            WarehouseTable.DataSource = dataTable;
         }
 
         private async void SearchBTN_Click(object sender, EventArgs e)
