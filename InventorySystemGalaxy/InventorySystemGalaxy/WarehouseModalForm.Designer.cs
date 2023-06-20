@@ -30,6 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseModalForm));
             bgPanel = new Panel();
+            RepairPanel = new Panel();
+            repairText = new CustomTextBox();
+            label4 = new Label();
+            DisplayPanel = new Panel();
+            displayText = new CustomTextBox();
+            label3 = new Label();
+            AvailablityPanel = new Panel();
+            availabilityText = new CustomTextBox();
+            label2 = new Label();
             CloseModal = new Button();
             WarehouseCB = new CustomComboBox();
             qtyTextBox = new CustomTextBox();
@@ -54,12 +63,18 @@
             AddPhotoBTN = new CustomButton();
             SelectImagePB = new PictureBox();
             bgPanel.SuspendLayout();
+            RepairPanel.SuspendLayout();
+            DisplayPanel.SuspendLayout();
+            AvailablityPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SelectImagePB).BeginInit();
             SuspendLayout();
             // 
             // bgPanel
             // 
             bgPanel.BackColor = Color.FromArgb(59, 116, 192);
+            bgPanel.Controls.Add(RepairPanel);
+            bgPanel.Controls.Add(DisplayPanel);
+            bgPanel.Controls.Add(AvailablityPanel);
             bgPanel.Controls.Add(CloseModal);
             bgPanel.Controls.Add(WarehouseCB);
             bgPanel.Controls.Add(qtyTextBox);
@@ -93,6 +108,110 @@
             bgPanel.Size = new Size(660, 374);
             bgPanel.TabIndex = 1;
             // 
+            // RepairPanel
+            // 
+            RepairPanel.Controls.Add(repairText);
+            RepairPanel.Controls.Add(label4);
+            RepairPanel.Location = new Point(402, 291);
+            RepairPanel.Name = "RepairPanel";
+            RepairPanel.Size = new Size(103, 32);
+            RepairPanel.TabIndex = 33;
+            RepairPanel.Visible = false;
+            // 
+            // repairText
+            // 
+            repairText.BorderStyle = BorderStyle.None;
+            repairText.BottomBorderColor = Color.Black;
+            repairText.BottomBorderOnFocusColor = Color.Blue;
+            repairText.Cursor = Cursors.IBeam;
+            repairText.Enabled = false;
+            repairText.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            repairText.Location = new Point(47, 3);
+            repairText.Margin = new Padding(3, 2, 3, 2);
+            repairText.Name = "repairText";
+            repairText.Size = new Size(52, 28);
+            repairText.TabIndex = 31;
+            repairText.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(4, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(41, 12);
+            label4.TabIndex = 0;
+            label4.Text = "Repair";
+            // 
+            // DisplayPanel
+            // 
+            DisplayPanel.Controls.Add(displayText);
+            DisplayPanel.Controls.Add(label3);
+            DisplayPanel.Location = new Point(286, 291);
+            DisplayPanel.Name = "DisplayPanel";
+            DisplayPanel.Size = new Size(110, 32);
+            DisplayPanel.TabIndex = 32;
+            DisplayPanel.Visible = false;
+            // 
+            // displayText
+            // 
+            displayText.BorderStyle = BorderStyle.None;
+            displayText.BottomBorderColor = Color.Black;
+            displayText.BottomBorderOnFocusColor = Color.Blue;
+            displayText.Cursor = Cursors.IBeam;
+            displayText.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            displayText.Location = new Point(50, 2);
+            displayText.Margin = new Padding(3, 2, 3, 2);
+            displayText.Name = "displayText";
+            displayText.Size = new Size(52, 28);
+            displayText.TabIndex = 31;
+            displayText.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(2, 8);
+            label3.Name = "label3";
+            label3.Size = new Size(47, 12);
+            label3.TabIndex = 0;
+            label3.Text = "Display";
+            // 
+            // AvailablityPanel
+            // 
+            AvailablityPanel.Controls.Add(availabilityText);
+            AvailablityPanel.Controls.Add(label2);
+            AvailablityPanel.Location = new Point(145, 291);
+            AvailablityPanel.Name = "AvailablityPanel";
+            AvailablityPanel.Size = new Size(135, 32);
+            AvailablityPanel.TabIndex = 30;
+            AvailablityPanel.Visible = false;
+            // 
+            // availabilityText
+            // 
+            availabilityText.BorderStyle = BorderStyle.None;
+            availabilityText.BottomBorderColor = Color.Black;
+            availabilityText.BottomBorderOnFocusColor = Color.Blue;
+            availabilityText.Cursor = Cursors.IBeam;
+            availabilityText.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            availabilityText.Location = new Point(72, 1);
+            availabilityText.Margin = new Padding(3, 2, 3, 2);
+            availabilityText.Name = "availabilityText";
+            availabilityText.Size = new Size(52, 28);
+            availabilityText.TabIndex = 31;
+            availabilityText.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(5, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(59, 12);
+            label2.TabIndex = 0;
+            label2.Text = "Available";
+            label2.Click += label2_Click;
+            // 
             // CloseModal
             // 
             CloseModal.FlatAppearance.BorderSize = 0;
@@ -119,7 +238,7 @@
             WarehouseCB.Items.AddRange(new object[] { "--Warehouse--", "TMS", "STORE", "MLB" });
             WarehouseCB.ListBackColor = Color.White;
             WarehouseCB.ListTextColor = Color.Black;
-            WarehouseCB.Location = new Point(145, 220);
+            WarehouseCB.Location = new Point(145, 217);
             WarehouseCB.Margin = new Padding(3, 2, 3, 2);
             WarehouseCB.MinimumSize = new Size(172, 0);
             WarehouseCB.Name = "WarehouseCB";
@@ -133,7 +252,7 @@
             qtyTextBox.BottomBorderOnFocusColor = Color.Blue;
             qtyTextBox.Cursor = Cursors.IBeam;
             qtyTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            qtyTextBox.Location = new Point(245, 260);
+            qtyTextBox.Location = new Point(245, 251);
             qtyTextBox.Margin = new Padding(3, 2, 3, 2);
             qtyTextBox.Name = "qtyTextBox";
             qtyTextBox.PlaceholderText = "Qty";
@@ -156,13 +275,11 @@
             dpTextBox.BottomBorderColor = Color.Black;
             dpTextBox.BottomBorderOnFocusColor = Color.Blue;
             dpTextBox.Cursor = Cursors.IBeam;
-            dpTextBox.Enabled = false;
             dpTextBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dpTextBox.Location = new Point(539, 140);
             dpTextBox.Margin = new Padding(3, 2, 3, 2);
             dpTextBox.Name = "dpTextBox";
             dpTextBox.PlaceholderText = "D.P";
-            dpTextBox.ReadOnly = true;
             dpTextBox.Size = new Size(99, 30);
             dpTextBox.TabIndex = 21;
             dpTextBox.TextAlign = HorizontalAlignment.Center;
@@ -192,7 +309,7 @@
             boxTextBox.BottomBorderOnFocusColor = Color.Blue;
             boxTextBox.Cursor = Cursors.IBeam;
             boxTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            boxTextBox.Location = new Point(146, 260);
+            boxTextBox.Location = new Point(146, 251);
             boxTextBox.Margin = new Padding(3, 2, 3, 2);
             boxTextBox.Name = "boxTextBox";
             boxTextBox.PlaceholderText = "Box";
@@ -224,7 +341,7 @@
             ctnWTextBox.BottomBorderOnFocusColor = Color.Blue;
             ctnWTextBox.Cursor = Cursors.IBeam;
             ctnWTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            ctnWTextBox.Location = new Point(568, 260);
+            ctnWTextBox.Location = new Point(568, 251);
             ctnWTextBox.Margin = new Padding(3, 2, 3, 2);
             ctnWTextBox.Name = "ctnWTextBox";
             ctnWTextBox.PlaceholderText = "Ctn W";
@@ -240,7 +357,7 @@
             ctnHTextBox.BottomBorderOnFocusColor = Color.Blue;
             ctnHTextBox.Cursor = Cursors.IBeam;
             ctnHTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            ctnHTextBox.Location = new Point(463, 260);
+            ctnHTextBox.Location = new Point(463, 251);
             ctnHTextBox.Margin = new Padding(3, 2, 3, 2);
             ctnHTextBox.Name = "ctnHTextBox";
             ctnHTextBox.PlaceholderText = "Ctn H";
@@ -256,7 +373,7 @@
             ctnLTextBox.BottomBorderOnFocusColor = Color.Blue;
             ctnLTextBox.Cursor = Cursors.IBeam;
             ctnLTextBox.Font = new Font("SimSun", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            ctnLTextBox.Location = new Point(366, 260);
+            ctnLTextBox.Location = new Point(366, 251);
             ctnLTextBox.Margin = new Padding(3, 2, 3, 2);
             ctnLTextBox.Name = "ctnLTextBox";
             ctnLTextBox.PlaceholderText = "Ctn L";
@@ -414,7 +531,7 @@
             CategoryCB.Items.AddRange(new object[] { "--Category--", "GS Ceiling and Chandelier Lights", "GS Crystal Lights", "GS Fan", "GS Panel Lights", "GS Strip Lights", "New Chandelier Lights" });
             CategoryCB.ListBackColor = Color.White;
             CategoryCB.ListTextColor = Color.Black;
-            CategoryCB.Location = new Point(394, 220);
+            CategoryCB.Location = new Point(394, 217);
             CategoryCB.Margin = new Padding(3, 2, 3, 2);
             CategoryCB.MinimumSize = new Size(172, 0);
             CategoryCB.Name = "CategoryCB";
@@ -437,6 +554,7 @@
             // AddPhotoBTN
             // 
             AddPhotoBTN.BackColor = Color.FromArgb(59, 116, 192);
+            AddPhotoBTN.Cursor = Cursors.Hand;
             AddPhotoBTN.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             AddPhotoBTN.ForeColor = SystemColors.ControlLightLight;
             AddPhotoBTN.HoverForeColor1 = Color.SteelBlue;
@@ -487,6 +605,12 @@
             Load += WarehouseModalForm_Load;
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
+            RepairPanel.ResumeLayout(false);
+            RepairPanel.PerformLayout();
+            DisplayPanel.ResumeLayout(false);
+            DisplayPanel.PerformLayout();
+            AvailablityPanel.ResumeLayout(false);
+            AvailablityPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SelectImagePB).EndInit();
             ResumeLayout(false);
         }
@@ -495,7 +619,6 @@
 
         private Panel bgPanel;
         private Label label1;
-        private CustomButton AddPhotoBTN;
         private Label LabelProductModal;
         private Button CloseModal;
         public CustomButton Add_UpdateBTN;
@@ -517,5 +640,15 @@
         public CustomComboBox CategoryCB;
         public CustomComboBox WarehouseCB;
         public PictureBox SelectImagePB;
+        private Label label2;
+        public CustomTextBox repairText;
+        private Label label4;
+        public CustomTextBox displayText;
+        private Label label3;
+        public CustomTextBox availabilityText;
+        public Panel AvailablityPanel;
+        public Panel RepairPanel;
+        public Panel DisplayPanel;
+        public CustomButton AddPhotoBTN;
     }
 }

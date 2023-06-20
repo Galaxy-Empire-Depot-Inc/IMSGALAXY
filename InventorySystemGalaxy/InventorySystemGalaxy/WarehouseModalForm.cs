@@ -162,7 +162,7 @@ namespace InventorySystemGalaxy
             //addProduct();
             //addStorageImage();
 
-            
+
 
             if (Add_UpdateBTN.Text == "Update")
             {
@@ -233,13 +233,13 @@ namespace InventorySystemGalaxy
                     {"CtlH", ctnHTextBox.Text},
                     {"CtlW", ctnWTextBox.Text},
                     {"CtlL", ctnLTextBox.Text},
-                    {"Availability", "Available" },
+                    {"Available", "Yes" },
                     { "imageUrl", imageUrl }
 
                 };
 
 
-                if(MessageBox.Show("Do you want to Update this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to Update this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     documentReference.UpdateAsync(dict);
                     MessageBox.Show("UPDATED SUCCESSFULLY");
@@ -475,19 +475,21 @@ namespace InventorySystemGalaxy
                     {"CtlH", ctnHTextBox.Text},
                     {"CtlW", ctnWTextBox.Text},
                     {"CtlL", ctnLTextBox.Text},
-                    {"Availability", "Available" },
+                    {"Available", "Yes" },
+                    {"Display", "Yes" },
+                    {"Repair", "0"},
                     { "imageUrl", imageUrl }
 
                 };
 
-                    if (MessageBox.Show("Do you want to Update this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to Add this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         documentReference.SetAsync(dict);
                         MessageBox.Show("ADDED SUCCESSFULLY");
                         ClearForm();
                     }
 
-                    
+
                 }
 
             }
@@ -587,6 +589,10 @@ namespace InventorySystemGalaxy
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
+            /*AvailablityPanel.Visible = false;
+            RepairPanel.Visible = false;
+            DisplayPanel.Visible = false;*/
+
         }
 
         private void colorTextBox_TextChanged(object sender, EventArgs e)
@@ -606,6 +612,11 @@ namespace InventorySystemGalaxy
             {
                 e.Handled = true;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,14 +23,13 @@ namespace InventorySystemGalaxy
     {
 
         FirestoreDb db;
-<<<<<<< HEAD
+
         DataTable dataTable, dt1;
-=======
-        DataTable dataTable;
+
         private List<DocumentSnapshot> data;
         CollectionReference collectionReference;
         private List<DocumentSnapshot> searchResults;
->>>>>>> fc065536d13d46ef533042ce9a55e315031576ba
+
         public WarehouseForm()
         {
             InitializeComponent();
@@ -44,13 +43,6 @@ namespace InventorySystemGalaxy
             WarehouseTable.DataSource = data;
             GetDataFromFirestore();
 
-        }
-
-        private void ShowModal_Click(object sender, EventArgs e)
-        {
-            WarehouseModalForm warehouseModalForm = new WarehouseModalForm();
-            warehouseModalForm.ShowDialog();
-            warehouseModalForm.StartPosition = FormStartPosition.CenterParent;
         }
 
         async void DisplayData()
@@ -77,7 +69,9 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("CTN L");
             dataTable.Columns.Add("CTN W");
             dataTable.Columns.Add("CTN H");
-            dataTable.Columns.Add("Availability");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
             dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
 
             //set the property of every column
@@ -99,12 +93,11 @@ namespace InventorySystemGalaxy
                     System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
                     dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
                         data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
-                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Availability"], downloadedImage);
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"], downloadedImage);
                     // Add more fields as needed
                 }
             }
-
-
+  
             // Handle the CellFormatting event
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
             WarehouseTable.DataSource = dataTable;
@@ -149,6 +142,11 @@ namespace InventorySystemGalaxy
             //Change the text in button
             warehouseModal.Add_UpdateBTN.Text = "Update";
 
+            //Show R.D.A
+            warehouseModal.AvailablityPanel.Visible = true;
+            warehouseModal.RepairPanel.Visible = true;
+            warehouseModal.DisplayPanel.Visible = true;
+
             //Display the Data into Modal
             warehouseModal.sortTextBox.Text = this.WarehouseTable.CurrentRow.Cells["Sort"].Value.ToString();
             warehouseModal.itemCodeTextBox.Text = this.WarehouseTable.CurrentRow.Cells["Item code"].Value.ToString();
@@ -165,6 +163,9 @@ namespace InventorySystemGalaxy
             warehouseModal.ctnLTextBox.Text = this.WarehouseTable.CurrentRow.Cells["CTN L"].Value.ToString();
             warehouseModal.ctnHTextBox.Text = this.WarehouseTable.CurrentRow.Cells["CTN H"].Value.ToString();
             warehouseModal.ctnWTextBox.Text = this.WarehouseTable.CurrentRow.Cells["CTN W"].Value.ToString();
+            warehouseModal.availabilityText.Text = this.WarehouseTable.CurrentRow.Cells["Available"].Value.ToString();
+            warehouseModal.displayText.Text = this.WarehouseTable.CurrentRow.Cells["Display"].Value.ToString();
+            warehouseModal.repairText.Text = this.WarehouseTable.CurrentRow.Cells["Repair"].Value.ToString();
 
             //get value from custombox
             string CategorySelected = this.WarehouseTable.CurrentRow.Cells["Category"].Value.ToString();
@@ -244,19 +245,6 @@ namespace InventorySystemGalaxy
             data = snapshot.Documents.ToList();
         }
 
-<<<<<<< HEAD
-
-        // Populate DataGridView with Firestore data
-        /*private async Task Search(string searchTerm)
-        {
-            FirestoreDataGrid grid = new FirestoreDataGrid(dataGridView1);
-
-            // Query Firestore for documents that match the search term
-            Query query = db.Collection("your_collection_name")
-                        .WhereEqualTo("field_name", searchTerm);
-
-            await grid.BindAsync(query);
-        }*/
 
         // Search Firestore and update the DataGridView
         private async Task SearchAndUpdateDataGridView(string searchTerm)
@@ -270,7 +258,7 @@ namespace InventorySystemGalaxy
             List<DocumentSnapshot> documents = querySnapshot.Documents.ToList();
 
             // Clear the DataGridView
-            //WarehouseTable.Rows.Clear();
+            //dataTable.Rows.Clear();
 
             dataTable = new DataTable();
             dataTable.Columns.Add("Sort");
@@ -290,7 +278,9 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("CTN L");
             dataTable.Columns.Add("CTN W");
             dataTable.Columns.Add("CTN H");
-            dataTable.Columns.Add("Availability");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
             dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
 
             // Populate the DataGridView with the search results
@@ -333,10 +323,10 @@ namespace InventorySystemGalaxy
                     System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
                     dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
                         data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
-                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Availability"], downloadedImage);
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"], downloadedImage);
 
                 }
-               
+
             }
 
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
@@ -348,10 +338,10 @@ namespace InventorySystemGalaxy
             string searchTerm = searchText.Text;
             await SearchAndUpdateDataGridView(searchTerm);
         }
-=======
+
         private void searchText_TextChanged(object sender, EventArgs e)
         {
-            
+
             string searchTerm = searchText.Text.Trim().ToLower();
 
             List<DocumentSnapshot> filteredData = data.Where(document =>
@@ -364,7 +354,12 @@ namespace InventorySystemGalaxy
             WarehouseTable.DataSource = filteredData;
         }
 
+        private void ShowModal_Click_1(object sender, EventArgs e)
+        {
+            WarehouseModalForm warehouseModalForm = new WarehouseModalForm();
+            warehouseModalForm.ShowDialog();
+            warehouseModalForm.StartPosition = FormStartPosition.CenterParent;
 
->>>>>>> fc065536d13d46ef533042ce9a55e315031576ba
+        }
     }
 }

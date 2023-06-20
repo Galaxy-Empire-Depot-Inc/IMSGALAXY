@@ -88,6 +88,7 @@
             ShowModal.TextAlign = ContentAlignment.MiddleLeft;
             ShowModal.Tooltip1 = null;
             ShowModal.UseVisualStyleBackColor = true;
+            ShowModal.Click += ShowModal_Click_1;
             // 
             // panel1
             // 
@@ -133,6 +134,7 @@
             WarehouseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             WarehouseTable.Size = new Size(794, 533);
             WarehouseTable.TabIndex = 0;
+            WarehouseTable.CellDoubleClick += WarehouseTable_CellDoubleClick;
             // 
             // panel3
             // 
