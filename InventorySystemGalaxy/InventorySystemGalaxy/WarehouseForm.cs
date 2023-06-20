@@ -97,7 +97,7 @@ namespace InventorySystemGalaxy
                     // Add more fields as needed
                 }
             }
-  
+
             // Handle the CellFormatting event
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
             WarehouseTable.DataSource = dataTable;
@@ -127,9 +127,12 @@ namespace InventorySystemGalaxy
         private async void WarehouseForm_Load(object sender, EventArgs e)
         {
 
+
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
+
+            //timer1.Start();
             DisplayData();
 
         }
@@ -339,10 +342,10 @@ namespace InventorySystemGalaxy
             await SearchAndUpdateDataGridView(searchTerm);
         }
 
-        private void searchText_TextChanged(object sender, EventArgs e)
+        private async void searchText_TextChanged(object sender, EventArgs e)
         {
 
-            string searchTerm = searchText.Text.Trim().ToLower();
+            /*string searchTerm = searchText.Text.Trim().ToLower();
 
             List<DocumentSnapshot> filteredData = data.Where(document =>
             {
@@ -351,7 +354,10 @@ namespace InventorySystemGalaxy
                 return fieldValue.ToLower().Contains(searchTerm);
             }).ToList();
 
-            WarehouseTable.DataSource = filteredData;
+            WarehouseTable.DataSource = filteredData;*/
+
+
+
         }
 
         private void ShowModal_Click_1(object sender, EventArgs e)
@@ -359,6 +365,17 @@ namespace InventorySystemGalaxy
             WarehouseModalForm warehouseModalForm = new WarehouseModalForm();
             warehouseModalForm.ShowDialog();
             warehouseModalForm.StartPosition = FormStartPosition.CenterParent;
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            /*DisplayData();
+            timer1.Start();*/
+        }
+
+        private void WarehouseLabel_Click(object sender, EventArgs e)
+        {
 
         }
     }

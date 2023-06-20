@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseForm));
-            label1 = new Label();
+            WarehouseLabel = new Label();
             ShowModal = new CustomButton();
             panel1 = new Panel();
             panel6 = new Panel();
@@ -43,6 +44,7 @@
             pictureBox1 = new PictureBox();
             customTextBox1 = new CustomTextBox();
             panel2 = new Panel();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)WarehouseTable).BeginInit();
@@ -55,16 +57,17 @@
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // WarehouseLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlDark;
-            label1.Location = new Point(8, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(208, 27);
-            label1.TabIndex = 1;
-            label1.Text = "Warehouse(ALL)";
+            WarehouseLabel.AutoSize = true;
+            WarehouseLabel.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            WarehouseLabel.ForeColor = SystemColors.ControlDark;
+            WarehouseLabel.Location = new Point(8, 16);
+            WarehouseLabel.Name = "WarehouseLabel";
+            WarehouseLabel.Size = new Size(208, 27);
+            WarehouseLabel.TabIndex = 1;
+            WarehouseLabel.Text = "Warehouse(ALL)";
+            WarehouseLabel.Click += WarehouseLabel_Click;
             // 
             // ShowModal
             // 
@@ -231,13 +234,19 @@
             // panel2
             // 
             panel2.BackColor = Color.AliceBlue;
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(WarehouseLabel);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(5, 5);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(5);
             panel2.Size = new Size(804, 50);
             panel2.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 5000;
+            timer1.Tick += timer1_Tick;
             // 
             // WarehouseForm
             // 
@@ -270,7 +279,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label WarehouseLabel;
         private CustomButton ShowModal;
         private Panel panel1;
         private Panel panel6;
@@ -284,5 +293,6 @@
         private Panel panel7;
         private PictureBox SearchBTN;
         private CustomTextBox searchText;
+        private System.Windows.Forms.Timer timer1;
     }
 }

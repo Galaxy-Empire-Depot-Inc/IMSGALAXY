@@ -233,7 +233,9 @@ namespace InventorySystemGalaxy
                     {"CtlH", ctnHTextBox.Text},
                     {"CtlW", ctnWTextBox.Text},
                     {"CtlL", ctnLTextBox.Text},
-                    {"Available", "Yes" },
+                    {"Available", availabilityText.Text},
+                    {"Display", displayText.Text},
+                    {"Repair", repairText.Text},
                     { "imageUrl", imageUrl }
 
                 };
@@ -589,9 +591,6 @@ namespace InventorySystemGalaxy
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
-            /*AvailablityPanel.Visible = false;
-            RepairPanel.Visible = false;
-            DisplayPanel.Visible = false;*/
 
         }
 

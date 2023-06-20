@@ -20,6 +20,9 @@
     <Compile Update="Dialogs\LogoutMessage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Dialogs\WarehouseLabelSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Dialogs\WarningMessageDialog.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -124,7 +124,6 @@
             repairText.BottomBorderColor = Color.Black;
             repairText.BottomBorderOnFocusColor = Color.Blue;
             repairText.Cursor = Cursors.IBeam;
-            repairText.Enabled = false;
             repairText.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             repairText.Location = new Point(47, 3);
             repairText.Margin = new Padding(3, 2, 3, 2);
