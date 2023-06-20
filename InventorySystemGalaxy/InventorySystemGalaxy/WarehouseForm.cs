@@ -1,12 +1,14 @@
 ﻿using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
 using Google.Cloud.Storage.V1;
+using Google.Type;
 using InventorySystemGalaxy.Classes;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,10 +23,27 @@ namespace InventorySystemGalaxy
     {
 
         FirestoreDb db;
+<<<<<<< HEAD
         DataTable dataTable, dt1;
+=======
+        DataTable dataTable;
+        private List<DocumentSnapshot> data;
+        CollectionReference collectionReference;
+        private List<DocumentSnapshot> searchResults;
+>>>>>>> fc065536d13d46ef533042ce9a55e315031576ba
         public WarehouseForm()
         {
             InitializeComponent();
+            FirestoreDbBuilder builder = new FirestoreDbBuilder
+            {
+                ProjectId = "imsgalaxy-f7419",
+                // Add additional configuration as needed
+            };
+            db = builder.Build();
+
+            WarehouseTable.DataSource = data;
+            GetDataFromFirestore();
+
         }
 
         private void ShowModal_Click(object sender, EventArgs e)
@@ -216,44 +235,16 @@ namespace InventorySystemGalaxy
             warehouseModal.ShowDialog(this);
 
         }
-
-        private async void searchText_TextChanged(object sender, EventArgs e)
+        private async void GetDataFromFirestore()
         {
-            /*string search = searchText.Text;
+            CollectionReference collectionRef = db.Collection("Products");
 
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                // If the search text is empty or whitespace, show all data
-                WarehouseTable.DataSource = dataTable;
-            }
-            else
-            {
-                // Filter the data based on the search text using Firestore query
-                CollectionReference collectionRef = db.Collection("Products");
-                Query query = collectionRef.WhereEqualTo("Item_code", search);
-                QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-
-                List<DocumentSnapshot> filteredDocuments = querySnapshot.Documents.ToList();
-
-                DataTable filteredDataTable = dataTable.Clone(); // Create a clone of the original DataTable structure
-
-                foreach (DocumentSnapshot documentSnapshot in filteredDocuments)
-                {
-                    if (documentSnapshot.Exists)
-                    {
-                        Dictionary<string, object> documentData = documentSnapshot.ToDictionary();
-                        DataRow newRow = filteredDataTable.Rows.Add();
-                        foreach (var kvp in documentData)
-                        {
-                            newRow[kvp.Key] = kvp.Value;
-                        }
-                    }
-                }
-
-                WarehouseTable.DataSource = filteredDataTable;
-            }*/
+            // Perform the query to retrieve data from Firestore
+            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+            data = snapshot.Documents.ToList();
         }
 
+<<<<<<< HEAD
 
         // Populate DataGridView with Firestore data
         /*private async Task Search(string searchTerm)
@@ -357,5 +348,23 @@ namespace InventorySystemGalaxy
             string searchTerm = searchText.Text;
             await SearchAndUpdateDataGridView(searchTerm);
         }
+=======
+        private void searchText_TextChanged(object sender, EventArgs e)
+        {
+            
+            string searchTerm = searchText.Text.Trim().ToLower();
+
+            List<DocumentSnapshot> filteredData = data.Where(document =>
+            {
+                // Replace "your-field" with the field you want to filter by
+                string fieldValue = document.GetValue<string>("Item_code");
+                return fieldValue.ToLower().Contains(searchTerm);
+            }).ToList();
+
+            WarehouseTable.DataSource = filteredData;
+        }
+
+
+>>>>>>> fc065536d13d46ef533042ce9a55e315031576ba
     }
 }
