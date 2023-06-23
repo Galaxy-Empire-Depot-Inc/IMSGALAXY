@@ -44,6 +44,11 @@
             pictureBox1 = new PictureBox();
             customTextBox1 = new CustomTextBox();
             panel2 = new Panel();
+            GBWarehouse = new GroupBox();
+            mlbRB = new RadioButton();
+            storeRB = new RadioButton();
+            tmsRB = new RadioButton();
+            allRB = new RadioButton();
             timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel6.SuspendLayout();
@@ -55,6 +60,7 @@
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            GBWarehouse.SuspendLayout();
             SuspendLayout();
             // 
             // WarehouseLabel
@@ -235,6 +241,7 @@
             // panel2
             // 
             panel2.BackColor = Color.AliceBlue;
+            panel2.Controls.Add(GBWarehouse);
             panel2.Controls.Add(WarehouseLabel);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(5, 5);
@@ -242,6 +249,72 @@
             panel2.Padding = new Padding(5);
             panel2.Size = new Size(804, 50);
             panel2.TabIndex = 0;
+            // 
+            // GBWarehouse
+            // 
+            GBWarehouse.Controls.Add(mlbRB);
+            GBWarehouse.Controls.Add(storeRB);
+            GBWarehouse.Controls.Add(tmsRB);
+            GBWarehouse.Controls.Add(allRB);
+            GBWarehouse.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            GBWarehouse.Location = new Point(255, 3);
+            GBWarehouse.Name = "GBWarehouse";
+            GBWarehouse.Size = new Size(546, 46);
+            GBWarehouse.TabIndex = 2;
+            GBWarehouse.TabStop = false;
+            GBWarehouse.Text = "Warehouse";
+            // 
+            // mlbRB
+            // 
+            mlbRB.AutoSize = true;
+            mlbRB.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            mlbRB.Location = new Point(439, 20);
+            mlbRB.Name = "mlbRB";
+            mlbRB.Size = new Size(49, 20);
+            mlbRB.TabIndex = 3;
+            mlbRB.TabStop = true;
+            mlbRB.Text = "MLB";
+            mlbRB.UseVisualStyleBackColor = true;
+            mlbRB.CheckedChanged += mlbRB_CheckedChanged;
+            // 
+            // storeRB
+            // 
+            storeRB.AutoSize = true;
+            storeRB.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            storeRB.Location = new Point(316, 20);
+            storeRB.Name = "storeRB";
+            storeRB.Size = new Size(65, 20);
+            storeRB.TabIndex = 2;
+            storeRB.TabStop = true;
+            storeRB.Text = "Store";
+            storeRB.UseVisualStyleBackColor = true;
+            storeRB.CheckedChanged += storeRB_CheckedChanged;
+            // 
+            // tmsRB
+            // 
+            tmsRB.AutoSize = true;
+            tmsRB.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tmsRB.Location = new Point(190, 20);
+            tmsRB.Name = "tmsRB";
+            tmsRB.Size = new Size(49, 20);
+            tmsRB.TabIndex = 1;
+            tmsRB.TabStop = true;
+            tmsRB.Text = "TMS";
+            tmsRB.UseVisualStyleBackColor = true;
+            tmsRB.CheckedChanged += tmsRB_CheckedChanged;
+            // 
+            // allRB
+            // 
+            allRB.AutoSize = true;
+            allRB.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            allRB.Location = new Point(66, 20);
+            allRB.Name = "allRB";
+            allRB.Size = new Size(49, 20);
+            allRB.TabIndex = 0;
+            allRB.TabStop = true;
+            allRB.Text = "All";
+            allRB.UseVisualStyleBackColor = true;
+            allRB.CheckedChanged += allRB_CheckedChanged;
             // 
             // timer1
             // 
@@ -275,6 +348,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            GBWarehouse.ResumeLayout(false);
+            GBWarehouse.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -294,5 +369,10 @@
         private CustomTextBox searchText;
         private System.Windows.Forms.Timer timer1;
         public Label WarehouseLabel;
+        private GroupBox GBWarehouse;
+        private RadioButton mlbRB;
+        private RadioButton storeRB;
+        private RadioButton tmsRB;
+        private RadioButton allRB;
     }
 }

@@ -33,6 +33,7 @@
             tmsRB = new RadioButton();
             storeRB = new RadioButton();
             allRB = new RadioButton();
+            SelectWarehouseBtn = new ButtonCustom();
             grpRadio.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,7 +51,6 @@
             grpRadio.TabIndex = 1;
             grpRadio.TabStop = false;
             grpRadio.Text = "Warehouse";
-            grpRadio.Enter += grpRadio_Enter;
             // 
             // mlbRB
             // 
@@ -64,7 +64,6 @@
             mlbRB.TabStop = true;
             mlbRB.Text = "MLB";
             mlbRB.UseVisualStyleBackColor = true;
-            mlbRB.CheckedChanged += mlbRB_CheckedChanged;
             // 
             // tmsRB
             // 
@@ -78,7 +77,6 @@
             tmsRB.TabStop = true;
             tmsRB.Text = "TMS";
             tmsRB.UseVisualStyleBackColor = true;
-            tmsRB.CheckedChanged += tmsRB_CheckedChanged;
             // 
             // storeRB
             // 
@@ -92,7 +90,6 @@
             storeRB.TabStop = true;
             storeRB.Text = "Store";
             storeRB.UseVisualStyleBackColor = true;
-            storeRB.CheckedChanged += storeRB_CheckedChanged;
             // 
             // allRB
             // 
@@ -106,14 +103,29 @@
             allRB.TabStop = true;
             allRB.Text = "All";
             allRB.UseVisualStyleBackColor = true;
-            allRB.CheckedChanged += allRB_CheckedChanged;
+            // 
+            // SelectWarehouseBtn
+            // 
+            SelectWarehouseBtn.BackColor = Color.White;
+            SelectWarehouseBtn.Cursor = Cursors.Hand;
+            SelectWarehouseBtn.FlatAppearance.BorderSize = 0;
+            SelectWarehouseBtn.FlatStyle = FlatStyle.Flat;
+            SelectWarehouseBtn.ForeColor = Color.Black;
+            SelectWarehouseBtn.Location = new Point(37, 206);
+            SelectWarehouseBtn.Name = "SelectWarehouseBtn";
+            SelectWarehouseBtn.Size = new Size(110, 32);
+            SelectWarehouseBtn.TabIndex = 2;
+            SelectWarehouseBtn.Text = "Select";
+            SelectWarehouseBtn.UseVisualStyleBackColor = false;
+            SelectWarehouseBtn.Click += SelectWarehouseBtn_Click;
             // 
             // WarehouseLabelSelection
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(59, 116, 192);
-            ClientSize = new Size(195, 216);
+            ClientSize = new Size(192, 250);
+            Controls.Add(SelectWarehouseBtn);
             Controls.Add(grpRadio);
             FormBorderStyle = FormBorderStyle.None;
             Name = "WarehouseLabelSelection";
@@ -126,9 +138,10 @@
         #endregion
 
         private GroupBox grpRadio;
-        private RadioButton mlbRB;
-        private RadioButton tmsRB;
-        private RadioButton storeRB;
-        private RadioButton allRB;
+        private ButtonCustom SelectWarehouseBtn;
+        public RadioButton mlbRB;
+        public RadioButton tmsRB;
+        public RadioButton storeRB;
+        public RadioButton allRB;
     }
 }

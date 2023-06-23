@@ -343,118 +343,48 @@ namespace InventorySystemGalaxy
         async void addProduct()
         {
 
-            /*Image pictureImage = SelectImagePB.Image;
-            ImageConverter Converter = new ImageConverter();
-            var ImageConvert = Converter.ConvertTo(pictureImage, typeof(byte[]));
-
-            String SelectedWarehouse = WarehouseCB.GetItemText(WarehouseCB.SelectedItem);
-            String SelectedCategory = CategoryCB.GetItemText(CategoryCB.SelectedItem);
-
-            MemoryStream memoryStream = new MemoryStream();
-            SelectImagePB.Image.Save(memoryStream, SelectImagePB.Image.RawFormat);
-            byte[] img = memoryStream.ToArray();
-
-            String saveQuery = "INSERT INTO product_table(sort, item_code,ref_code, picture, colour, av, watts, ctn_size_l, ctn_size_w, ctn_size_h, srp, warehouse, description, category, qty_per_box, box) " +
-                    "VALUES(@sort, @item_code, @ref_code, @picture, @colour, @av, @watts, @ctn_size_l, @ctn_size_w, @ctn_size_h, @srp, @warehouse, @description, @category, @qty_per_box, @box)";
-
-            if (SelectedWarehouse == "Select Warehouse" || SelectedCategory == "Select Category")
+            if(sortTextBox.Text != "" || itemCodeTextBox.Text != "" || refTextBox.Text != "" || srpTextBox.Text != "" || colorTextBox.Text != "" || descriptionTextBox.Text != "" || dpTextBox.Text != "" ||
+                avTextbox.Text != "" || wattsTextBox.Text != "" || sizeTextBox.Text != "" || boxTextBox.Text != "" || qtyTextBox.Text != "" || ctnHTextBox.Text != "" || ctnWTextBox.Text != "" || ctnLTextBox.Text != "")
             {
-                MessageBox.Show("Please Select Category/Warehouse");
-            }
-            else
-            {
-                connection.Open();
-                command = new MySqlCommand(saveQuery, connection);
+                string ITEMCODE = itemCodeTextBox.Text;
+                string selectedWarehouse = WarehouseCB.GetItemText(WarehouseCB.SelectedItem);
+                string selectedCategory = WarehouseCB.GetItemText(CategoryCB.SelectedItem);
 
-                command.Parameters.Add("@sort", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@item_code", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@ref_code", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@picture", MySqlDbType.Blob);
-                command.Parameters.Add("@colour", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@av", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@watts", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@ctn_size_l", MySqlDbType.Double);
-                command.Parameters.Add("@ctn_size_w", MySqlDbType.Double);
-                command.Parameters.Add("@ctn_size_h", MySqlDbType.Double);
-                command.Parameters.Add("@srp", MySqlDbType.Double);
-                command.Parameters.Add("@warehouse", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@description", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@category", MySqlDbType.VarChar, 45);
-                command.Parameters.Add("@qty_per_box", MySqlDbType.Double);
-                command.Parameters.Add("@box", MySqlDbType.Double);
-
-                command.Parameters["@sort"].Value = sortTextBox.Text;
-                command.Parameters["@item_code"].Value = itemCodeTextBox.Text;
-                command.Parameters["@ref_code"].Value = refTextBox.Text;
-                command.Parameters["@picture"].Value = img;
-                command.Parameters["@colour"].Value = colorTextBox.Text;
-                command.Parameters["@av"].Value = avTextbox.Text;
-                command.Parameters["@watts"].Value = wattsTextBox.Text;
-                command.Parameters["@ctn_size_l"].Value = ctnLTextBox.Text;
-                command.Parameters["@ctn_size_w"].Value = ctnWTextBox.Text;
-                command.Parameters["@ctn_size_h"].Value = ctnHTextBox.Text;
-                command.Parameters["@srp"].Value = srpTextBox.Text;
-                command.Parameters["@warehouse"].Value = SelectedWarehouse;
-                command.Parameters["@description"].Value = descriptionTextBox.Text;
-                command.Parameters["@category"].Value = SelectedCategory;
-                command.Parameters["@qty_per_box"].Value = qtyTextBox.Text;
-                command.Parameters["@box"].Value = boxTextBox.Text;
-
-
-                if (command.ExecuteNonQuery() == 1)
+                if (WarehouseCB.SelectedIndex == 0 || CategoryCB.SelectedIndex == 0)
                 {
-                    MessageBox.Show("INSERTED");
-                    ClearForm();
 
+                    MessageBox.Show("No Warehouse/Category Selected");
 
                 }
                 else
                 {
-                    MessageBox.Show("NOT INSERTED");
-                }
-                connection.Close();
 
-            }*/
+                    image = SelectImagePB.Image;
+                    //Generate unique FileName.jpg
+                    string fileName = $"{Guid.NewGuid()}.jpg";
 
-            string ITEMCODE = itemCodeTextBox.Text;
-            string selectedWarehouse = WarehouseCB.GetItemText(WarehouseCB.SelectedItem);
-            string selectedCategory = WarehouseCB.GetItemText(CategoryCB.SelectedItem);
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        byte[] imageData = memoryStream.ToArray();
 
-            if (WarehouseCB.SelectedIndex == 0 || CategoryCB.SelectedIndex == 0)
-            {
+                        // Upload the image to Cloud Storage
+                        storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+                    }
 
-                MessageBox.Show("No Warehouse/Category Selected");
+                    //get the link of the image in cloudstorage
+                    imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
 
-            }
-            else
-            {
+                    DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
+                    DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
 
-                image = SelectImagePB.Image;
-                //Generate unique FileName.jpg
-                string fileName = $"{Guid.NewGuid()}.jpg";
-
-                using (var memoryStream = new MemoryStream())
-                {
-                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    byte[] imageData = memoryStream.ToArray();
-
-                    // Upload the image to Cloud Storage
-                    storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
-                }
-
-                //get the link of the image in cloudstorage
-                imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
-
-                DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
-                DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
-
-                if (snapshot.Exists)
-                {
-                    MessageBox.Show("ITEM CODE ALREADY EXIST");
-                }
-                else
-                {
-                    Dictionary<string, object> dict = new Dictionary<string, object>()
+                    if (snapshot.Exists)
+                    {
+                        MessageBox.Show("ITEM CODE ALREADY EXIST");
+                    }
+                    else
+                    {
+                        Dictionary<string, object> dict = new Dictionary<string, object>()
                 {
 
                     {"Sort", sortTextBox.Text},
@@ -481,16 +411,21 @@ namespace InventorySystemGalaxy
 
                 };
 
-                    if (MessageBox.Show("Do you want to Add this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        documentReference.SetAsync(dict);
-                        MessageBox.Show("ADDED SUCCESSFULLY");
-                        ClearForm();
+                        if (MessageBox.Show("Do you want to Add this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            documentReference.SetAsync(dict);
+                            MessageBox.Show("ADDED SUCCESSFULLY");
+                            ClearForm();
+                        }
+
+
                     }
 
-
                 }
-
+            }
+            else
+            {
+                MessageBox.Show("Please input all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

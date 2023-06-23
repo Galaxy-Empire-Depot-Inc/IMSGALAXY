@@ -102,31 +102,32 @@ namespace InventorySystemGalaxy
 
             String IDCODE = idNumberTextBox.Text.Trim();
 
-            image = employeePB.Image;
-            //Generate unique FileName.jpg
-            string fileName = $"{Guid.NewGuid()}.jpg";
-
-            using (var memoryStream = new MemoryStream())
+            if (firstNameTextBox.Text != "" || lastNameTextBox.Text != "" || contactNoTextBox.Text != "" || usernameTextbox.Text != "")
             {
-                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] imageData = memoryStream.ToArray();
+                image = employeePB.Image;
+                //Generate unique FileName.jpg
+                string fileName = $"{Guid.NewGuid()}.jpg";
 
-                // Upload the image to Cloud Storage
-                storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
-            }
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] imageData = memoryStream.ToArray();
 
-            imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
-            DocumentReference documentReference = firestore.Collection("Employees").Document(IDCODE);
-            DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
+                    // Upload the image to Cloud Storage
+                    storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+                }
 
-            if (snapshot.Exists)
-            {
-                MessageBox.Show("ID CODE ALREADY EXIST");
-            }
-            else
-            {
+                imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
+                DocumentReference documentReference = firestore.Collection("Employees").Document(IDCODE);
+                DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
+                if (snapshot.Exists)
+                {
+                    MessageBox.Show("ID CODE ALREADY EXIST");
+                }
+                else
+                {
 
-                Dictionary<string, object> Employeedictionary = new Dictionary<string, object>()
+                    Dictionary<string, object> Employeedictionary = new Dictionary<string, object>()
                 {
                     { "FirstName",firstNameTextBox.Text },
                     { "MiddleName", middleNameTextBox.Text},
@@ -140,12 +141,17 @@ namespace InventorySystemGalaxy
                     { "Password",passwordTextbox.Text },
                     { "imageUrl",imageUrl }
                 };
-                if (MessageBox.Show("Do you want to Add this Employee?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    documentReference.SetAsync(Employeedictionary);
-                    MessageBox.Show("ADDED SUCCESSFULLY");
-                    ClearForm();
+                    if (MessageBox.Show("Do you want to Add this Employee?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        documentReference.SetAsync(Employeedictionary);
+                        MessageBox.Show("ADDED SUCCESSFULLY");
+                        ClearForm();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please input all fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
