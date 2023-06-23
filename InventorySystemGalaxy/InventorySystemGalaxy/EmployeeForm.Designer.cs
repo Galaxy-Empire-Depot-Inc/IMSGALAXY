@@ -80,6 +80,7 @@
             employeeTable.AllowUserToOrderColumns = true;
             employeeTable.AllowUserToResizeColumns = false;
             employeeTable.AllowUserToResizeRows = false;
+            employeeTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             employeeTable.BackgroundColor = Color.White;
             employeeTable.BorderStyle = BorderStyle.Fixed3D;
             employeeTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
@@ -208,7 +209,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
-            MaximumSize = new Size(824, 723);
             MinimumSize = new Size(824, 723);
             Name = "EmployeeForm";
             Padding = new Padding(5);

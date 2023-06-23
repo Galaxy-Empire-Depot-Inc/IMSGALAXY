@@ -213,10 +213,7 @@ namespace InventorySystemGalaxy
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void CloseBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
 
         private void contactNoTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -237,6 +234,11 @@ namespace InventorySystemGalaxy
                 e.Handled = true;
 
             }
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

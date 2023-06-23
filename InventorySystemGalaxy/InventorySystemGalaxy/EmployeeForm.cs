@@ -33,7 +33,6 @@ namespace InventorySystemGalaxy
         {
             EmployeeModalForm employeeModalForm = new EmployeeModalForm();
             employeeModalForm.ShowDialog();
-            this.Hide();
         }
 
 
@@ -121,7 +120,7 @@ namespace InventorySystemGalaxy
             string statusSelected = this.employeeTable.CurrentRow.Cells["Status"].Value.ToString();
             string departmentSelected = this.employeeTable.CurrentRow.Cells["Department"].Value.ToString();
 
-            if(statusSelected == "active")
+            if (statusSelected == "active")
             {
                 employeeModalForm.statusComboBox.SelectedIndex = 1;
             }
