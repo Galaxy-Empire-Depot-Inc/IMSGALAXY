@@ -76,7 +76,7 @@ namespace InventorySystemGalaxy
             dataTable.Columns.Add("Available");
             dataTable.Columns.Add("Display");
             dataTable.Columns.Add("Repair");
-            
+
 
             //set the property of every column
 

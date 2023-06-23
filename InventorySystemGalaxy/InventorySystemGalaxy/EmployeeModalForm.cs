@@ -122,11 +122,10 @@ namespace InventorySystemGalaxy
                 DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
                 if (snapshot.Exists)
                 {
-                    MessageBox.Show("ID CODE ALREADY EXIST");
+                    MessageBox.Show("ID CODE ALREADY EXIST", "Error", MessageBoxButtons.OK);
                 }
                 else
                 {
-
                     Dictionary<string, object> Employeedictionary = new Dictionary<string, object>()
                 {
                     { "FirstName",firstNameTextBox.Text },
