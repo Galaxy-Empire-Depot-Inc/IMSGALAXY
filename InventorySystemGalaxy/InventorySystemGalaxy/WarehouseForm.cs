@@ -3,6 +3,7 @@ using Google.Cloud.Firestore.V1;
 using Google.Cloud.Storage.V1;
 using Google.Type;
 using InventorySystemGalaxy.Classes;
+using InventorySystemGalaxy.Dialogs;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -114,15 +115,6 @@ namespace InventorySystemGalaxy
                 cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
             }
         }
-
-        /*private Image byteArrayToImage(byte[] byteArrayIn)
-        {
-
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-
-        }*/
 
         private async void WarehouseForm_Load(object sender, EventArgs e)
         {
@@ -376,7 +368,8 @@ namespace InventorySystemGalaxy
 
         private void WarehouseLabel_Click(object sender, EventArgs e)
         {
-
+            WarehouseLabelSelection labelSelection = new WarehouseLabelSelection();
+            labelSelection.ShowDialog(this);
         }
     }
 }

@@ -33,7 +33,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             panel9 = new Panel();
             panel15 = new Panel();
-            producttable = new DataGridView();
+            TableProduct = new DataGridView();
             panel14 = new Panel();
             label11 = new Label();
             panel8 = new Panel();
@@ -67,15 +67,11 @@
             panel2 = new Panel();
             label1 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            itemCodeLabel = new DataGridViewTextBoxColumn();
-            descriptionLabel = new DataGridViewTextBoxColumn();
-            Category = new DataGridViewTextBoxColumn();
-            imageLabel = new DataGridViewImageColumn();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel9.SuspendLayout();
             panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)producttable).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TableProduct).BeginInit();
             panel14.SuspendLayout();
             panel8.SuspendLayout();
             panel13.SuspendLayout();
@@ -139,35 +135,34 @@
             // 
             // panel15
             // 
-            panel15.Controls.Add(producttable);
+            panel15.Controls.Add(TableProduct);
             panel15.Dock = DockStyle.Fill;
             panel15.Location = new Point(5, 43);
             panel15.Name = "panel15";
             panel15.Size = new Size(580, 349);
             panel15.TabIndex = 1;
             // 
-            // producttable
+            // TableProduct
             // 
-            producttable.AllowUserToAddRows = false;
-            producttable.AllowUserToDeleteRows = false;
-            producttable.AllowUserToResizeColumns = false;
-            producttable.AllowUserToResizeRows = false;
-            producttable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            producttable.BackgroundColor = Color.White;
-            producttable.BorderStyle = BorderStyle.None;
-            producttable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            producttable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            producttable.Columns.AddRange(new DataGridViewColumn[] { itemCodeLabel, descriptionLabel, Category, imageLabel });
-            producttable.Dock = DockStyle.Fill;
-            producttable.GridColor = Color.White;
-            producttable.Location = new Point(0, 0);
-            producttable.Name = "producttable";
-            producttable.ReadOnly = true;
-            producttable.RowHeadersVisible = false;
-            producttable.RowTemplate.Height = 140;
-            producttable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            producttable.Size = new Size(580, 349);
-            producttable.TabIndex = 0;
+            TableProduct.AllowUserToAddRows = false;
+            TableProduct.AllowUserToDeleteRows = false;
+            TableProduct.AllowUserToResizeColumns = false;
+            TableProduct.AllowUserToResizeRows = false;
+            TableProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            TableProduct.BackgroundColor = Color.White;
+            TableProduct.BorderStyle = BorderStyle.None;
+            TableProduct.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            TableProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            TableProduct.Dock = DockStyle.Fill;
+            TableProduct.GridColor = Color.White;
+            TableProduct.Location = new Point(0, 0);
+            TableProduct.Name = "TableProduct";
+            TableProduct.ReadOnly = true;
+            TableProduct.RowHeadersVisible = false;
+            TableProduct.RowTemplate.Height = 140;
+            TableProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            TableProduct.Size = new Size(580, 349);
+            TableProduct.TabIndex = 0;
             // 
             // panel14
             // 
@@ -233,6 +228,7 @@
             btn_DisplayP.Text = "Displayed Products";
             btn_DisplayP.Tooltip1 = null;
             btn_DisplayP.UseVisualStyleBackColor = false;
+            btn_DisplayP.Click += btn_DisplayP_Click;
             // 
             // panel12
             // 
@@ -264,6 +260,7 @@
             btn_DamageP.Text = "Damaged Products";
             btn_DamageP.Tooltip1 = null;
             btn_DamageP.UseVisualStyleBackColor = false;
+            btn_DamageP.Click += btn_DamageP_Click;
             // 
             // panel11
             // 
@@ -295,6 +292,7 @@
             btn_AvailableP.Text = "Available Products";
             btn_AvailableP.Tooltip1 = null;
             btn_AvailableP.UseVisualStyleBackColor = false;
+            btn_AvailableP.Click += btn_AvailableP_Click;
             // 
             // panel10
             // 
@@ -326,6 +324,7 @@
             btn_TotalP.Text = "Total Products";
             btn_TotalP.Tooltip1 = null;
             btn_TotalP.UseVisualStyleBackColor = false;
+            btn_TotalP.Click += btn_TotalP_Click;
             // 
             // panel7
             // 
@@ -588,43 +587,7 @@
             label1.TabIndex = 0;
             label1.Text = "Dashboard";
             // 
-            // itemCodeLabel
-            // 
-            itemCodeLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            itemCodeLabel.DataPropertyName = "item_code";
-            itemCodeLabel.HeaderText = "Item Code";
-            itemCodeLabel.Name = "itemCodeLabel";
-            itemCodeLabel.ReadOnly = true;
-            // 
-            // descriptionLabel
-            // 
-            descriptionLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            descriptionLabel.DataPropertyName = "description";
-            descriptionLabel.HeaderText = "Description";
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.ReadOnly = true;
-            descriptionLabel.Resizable = DataGridViewTriState.True;
-            descriptionLabel.SortMode = DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Category
-            // 
-            Category.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Category.DataPropertyName = "category";
-            Category.HeaderText = "Category";
-            Category.Name = "Category";
-            Category.ReadOnly = true;
-            Category.Width = 96;
-            // 
-            // imageLabel
-            // 
-            imageLabel.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            imageLabel.DataPropertyName = "picture";
-            imageLabel.HeaderText = "Images";
-            imageLabel.ImageLayout = DataGridViewImageCellLayout.Stretch;
-            imageLabel.Name = "imageLabel";
-            imageLabel.ReadOnly = true;
-            // 
-            // Dashboard
+            // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -635,7 +598,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(824, 723);
-            Name = "Dashboard";
+            Name = "DashboardForm";
             Padding = new Padding(5);
             Text = "Dashboard";
             Load += Dashboard_Load;
@@ -643,7 +606,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)producttable).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TableProduct).EndInit();
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
             panel8.ResumeLayout(false);
@@ -708,12 +671,8 @@
         private CustomButton btn_AvailableP;
         private CustomButton btn_TotalP;
         private Panel panel15;
-        private DataGridView producttable;
+        private DataGridView TableProduct;
         private Panel panel14;
         private Label label11;
-        private DataGridViewTextBoxColumn itemCodeLabel;
-        private DataGridViewTextBoxColumn descriptionLabel;
-        private DataGridViewTextBoxColumn Category;
-        private DataGridViewImageColumn imageLabel;
     }
 }

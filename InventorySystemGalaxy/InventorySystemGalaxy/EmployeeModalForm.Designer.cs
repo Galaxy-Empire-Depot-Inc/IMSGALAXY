@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeModalForm));
             bgPanel = new Panel();
-            pictureBox2 = new PictureBox();
+            CloseBtn = new PictureBox();
             positionComboBox = new ComboBox();
             statusComboBox = new CustomComboBox();
-            updateBtn = new CustomButton();
-            addBtn = new CustomButton();
+            add_UpdateBtn = new CustomButton();
             passwordTextbox = new CustomTextBox();
             usernameTextbox = new CustomTextBox();
             label2 = new Label();
@@ -45,21 +44,20 @@
             label1 = new Label();
             contactNoTextBox = new CustomTextBox();
             addPhotoBtn = new CustomButton();
-            employeePictureBox = new PictureBox();
+            employeePB = new PictureBox();
             firstNameTextBox = new CustomTextBox();
             bgPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)employeePictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)CloseBtn).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeePB).BeginInit();
             SuspendLayout();
             // 
             // bgPanel
             // 
             bgPanel.BackColor = Color.FromArgb(59, 116, 192);
-            bgPanel.Controls.Add(pictureBox2);
+            bgPanel.Controls.Add(CloseBtn);
             bgPanel.Controls.Add(positionComboBox);
             bgPanel.Controls.Add(statusComboBox);
-            bgPanel.Controls.Add(updateBtn);
-            bgPanel.Controls.Add(addBtn);
+            bgPanel.Controls.Add(add_UpdateBtn);
             bgPanel.Controls.Add(passwordTextbox);
             bgPanel.Controls.Add(usernameTextbox);
             bgPanel.Controls.Add(label2);
@@ -70,25 +68,25 @@
             bgPanel.Controls.Add(label1);
             bgPanel.Controls.Add(contactNoTextBox);
             bgPanel.Controls.Add(addPhotoBtn);
-            bgPanel.Controls.Add(employeePictureBox);
+            bgPanel.Controls.Add(employeePB);
             bgPanel.Controls.Add(firstNameTextBox);
             bgPanel.Dock = DockStyle.Fill;
-            bgPanel.Location = new Point(15, 15);
+            bgPanel.Location = new Point(0, 0);
             bgPanel.Name = "bgPanel";
             bgPanel.Padding = new Padding(10);
-            bgPanel.Size = new Size(670, 670);
+            bgPanel.Size = new Size(695, 575);
             bgPanel.TabIndex = 0;
             // 
-            // pictureBox2
+            // CloseBtn
             // 
-            pictureBox2.Image = Properties.Resources.icons8_close_30;
-            pictureBox2.Location = new Point(637, 10);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(20, 20);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 22;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
+            CloseBtn.Image = Properties.Resources.icons8_cancel_100;
+            CloseBtn.Location = new Point(656, 1);
+            CloseBtn.Name = "CloseBtn";
+            CloseBtn.Size = new Size(36, 37);
+            CloseBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            CloseBtn.TabIndex = 22;
+            CloseBtn.TabStop = false;
+            CloseBtn.Click += CloseBtn_Click;
             // 
             // positionComboBox
             // 
@@ -120,47 +118,26 @@
             statusComboBox.Size = new Size(200, 24);
             statusComboBox.TabIndex = 20;
             // 
-            // updateBtn
+            // add_UpdateBtn
             // 
-            updateBtn.BackColor = Color.White;
-            updateBtn.FlatAppearance.BorderColor = Color.White;
-            updateBtn.FlatStyle = FlatStyle.Popup;
-            updateBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            updateBtn.HoverForeColor1 = Color.SteelBlue;
-            updateBtn.HoverImage1 = null;
-            updateBtn.Location = new Point(401, 627);
-            updateBtn.Name = "updateBtn";
-            updateBtn.NormalForeColor1 = Color.Black;
-            updateBtn.NormalImage1 = null;
-            updateBtn.OnFocusEnterImage = null;
-            updateBtn.OnFocusLeaveImage = null;
-            updateBtn.Size = new Size(125, 30);
-            updateBtn.TabIndex = 19;
-            updateBtn.Text = "Update";
-            updateBtn.Tooltip1 = null;
-            updateBtn.UseVisualStyleBackColor = false;
-            updateBtn.Visible = false;
-            // 
-            // addBtn
-            // 
-            addBtn.BackColor = Color.White;
-            addBtn.FlatAppearance.BorderColor = Color.White;
-            addBtn.FlatStyle = FlatStyle.Popup;
-            addBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            addBtn.HoverForeColor1 = Color.SteelBlue;
-            addBtn.HoverImage1 = null;
-            addBtn.Location = new Point(532, 627);
-            addBtn.Name = "addBtn";
-            addBtn.NormalForeColor1 = Color.Black;
-            addBtn.NormalImage1 = null;
-            addBtn.OnFocusEnterImage = null;
-            addBtn.OnFocusLeaveImage = null;
-            addBtn.Size = new Size(125, 30);
-            addBtn.TabIndex = 18;
-            addBtn.Text = "Add";
-            addBtn.Tooltip1 = null;
-            addBtn.UseVisualStyleBackColor = false;
-            addBtn.Click += addBtn_Click;
+            add_UpdateBtn.BackColor = Color.White;
+            add_UpdateBtn.FlatAppearance.BorderColor = Color.White;
+            add_UpdateBtn.FlatStyle = FlatStyle.Popup;
+            add_UpdateBtn.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            add_UpdateBtn.HoverForeColor1 = Color.SteelBlue;
+            add_UpdateBtn.HoverImage1 = null;
+            add_UpdateBtn.Location = new Point(543, 522);
+            add_UpdateBtn.Name = "add_UpdateBtn";
+            add_UpdateBtn.NormalForeColor1 = Color.Black;
+            add_UpdateBtn.NormalImage1 = null;
+            add_UpdateBtn.OnFocusEnterImage = null;
+            add_UpdateBtn.OnFocusLeaveImage = null;
+            add_UpdateBtn.Size = new Size(125, 30);
+            add_UpdateBtn.TabIndex = 18;
+            add_UpdateBtn.Text = "Add";
+            add_UpdateBtn.Tooltip1 = null;
+            add_UpdateBtn.UseVisualStyleBackColor = false;
+            add_UpdateBtn.Click += addBtn_Click;
             // 
             // passwordTextbox
             // 
@@ -168,7 +145,7 @@
             passwordTextbox.BottomBorderColor = Color.Black;
             passwordTextbox.BottomBorderOnFocusColor = Color.Blue;
             passwordTextbox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            passwordTextbox.Location = new Point(232, 483);
+            passwordTextbox.Location = new Point(232, 452);
             passwordTextbox.Name = "passwordTextbox";
             passwordTextbox.PlaceholderText = "Password";
             passwordTextbox.Size = new Size(200, 24);
@@ -181,7 +158,7 @@
             usernameTextbox.BottomBorderColor = Color.Black;
             usernameTextbox.BottomBorderOnFocusColor = Color.Blue;
             usernameTextbox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            usernameTextbox.Location = new Point(10, 483);
+            usernameTextbox.Location = new Point(13, 452);
             usernameTextbox.Name = "usernameTextbox";
             usernameTextbox.PlaceholderText = "Username";
             usernameTextbox.Size = new Size(200, 24);
@@ -278,6 +255,8 @@
             contactNoTextBox.Size = new Size(200, 24);
             contactNoTextBox.TabIndex = 5;
             contactNoTextBox.TextAlign = HorizontalAlignment.Center;
+            contactNoTextBox.TextChanged += contactNoTextBox_TextChanged;
+            contactNoTextBox.KeyPress += contactNoTextBox_KeyPress;
             // 
             // addPhotoBtn
             // 
@@ -300,18 +279,20 @@
             addPhotoBtn.UseVisualStyleBackColor = false;
             addPhotoBtn.Click += addPhotoBtn_Click;
             // 
-            // employeePictureBox
+            // employeePB
             // 
-            employeePictureBox.BackColor = Color.Transparent;
-            employeePictureBox.Image = Properties.Resources.icons8_user_144__1_;
-            employeePictureBox.Location = new Point(13, 61);
-            employeePictureBox.Name = "employeePictureBox";
-            employeePictureBox.Size = new Size(125, 125);
-            employeePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            employeePictureBox.TabIndex = 1;
-            employeePictureBox.TabStop = false;
-            employeePictureBox.DragDrop += imagePictureBox_DragDrop;
-            employeePictureBox.DragEnter += imagePictureBox_DragEnter;
+            employeePB.BackColor = Color.Transparent;
+            employeePB.BorderStyle = BorderStyle.Fixed3D;
+            employeePB.Cursor = Cursors.Hand;
+            employeePB.Image = Properties.Resources.icons8_user_144__2_;
+            employeePB.Location = new Point(13, 61);
+            employeePB.Name = "employeePB";
+            employeePB.Size = new Size(125, 125);
+            employeePB.SizeMode = PictureBoxSizeMode.StretchImage;
+            employeePB.TabIndex = 1;
+            employeePB.TabStop = false;
+            employeePB.DragDrop += imagePictureBox_DragDrop;
+            employeePB.DragEnter += imagePictureBox_DragEnter;
             // 
             // firstNameTextBox
             // 
@@ -331,22 +312,21 @@
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(700, 700);
+            ClientSize = new Size(695, 575);
             Controls.Add(bgPanel);
             Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
-            MinimumSize = new Size(700, 700);
+            MinimumSize = new Size(500, 350);
             Name = "EmployeeModalForm";
-            Padding = new Padding(15);
             StartPosition = FormStartPosition.CenterParent;
             Text = "EmployeeModalForm";
             Load += EmployeeModalForm_Load;
             bgPanel.ResumeLayout(false);
             bgPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)employeePictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)CloseBtn).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeePB).EndInit();
             ResumeLayout(false);
         }
 
@@ -355,10 +335,7 @@
         private Panel bgPanel;
         private Label label1;
         private CustomButton addPhotoBtn;
-        private PictureBox employeePictureBox;
-        private CustomButton addBtn;
         private Label label2;
-        public CustomButton updateBtn;
         public CustomTextBox departmentTextBox;
         public CustomTextBox lastNameTextBox;
         public CustomTextBox idNumberTextBox;
@@ -368,7 +345,9 @@
         public CustomTextBox passwordTextbox;
         public CustomTextBox usernameTextbox;
         public CustomComboBox statusComboBox;
-        private ComboBox positionComboBox;
-        private PictureBox pictureBox2;
+        private PictureBox CloseBtn;
+        public CustomButton add_UpdateBtn;
+        public ComboBox positionComboBox;
+        public PictureBox employeePB;
     }
 }

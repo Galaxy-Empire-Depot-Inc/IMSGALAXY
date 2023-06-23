@@ -209,7 +209,6 @@
             label2.Size = new Size(59, 12);
             label2.TabIndex = 0;
             label2.Text = "Available";
-            label2.Click += label2_Click;
             // 
             // CloseModal
             // 
@@ -427,7 +426,6 @@
             colorTextBox.Size = new Size(155, 30);
             colorTextBox.TabIndex = 10;
             colorTextBox.TextAlign = HorizontalAlignment.Center;
-            colorTextBox.TextChanged += colorTextBox_TextChanged;
             colorTextBox.KeyDown += colorTextBox_KeyDown;
             // 
             // itemCodeTextBox

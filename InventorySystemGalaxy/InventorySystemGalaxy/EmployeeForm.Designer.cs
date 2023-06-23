@@ -94,6 +94,7 @@
             employeeTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeTable.Size = new Size(794, 533);
             employeeTable.TabIndex = 0;
+            employeeTable.CellDoubleClick += employeeTable_CellDoubleClick;
             // 
             // panel3
             // 

@@ -17,14 +17,17 @@ namespace InventorySystemGalaxy
     public partial class EmployeeForm : Form
     {
         FirestoreDb db;
+        DataTable tableEmployee;
+        string bucketName = "imsgalaxy-f7419.appspot.com";
+        private List<DocumentSnapshot> data;
+
+
 
         public EmployeeForm()
         {
             InitializeComponent();
 
         }
-
-
 
         private void customButton1_Click(object sender, EventArgs e)
         {
@@ -34,42 +37,24 @@ namespace InventorySystemGalaxy
         }
 
 
-
-
-        async void DisplayData()
+        async void DisplayEmployeeTable()
         {
-            /*Query productQuery = db.Collection("Products");
-            QuerySnapshot querySnap = await productQuery.GetSnapshotAsync();
+            CollectionReference employeeRef = db.Collection("Employees");
+            QuerySnapshot querySnap = await employeeRef.GetSnapshotAsync();
 
-            WarehouseTable.Rows.Clear();
+            tableEmployee = new DataTable();
+            tableEmployee.Columns.Add("Image", typeof(Image));
+            tableEmployee.Columns.Add("ID number");
+            tableEmployee.Columns.Add("Department");
+            tableEmployee.Columns.Add("First Name");
+            tableEmployee.Columns.Add("Middle Name");
+            tableEmployee.Columns.Add("Last Name");
+            tableEmployee.Columns.Add("Contact No.");
+            tableEmployee.Columns.Add("Username");
+            tableEmployee.Columns.Add("Password");
+            tableEmployee.Columns.Add("Status");
 
             foreach (DocumentSnapshot documentSnapshot in querySnap.Documents)
-            {
-                ProductData productData = documentSnapshot.ConvertTo<ProductData>();
-                WarehouseTable.Rows.Add(productData.Sort, productData.Item_code, productData.Ref_code);
-            }*/
-
-            CollectionReference collectionRef = db.Collection("Employee");
-            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
-            DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("First Name");
-            dataTable.Columns.Add("Middle Name");
-            dataTable.Columns.Add("Last Name");
-            dataTable.Columns.Add("Status");
-            dataTable.Columns.Add("Department");
-            dataTable.Columns.Add("Position");
-            dataTable.Columns.Add("Username");
-            dataTable.Columns.Add("Password");
-            dataTable.Columns.Add("Contact No.");
-            dataTable.Columns.Add("ID number");
-            dataTable.Columns.Add("Image", typeof(Image));
-
-
-
-            // dataTable.Columns.Add("Image", typeof(Image));
-
-
-            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
             {
 
                 string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
@@ -81,45 +66,82 @@ namespace InventorySystemGalaxy
                     var storageClient = StorageClient.Create();
                     string fileName = Path.GetFileName(imageUrl);
                     var downloadStream = new MemoryStream();
-                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
                     downloadStream.Position = 0;
                     Image downloadedImage = Image.FromStream(downloadStream);
 
+                    tableEmployee.Rows.Add(downloadedImage, data["IdNumber"], data["Department"], data["FirstName"], data["MiddleName"], data["LastName"], data["ContactNo"]
+                        , data["Username"], data["Password"], data["Status"]);
 
-
-                    // byte[] imageData = Convert.FromBase64String(data["imageUrl"].ToString());
-                    //Image image = byteArrayToImage(imageData);
-                    dataTable.Rows.Add(data["FirstName"], data["MiddleName"], data["LastName"], data["Status"], data["Department"],
-                        data["Position"], data["Username"], data["Password"], data["ContactNo"], data["IdNumber"], downloadedImage);
-                    // Add more fields as needed
                 }
+
+                // Handle the CellFormatting event
+                employeeTable.CellFormatting += DataGridView1_CellFormatting;
+                employeeTable.DataSource = tableEmployee;
+
             }
-            /*WarehouseTable.Columns["Image"].DefaultCellStyle = new DataGridViewCellStyle()
-            {
-
-                Alignment = DataGridViewContentAlignment.MiddleCenter,
-                Padding = new Padding(5),
-                //ImageLayout = DataGridViewImageCellLayout.Zoom
-            };*/
-
-            employeeTable.DataSource = dataTable;
-
         }
 
-        private Image byteArrayToImage(byte[] byteArrayIn)
+        private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
+            if (employeeTable.Columns[e.ColumnIndex].Name == "Image" && e.Value != null)
+            {
+                // Set the image cell style to zoom
+                DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            }
         }
 
-        private async void EmployeeForm_Load(object sender, EventArgs e)
+        private void EmployeeForm_Load(object sender, EventArgs e)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
-            DisplayData();
 
+            DisplayEmployeeTable();
+        }
+
+        private void employeeTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EmployeeModalForm employeeModalForm = new EmployeeModalForm();
+
+            employeeModalForm.add_UpdateBtn.Text = "Update";
+
+            //Display the Data into Modal
+            employeeModalForm.idNumberTextBox.Text = this.employeeTable.CurrentRow.Cells["ID number"].Value.ToString();
+            employeeModalForm.departmentTextBox.Text = this.employeeTable.CurrentRow.Cells["Department"].Value.ToString();
+            employeeModalForm.firstNameTextBox.Text = this.employeeTable.CurrentRow.Cells["First Name"].Value.ToString();
+            employeeModalForm.middleNameTextBox.Text = this.employeeTable.CurrentRow.Cells["Middle Name"].Value.ToString();
+            employeeModalForm.lastNameTextBox.Text = this.employeeTable.CurrentRow.Cells["Last Name"].Value.ToString();
+            employeeModalForm.contactNoTextBox.Text = this.employeeTable.CurrentRow.Cells["Contact No."].Value.ToString();
+            employeeModalForm.usernameTextbox.Text = this.employeeTable.CurrentRow.Cells["Username"].Value.ToString();
+            employeeModalForm.passwordTextbox.Text = this.employeeTable.CurrentRow.Cells["Password"].Value.ToString();
+
+            //get value from custombox
+            string statusSelected = this.employeeTable.CurrentRow.Cells["Status"].Value.ToString();
+            string departmentSelected = this.employeeTable.CurrentRow.Cells["Department"].Value.ToString();
+
+            if(statusSelected == "active")
+            {
+                employeeModalForm.statusComboBox.SelectedIndex = 1;
+            }
+
+            if (statusSelected == "inactive")
+            {
+                employeeModalForm.statusComboBox.SelectedIndex = 0;
+            }
+
+            //display image when row selected
+            if (e.RowIndex >= 0 && employeeTable.Rows[e.RowIndex].Cells["Image"].Value is System.Drawing.Image)
+            {
+                // Retrieve the image from the selected row
+                System.Drawing.Image selectedImage = (System.Drawing.Image)employeeTable.Rows[e.RowIndex].Cells["Image"].Value;
+
+                // Display the image in the PictureBox
+                employeeModalForm.employeePB.Image = selectedImage;
+            }
+
+            employeeModalForm.ShowDialog(this);
         }
     }
 }

@@ -15,12 +15,12 @@ using Google.Cloud.Storage.V1;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace InventorySystemGalaxy
 {
     public partial class EmployeeModalForm : Form
     {
-        Thread thread;
         FirestoreDb firestore;
         string imageUrl;
         string img;
@@ -28,23 +28,27 @@ namespace InventorySystemGalaxy
         Image image;
         string id;
         string bucketName = "imsgalaxy-f7419.appspot.com";
+
         public EmployeeModalForm()
         {
             InitializeComponent();
 
-            bgPanel.BackColor = Color.FromArgb(59, 116, 192);
+            //bgPanel.BackColor = Color.FromArgb(59, 116, 192);
 
         }
 
         private void EmployeeModalForm_Load(object sender, EventArgs e)
         {
-            positionComboBox.SelectedIndex = 0;
-            passwordTextbox.Text = "@GalaxyEmpire";
-            statusComboBox.SelectedIndex = 1;
+
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             firestore = FirestoreDb.Create("imsgalaxy-f7419");
-            employeePictureBox.AllowDrop = true;
+
+            positionComboBox.SelectedIndex = 0;
+            passwordTextbox.Text = "@GalaxyEmpire";
+            statusComboBox.SelectedIndex = 1;
+
+            employeePB.AllowDrop = true;
 
 
         }
@@ -60,23 +64,9 @@ namespace InventorySystemGalaxy
             departmentTextBox.Text = positionComboBox.GetItemText(positionComboBox.SelectedItem + " Department");
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        async void addEmployee()
         {
-            this.Close();
-            LoginForm LoginForm = new LoginForm();
-            LoginForm.Hide();
-            thread = new Thread(openForm);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-        public void openForm(object obj)
-        {
-            Application.Run(new EmployeeForm());
-        }
-
-        public void addEmployee()
-        {
-            image = employeePictureBox.Image;
+            /*image = employeePictureBox.Image;
             //Generate unique FileName.jpg
             string fileName = $"{Guid.NewGuid()}.jpg";
 
@@ -108,7 +98,69 @@ namespace InventorySystemGalaxy
                 {"imageUrl",imageUrl }
             };
             documentReference.SetAsync(data1);
-            MessageBox.Show("Added Successfully");
+            MessageBox.Show("Added Successfully");*/
+
+            String IDCODE = idNumberTextBox.Text.Trim();
+
+            image = employeePB.Image;
+            //Generate unique FileName.jpg
+            string fileName = $"{Guid.NewGuid()}.jpg";
+
+            using (var memoryStream = new MemoryStream())
+            {
+                image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] imageData = memoryStream.ToArray();
+
+                // Upload the image to Cloud Storage
+                storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+            }
+
+            imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
+            DocumentReference documentReference = firestore.Collection("Employees").Document(IDCODE);
+            DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
+
+            if (snapshot.Exists)
+            {
+                MessageBox.Show("ID CODE ALREADY EXIST");
+            }
+            else
+            {
+
+                Dictionary<string, object> Employeedictionary = new Dictionary<string, object>()
+                {
+                    { "FirstName",firstNameTextBox.Text },
+                    { "MiddleName", middleNameTextBox.Text},
+                    { "LastName", lastNameTextBox.Text},
+                    { "ContactNo", contactNoTextBox.Text },
+                    { "IdNumber", idNumberTextBox.Text },
+                    { "Status",statusComboBox.SelectedItem},
+                    { "Position",positionComboBox.SelectedItem },
+                    { "Department",departmentTextBox.Text },
+                    { "Username",usernameTextbox.Text },
+                    { "Password",passwordTextbox.Text },
+                    { "imageUrl",imageUrl }
+                };
+                if (MessageBox.Show("Do you want to Add this Employee?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    documentReference.SetAsync(Employeedictionary);
+                    MessageBox.Show("ADDED SUCCESSFULLY");
+                    ClearForm();
+                }
+            }
+        }
+
+        private void ClearForm()
+        {
+            firstNameTextBox.Text = "";
+            middleNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            contactNoTextBox.Text = "";
+            idNumberTextBox.Text = "";
+            departmentTextBox.Text = "";
+            usernameTextbox.Text = "";
+            passwordTextbox.Text = "";
+            positionComboBox.SelectedIndex = 0;
+            employeePB.Image = Properties.Resources.icons8_image_100;
 
         }
 
@@ -117,20 +169,26 @@ namespace InventorySystemGalaxy
             addEmployee();
         }
 
-        private void getImageFromGallery()
+        /*private void getImageFromGallery()
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                employeePictureBox.Image = new Bitmap(open.FileName);
+                employeePB.Image = new Bitmap(open.FileName);
                 img = open.FileName;
             }
-        }
+        }*/
 
         private void addPhotoBtn_Click(object sender, EventArgs e)
         {
-            getImageFromGallery();
+            //getImageFromGallery();
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.JPG;*.PNG;*.bmp;)|*.JPG;*PNG;";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                employeePB.Image = new Bitmap(open.FileName);
+            }
         }
 
         private void imagePictureBox_DragDrop(object sender, DragEventArgs e)
@@ -140,7 +198,7 @@ namespace InventorySystemGalaxy
             {
                 var fileNames = data as string[];
                 if (fileNames.Length > 0)
-                    employeePictureBox.Image = Image.FromFile(fileNames[0]);
+                    employeePB.Image = Image.FromFile(fileNames[0]);
             }
         }
 
@@ -149,7 +207,31 @@ namespace InventorySystemGalaxy
             e.Effect = DragDropEffects.Copy;
         }
 
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void contactNoTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (contactNoTextBox.Text.Length > 11)
+            {
+                // Truncate the text to 11 characters
+                contactNoTextBox.Text = contactNoTextBox.Text.Substring(0, 11);
+                contactNoTextBox.SelectionStart = 11; // Set the cursor position to the end
+            }
+        }
+
+        private void contactNoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the pressed key is a digit or a control key
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Ignore the key press event
+                e.Handled = true;
+
+            }
+        }
     }
 
 

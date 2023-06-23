@@ -60,6 +60,7 @@
             // WarehouseLabel
             // 
             WarehouseLabel.AutoSize = true;
+            WarehouseLabel.Cursor = Cursors.Hand;
             WarehouseLabel.Font = new Font("SimSun", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             WarehouseLabel.ForeColor = SystemColors.ControlDark;
             WarehouseLabel.Location = new Point(8, 16);
@@ -278,8 +279,6 @@
         }
 
         #endregion
-
-        private Label WarehouseLabel;
         private CustomButton ShowModal;
         private Panel panel1;
         private Panel panel6;
@@ -294,5 +293,6 @@
         private PictureBox SearchBTN;
         private CustomTextBox searchText;
         private System.Windows.Forms.Timer timer1;
+        public Label WarehouseLabel;
     }
 }

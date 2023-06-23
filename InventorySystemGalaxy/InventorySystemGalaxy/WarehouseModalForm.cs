@@ -25,8 +25,6 @@ namespace InventorySystemGalaxy
         string fileName, imageUrl;
         string bucketName = "imsgalaxy-f7419.appspot.com";
 
-        DocumentReference documentReference;
-
 
 
         public WarehouseModalForm()
@@ -427,7 +425,6 @@ namespace InventorySystemGalaxy
 
                 MessageBox.Show("No Warehouse/Category Selected");
 
-
             }
             else
             {
@@ -502,8 +499,6 @@ namespace InventorySystemGalaxy
         {
 
             OpenFileDialog();
-
-
             /*OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files(*.JPG;*.PNG;*.bmp;)|*.JPG;*PNG;";
             if (open.ShowDialog() == DialogResult.OK)
@@ -594,11 +589,6 @@ namespace InventorySystemGalaxy
 
         }
 
-        private void colorTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void srpTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -611,11 +601,6 @@ namespace InventorySystemGalaxy
             {
                 e.Handled = true;
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
