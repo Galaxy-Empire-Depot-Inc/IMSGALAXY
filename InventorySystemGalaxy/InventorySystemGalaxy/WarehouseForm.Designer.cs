@@ -182,6 +182,7 @@
             // 
             // SearchBTN
             // 
+            SearchBTN.Cursor = Cursors.Hand;
             SearchBTN.Image = Properties.Resources.images_removebg_preview;
             SearchBTN.Location = new Point(20, 13);
             SearchBTN.Name = "SearchBTN";

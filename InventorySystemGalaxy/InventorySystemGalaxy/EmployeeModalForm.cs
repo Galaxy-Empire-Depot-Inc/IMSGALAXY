@@ -126,7 +126,6 @@ namespace InventorySystemGalaxy
                 }
                 else
                 {
-
                     Dictionary<string, object> Employeedictionary = new Dictionary<string, object>()
                 {
                     { "FirstName",firstNameTextBox.Text },
