@@ -66,6 +66,7 @@
             // 
             // mainPanel
             // 
+            mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(200, 45);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(824, 723);
