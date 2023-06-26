@@ -4,6 +4,8 @@ using Google.Cloud.Storage.V1;
 using Google.Type;
 using InventorySystemGalaxy.Classes;
 using InventorySystemGalaxy.Dialogs;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -602,10 +604,82 @@ namespace InventorySystemGalaxy
         Bitmap bitmap;
         private void PrintBtn_Click(object sender, EventArgs e)
         {
+
+            /*if (WarehouseTable.Rows.Count > 0)
+            {
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.Filter = "PDF (*.pdf)|*.pdf)";
+                saveFile.FileName = "ExportData.pdf";
+                bool ErrorMessage = false;
+                
+                if(saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    if(File.Exists(saveFile.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(saveFile.FileName);
+                        }
+                        catch(Exception ex)
+                        {
+                            ErrorMessage = true;
+                            MessageBox.Show("Unable to write data" + ex.Message);
+                        }
+                    }
+                    if (!ErrorMessage)
+                    {
+                        try
+                        {
+                            PdfPTable pdfPTable = new PdfPTable(WarehouseTable.Columns.Count);
+                            pdfPTable.DefaultCell.Padding = 2;
+                            pdfPTable.WidthPercentage = 100;
+                            pdfPTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach(DataGridViewColumn col in WarehouseTable.Columns)
+                            {
+                                PdfPCell pCell = new PdfPCell(new Phrase(col.HeaderText));
+                                pdfPTable.AddCell(pCell);
+                            }
+
+                            foreach(DataGridViewRow viewRow in WarehouseTable.Rows)
+                            {
+                                foreach(DataGridViewCell cell in viewRow.Cells)
+                                {
+                                    pdfPTable.AddCell(cell.Value.ToString());
+                                }
+                            }
+
+                            using(FileStream fileStream = new FileStream(saveFile.FileName, FileMode.Create))
+                            {
+                                iTextSharp.text.Document document = new iTextSharp.text.Document(PageSize.A4, 8f, 16f, 16f, 8f);
+                                document.Open();
+                                document.Add(pdfPTable);
+                                document.Close();
+                                fileStream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Sucessfully", "Info");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Data Exported Failed" + ex.Message);
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record Found", "Info");
+            }
+*/
+
+
             int height = WarehouseTable.Height;
             WarehouseTable.Height = WarehouseTable.RowCount * WarehouseTable.RowTemplate.Height * 2;
             bitmap = new Bitmap(WarehouseTable.Width, WarehouseTable.Height);
-            WarehouseTable.DrawToBitmap(bitmap, new Rectangle(0, 0, WarehouseTable.Width, WarehouseTable.Height));
+            WarehouseTable.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, WarehouseTable.Width, WarehouseTable.Height));
             printPreviewDialog1.PrintPreviewControl.Zoom = 1;
             printPreviewDialog1.ShowDialog();
             WarehouseTable.Height = height;
@@ -614,6 +688,43 @@ namespace InventorySystemGalaxy
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bitmap, 0, 0);
+
+            /*DataGridView dataGridView = WarehouseTable; // Replace with the name of your DataGridView control
+
+            // Set up the print area
+            int startX = e.MarginBounds.Left;
+            int startY = e.MarginBounds.Top;
+            int headerHeight = dataGridView.ColumnHeadersHeight;
+            int rowHeight = dataGridView.Rows[0].Height;
+
+            // Print the column headers
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                e.Graphics.DrawString(column.HeaderText, dataGridView.Font, Brushes.Black,
+                    new System.Drawing.Rectangle(startX, startY, column.Width, headerHeight));
+                startX += column.Width;
+            }
+
+            // Move to the next row position
+            startY += headerHeight;
+
+            // Print the rows
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                startX = e.MarginBounds.Left;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    e.Graphics.DrawString(cell.Value.ToString(), dataGridView.Font, Brushes.Black,
+                        new System.Drawing.Rectangle(startX, startY, cell.OwningColumn.Width, rowHeight));
+                    startX += cell.OwningColumn.Width;
+                }
+                startY += rowHeight;
+            }
+
+            // Indicate that there are no more pages to print
+            e.HasMorePages = false;*/
+
+
         }
     }
 }
