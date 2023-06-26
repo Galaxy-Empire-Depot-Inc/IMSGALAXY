@@ -72,8 +72,7 @@ namespace InventorySystemGalaxy
             userpass = PassTxtBox.Text;
 
 
-            /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
-            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();*/
+            
 
             if (UserTxtBox.Text == "Admin")
             {
@@ -87,6 +86,13 @@ namespace InventorySystemGalaxy
                         WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
                         this.Hide();
                         welcomeMessageForm.ShowDialog();
+                       /* if (welcomeMessageForm.ShowDialog() == DialogResult.OK)
+                        {
+                            HomeScreenForm homeScreenForm = new HomeScreenForm();
+                            this.Hide();
+                            homeScreenForm.ShowDialog();
+                        }*/
+                        
                     }
                     else
                     {
@@ -115,12 +121,20 @@ namespace InventorySystemGalaxy
                 DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
                 if (documentSnapshot.Exists)
                 {
-                    EmployeeData adminData = documentSnapshot.ConvertTo<EmployeeData>();
-                    if (username == adminData.Username && userpass == adminData.Pass)
+                    EmployeeData employeeData = documentSnapshot.ConvertTo<EmployeeData>();
+                    if (username == employeeData.Username && userpass == employeeData.Password)
                     {
                         WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
                         this.Hide();
                         welcomeMessageForm.ShowDialog();
+                        /*if (welcomeMessageForm.ShowDialog() == DialogResult.OK)
+                        {
+                            EmployeeHomeScreenForm employeeHomeScreenForm = new EmployeeHomeScreenForm();
+                            this.Hide();
+                            employeeHomeScreenForm.ShowDialog();
+                        }*/
+                       
+
                     }
                     else
                     {
