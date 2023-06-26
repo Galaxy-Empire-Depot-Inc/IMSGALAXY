@@ -1,9 +1,14 @@
+using Google.Cloud.Firestore;
+using Google.Cloud.Firestore.V1;
+
 namespace InventorySystemGalaxy
 {
+    
     public partial class WelcomeMessageForm : Form
     {
-
+        FirestoreDb db;
         Thread thread;
+        string username;
         public WelcomeMessageForm()
         {
             InitializeComponent();
@@ -12,7 +17,23 @@ namespace InventorySystemGalaxy
 
         public void openForm(object obj)
         {
-            Application.Run(new HomeScreenForm());
+            if (username == "Admin")
+            {
+
+
+                Application.Run(new HomeScreenForm());
+            }
+            else
+            {
+                Application.Run(new EmployeeHomeScreenForm());
+            }
+        }
+
+        async void LoadUserName()
+        {
+            DocumentReference documentReference = db.Collection("Admin_User").Document(LoginForm.username);
+            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+             username = documentSnapshot.GetValue<string>("Username");
         }
 
         private void button1_Click(object sender, EventArgs e)
