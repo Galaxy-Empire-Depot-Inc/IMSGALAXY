@@ -164,12 +164,11 @@ C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySyste
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\ims-firestore.json
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Dialogs.LogoutMessage.resources
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Dialogs.WarehouseLabelSelection.resources
-<<<<<<< HEAD
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\itextsharp.dll
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\PdfSharp.Charting.dll
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\PdfSharp.dll
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\de\PdfSharp.Charting.resources.dll
 C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\de\PdfSharp.resources.dll
-=======
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.EmployeeHomeScreenForm.resources
 >>>>>>> ea5162b2007ae24e74d824f3bd8dfff7e00ab30d
+C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.EmployeeHomeScreenForm.resources

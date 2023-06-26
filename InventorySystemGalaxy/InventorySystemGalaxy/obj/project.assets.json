@@ -2836,23 +2836,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IT\\.nuget\\packages\\": {},
+    "C:\\Users\\jhoey\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
+      "projectUniqueName": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
       "projectName": "InventorySystemGalaxy",
-      "projectPath": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
-      "packagesPath": "C:\\Users\\IT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\",
+      "projectPath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
+      "packagesPath": "C:\\Users\\jhoey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\IT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jhoey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2861,7 +2861,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2933,6 +2932,12 @@
     }
   },
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",
