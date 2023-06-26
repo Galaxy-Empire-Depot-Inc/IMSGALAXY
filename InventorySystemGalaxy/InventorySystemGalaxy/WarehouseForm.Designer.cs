@@ -34,6 +34,7 @@
             ShowModal = new CustomButton();
             panel1 = new Panel();
             panel6 = new Panel();
+            PrintBtn = new CustomButton();
             WarehouseTable = new DataGridView();
             panel3 = new Panel();
             panel4 = new Panel();
@@ -50,6 +51,8 @@
             tmsRB = new RadioButton();
             allRB = new RadioButton();
             timer1 = new System.Windows.Forms.Timer(components);
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
+            printPreviewDialog1 = new PrintPreviewDialog();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)WarehouseTable).BeginInit();
@@ -115,6 +118,7 @@
             // 
             // panel6
             // 
+            panel6.Controls.Add(PrintBtn);
             panel6.Controls.Add(WarehouseTable);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(5, 165);
@@ -122,6 +126,31 @@
             panel6.Padding = new Padding(5);
             panel6.Size = new Size(804, 543);
             panel6.TabIndex = 2;
+            // 
+            // PrintBtn
+            // 
+            PrintBtn.BackColor = Color.Green;
+            PrintBtn.FlatStyle = FlatStyle.Flat;
+            PrintBtn.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            PrintBtn.ForeColor = Color.White;
+            PrintBtn.HoverForeColor1 = Color.Black;
+            PrintBtn.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
+            PrintBtn.Image = Properties.Resources.icons8_add_100__1___1_;
+            PrintBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            PrintBtn.Location = new Point(336, 490);
+            PrintBtn.Name = "PrintBtn";
+            PrintBtn.NormalForeColor1 = Color.White;
+            PrintBtn.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
+            PrintBtn.OnFocusEnterImage = null;
+            PrintBtn.OnFocusLeaveImage = null;
+            PrintBtn.Padding = new Padding(10);
+            PrintBtn.Size = new Size(132, 50);
+            PrintBtn.TabIndex = 3;
+            PrintBtn.Text = "Print";
+            PrintBtn.TextAlign = ContentAlignment.MiddleRight;
+            PrintBtn.Tooltip1 = null;
+            PrintBtn.UseVisualStyleBackColor = false;
+            PrintBtn.Click += PrintBtn_Click;
             // 
             // WarehouseTable
             // 
@@ -134,7 +163,7 @@
             WarehouseTable.BorderStyle = BorderStyle.Fixed3D;
             WarehouseTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             WarehouseTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            WarehouseTable.Dock = DockStyle.Fill;
+            WarehouseTable.Dock = DockStyle.Top;
             WarehouseTable.GridColor = Color.White;
             WarehouseTable.Location = new Point(5, 5);
             WarehouseTable.Name = "WarehouseTable";
@@ -142,7 +171,7 @@
             WarehouseTable.RowHeadersVisible = false;
             WarehouseTable.RowTemplate.Height = 100;
             WarehouseTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            WarehouseTable.Size = new Size(794, 533);
+            WarehouseTable.Size = new Size(794, 482);
             WarehouseTable.TabIndex = 0;
             WarehouseTable.CellDoubleClick += WarehouseTable_CellDoubleClick;
             // 
@@ -323,6 +352,21 @@
             timer1.Interval = 5000;
             timer1.Tick += timer1_Tick;
             // 
+            // printDocument1
+            // 
+            printDocument1.PrintPage += printDocument1_PrintPage;
+            // 
+            // printPreviewDialog1
+            // 
+            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
+            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
+            printPreviewDialog1.ClientSize = new Size(400, 300);
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.Enabled = true;
+            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
+            printPreviewDialog1.Name = "printPreviewDialog1";
+            printPreviewDialog1.Visible = false;
+            // 
             // WarehouseForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
@@ -375,5 +419,8 @@
         private RadioButton storeRB;
         private RadioButton tmsRB;
         private RadioButton allRB;
+        private CustomButton PrintBtn;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintPreviewDialog printPreviewDialog1;
     }
 }
