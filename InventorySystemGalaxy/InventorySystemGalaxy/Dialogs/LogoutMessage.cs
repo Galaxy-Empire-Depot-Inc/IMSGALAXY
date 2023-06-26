@@ -12,7 +12,7 @@ namespace InventorySystemGalaxy.Dialogs
 {
     public partial class LogoutMessage : Form
     {
-        Thread thread;
+     
         public LogoutMessage()
         {
             InitializeComponent();
@@ -21,18 +21,10 @@ namespace InventorySystemGalaxy.Dialogs
 
         private void YesBtn_Click(object sender, EventArgs e)
         {
-            LoginForm LoginForm = new LoginForm();
-            LoginForm.Hide();
-            thread = new Thread(openForm);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+           
         }
 
-        public void openForm(object obj)
-        {
-            Application.Run(new LoginForm());
-            
-        }
+       
 
         private void NoBtn_Click(object sender, EventArgs e)
         {

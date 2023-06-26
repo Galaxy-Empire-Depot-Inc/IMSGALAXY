@@ -77,6 +77,7 @@ namespace InventorySystemGalaxy
         {
             LogoutMessage logoutMessage = new LogoutMessage();
             logoutMessage.ShowDialog();
+            this.Close();
         }
 
         private void customButton1_Enter(object sender, EventArgs e)

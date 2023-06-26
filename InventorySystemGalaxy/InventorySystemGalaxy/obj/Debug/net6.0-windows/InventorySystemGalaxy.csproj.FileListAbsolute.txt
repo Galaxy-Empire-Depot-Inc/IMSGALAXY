@@ -164,3 +164,4 @@ C:\Users\jhoey\OneDrive\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySyste
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\bin\Debug\net6.0-windows\ims-firestore.json
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Dialogs.LogoutMessage.resources
 C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.Dialogs.WarehouseLabelSelection.resources
+C:\Users\IT\Documents\IMSGALAXY\InventorySystemGalaxy\InventorySystemGalaxy\obj\Debug\net6.0-windows\InventorySystemGalaxy.EmployeeHomeScreenForm.resources

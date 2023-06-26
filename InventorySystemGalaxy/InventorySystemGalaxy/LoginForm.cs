@@ -75,37 +75,73 @@ namespace InventorySystemGalaxy
             /*DocumentReference documentReference = db.Collection("Admin_User").Document(username);
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();*/
 
-
-            DocumentReference documentReference = db.Collection("Admin_User").Document(username);
-            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
-            if (documentSnapshot.Exists)
+            if (UserTxtBox.Text == "Admin")
             {
-                AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
-                if (username == adminData.Username && userpass == adminData.Password)
+                DocumentReference documentReference = db.Collection("Admin_User").Document(username);
+                DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+                if (documentSnapshot.Exists)
                 {
-                    WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
-                    this.Hide();
-                    welcomeMessageForm.ShowDialog();
+                    AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
+                    if (username == adminData.Username && userpass == adminData.Password)
+                    {
+                        WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
+                        this.Hide();
+                        welcomeMessageForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("INCORRECT");
+                    }
+
+                    if (UserTxtBox.Text == "")
+                    {
+                        MessageBox.Show("INPUT USERNAME");
+                    }
+                    else if (PassTxtBox.Text == "")
+                    {
+                        MessageBox.Show("INPUT Password");
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("INCORRECT");
+                    MessageBox.Show("NOT FOUND!");
                 }
-
-                if (UserTxtBox.Text == "")
-                {
-                    MessageBox.Show("INPUT USERNAME");
-                }
-                else if (PassTxtBox.Text == "")
-                {
-                    MessageBox.Show("INPUT Password");
-                }
-
-
             }
             else
             {
-                MessageBox.Show("NOT FOUND!");
+                DocumentReference documentReference = db.Collection("Employees").Document(username);
+                DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+                if (documentSnapshot.Exists)
+                {
+                    AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
+                    if (username == adminData.Username && userpass == adminData.Password)
+                    {
+                        WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
+                        this.Hide();
+                        welcomeMessageForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("INCORRECT");
+                    }
+
+                    if (UserTxtBox.Text == "")
+                    {
+                        MessageBox.Show("INPUT USERNAME");
+                    }
+                    else if (PassTxtBox.Text == "")
+                    {
+                        MessageBox.Show("INPUT Password");
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("NOT FOUND!");
+                }
             }
 
         }
