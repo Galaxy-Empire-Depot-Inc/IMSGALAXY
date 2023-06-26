@@ -599,5 +599,21 @@ namespace InventorySystemGalaxy
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
             WarehouseTable.DataSource = dataTable;
         }
+        Bitmap bitmap;
+        private void PrintBtn_Click(object sender, EventArgs e)
+        {
+            int height = WarehouseTable.Height;
+            WarehouseTable.Height = WarehouseTable.RowCount * WarehouseTable.RowTemplate.Height * 2;
+            bitmap = new Bitmap(WarehouseTable.Width, WarehouseTable.Height);
+            WarehouseTable.DrawToBitmap(bitmap, new Rectangle(0, 0, WarehouseTable.Width, WarehouseTable.Height));
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
+            WarehouseTable.Height = height;
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bitmap, 0, 0);
+        }
     }
 }

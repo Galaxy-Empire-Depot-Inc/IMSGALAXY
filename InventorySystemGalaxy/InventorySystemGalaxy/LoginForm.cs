@@ -115,8 +115,8 @@ namespace InventorySystemGalaxy
                 DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
                 if (documentSnapshot.Exists)
                 {
-                    AdminData adminData = documentSnapshot.ConvertTo<AdminData>();
-                    if (username == adminData.Username && userpass == adminData.Password)
+                    EmployeeData adminData = documentSnapshot.ConvertTo<EmployeeData>();
+                    if (username == adminData.Username && userpass == adminData.Pass)
                     {
                         WelcomeMessageForm welcomeMessageForm = new WelcomeMessageForm();
                         this.Hide();
