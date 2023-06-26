@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace InventorySystemGalaxy
 {
     public partial class EmployeeHomeScreenForm : Form
     {
+        FirestoreDb db;
         public EmployeeHomeScreenForm()
         {
             InitializeComponent();
@@ -19,7 +21,10 @@ namespace InventorySystemGalaxy
 
         private void EmployeeHomeScreenForm_Load(object sender, EventArgs e)
         {
-
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            db = FirestoreDb.Create("imsgalaxy-f7419");
+            LoadUserName();
         }
 
         private void employeeBtn_Click(object sender, EventArgs e)
@@ -54,7 +59,21 @@ namespace InventorySystemGalaxy
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            /*LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            this.Close();*/
         }
+        async void LoadUserName()
+        {
+            DocumentReference documentReference = db.Collection("Employees").Document(LoginForm.username);
+            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
+            string username = documentSnapshot.GetValue<string>("Username");
+            lbl_GreetUser.Text = "Hi, " + username;
+            loadForm(new DashboardForm());
+
+        }
+
+
     }
 }

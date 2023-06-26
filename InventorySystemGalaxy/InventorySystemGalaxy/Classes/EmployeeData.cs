@@ -18,7 +18,7 @@ namespace InventorySystemGalaxy.Classes
         [FirestoreProperty]
         public string FirstName { get; set; }
         [FirestoreProperty]
-        public double MiddleName { get; set; }
+        public string MiddleName { get; set; }
         [FirestoreProperty]
         public string LastName { get; set; }
         [FirestoreProperty]
@@ -26,7 +26,7 @@ namespace InventorySystemGalaxy.Classes
         [FirestoreProperty]
         public string Username { get; set; }
         [FirestoreProperty]
-        public string Pass { get; set; }
+        public string Password { get; set; }
         [FirestoreProperty]
         public string Status { get; set; }
         [FirestoreProperty]

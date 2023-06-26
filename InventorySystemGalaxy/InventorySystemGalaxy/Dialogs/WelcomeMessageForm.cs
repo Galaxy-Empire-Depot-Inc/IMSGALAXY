@@ -3,7 +3,7 @@ using Google.Cloud.Firestore.V1;
 
 namespace InventorySystemGalaxy
 {
-    
+
     public partial class WelcomeMessageForm : Form
     {
         FirestoreDb db;
@@ -13,28 +13,23 @@ namespace InventorySystemGalaxy
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            
         }
 
         public void openForm(object obj)
         {
-            if (username == "Admin")
+            if (LoginForm.username == "Admin")
             {
-
-
                 Application.Run(new HomeScreenForm());
             }
             else
             {
                 Application.Run(new EmployeeHomeScreenForm());
             }
+
         }
 
-        async void LoadUserName()
-        {
-            DocumentReference documentReference = db.Collection("Admin_User").Document(LoginForm.username);
-            DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
-             username = documentSnapshot.GetValue<string>("Username");
-        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -51,6 +46,14 @@ namespace InventorySystemGalaxy
             LoginForm LoginForm = new LoginForm();
             this.Close();
             LoginForm.Close();*/
+        }
+
+        private void WelcomeMessageForm_Load(object sender, EventArgs e)
+        {
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+            db = FirestoreDb.Create("imsgalaxy-f7419");
         }
     }
 }
