@@ -39,7 +39,7 @@ namespace InventorySystemGalaxy
         CollectionReference collectionReference;
         private List<DocumentSnapshot> searchResults;
         private PrintDocument printDocument;
-        public CellLayoutMode CellLayoutMode { get; set; }
+        
 
         public WarehouseForm()
         {
@@ -737,78 +737,13 @@ namespace InventorySystemGalaxy
             printer.FooterSpacing = 5;
             printer.PageSettings.Landscape = true;
             printer.PrintPreviewDataGridView(WarehouseTable);
-            printer.printDocument.PrintPage += PrintDocument_PrintPage;
+            
 
 
             printer.PrintDataGridView(WarehouseTable);
         }
 
-        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            float x = e.MarginBounds.Left;
-            float y = e.MarginBounds.Top;
-            float cellWidth;
-            float cellHeight = 0;
-            float totalWidth = 0;
-
-            // Calculate the total width of visible columns
-            foreach (DataGridViewColumn column in _dataGridView.Columns)
-            {
-                if (column.Visible)
-                {
-                    totalWidth += column.Width;
-                }
-            }
-
-            // Calculate the cell height based on the row height
-            if (_dataGridView.Rows.Count > 0)
-            {
-                DataGridViewRow firstRow = WarehouseTable.Rows[0];
-                cellHeight = firstRow.Height;
-            }
-
-            // Iterate through the rows and columns to print the DataGridView
-            for (int rowIndex = 0; rowIndex < WarehouseTable.Rows.Count; rowIndex++)
-            {
-                DataGridViewRow row = WarehouseTable.Rows[rowIndex];
-
-                // Check if the current row will exceed the page height
-                if (y + cellHeight > e.MarginBounds.Bottom)
-                {
-                    e.HasMorePages = true;
-                    return;
-                }
-
-                // Reset the x position for each row
-                x = e.MarginBounds.Left;
-
-                // Iterate through the visible columns to print the cells
-                foreach (DataGridViewColumn column in WarehouseTable.Columns)
-                {
-                    if (!column.Visible)
-                    {
-                        continue;
-                    }
-
-                    DataGridViewCell cell = row.Cells[column.Index];
-
-                    // Calculate the cell width based on the column width and total width
-                    cellWidth = column.Width / totalWidth * e.MarginBounds.Width;
-
-                    // Check if the current cell layout mode is custom
-                    if (CellLayoutMode == CellLayoutMode.Strech)
-                    {
-                        // Raise the CellFormatting event to customize the cell layout
-                        DataGridViewCellFormattingEventArgs formattingEventArgs =
-                            new DataGridViewCellFormattingEventArgs(column.Index, rowIndex, cell.Value, cell.Style, null);
-                        CellFormatting?.Invoke(this, formattingEventArgs);
-
-                        // Apply the custom formatting to the cell style
-                        if (formattingEventArgs.CellStyle != null)
-                        {
-                            cell.Style = formattingEventArgs.CellStyle;
-                        }
-                    }
+        
     }
 
 

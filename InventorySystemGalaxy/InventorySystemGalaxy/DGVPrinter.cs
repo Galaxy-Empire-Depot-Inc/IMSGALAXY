@@ -1355,11 +1355,7 @@ namespace DGVPrinterHelper //AllocationRequest
             StretchImage
         }
 
-        public enum CellLayoutMode
-        {
-            Default,
-            StretchImage
-        }
+        
 
         public StringFormat GetCellFormat(DataGridView grid)
         {
@@ -1555,7 +1551,7 @@ namespace DGVPrinterHelper //AllocationRequest
             }
         }
 
-        public object CellLayoutMode { get; internal set; }
+        
 
 
 
