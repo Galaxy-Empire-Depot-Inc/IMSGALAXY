@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Cloud.Storage.V1;
+using DGVPrinterHelper;
 
 namespace InventorySystemGalaxy
 {
@@ -53,6 +54,7 @@ namespace InventorySystemGalaxy
             tableEmployee.Columns.Add("Password");
             tableEmployee.Columns.Add("Status");
 
+
             foreach (DocumentSnapshot documentSnapshot in querySnap.Documents)
             {
 
@@ -74,6 +76,9 @@ namespace InventorySystemGalaxy
 
                 }
 
+
+
+
                 // Handle the CellFormatting event
                 employeeTable.CellFormatting += DataGridView1_CellFormatting;
                 employeeTable.DataSource = tableEmployee;
@@ -83,12 +88,28 @@ namespace InventorySystemGalaxy
 
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (employeeTable.Columns[e.ColumnIndex].Name == "Image" && e.Value != null)
+            if (e.ColumnIndex == 0)
             {
                 // Set the image cell style to zoom
-                DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                /*DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;*/
+
+                if (e.Value is Image image)
+                {
+                    e.Value = ResizeImage(image, 100, 100);
+                    e.FormattingApplied = true;
+                }
             }
+        }
+
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            Bitmap resizedImage = new Bitmap(width, height);
+            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
@@ -142,5 +163,50 @@ namespace InventorySystemGalaxy
 
             employeeModalForm.ShowDialog(this);
         }
+
+        private void customButton2_Click(object sender, EventArgs e)
+        {
+
+            
+
+            DGVPrinter dGVPrinter = new DGVPrinter();
+            dGVPrinter.Title = "Employees";
+            dGVPrinter.SubTitle = string.Format("Date:{0}", System.DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            dGVPrinter.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            dGVPrinter.PageNumbers = true;
+            dGVPrinter.PageNumberInHeader = false;
+            dGVPrinter.PorportionalColumns = true;
+            dGVPrinter.HeaderCellAlignment = StringAlignment.Near;
+            dGVPrinter.Footer = "Galaxy Empire Depot Inc.";
+            dGVPrinter.FooterSpacing = 5;
+            dGVPrinter.RowHeight = (DGVPrinter.RowHeightSetting)50;
+            dGVPrinter.ColumnWidth = (DGVPrinter.ColumnWidthSetting)50;
+            DataGridViewAutoSizeColumnMode[] columnModes = new DataGridViewAutoSizeColumnMode[employeeTable.Columns.Count];
+            for (int i = 0; i < employeeTable.Columns.Count; i++)
+            {
+                columnModes[i] = employeeTable.Columns[i].AutoSizeMode;
+            }
+
+            // Set the AutoSizeMode of the columns to Fill
+            for (int i = 0; i < employeeTable.Columns.Count; i++)
+            {
+                employeeTable.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            // Print the DataGridView
+            // ... Your existing code for printing the DataGridView ...
+
+            // Restore the original AutoSizeMode of the columns
+            for (int i = 0; i < employeeTable.Columns.Count; i++)
+            {
+                employeeTable.Columns[i].AutoSizeMode = columnModes[i];
+            }
+            dGVPrinter.PrintPreviewDataGridView(employeeTable);
+            dGVPrinter.PrintDataGridView(employeeTable);
+
+        }
+
     }
+
+
 }

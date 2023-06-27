@@ -19,6 +19,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DGVPrinterHelper;
+using System.Drawing.Printing;
+using Rectangle = System.Drawing.Rectangle;
+using Image = System.Drawing.Image;
+using System.Reflection;
+
 
 namespace InventorySystemGalaxy
 {
@@ -32,6 +38,8 @@ namespace InventorySystemGalaxy
         private List<DocumentSnapshot> data;
         CollectionReference collectionReference;
         private List<DocumentSnapshot> searchResults;
+        private PrintDocument printDocument;
+        
 
         public WarehouseForm()
         {
@@ -113,12 +121,28 @@ namespace InventorySystemGalaxy
         //to view the image in Zoom mode
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (WarehouseTable.Columns[e.ColumnIndex].Name == "Image" && e.Value != null)
+            if (e.ColumnIndex == 0)
             {
                 // Set the image cell style to zoom
-                DataGridViewImageCell cell = (DataGridViewImageCell)WarehouseTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                /*DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;*/
+
+                if (e.Value is System.Drawing.Image image)
+                {
+                    e.Value = ResizeImage(image, 100, 100);
+                    e.FormattingApplied = true;
+                }
             }
+        }
+
+        private System.Drawing.Image ResizeImage(System.Drawing.Image image, int width, int height)
+        {
+            Bitmap resizedImage = new Bitmap(width, height);
+            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
         }
 
         private async void WarehouseForm_Load(object sender, EventArgs e)
@@ -602,8 +626,14 @@ namespace InventorySystemGalaxy
             WarehouseTable.DataSource = dataTable;
         }
         Bitmap bitmap;
+
+        
+
         private void PrintBtn_Click(object sender, EventArgs e)
         {
+
+
+
 
             /*if (WarehouseTable.Rows.Count > 0)
             {
@@ -675,6 +705,11 @@ namespace InventorySystemGalaxy
             }
 */
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 395da534012705d8313ad91a669943a3db75e19f
             /*int height = WarehouseTable.Height;
             WarehouseTable.Height = WarehouseTable.RowCount * WarehouseTable.RowTemplate.Height * 2;
             bitmap = new Bitmap(WarehouseTable.Width, WarehouseTable.Height);
@@ -682,6 +717,7 @@ namespace InventorySystemGalaxy
             printPreviewDialog1.PrintPreviewControl.Zoom = 1;
             printPreviewDialog1.ShowDialog();
             WarehouseTable.Height = height;*/
+<<<<<<< HEAD
 
 
             /* if(WarehouseTable.Rows.Count > 0)
@@ -718,50 +754,47 @@ namespace InventorySystemGalaxy
 
             worksheet.PasteSpecial(range, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
 
+=======
+>>>>>>> 395da534012705d8313ad91a669943a3db75e19f
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        
+
+
+
+        private void customButton1_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
            e.Graphics.DrawImage(bitmap, 0, 0);
+=======
+            
+>>>>>>> 395da534012705d8313ad91a669943a3db75e19f
 
-            /*DataGridView dataGridView = WarehouseTable; // Replace with the name of your DataGridView control
-
-            // Set up the print area
-            int startX = e.MarginBounds.Left;
-            int startY = e.MarginBounds.Top;
-            int headerHeight = dataGridView.ColumnHeadersHeight;
-            int rowHeight = dataGridView.Rows[0].Height;
-
-            // Print the column headers
-            foreach (DataGridViewColumn column in dataGridView.Columns)
-            {
-                e.Graphics.DrawString(column.HeaderText, dataGridView.Font, Brushes.Black,
-                    new System.Drawing.Rectangle(startX, startY, column.Width, headerHeight));
-                startX += column.Width;
-            }
-
-            // Move to the next row position
-            startY += headerHeight;
-
-            // Print the rows
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                startX = e.MarginBounds.Left;
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    e.Graphics.DrawString(cell.Value.ToString(), dataGridView.Font, Brushes.Black,
-                        new System.Drawing.Rectangle(startX, startY, cell.OwningColumn.Width, rowHeight));
-                    startX += cell.OwningColumn.Width;
-                }
-                startY += rowHeight;
-            }
-
-            // Indicate that there are no more pages to print
-            e.HasMorePages = false;*/
+            DGVPrinter printer = new DGVPrinter();       
+            // ...
+            printer.Title = "Employees";
+            printer.SubTitle = string.Format("Date:{0}", System.DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "Galaxy Empire Depot Inc.";
+            printer.FooterSpacing = 5;
+            printer.PageSettings.Landscape = true;
+            printer.PrintPreviewDataGridView(WarehouseTable);
+            
 
 
+            printer.PrintDataGridView(WarehouseTable);
         }
 
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 395da534012705d8313ad91a669943a3db75e19f
     }
+
+
 }

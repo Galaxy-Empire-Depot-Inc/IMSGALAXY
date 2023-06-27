@@ -34,6 +34,7 @@
             employeeTable = new DataGridView();
             panel3 = new Panel();
             panel4 = new Panel();
+            customButton2 = new CustomButton();
             panel5 = new Panel();
             pictureBox1 = new PictureBox();
             customTextBox1 = new CustomTextBox();
@@ -111,6 +112,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(59, 116, 192);
+            panel4.Controls.Add(customButton2);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(customButton1);
             panel4.Dock = DockStyle.Fill;
@@ -119,6 +121,30 @@
             panel4.Padding = new Padding(5);
             panel4.Size = new Size(794, 100);
             panel4.TabIndex = 0;
+            // 
+            // customButton2
+            // 
+            customButton2.FlatStyle = FlatStyle.Flat;
+            customButton2.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            customButton2.ForeColor = Color.White;
+            customButton2.HoverForeColor1 = Color.Black;
+            customButton2.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
+            customButton2.Image = Properties.Resources.icons8_add_100__1___1_;
+            customButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            customButton2.Location = new Point(145, 42);
+            customButton2.Name = "customButton2";
+            customButton2.NormalForeColor1 = Color.White;
+            customButton2.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
+            customButton2.OnFocusEnterImage = null;
+            customButton2.OnFocusLeaveImage = null;
+            customButton2.Padding = new Padding(10);
+            customButton2.Size = new Size(115, 50);
+            customButton2.TabIndex = 2;
+            customButton2.Text = "   Print";
+            customButton2.TextAlign = ContentAlignment.MiddleLeft;
+            customButton2.Tooltip1 = null;
+            customButton2.UseVisualStyleBackColor = true;
+            customButton2.Click += customButton2_Click;
             // 
             // panel5
             // 
@@ -240,5 +266,6 @@
         private Panel panel6;
         private CustomButton customButton1;
         private DataGridView employeeTable;
+        private CustomButton customButton2;
     }
 }
