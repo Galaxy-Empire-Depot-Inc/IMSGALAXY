@@ -675,19 +675,54 @@ namespace InventorySystemGalaxy
             }
 */
 
-
-            int height = WarehouseTable.Height;
+            /*int height = WarehouseTable.Height;
             WarehouseTable.Height = WarehouseTable.RowCount * WarehouseTable.RowTemplate.Height * 2;
             bitmap = new Bitmap(WarehouseTable.Width, WarehouseTable.Height);
             WarehouseTable.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, WarehouseTable.Width, WarehouseTable.Height));
             printPreviewDialog1.PrintPreviewControl.Zoom = 1;
             printPreviewDialog1.ShowDialog();
-            WarehouseTable.Height = height;
+            WarehouseTable.Height = height;*/
+
+
+            /* if(WarehouseTable.Rows.Count > 0)
+             {
+                 Microsoft.Office.Interop.Excel.ApplicationClass xcel = new Microsoft.Office.Interop.Excel.ApplicationClass();
+                 xcel.Application.Workbooks.Add(Type.Missing);
+                 for(int i = 0; i < WarehouseTable.Columns.Count + 1; i++)
+                 {
+                     xcel.Cells[1, i] = WarehouseTable.Columns[i - 1].HeaderText;
+                 }
+                 for (int i = 0; i < WarehouseTable.Rows.Count; i++)
+                 {
+                     for(int j = 0; j < WarehouseTable.Columns.Count; j++)
+                     {
+                         xcel.Cells[i + 2, j + 1] = WarehouseTable.Rows[i].Cells[j].Value.ToString();
+
+                     }
+                 }
+                 xcel.Columns.AutoFit();
+                 xcel.Visible = true;
+             }*/
+            WarehouseTable.SelectAll();
+            DataObject dataObject = WarehouseTable.GetClipboardContent();
+            if (dataObject != null) Clipboard.SetDataObject(dataObject);
+            Microsoft.Office.Interop.Excel.ApplicationClass xcel = new Microsoft.Office.Interop.Excel.ApplicationClass();
+            xcel.Visible = true;
+            Microsoft.Office.Interop.Excel.Workbook workbook;
+            Microsoft.Office.Interop.Excel.Worksheet worksheet;
+            object misseddata = System.Reflection.Missing.Value;
+            workbook = xcel.Workbooks.Add(misseddata);
+            worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range range = (Microsoft.Office.Interop.Excel.Range)worksheet.Cells[1, 1];
+            range.Select();
+
+            worksheet.PasteSpecial(range, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(bitmap, 0, 0);
+           e.Graphics.DrawImage(bitmap, 0, 0);
 
             /*DataGridView dataGridView = WarehouseTable; // Replace with the name of your DataGridView control
 
@@ -726,5 +761,7 @@ namespace InventorySystemGalaxy
 
 
         }
+
+
     }
 }
