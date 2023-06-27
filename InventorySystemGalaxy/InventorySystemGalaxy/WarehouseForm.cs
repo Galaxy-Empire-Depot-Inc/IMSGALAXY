@@ -19,6 +19,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DGVPrinterHelper;
+using System.Drawing.Printing;
+using Rectangle = System.Drawing.Rectangle;
+using Image = System.Drawing.Image;
+using System.Reflection;
+
 
 namespace InventorySystemGalaxy
 {
@@ -32,6 +38,8 @@ namespace InventorySystemGalaxy
         private List<DocumentSnapshot> data;
         CollectionReference collectionReference;
         private List<DocumentSnapshot> searchResults;
+        private PrintDocument printDocument;
+        public CellLayoutMode CellLayoutMode { get; set; }
 
         public WarehouseForm()
         {
@@ -113,12 +121,28 @@ namespace InventorySystemGalaxy
         //to view the image in Zoom mode
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (WarehouseTable.Columns[e.ColumnIndex].Name == "Image" && e.Value != null)
+            if (e.ColumnIndex == 0)
             {
                 // Set the image cell style to zoom
-                DataGridViewImageCell cell = (DataGridViewImageCell)WarehouseTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                /*DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;*/
+
+                if (e.Value is System.Drawing.Image image)
+                {
+                    e.Value = ResizeImage(image, 100, 100);
+                    e.FormattingApplied = true;
+                }
             }
+        }
+
+        private System.Drawing.Image ResizeImage(System.Drawing.Image image, int width, int height)
+        {
+            Bitmap resizedImage = new Bitmap(width, height);
+            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.DrawImage(image, 0, 0, width, height);
+            }
+            return resizedImage;
         }
 
         private async void WarehouseForm_Load(object sender, EventArgs e)
@@ -602,8 +626,14 @@ namespace InventorySystemGalaxy
             WarehouseTable.DataSource = dataTable;
         }
         Bitmap bitmap;
+
+        
+
         private void PrintBtn_Click(object sender, EventArgs e)
         {
+
+
+
 
             /*if (WarehouseTable.Rows.Count > 0)
             {
@@ -676,55 +706,110 @@ namespace InventorySystemGalaxy
 */
 
 
-            int height = WarehouseTable.Height;
+
+            /*int height = WarehouseTable.Height;
             WarehouseTable.Height = WarehouseTable.RowCount * WarehouseTable.RowTemplate.Height * 2;
             bitmap = new Bitmap(WarehouseTable.Width, WarehouseTable.Height);
             WarehouseTable.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, WarehouseTable.Width, WarehouseTable.Height));
             printPreviewDialog1.PrintPreviewControl.Zoom = 1;
             printPreviewDialog1.ShowDialog();
-            WarehouseTable.Height = height;
+            WarehouseTable.Height = height;*/
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        
+
+
+
+        private void customButton1_Click(object sender, EventArgs e)
         {
-            e.Graphics.DrawImage(bitmap, 0, 0);
+            
 
-            /*DataGridView dataGridView = WarehouseTable; // Replace with the name of your DataGridView control
-
-            // Set up the print area
-            int startX = e.MarginBounds.Left;
-            int startY = e.MarginBounds.Top;
-            int headerHeight = dataGridView.ColumnHeadersHeight;
-            int rowHeight = dataGridView.Rows[0].Height;
-
-            // Print the column headers
-            foreach (DataGridViewColumn column in dataGridView.Columns)
-            {
-                e.Graphics.DrawString(column.HeaderText, dataGridView.Font, Brushes.Black,
-                    new System.Drawing.Rectangle(startX, startY, column.Width, headerHeight));
-                startX += column.Width;
-            }
-
-            // Move to the next row position
-            startY += headerHeight;
-
-            // Print the rows
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                startX = e.MarginBounds.Left;
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    e.Graphics.DrawString(cell.Value.ToString(), dataGridView.Font, Brushes.Black,
-                        new System.Drawing.Rectangle(startX, startY, cell.OwningColumn.Width, rowHeight));
-                    startX += cell.OwningColumn.Width;
-                }
-                startY += rowHeight;
-            }
-
-            // Indicate that there are no more pages to print
-            e.HasMorePages = false;*/
+            DGVPrinter printer = new DGVPrinter();       
+            // ...
+            printer.Title = "Employees";
+            printer.SubTitle = string.Format("Date:{0}", System.DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "Galaxy Empire Depot Inc.";
+            printer.FooterSpacing = 5;
+            printer.PageSettings.Landscape = true;
+            printer.PrintPreviewDataGridView(WarehouseTable);
+            printer.printDocument.PrintPage += PrintDocument_PrintPage;
 
 
+            printer.PrintDataGridView(WarehouseTable);
         }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+            float cellWidth;
+            float cellHeight = 0;
+            float totalWidth = 0;
+
+            // Calculate the total width of visible columns
+            foreach (DataGridViewColumn column in _dataGridView.Columns)
+            {
+                if (column.Visible)
+                {
+                    totalWidth += column.Width;
+                }
+            }
+
+            // Calculate the cell height based on the row height
+            if (_dataGridView.Rows.Count > 0)
+            {
+                DataGridViewRow firstRow = WarehouseTable.Rows[0];
+                cellHeight = firstRow.Height;
+            }
+
+            // Iterate through the rows and columns to print the DataGridView
+            for (int rowIndex = 0; rowIndex < WarehouseTable.Rows.Count; rowIndex++)
+            {
+                DataGridViewRow row = WarehouseTable.Rows[rowIndex];
+
+                // Check if the current row will exceed the page height
+                if (y + cellHeight > e.MarginBounds.Bottom)
+                {
+                    e.HasMorePages = true;
+                    return;
+                }
+
+                // Reset the x position for each row
+                x = e.MarginBounds.Left;
+
+                // Iterate through the visible columns to print the cells
+                foreach (DataGridViewColumn column in WarehouseTable.Columns)
+                {
+                    if (!column.Visible)
+                    {
+                        continue;
+                    }
+
+                    DataGridViewCell cell = row.Cells[column.Index];
+
+                    // Calculate the cell width based on the column width and total width
+                    cellWidth = column.Width / totalWidth * e.MarginBounds.Width;
+
+                    // Check if the current cell layout mode is custom
+                    if (CellLayoutMode == CellLayoutMode.Strech)
+                    {
+                        // Raise the CellFormatting event to customize the cell layout
+                        DataGridViewCellFormattingEventArgs formattingEventArgs =
+                            new DataGridViewCellFormattingEventArgs(column.Index, rowIndex, cell.Value, cell.Style, null);
+                        CellFormatting?.Invoke(this, formattingEventArgs);
+
+                        // Apply the custom formatting to the cell style
+                        if (formattingEventArgs.CellStyle != null)
+                        {
+                            cell.Style = formattingEventArgs.CellStyle;
+                        }
+                    }
     }
+
+
 }
