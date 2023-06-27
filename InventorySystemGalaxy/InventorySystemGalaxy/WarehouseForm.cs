@@ -124,14 +124,14 @@ namespace InventorySystemGalaxy
             if (e.ColumnIndex == 0)
             {
                 // Set the image cell style to zoom
-                /*DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;*/
+                DataGridViewImageCell cell = (DataGridViewImageCell)WarehouseTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
 
-                if (e.Value is System.Drawing.Image image)
+                /*if (e.Value is System.Drawing.Image image)
                 {
                     e.Value = ResizeImage(image, 100, 100);
                     e.FormattingApplied = true;
-                }
+                }*/
             }
         }
 
@@ -627,89 +627,10 @@ namespace InventorySystemGalaxy
         }
         Bitmap bitmap;
 
-        
-
+       
         private void PrintBtn_Click(object sender, EventArgs e)
         {
 
-
-
-
-            /*if (WarehouseTable.Rows.Count > 0)
-            {
-                SaveFileDialog saveFile = new SaveFileDialog();
-                saveFile.Filter = "PDF (*.pdf)|*.pdf)";
-                saveFile.FileName = "ExportData.pdf";
-                bool ErrorMessage = false;
-                
-                if(saveFile.ShowDialog() == DialogResult.OK)
-                {
-                    if(File.Exists(saveFile.FileName))
-                    {
-                        try
-                        {
-                            File.Delete(saveFile.FileName);
-                        }
-                        catch(Exception ex)
-                        {
-                            ErrorMessage = true;
-                            MessageBox.Show("Unable to write data" + ex.Message);
-                        }
-                    }
-                    if (!ErrorMessage)
-                    {
-                        try
-                        {
-                            PdfPTable pdfPTable = new PdfPTable(WarehouseTable.Columns.Count);
-                            pdfPTable.DefaultCell.Padding = 2;
-                            pdfPTable.WidthPercentage = 100;
-                            pdfPTable.HorizontalAlignment = Element.ALIGN_LEFT;
-
-                            foreach(DataGridViewColumn col in WarehouseTable.Columns)
-                            {
-                                PdfPCell pCell = new PdfPCell(new Phrase(col.HeaderText));
-                                pdfPTable.AddCell(pCell);
-                            }
-
-                            foreach(DataGridViewRow viewRow in WarehouseTable.Rows)
-                            {
-                                foreach(DataGridViewCell cell in viewRow.Cells)
-                                {
-                                    pdfPTable.AddCell(cell.Value.ToString());
-                                }
-                            }
-
-                            using(FileStream fileStream = new FileStream(saveFile.FileName, FileMode.Create))
-                            {
-                                iTextSharp.text.Document document = new iTextSharp.text.Document(PageSize.A4, 8f, 16f, 16f, 8f);
-                                document.Open();
-                                document.Add(pdfPTable);
-                                document.Close();
-                                fileStream.Close();
-                            }
-
-                            MessageBox.Show("Data Exported Sucessfully", "Info");
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Data Exported Failed" + ex.Message);
-
-                        }
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No Record Found", "Info");
-            }
-*/
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 395da534012705d8313ad91a669943a3db75e19f
             /*int height = WarehouseTable.Height;
             WarehouseTable.Height = WarehouseTable.RowCount * WarehouseTable.RowTemplate.Height * 2;
             bitmap = new Bitmap(WarehouseTable.Width, WarehouseTable.Height);
@@ -717,45 +638,7 @@ namespace InventorySystemGalaxy
             printPreviewDialog1.PrintPreviewControl.Zoom = 1;
             printPreviewDialog1.ShowDialog();
             WarehouseTable.Height = height;*/
-<<<<<<< HEAD
 
-
-            /* if(WarehouseTable.Rows.Count > 0)
-             {
-                 Microsoft.Office.Interop.Excel.ApplicationClass xcel = new Microsoft.Office.Interop.Excel.ApplicationClass();
-                 xcel.Application.Workbooks.Add(Type.Missing);
-                 for(int i = 0; i < WarehouseTable.Columns.Count + 1; i++)
-                 {
-                     xcel.Cells[1, i] = WarehouseTable.Columns[i - 1].HeaderText;
-                 }
-                 for (int i = 0; i < WarehouseTable.Rows.Count; i++)
-                 {
-                     for(int j = 0; j < WarehouseTable.Columns.Count; j++)
-                     {
-                         xcel.Cells[i + 2, j + 1] = WarehouseTable.Rows[i].Cells[j].Value.ToString();
-
-                     }
-                 }
-                 xcel.Columns.AutoFit();
-                 xcel.Visible = true;
-             }*/
-            WarehouseTable.SelectAll();
-            DataObject dataObject = WarehouseTable.GetClipboardContent();
-            if (dataObject != null) Clipboard.SetDataObject(dataObject);
-            Microsoft.Office.Interop.Excel.ApplicationClass xcel = new Microsoft.Office.Interop.Excel.ApplicationClass();
-            xcel.Visible = true;
-            Microsoft.Office.Interop.Excel.Workbook workbook;
-            Microsoft.Office.Interop.Excel.Worksheet worksheet;
-            object misseddata = System.Reflection.Missing.Value;
-            workbook = xcel.Workbooks.Add(misseddata);
-            worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Worksheets.get_Item(1);
-            Microsoft.Office.Interop.Excel.Range range = (Microsoft.Office.Interop.Excel.Range)worksheet.Cells[1, 1];
-            range.Select();
-
-            worksheet.PasteSpecial(range, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-
-=======
->>>>>>> 395da534012705d8313ad91a669943a3db75e19f
         }
 
         
@@ -764,36 +647,10 @@ namespace InventorySystemGalaxy
 
         private void customButton1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-           e.Graphics.DrawImage(bitmap, 0, 0);
-=======
-            
->>>>>>> 395da534012705d8313ad91a669943a3db75e19f
 
-            DGVPrinter printer = new DGVPrinter();       
-            // ...
-            printer.Title = "Employees";
-            printer.SubTitle = string.Format("Date:{0}", System.DateTime.Now.Date.ToString("MM/dd/yyyy"));
-            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            printer.PageNumbers = true;
-            printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "Galaxy Empire Depot Inc.";
-            printer.FooterSpacing = 5;
-            printer.PageSettings.Landscape = true;
-            printer.PrintPreviewDataGridView(WarehouseTable);
-            
-
-
-            printer.PrintDataGridView(WarehouseTable);
+           //e.Graphics.DrawImage(bitmap, 0, 0);
         }
 
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 395da534012705d8313ad91a669943a3db75e19f
     }
 
 
