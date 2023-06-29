@@ -37,7 +37,7 @@
             WarehouseTable = new DataGridView();
             panel3 = new Panel();
             panel4 = new Panel();
-            customButton1 = new CustomButton();
+            categoryComboBox = new ComboBox();
             panel7 = new Panel();
             SearchBTN = new PictureBox();
             searchText = new CustomTextBox();
@@ -135,7 +135,6 @@
             WarehouseTable.BorderStyle = BorderStyle.Fixed3D;
             WarehouseTable.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             WarehouseTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            WarehouseTable.ColumnHeadersVisible = false;
             WarehouseTable.Dock = DockStyle.Fill;
             WarehouseTable.GridColor = Color.White;
             WarehouseTable.Location = new Point(5, 5);
@@ -162,7 +161,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(59, 116, 192);
-            panel4.Controls.Add(customButton1);
+            panel4.Controls.Add(categoryComboBox);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(ShowModal);
@@ -173,29 +172,18 @@
             panel4.Size = new Size(794, 100);
             panel4.TabIndex = 0;
             // 
-            // customButton1
+            // categoryComboBox
             // 
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            customButton1.ForeColor = Color.White;
-            customButton1.HoverForeColor1 = Color.Black;
-            customButton1.HoverImage1 = Properties.Resources.icons8_add_100__2___1_;
-            customButton1.Image = Properties.Resources.icons8_add_100__1___1_;
-            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            customButton1.Location = new Point(140, 42);
-            customButton1.Name = "customButton1";
-            customButton1.NormalForeColor1 = Color.White;
-            customButton1.NormalImage1 = Properties.Resources.icons8_add_100__1___1_;
-            customButton1.OnFocusEnterImage = null;
-            customButton1.OnFocusLeaveImage = null;
-            customButton1.Padding = new Padding(10);
-            customButton1.Size = new Size(115, 50);
-            customButton1.TabIndex = 3;
-            customButton1.Text = "   Print";
-            customButton1.TextAlign = ContentAlignment.MiddleLeft;
-            customButton1.Tooltip1 = null;
-            customButton1.UseVisualStyleBackColor = true;
-            customButton1.Click += customButton1_Click;
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryComboBox.FlatStyle = FlatStyle.Flat;
+            categoryComboBox.Font = new Font("SimSun", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            categoryComboBox.FormattingEnabled = true;
+            categoryComboBox.Items.AddRange(new object[] { "--Category--", "GS Ceiling and Chandelier Lights", "GS Crystal Lights", "GS Fan", "GS Panel Lights", "GS Strip Lights", "New Chandelier Lights" });
+            categoryComboBox.Location = new Point(362, 67);
+            categoryComboBox.Name = "categoryComboBox";
+            categoryComboBox.Size = new Size(168, 23);
+            categoryComboBox.TabIndex = 3;
+            categoryComboBox.SelectedIndexChanged += categoryComboBox_SelectedIndexChanged;
             // 
             // panel7
             // 
@@ -350,10 +338,6 @@
             timer1.Interval = 5000;
             timer1.Tick += timer1_Tick;
             // 
-            // printPreviewDialog1
-            // 
-           
-            // 
             // WarehouseForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
@@ -406,7 +390,6 @@
         private RadioButton storeRB;
         private RadioButton tmsRB;
         private RadioButton allRB;
-
-        private CustomButton customButton1;
+        private ComboBox categoryComboBox;
     }
 }
