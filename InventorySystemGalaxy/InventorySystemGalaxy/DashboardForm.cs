@@ -34,7 +34,7 @@ namespace InventorySystemGalaxy
             DisplayTotalProduct();
             TotalAvailableProduct();
             DisplayProduct();
-            //DisplayDamage();
+            DisplayDamage();
 
         }
 
@@ -84,24 +84,14 @@ namespace InventorySystemGalaxy
 
         async void DisplayDamage()
         {
-            /*Query query = db.Collection("Products");
+            // Create a query to filter documents where the field contains the specified value
+            Query query = db.Collection("Products").WhereEqualTo("hasRepair", true);
 
-            List<string> fieldValues = new List<string>();
-
+            // Execute the query and get the count of matching documents
             QuerySnapshot snapshot = await query.GetSnapshotAsync();
-            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-            {
-                if (documentSnapshot.Exists)
-                {
-                    if (documentSnapshot.TryGetValue("Repair", out object fieldValue))
-                    {
-                        fieldValues.Add(fieldValue.ToString());
-                    }
-                }
-            }
+            int count = snapshot.Count;
 
-            lbl_DamageP.Text = fieldValues.ToString();*/
-
+            lbl_DamageP.Text = count.ToString();
         }
 
         private void btn_AvailableP_Click(object sender, EventArgs e)
@@ -111,7 +101,7 @@ namespace InventorySystemGalaxy
 
         private void btn_DamageP_Click(object sender, EventArgs e)
         {
-
+            DamageProductTable();
         }
 
         private void btn_DisplayP_Click(object sender, EventArgs e)
@@ -226,6 +216,43 @@ namespace InventorySystemGalaxy
                     downloadStream.Position = 0;
                     Image downloadedImage = Image.FromStream(downloadStream);
                     dataTable.Rows.Add(downloadedImage, data["Item_code"], data["Category"], data["Display"]);
+                    // Add more fields as needed
+                }
+            }
+
+            // Handle the CellFormatting event
+            TableProduct.CellFormatting += DataGridView1_CellFormatting;
+            TableProduct.DataSource = dataTable;
+        }
+
+        async void DamageProductTable()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("hasRepair", true);
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(Image));
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+                    dataTable.Rows.Add(downloadedImage, data["Item_code"], data["Category"], data["Repair"]);
                     // Add more fields as needed
                 }
             }

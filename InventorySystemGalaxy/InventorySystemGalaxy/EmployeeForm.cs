@@ -23,8 +23,6 @@ namespace InventorySystemGalaxy
         FirestoreDb db;
         System.Data.DataTable tableEmployee;
         string bucketName = "imsgalaxy-f7419.appspot.com";
-        private List<DocumentSnapshot> data;
-
 
 
         public EmployeeForm()
@@ -671,14 +669,14 @@ namespace InventorySystemGalaxy
 
         private async void SearchEmployeeBtn_Click(object sender, EventArgs e)
         {
-           /* string searchTerm = SearchEmployeeTxtBox.Text;
-            await SearchAndUpdateDataGridView(searchTerm);*/
+            string searchTerm = SearchEmployeeTxtBox.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
         }
 
         private async void SearchEmployeeTxtBox_TextChanged(object sender, EventArgs e)
         {
-            string searchTerm = SearchEmployeeTxtBox.Text;
-            await SearchAndUpdateDataGridView(searchTerm);
+            /*string searchTerm = SearchEmployeeTxtBox.Text;
+            await SearchAndUpdateDataGridView(searchTerm);*/
         }
     }
 }

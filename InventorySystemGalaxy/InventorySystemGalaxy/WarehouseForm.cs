@@ -24,6 +24,7 @@ using System.Drawing.Printing;
 using Rectangle = System.Drawing.Rectangle;
 using Image = System.Drawing.Image;
 using System.Reflection;
+using Google.Protobuf.Collections;
 
 
 namespace InventorySystemGalaxy
@@ -35,11 +36,8 @@ namespace InventorySystemGalaxy
 
         DataTable dataTable;
 
-        private List<DocumentSnapshot> data;
         CollectionReference collectionReference;
-        private List<DocumentSnapshot> searchResults;
-        private PrintDocument printDocument;
-        private string categoryText;
+        string bucketName = "imsgalaxy-f7419.appspot.com";
         string categoryItem;
 
 
@@ -49,23 +47,11 @@ namespace InventorySystemGalaxy
             RadioButtonSelection();
             categoryComboBox.SelectedIndex = 0;
 
-
-
-
-            /* FirestoreDbBuilder builder = new FirestoreDbBuilder
-             {
-                 ProjectId = "imsgalaxy-f7419",
-                 // Add additional configuration as needed
-             };
-             db = builder.Build();
-7
-             WarehouseTable.DataSource = data;
-             GetDataFromFirestore();*/
-
         }
 
         async void DisplayData()
         {
+
 
             collectionReference = db.Collection("Products");
             QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
@@ -222,6 +208,7 @@ namespace InventorySystemGalaxy
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
+
             DisplayData();
 
 
@@ -330,15 +317,6 @@ namespace InventorySystemGalaxy
             warehouseModal.ShowDialog(this);
 
         }
-        private async void GetDataFromFirestore()
-        {
-            collectionReference = db.Collection("Products");
-
-            // Perform the query to retrieve data from Firestore
-            QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
-            data = snapshot.Documents.ToList();
-        }
-
 
         // Search Firestore and update the DataGridView
         private async Task SearchAndUpdateDataGridView(string searchTerm)
@@ -437,19 +415,6 @@ namespace InventorySystemGalaxy
         {
             string searchTerm = searchText.Text;
             await SearchAndUpdateDataGridView(searchTerm);
-            /*string searchTerm = searchText.Text.Trim().ToLower();
-
-            List<DocumentSnapshot> filteredData = data.Where(document =>
-            {
-                // Replace "your-field" with the field you want to filter by
-                string fieldValue = document.GetValue<string>("Item_code");
-                return fieldValue.ToLower().Contains(searchTerm);
-            }).ToList();
-
-            WarehouseTable.DataSource = filteredData;*/
-
-
-
 
         }
 
@@ -701,7 +666,6 @@ namespace InventorySystemGalaxy
 
         Bitmap bitmap;
 
-
         private void PrintBtn_Click(object sender, EventArgs e)
         {
 
@@ -721,8 +685,6 @@ namespace InventorySystemGalaxy
 
         private void customButton1_Click(object sender, EventArgs e)
         {
-
-
 
             DGVPrinter printer = new DGVPrinter();
             // ...
@@ -745,6 +707,7 @@ namespace InventorySystemGalaxy
 
         private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (categoryComboBox.SelectedIndex != 0)
             {
                 DataTableCategory();
@@ -757,7 +720,8 @@ namespace InventorySystemGalaxy
             categoryComboBox.SelectedIndex = 0;
 
         }
-    }
 
+
+    }
 
 }
