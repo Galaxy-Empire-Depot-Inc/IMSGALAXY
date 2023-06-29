@@ -460,6 +460,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -1610,6 +1619,19 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
+      ]
+    },
+    "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
+      "sha512": "cuvqi/U5MYSM0gvR2l90q0m/urRgmg69EiwP5VWp1RcaJ0YT5G26Va5LaOZ3KJFc22FNihS5CUjeePUp2YpGQA==",
+      "type": "package",
+      "path": "microsoft.office.interop.excel/15.0.4795.1001",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Office.Interop.Excel.dll",
+        "lib/netstandard2.0/Microsoft.Office.Interop.Excel.dll",
+        "microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
+        "microsoft.office.interop.excel.nuspec"
       ]
     },
     "Microsoft.Win32.SystemEvents/4.7.0": {
@@ -2830,29 +2852,30 @@
       "Google.Cloud.Firestore >= 3.3.0",
       "Google.Cloud.Firestore.V1 >= 3.3.0",
       "Google.Cloud.Storage.V1 >= 4.5.0",
+      "Microsoft.Office.Interop.Excel >= 15.0.4795.1001",
       "MySql.Data >= 8.0.33",
       "PdfSharp >= 1.50.5147",
       "iTextSharp >= 5.5.13.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IT\\.nuget\\packages\\": {},
+    "C:\\Users\\jhoey\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
+      "projectUniqueName": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
       "projectName": "InventorySystemGalaxy",
-      "projectPath": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
-      "packagesPath": "C:\\Users\\IT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\",
+      "projectPath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\InventorySystemGalaxy.csproj",
+      "packagesPath": "C:\\Users\\jhoey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\IT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jhoey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2861,7 +2884,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2895,6 +2917,10 @@
           "Google.Cloud.Storage.V1": {
             "target": "Package",
             "version": "[4.5.0, )"
+          },
+          "Microsoft.Office.Interop.Excel": {
+            "target": "Package",
+            "version": "[15.0.4795.1001, )"
           },
           "MySql.Data": {
             "target": "Package",
@@ -2937,7 +2963,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\IT\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file C:\\Users\\jhoey\\OneDrive\\Documents\\IMSGALAXY\\InventorySystemGalaxy\\InventorySystemGalaxy\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     },
     {
       "code": "NU1701",
