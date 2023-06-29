@@ -39,12 +39,17 @@ namespace InventorySystemGalaxy
         CollectionReference collectionReference;
         private List<DocumentSnapshot> searchResults;
         private PrintDocument printDocument;
-        
+        private string categoryText;
+
 
         public WarehouseForm()
         {
             InitializeComponent();
             RadioButtonSelection();
+            categoryComboBox.SelectedIndex = 0;
+
+
+
 
             /* FirestoreDbBuilder builder = new FirestoreDbBuilder
              {
@@ -118,6 +123,63 @@ namespace InventorySystemGalaxy
 
         }
 
+        async void DataTableCategory()
+        {
+            Query query = db.Collection("Products").WhereEqualTo("Category", categoryComboBox.SelectedItem);
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+
+            //set the property of every column
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
+                    dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"], downloadedImage);
+                    // Add more fields as needed
+                }
+            }
+
+            // Handle the CellFormatting event
+            WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+            WarehouseTable.DataSource = dataTable;
+        }
+
         //to view the image in Zoom mode
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -148,13 +210,14 @@ namespace InventorySystemGalaxy
         private async void WarehouseForm_Load(object sender, EventArgs e)
         {
 
-
             string path = AppDomain.CurrentDomain.BaseDirectory + @"ims-firestore.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
             //timer1.Start();
-            DisplayData();
+            /*DisplayData();*/
+            DataTableCategory();
+
 
         }
 
@@ -359,8 +422,7 @@ namespace InventorySystemGalaxy
 
         private async void SearchBTN_Click(object sender, EventArgs e)
         {
-            string searchTerm = searchText.Text;
-            await SearchAndUpdateDataGridView(searchTerm);
+
         }
 
         private async void searchText_TextChanged(object sender, EventArgs e)
@@ -376,6 +438,8 @@ namespace InventorySystemGalaxy
             }).ToList();
 
             WarehouseTable.DataSource = filteredData;*/
+            string searchTerm = searchText.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
 
 
 
@@ -625,9 +689,18 @@ namespace InventorySystemGalaxy
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
             WarehouseTable.DataSource = dataTable;
         }
+
+
         Bitmap bitmap;
 
+<<<<<<< HEAD
+
+
+
+
+=======
        
+>>>>>>> 4422e7d31fa7334c94d3ff380cb00c1bf4c5531a
         private void PrintBtn_Click(object sender, EventArgs e)
         {
 
@@ -641,16 +714,43 @@ namespace InventorySystemGalaxy
 
         }
 
-        
+
 
 
 
         private void customButton1_Click(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
+
+            DGVPrinter printer = new DGVPrinter();
+            // ...
+            printer.Title = "Employees";
+            printer.SubTitle = string.Format("Date:{0}", System.DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "Galaxy Empire Depot Inc.";
+            printer.FooterSpacing = 5;
+            printer.PageSettings.Landscape = true;
+            printer.PrintPreviewDataGridView(WarehouseTable);
+
+
+
+            printer.PrintDataGridView(WarehouseTable);
+        }
+
+        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+=======
            //e.Graphics.DrawImage(bitmap, 0, 0);
         }
 
+>>>>>>> 4422e7d31fa7334c94d3ff380cb00c1bf4c5531a
     }
 
 
