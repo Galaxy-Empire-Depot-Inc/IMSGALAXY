@@ -34,10 +34,11 @@
             employeeTable = new DataGridView();
             panel3 = new Panel();
             panel4 = new Panel();
+            positionComboBox = new ComboBox();
             customButton2 = new CustomButton();
             panel5 = new Panel();
-            pictureBox1 = new PictureBox();
-            customTextBox1 = new CustomTextBox();
+            SearchEmployeeBtn = new PictureBox();
+            SearchEmployeeTxtBox = new CustomTextBox();
             customButton1 = new CustomButton();
             panel2 = new Panel();
             label1 = new Label();
@@ -47,7 +48,7 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SearchEmployeeBtn).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -112,6 +113,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(59, 116, 192);
+            panel4.Controls.Add(positionComboBox);
             panel4.Controls.Add(customButton2);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(customButton1);
@@ -121,6 +123,16 @@
             panel4.Padding = new Padding(5);
             panel4.Size = new Size(794, 100);
             panel4.TabIndex = 0;
+            // 
+            // positionComboBox
+            // 
+            positionComboBox.FormattingEnabled = true;
+            positionComboBox.Items.AddRange(new object[] { "--Departments--", "Accounting Department", "Customer Service Department", "Information Technology Department", "Sales Supervisor Department", "Warehouse Manager Department", "Warehouse Staff Department", "HR Manager Department" });
+            positionComboBox.Location = new Point(345, 72);
+            positionComboBox.Name = "positionComboBox";
+            positionComboBox.Size = new Size(200, 20);
+            positionComboBox.TabIndex = 22;
+            positionComboBox.SelectedIndexChanged += positionComboBox_SelectedIndexChanged;
             // 
             // customButton2
             // 
@@ -138,10 +150,10 @@
             customButton2.OnFocusEnterImage = null;
             customButton2.OnFocusLeaveImage = null;
             customButton2.Padding = new Padding(10);
-            customButton2.Size = new Size(115, 50);
+            customButton2.Size = new Size(139, 50);
             customButton2.TabIndex = 2;
-            customButton2.Text = "   Print";
-            customButton2.TextAlign = ContentAlignment.MiddleLeft;
+            customButton2.Text = "Export";
+            customButton2.TextAlign = ContentAlignment.MiddleRight;
             customButton2.Tooltip1 = null;
             customButton2.UseVisualStyleBackColor = true;
             customButton2.Click += customButton2_Click;
@@ -149,35 +161,37 @@
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel5.Controls.Add(pictureBox1);
-            panel5.Controls.Add(customTextBox1);
+            panel5.Controls.Add(SearchEmployeeBtn);
+            panel5.Controls.Add(SearchEmployeeTxtBox);
             panel5.Location = new Point(551, 47);
             panel5.Name = "panel5";
             panel5.Size = new Size(240, 50);
             panel5.TabIndex = 0;
             // 
-            // pictureBox1
+            // SearchEmployeeBtn
             // 
-            pictureBox1.Image = Properties.Resources.images_removebg_preview;
-            pictureBox1.Location = new Point(20, 13);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(35, 35);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            SearchEmployeeBtn.Image = Properties.Resources.images_removebg_preview;
+            SearchEmployeeBtn.Location = new Point(20, 13);
+            SearchEmployeeBtn.Name = "SearchEmployeeBtn";
+            SearchEmployeeBtn.Size = new Size(35, 35);
+            SearchEmployeeBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            SearchEmployeeBtn.TabIndex = 1;
+            SearchEmployeeBtn.TabStop = false;
+            SearchEmployeeBtn.Click += SearchEmployeeBtn_Click;
             // 
-            // customTextBox1
+            // SearchEmployeeTxtBox
             // 
-            customTextBox1.BorderStyle = BorderStyle.None;
-            customTextBox1.BottomBorderColor = Color.LightSlateGray;
-            customTextBox1.BottomBorderOnFocusColor = Color.CornflowerBlue;
-            customTextBox1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            customTextBox1.Location = new Point(61, 25);
-            customTextBox1.Name = "customTextBox1";
-            customTextBox1.PlaceholderText = "Search";
-            customTextBox1.Size = new Size(177, 23);
-            customTextBox1.TabIndex = 0;
-            customTextBox1.TextAlign = HorizontalAlignment.Center;
+            SearchEmployeeTxtBox.BorderStyle = BorderStyle.None;
+            SearchEmployeeTxtBox.BottomBorderColor = Color.LightSlateGray;
+            SearchEmployeeTxtBox.BottomBorderOnFocusColor = Color.CornflowerBlue;
+            SearchEmployeeTxtBox.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            SearchEmployeeTxtBox.Location = new Point(39, 24);
+            SearchEmployeeTxtBox.Name = "SearchEmployeeTxtBox";
+            SearchEmployeeTxtBox.PlaceholderText = "Search";
+            SearchEmployeeTxtBox.Size = new Size(177, 23);
+            SearchEmployeeTxtBox.TabIndex = 0;
+            SearchEmployeeTxtBox.TextAlign = HorizontalAlignment.Center;
+            SearchEmployeeTxtBox.TextChanged += SearchEmployeeTxtBox_TextChanged;
             // 
             // customButton1
             // 
@@ -247,7 +261,7 @@
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SearchEmployeeBtn).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -260,12 +274,13 @@
         private Label label1;
         private Panel panel3;
         private Panel panel4;
-        private PictureBox pictureBox1;
-        private CustomTextBox customTextBox1;
+        private PictureBox SearchEmployeeBtn;
+        private CustomTextBox SearchEmployeeTxtBox;
         private Panel panel5;
         private Panel panel6;
         private CustomButton customButton1;
         private DataGridView employeeTable;
         private CustomButton customButton2;
+        public ComboBox positionComboBox;
     }
 }

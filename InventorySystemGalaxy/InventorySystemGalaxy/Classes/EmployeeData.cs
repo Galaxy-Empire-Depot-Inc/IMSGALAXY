@@ -16,6 +16,8 @@ namespace InventorySystemGalaxy.Classes
         [FirestoreProperty]
         public string Department { get; set; }
         [FirestoreProperty]
+        public string Position { get; set; }
+        [FirestoreProperty]
         public string FirstName { get; set; }
         [FirestoreProperty]
         public string MiddleName { get; set; }
