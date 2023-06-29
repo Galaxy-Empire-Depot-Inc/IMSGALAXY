@@ -40,6 +40,7 @@ namespace InventorySystemGalaxy
         private List<DocumentSnapshot> searchResults;
         private PrintDocument printDocument;
         private string categoryText;
+        string categoryItem;
 
 
         public WarehouseForm()
@@ -123,62 +124,7 @@ namespace InventorySystemGalaxy
 
         }
 
-        async void DataTableCategory()
-        {
-            Query query = db.Collection("Products").WhereEqualTo("Category", categoryComboBox.SelectedItem);
-            QuerySnapshot snapshot = await query.GetSnapshotAsync();
-
-            dataTable = new DataTable();
-            dataTable.Columns.Add("Sort");
-            dataTable.Columns.Add("Item Code");
-            dataTable.Columns.Add("Reference Code");
-            dataTable.Columns.Add("SRP");
-            dataTable.Columns.Add("Colour");
-            dataTable.Columns.Add("Description");
-            dataTable.Columns.Add("DP");
-            dataTable.Columns.Add("AV");
-            dataTable.Columns.Add("Watts");
-            dataTable.Columns.Add("ProductSize");
-            dataTable.Columns.Add("Warehouse");
-            dataTable.Columns.Add("Category");
-            dataTable.Columns.Add("Box");
-            dataTable.Columns.Add("Quantity");
-            dataTable.Columns.Add("CTN L");
-            dataTable.Columns.Add("CTN W");
-            dataTable.Columns.Add("CTN H");
-            dataTable.Columns.Add("Available");
-            dataTable.Columns.Add("Display");
-            dataTable.Columns.Add("Repair");
-            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
-
-            //set the property of every column
-
-            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-            {
-
-                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
-
-                if (documentSnapshot.Exists)
-                {
-                    var data = documentSnapshot.ToDictionary();
-
-                    var storageClient = StorageClient.Create();
-                    string fileName = Path.GetFileName(imageUrl);
-                    var downloadStream = new MemoryStream();
-                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
-                    downloadStream.Position = 0;
-                    System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
-                    dataTable.Rows.Add(data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
-                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
-                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"], downloadedImage);
-                    // Add more fields as needed
-                }
-            }
-
-            // Handle the CellFormatting event
-            WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
-            WarehouseTable.DataSource = dataTable;
-        }
+        
 
         //to view the image in Zoom mode
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
@@ -186,14 +132,14 @@ namespace InventorySystemGalaxy
             if (e.ColumnIndex == 0)
             {
                 // Set the image cell style to zoom
-                DataGridViewImageCell cell = (DataGridViewImageCell)WarehouseTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;
+                /*DataGridViewImageCell cell = (DataGridViewImageCell)employeeTable.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.ImageLayout = DataGridViewImageCellLayout.Stretch;*/
 
-                /*if (e.Value is System.Drawing.Image image)
+                if (e.Value is Image image)
                 {
                     e.Value = ResizeImage(image, 100, 100);
                     e.FormattingApplied = true;
-                }*/
+                }
             }
         }
 
@@ -214,9 +160,8 @@ namespace InventorySystemGalaxy
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
-            //timer1.Start();
             DisplayData();
-            /*DataTableCategory();*/
+            
 
 
         }
@@ -422,12 +367,14 @@ namespace InventorySystemGalaxy
 
         private async void SearchBTN_Click(object sender, EventArgs e)
         {
-
+            string searchTerm = searchText.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
         }
 
         private async void searchText_TextChanged(object sender, EventArgs e)
         {
-
+            string searchTerm = searchText.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
             /*string searchTerm = searchText.Text.Trim().ToLower();
 
             List<DocumentSnapshot> filteredData = data.Where(document =>
@@ -438,8 +385,7 @@ namespace InventorySystemGalaxy
             }).ToList();
 
             WarehouseTable.DataSource = filteredData;*/
-            string searchTerm = searchText.Text;
-            await SearchAndUpdateDataGridView(searchTerm);
+
 
 
 
@@ -737,7 +683,7 @@ namespace InventorySystemGalaxy
 
         private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
     }
