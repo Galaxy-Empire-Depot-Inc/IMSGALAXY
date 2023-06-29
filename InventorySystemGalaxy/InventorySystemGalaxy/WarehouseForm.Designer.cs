@@ -51,6 +51,7 @@
             tmsRB = new RadioButton();
             allRB = new RadioButton();
             timer1 = new System.Windows.Forms.Timer(components);
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)WarehouseTable).BeginInit();
@@ -62,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             GBWarehouse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // WarehouseLabel
@@ -161,6 +163,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(59, 116, 192);
+            panel4.Controls.Add(pictureBox2);
             panel4.Controls.Add(categoryComboBox);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(panel5);
@@ -338,6 +341,17 @@
             timer1.Interval = 5000;
             timer1.Tick += timer1_Tick;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.icons8_warning_100__2_;
+            pictureBox2.Location = new Point(316, 67);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(34, 25);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // WarehouseForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
@@ -366,6 +380,7 @@
             panel2.PerformLayout();
             GBWarehouse.ResumeLayout(false);
             GBWarehouse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -391,5 +406,6 @@
         private RadioButton tmsRB;
         private RadioButton allRB;
         private ComboBox categoryComboBox;
+        private PictureBox pictureBox2;
     }
 }

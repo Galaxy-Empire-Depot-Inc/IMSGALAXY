@@ -33,7 +33,7 @@ namespace InventorySystemGalaxy
 
         FirestoreDb db;
 
-        DataTable dataTable, dt1;
+        DataTable dataTable;
 
         private List<DocumentSnapshot> data;
         CollectionReference collectionReference;
@@ -67,8 +67,8 @@ namespace InventorySystemGalaxy
         async void DisplayData()
         {
 
-            CollectionReference collectionRef = db.Collection("Products");
-            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+            collectionReference = db.Collection("Products");
+            QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
 
             dataTable = new DataTable();
             dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
@@ -124,7 +124,69 @@ namespace InventorySystemGalaxy
 
         }
 
-        
+
+        async void DataTableCategory()
+        {
+
+            categoryItem = categoryComboBox.SelectedItem.ToString();
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", categoryItem);
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject("imsgalaxy-f7419.appspot.com", fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    System.Drawing.Image downloadedImage = System.Drawing.Image.FromStream(downloadStream);
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
+        }
 
         //to view the image in Zoom mode
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
@@ -161,7 +223,7 @@ namespace InventorySystemGalaxy
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
             DisplayData();
-            
+
 
 
         }
@@ -270,10 +332,10 @@ namespace InventorySystemGalaxy
         }
         private async void GetDataFromFirestore()
         {
-            CollectionReference collectionRef = db.Collection("Products");
+            collectionReference = db.Collection("Products");
 
             // Perform the query to retrieve data from Firestore
-            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+            QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
             data = snapshot.Documents.ToList();
         }
 
@@ -681,11 +743,20 @@ namespace InventorySystemGalaxy
             printer.PrintDataGridView(WarehouseTable);
         }
 
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (categoryComboBox.SelectedIndex != 0)
+            {
+                DataTableCategory();
+            }
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DisplayData();
+            categoryComboBox.SelectedIndex = 0;
+
+        }
     }
 
 
