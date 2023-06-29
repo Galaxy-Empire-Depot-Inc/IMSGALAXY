@@ -671,14 +671,14 @@ namespace InventorySystemGalaxy
 
         private async void SearchEmployeeBtn_Click(object sender, EventArgs e)
         {
-           /* string searchTerm = SearchEmployeeTxtBox.Text;
-            await SearchAndUpdateDataGridView(searchTerm);*/
+            string searchTerm = SearchEmployeeTxtBox.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
         }
 
         private async void SearchEmployeeTxtBox_TextChanged(object sender, EventArgs e)
         {
-            string searchTerm = SearchEmployeeTxtBox.Text;
-            await SearchAndUpdateDataGridView(searchTerm);
+            /*string searchTerm = SearchEmployeeTxtBox.Text;
+            await SearchAndUpdateDataGridView(searchTerm);*/
         }
     }
 }

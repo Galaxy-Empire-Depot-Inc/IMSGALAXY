@@ -215,8 +215,8 @@ namespace InventorySystemGalaxy
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
             //timer1.Start();
-            /*DisplayData();*/
-            DataTableCategory();
+            DisplayData();
+            //DataTableCategory();
 
 
         }
@@ -693,14 +693,6 @@ namespace InventorySystemGalaxy
 
         Bitmap bitmap;
 
-<<<<<<< HEAD
-
-
-
-
-=======
-       
->>>>>>> 4422e7d31fa7334c94d3ff380cb00c1bf4c5531a
         private void PrintBtn_Click(object sender, EventArgs e)
         {
 
@@ -721,7 +713,6 @@ namespace InventorySystemGalaxy
         private void customButton1_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
 
             DGVPrinter printer = new DGVPrinter();
             // ...
@@ -744,14 +735,53 @@ namespace InventorySystemGalaxy
 
         private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (categoryComboBox.SelectedIndex == 0)
+            {
+                //DisplayEmployeeTable();
+                MessageBox.Show("0");
+
+            }
+
+            if (categoryComboBox.SelectedIndex == 1)
+            {
+                MessageBox.Show("Accounting");
+                //AccountDept();
+            }
+            if (categoryComboBox.SelectedIndex == 2)
+            {
+                MessageBox.Show("Customer Service");
+                //Customer_Service();
+            }
+            if (categoryComboBox.SelectedIndex == 3)
+            {
+                MessageBox.Show("Information Technology");
+                //Information_Technology();
+            }
+            if (categoryComboBox.SelectedIndex == 4)
+            {
+                MessageBox.Show("Sales Supervisor");
+                //Sales_Supervisor();
+            }
+            if (categoryComboBox.SelectedIndex == 5)
+            {
+                MessageBox.Show("Warehouse Manager");
+                //Warehouse_Manager();
+            }
+            if (categoryComboBox.SelectedIndex == 6)
+            {
+                MessageBox.Show("Warehouse Staff");
+                //Warehouse_Staff();
+            }
+            if (categoryComboBox.SelectedIndex == 7)
+            {
+                MessageBox.Show("HR Manager");
+               //HR_Manager();
+            }
 
         }
-=======
-           //e.Graphics.DrawImage(bitmap, 0, 0);
+
         }
 
->>>>>>> 4422e7d31fa7334c94d3ff380cb00c1bf4c5531a
+
     }
 
-
-}

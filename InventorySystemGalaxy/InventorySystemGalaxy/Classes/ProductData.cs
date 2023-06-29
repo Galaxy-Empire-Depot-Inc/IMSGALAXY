@@ -51,6 +51,8 @@ namespace InventorySystemGalaxy.Classes
         [FirestoreProperty]
         public double Repair { get; set; }
         [FirestoreProperty]
+        public Boolean hasRepair { get; set; }
+        [FirestoreProperty]
         public string imageUrl { get; set; }
 
     }

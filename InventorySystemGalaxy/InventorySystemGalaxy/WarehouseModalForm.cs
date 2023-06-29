@@ -24,7 +24,7 @@ namespace InventorySystemGalaxy
         Image image;
         string fileName, imageUrl;
         string bucketName = "imsgalaxy-f7419.appspot.com";
-
+        Dictionary<string, object> dict;
 
 
         public WarehouseModalForm()
@@ -188,7 +188,6 @@ namespace InventorySystemGalaxy
 
                 MessageBox.Show("No Warehouse/Category Selected");
 
-
             }
             else
             {
@@ -211,33 +210,66 @@ namespace InventorySystemGalaxy
 
                 DocumentReference documentReference = db.Collection("Products").Document(ITEMCODE);
 
-                Dictionary<string, object> dict = new Dictionary<string, object>()
+                if(repairText.Text == "0" || repairText.Text == "")
                 {
+                        dict = new Dictionary<string, object>()
+                    {
 
-                    {"Sort", sortTextBox.Text},
-                    {"Item_code", itemCodeTextBox.Text},
-                    {"Ref_code", refTextBox.Text},
-                    {"Srp", srpTextBox.Text},
-                    {"Colour", colorTextBox.Text},
-                    {"Description", descriptionTextBox.Text},
-                    {"Dp", dpTextBox.Text},
-                    {"Av", avTextbox.Text},
-                    {"Watts", wattsTextBox.Text},
-                    {"ProductSize", sizeTextBox.Text},
-                    {"Warehouse", selectedWarehouse},
-                    {"Category", selectedCategory},
-                    {"Box", boxTextBox.Text},
-                    {"Qty", qtyTextBox.Text},
-                    {"CtlH", ctnHTextBox.Text},
-                    {"CtlW", ctnWTextBox.Text},
-                    {"CtlL", ctnLTextBox.Text},
-                    {"Available", availabilityText.Text},
-                    {"Display", displayText.Text},
-                    {"Repair", repairText.Text},
-                    { "imageUrl", imageUrl }
+                        {"Sort", sortTextBox.Text},
+                        {"Item_code", itemCodeTextBox.Text},
+                        {"Ref_code", refTextBox.Text},
+                        {"Srp", srpTextBox.Text},
+                        {"Colour", colorTextBox.Text},
+                        {"Description", descriptionTextBox.Text},
+                        {"Dp", dpTextBox.Text},
+                        {"Av", avTextbox.Text},
+                        {"Watts", wattsTextBox.Text},
+                        {"ProductSize", sizeTextBox.Text},
+                        {"Warehouse", selectedWarehouse},
+                        {"Category", selectedCategory},
+                        {"Box", boxTextBox.Text},
+                        {"Qty", qtyTextBox.Text},
+                        {"CtlH", ctnHTextBox.Text},
+                        {"CtlW", ctnWTextBox.Text},
+                        {"CtlL", ctnLTextBox.Text},
+                        {"Available", availabilityText.Text},
+                        {"Display", displayText.Text},
+                        {"Repair", repairText.Text},
+                        {"hasRepair", false },
+                        { "imageUrl", imageUrl }
 
-                };
+                    };
+                }
+                else
+                {
+                        dict = new Dictionary<string, object>()
+                    {
 
+                        {"Sort", sortTextBox.Text},
+                        {"Item_code", itemCodeTextBox.Text},
+                        {"Ref_code", refTextBox.Text},
+                        {"Srp", srpTextBox.Text},
+                        {"Colour", colorTextBox.Text},
+                        {"Description", descriptionTextBox.Text},
+                        {"Dp", dpTextBox.Text},
+                        {"Av", avTextbox.Text},
+                        {"Watts", wattsTextBox.Text},
+                        {"ProductSize", sizeTextBox.Text},
+                        {"Warehouse", selectedWarehouse},
+                        {"Category", selectedCategory},
+                        {"Box", boxTextBox.Text},
+                        {"Qty", qtyTextBox.Text},
+                        {"CtlH", ctnHTextBox.Text},
+                        {"CtlW", ctnWTextBox.Text},
+                        {"CtlL", ctnLTextBox.Text},
+                        {"Available", availabilityText.Text},
+                        {"Display", displayText.Text},
+                        {"Repair", repairText.Text},
+                        {"hasRepair", true},
+                        { "imageUrl", imageUrl }
+
+                    };
+                }
 
                 if (MessageBox.Show("Do you want to Update this item?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
