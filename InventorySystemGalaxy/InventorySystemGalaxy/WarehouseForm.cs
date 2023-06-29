@@ -49,9 +49,6 @@ namespace InventorySystemGalaxy
 
         async void DisplayData()
         {
-
-
-            MessageBox.Show("Hotdog");
 /*
             collectionReference = db.Collection("Products");
             QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
