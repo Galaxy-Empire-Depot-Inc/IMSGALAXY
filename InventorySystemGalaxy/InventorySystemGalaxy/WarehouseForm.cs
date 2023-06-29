@@ -57,7 +57,7 @@ namespace InventorySystemGalaxy
                  // Add additional configuration as needed
              };
              db = builder.Build();
-
+7
              WarehouseTable.DataSource = data;
              GetDataFromFirestore();*/
 
@@ -215,8 +215,8 @@ namespace InventorySystemGalaxy
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
             //timer1.Start();
-            /*DisplayData();*/
-            DataTableCategory();
+            DisplayData();
+            /*DataTableCategory();*/
 
 
         }
@@ -693,14 +693,7 @@ namespace InventorySystemGalaxy
 
         Bitmap bitmap;
 
-<<<<<<< HEAD
 
-
-
-
-=======
-       
->>>>>>> 4422e7d31fa7334c94d3ff380cb00c1bf4c5531a
         private void PrintBtn_Click(object sender, EventArgs e)
         {
 
@@ -721,7 +714,7 @@ namespace InventorySystemGalaxy
         private void customButton1_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
+
 
             DGVPrinter printer = new DGVPrinter();
             // ...
@@ -746,11 +739,7 @@ namespace InventorySystemGalaxy
         {
 
         }
-=======
-           //e.Graphics.DrawImage(bitmap, 0, 0);
-        }
 
->>>>>>> 4422e7d31fa7334c94d3ff380cb00c1bf4c5531a
     }
 
 
