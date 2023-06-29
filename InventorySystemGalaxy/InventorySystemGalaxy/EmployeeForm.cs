@@ -23,8 +23,6 @@ namespace InventorySystemGalaxy
         FirestoreDb db;
         System.Data.DataTable tableEmployee;
         string bucketName = "imsgalaxy-f7419.appspot.com";
-        private List<DocumentSnapshot> data;
-
 
 
         public EmployeeForm()

@@ -24,6 +24,7 @@ using System.Drawing.Printing;
 using Rectangle = System.Drawing.Rectangle;
 using Image = System.Drawing.Image;
 using System.Reflection;
+using Google.Protobuf.Collections;
 
 
 namespace InventorySystemGalaxy
@@ -33,14 +34,9 @@ namespace InventorySystemGalaxy
 
         FirestoreDb db;
 
-        DataTable dataTable, dt1;
-
-        private List<DocumentSnapshot> data;
+        DataTable dataTable;
         CollectionReference collectionReference;
-        private List<DocumentSnapshot> searchResults;
-        private PrintDocument printDocument;
-        private string categoryText;
-        string categoryItem;
+        string bucketName = "imsgalaxy-f7419.appspot.com";
 
 
         public WarehouseForm()
@@ -49,26 +45,16 @@ namespace InventorySystemGalaxy
             RadioButtonSelection();
             categoryComboBox.SelectedIndex = 0;
 
-
-
-
-            /* FirestoreDbBuilder builder = new FirestoreDbBuilder
-             {
-                 ProjectId = "imsgalaxy-f7419",
-                 // Add additional configuration as needed
-             };
-             db = builder.Build();
-7
-             WarehouseTable.DataSource = data;
-             GetDataFromFirestore();*/
-
         }
 
         async void DisplayData()
         {
 
-            CollectionReference collectionRef = db.Collection("Products");
-            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+
+            MessageBox.Show("Hotdog");
+/*
+            collectionReference = db.Collection("Products");
+            QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
 
             dataTable = new DataTable();
             dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
@@ -120,7 +106,7 @@ namespace InventorySystemGalaxy
 
             // Handle the CellFormatting event
             WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
-            WarehouseTable.DataSource = dataTable;
+            WarehouseTable.DataSource = dataTable;*/
 
         }
 
@@ -160,15 +146,8 @@ namespace InventorySystemGalaxy
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             db = FirestoreDb.Create("imsgalaxy-f7419");
             GBWarehouse.Visible = false;
-<<<<<<< HEAD
             //timer1.Start();
-            DisplayData();
-            //DataTableCategory();
-=======
-            DisplayData();
-            
->>>>>>> cbb957d55a020b4438642d393252273a3997daf6
-
+            //DisplayData();
 
         }
 
@@ -274,15 +253,6 @@ namespace InventorySystemGalaxy
             warehouseModal.ShowDialog(this);
 
         }
-        private async void GetDataFromFirestore()
-        {
-            CollectionReference collectionRef = db.Collection("Products");
-
-            // Perform the query to retrieve data from Firestore
-            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
-            data = snapshot.Documents.ToList();
-        }
-
 
         // Search Firestore and update the DataGridView
         private async Task SearchAndUpdateDataGridView(string searchTerm)
@@ -381,19 +351,6 @@ namespace InventorySystemGalaxy
         {
             string searchTerm = searchText.Text;
             await SearchAndUpdateDataGridView(searchTerm);
-            /*string searchTerm = searchText.Text.Trim().ToLower();
-
-            List<DocumentSnapshot> filteredData = data.Where(document =>
-            {
-                // Replace "your-field" with the field you want to filter by
-                string fieldValue = document.GetValue<string>("Item_code");
-                return fieldValue.ToLower().Contains(searchTerm);
-            }).ToList();
-
-            WarehouseTable.DataSource = filteredData;*/
-
-
-
 
         }
 
@@ -645,10 +602,6 @@ namespace InventorySystemGalaxy
 
         Bitmap bitmap;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cbb957d55a020b4438642d393252273a3997daf6
         private void PrintBtn_Click(object sender, EventArgs e)
         {
 
@@ -669,11 +622,6 @@ namespace InventorySystemGalaxy
         private void customButton1_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cbb957d55a020b4438642d393252273a3997daf6
-
             DGVPrinter printer = new DGVPrinter();
             // ...
             printer.Title = "Employees";
@@ -693,61 +641,476 @@ namespace InventorySystemGalaxy
             printer.PrintDataGridView(WarehouseTable);
         }
 
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             if (categoryComboBox.SelectedIndex == 0)
             {
-                //DisplayEmployeeTable();
-                MessageBox.Show("0");
-
+                //DisplayAllProduct();
             }
-
             if (categoryComboBox.SelectedIndex == 1)
             {
-                MessageBox.Show("Accounting");
-                //AccountDept();
+                GSCeiling();
             }
             if (categoryComboBox.SelectedIndex == 2)
             {
-                MessageBox.Show("Customer Service");
-                //Customer_Service();
+                GS_Crystal_Lights();
             }
             if (categoryComboBox.SelectedIndex == 3)
             {
-                MessageBox.Show("Information Technology");
-                //Information_Technology();
+                GS_Fan();
             }
             if (categoryComboBox.SelectedIndex == 4)
             {
-                MessageBox.Show("Sales Supervisor");
-                //Sales_Supervisor();
+                GS_Panel_Lights();
             }
             if (categoryComboBox.SelectedIndex == 5)
             {
-                MessageBox.Show("Warehouse Manager");
-                //Warehouse_Manager();
+                GS_Strip_Lights();
             }
             if (categoryComboBox.SelectedIndex == 6)
             {
-                MessageBox.Show("Warehouse Staff");
-                //Warehouse_Staff();
+                New_Chandelier_Lights();
             }
-            if (categoryComboBox.SelectedIndex == 7)
+
+        }
+
+
+        async void DisplayAllProduct()
+        {
+            CollectionReference collectionRef = db.Collection("Products");
+            //Query query = db.Collection("Products").WhereEqualTo("Category", "GS Ceiling and Chandelier Lights");
+            QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
             {
-                MessageBox.Show("HR Manager");
-               //HR_Manager();
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
             }
 
         }
 
+        async void GSCeiling()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", "GS Ceiling and Chandelier Lights");
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
+        }
+
+        async void GS_Crystal_Lights()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", "GS Crystal Lights");
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
+        }
+
+        async void GS_Fan()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", "GS Fan");
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
+        }
+
+        async void GS_Panel_Lights()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", "GS Panel Lights");
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
+        }
+
+        async void GS_Strip_Lights()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", "GS Strip Lights");
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
+        }
+
+        async void New_Chandelier_Lights()
+        {
+            //CollectionReference collectionRef = db.Collection("Products");
+            Query query = db.Collection("Products").WhereEqualTo("Category", "New Chandelier Lights");
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+
+            dataTable = new DataTable();
+            dataTable.Columns.Add("Image", typeof(System.Drawing.Image));
+            dataTable.Columns.Add("Sort");
+            dataTable.Columns.Add("Item Code");
+            dataTable.Columns.Add("Reference Code");
+            dataTable.Columns.Add("SRP");
+            dataTable.Columns.Add("Colour");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("DP");
+            dataTable.Columns.Add("AV");
+            dataTable.Columns.Add("Watts");
+            dataTable.Columns.Add("ProductSize");
+            dataTable.Columns.Add("Warehouse");
+            dataTable.Columns.Add("Category");
+            dataTable.Columns.Add("Box");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("CTN L");
+            dataTable.Columns.Add("CTN W");
+            dataTable.Columns.Add("CTN H");
+            dataTable.Columns.Add("Available");
+            dataTable.Columns.Add("Display");
+            dataTable.Columns.Add("Repair");
+
+            foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+            {
+
+                string imageUrl = documentSnapshot.GetValue<string>("imageUrl");
+
+                if (documentSnapshot.Exists)
+                {
+                    var data = documentSnapshot.ToDictionary();
+
+                    var storageClient = StorageClient.Create();
+                    string fileName = Path.GetFileName(imageUrl);
+                    var downloadStream = new MemoryStream();
+                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                    downloadStream.Position = 0;
+                    Image downloadedImage = Image.FromStream(downloadStream);
+
+                    dataTable.Rows.Add(downloadedImage, data["Sort"], data["Item_code"], data["Ref_code"], data["Srp"], data["Colour"], data["Description"],
+                        data["Dp"], data["Av"], data["Watts"], data["ProductSize"], data["Warehouse"], data["Category"], data["Box"],
+                        data["Qty"], data["CtlL"], data["CtlW"], data["CtlH"], data["Available"], data["Display"], data["Repair"]);
+
+                }
+
+
+
+
+                // Handle the CellFormatting event
+                WarehouseTable.CellFormatting += DataGridView1_CellFormatting;
+                WarehouseTable.DataSource = dataTable;
+
+            }
+
         }
 
 
-=======
-            
-        }
 
->>>>>>> cbb957d55a020b4438642d393252273a3997daf6
     }
 
+}
