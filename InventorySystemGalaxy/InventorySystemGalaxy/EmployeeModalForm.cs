@@ -171,19 +171,61 @@ namespace InventorySystemGalaxy
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            addEmployee();
+
+            if (add_UpdateBtn.Text == "Update")
+            {
+                //MessageBox.Show("Update");
+                UpdateEmployee();
+            }
+            else
+            {
+                //MessageBox.Show("Add");
+                addEmployee();
+            }
+
         }
 
-        /*private void getImageFromGallery()
+        async void UpdateEmployee()
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
-            if (open.ShowDialog() == DialogResult.OK)
-            {
-                employeePB.Image = new Bitmap(open.FileName);
-                img = open.FileName;
-            }
-        }*/
+       
+                image = employeePB.Image;
+                //Generate unique FileName.jpg
+                string fileName = $"{Guid.NewGuid()}.jpg";
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] imageData = memoryStream.ToArray();
+
+                    // Upload the image to Cloud Storage
+                    storageClient.UploadObject(bucketName, fileName, "image/jpeg", new MemoryStream(imageData));
+                }
+
+                imageUrl = $"https://storage.googleapis.com/{bucketName}/{fileName}";
+                DocumentReference documentReference = firestore.Collection("Employees").Document(idNumberTextBox.Text);
+                DocumentSnapshot snapshot = await documentReference.GetSnapshotAsync();
+                if (!snapshot.Exists)
+                {
+                    MessageBox.Show("ID CODE NOT EXIST", "Error", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    Dictionary<string, object> Employeedictionary = new Dictionary<string, object>()
+                {
+                    { "ContactNo", contactNoTextBox.Text },
+                    { "Status",statusComboBox.SelectedItem},
+                    { "Position",positionComboBox.SelectedItem },
+                    { "Department",departmentTextBox.Text },
+                    { "imageUrl",imageUrl }
+                };
+                    if (MessageBox.Show("Do you want to Update this Employee?", "Confirmation Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        documentReference.UpdateAsync(Employeedictionary);
+                        MessageBox.Show("UPDATED SUCCESSFULLY");
+                        ClearForm();
+                    }
+                }
+        }
 
         private void addPhotoBtn_Click(object sender, EventArgs e)
         {
