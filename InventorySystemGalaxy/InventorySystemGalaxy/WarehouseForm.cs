@@ -51,12 +51,7 @@ namespace InventorySystemGalaxy
 
         async void DisplayData()
         {
-<<<<<<< HEAD
-/*
-=======
-
-
->>>>>>> 26e7e6a0d6bfd5484fbb173ca5b7379b0701d481
+ 
             collectionReference = db.Collection("Products");
             QuerySnapshot snapshot = await collectionReference.GetSnapshotAsync();
 
