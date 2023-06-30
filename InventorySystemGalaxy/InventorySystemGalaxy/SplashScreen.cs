@@ -16,9 +16,9 @@ namespace InventorySystemGalaxy
             if (progressBar.Width >= 784)
             {
                 progressBarTick.Stop();
-               /* LoginForm loginForm = new LoginForm();
-                loginForm.Show();
-                this.Hide();*/
+                /* LoginForm loginForm = new LoginForm();
+                 loginForm.Show();
+                 this.Hide();*/
                 this.Close();
                 LoginForm LoginForm = new LoginForm();
                 LoginForm.Hide();
@@ -26,8 +26,8 @@ namespace InventorySystemGalaxy
                 thread.SetApartmentState(ApartmentState.STA);
                 thread.Start();
             }
-            
-                
+
+
         }
         public void openForm(object obj)
         {

@@ -105,6 +105,7 @@
             statusComboBox.Bordercolor = Color.DeepSkyBlue;
             statusComboBox.BorderSize = 2;
             statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            statusComboBox.Enabled = false;
             statusComboBox.Font = new Font("SimSun", 12F, FontStyle.Regular, GraphicsUnit.Point);
             statusComboBox.ForeColor = Color.DimGray;
             statusComboBox.FormattingEnabled = true;

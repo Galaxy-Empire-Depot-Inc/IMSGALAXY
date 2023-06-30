@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icons8-sell-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-sell-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1814117_gear_options_preferences_setting_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1814117_gear_options_preferences_setting_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-minimize-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-minimize-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,6 +145,9 @@
   <data name="icons8-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-user.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-sell-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-sell-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-user-144" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-user-144.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,6 +157,9 @@
   <data name="icons8-warehouse-100 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-warehouse-100 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="1814117_gear_options_preferences_setting_icon (2) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1814117_gear_options_preferences_setting_icon (2) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="usericon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usericon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -162,6 +168,9 @@
   </data>
   <data name="icons8-login-96 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-login-96 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1200px-Ic_refresh_48px.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1200px-Ic_refresh_48px.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-maximize-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-maximize-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,8 +184,8 @@
   <data name="icons8-minimize-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-minimize-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usericon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usericon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-logout-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-logout-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-used-product-80" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-used-product-80.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,6 +232,9 @@
   <data name="icons8-add-100 (2) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-add-100 (2) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="usericon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usericon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-check-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-check-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -232,7 +244,7 @@
   <data name="icons8-dashboard-64 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-dashboard-64 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-logout-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-logout-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1564529_mechanism_options_settings_configuration_setting_icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1564529_mechanism_options_settings_configuration_setting_icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

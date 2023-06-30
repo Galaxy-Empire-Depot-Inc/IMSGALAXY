@@ -5,6 +5,9 @@
     <Compile Update="ButtonCustom.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="ChangePasswordModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>

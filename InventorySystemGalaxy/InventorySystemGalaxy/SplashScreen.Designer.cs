@@ -32,10 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             progressBarTick = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
+            label2 = new Label();
+            label1 = new Label();
             pictureBox2 = new PictureBox();
             progressBar = new Panel();
             panel2 = new Panel();
-            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -49,6 +50,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(progressBar);
@@ -59,6 +61,26 @@
             panel1.Padding = new Padding(5);
             panel1.Size = new Size(794, 594);
             panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("SimSun", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(29, 53);
+            label2.Name = "label2";
+            label2.Size = new Size(71, 13);
+            label2.TabIndex = 6;
+            label2.Text = "ⒸJJC 2023";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("SimSun", 48F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(121, 277);
+            label1.Name = "label1";
+            label1.Size = new Size(555, 64);
+            label1.TabIndex = 5;
+            label1.Text = "Inventory System";
             // 
             // pictureBox2
             // 
@@ -85,16 +107,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(784, 25);
             panel2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("SimSun", 48F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(121, 277);
-            label1.Name = "label1";
-            label1.Size = new Size(555, 64);
-            label1.TabIndex = 5;
-            label1.Text = "Inventory System";
             // 
             // SplashScreen
             // 
@@ -125,5 +137,6 @@
         private PictureBox pictureBox2;
         private Button button1;
         private Label label1;
+        private Label label2;
     }
 }

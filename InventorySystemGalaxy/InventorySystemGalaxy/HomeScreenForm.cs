@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Google.Cloud.Storage.V1;
 using InventorySystemGalaxy.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -118,17 +119,7 @@ namespace InventorySystemGalaxy
             warehouseBtn.ForeColor = Color.White;
         }
 
-        private void logoutBtn_Enter(object sender, EventArgs e)
-        {
-            logoutBtn.BackColor = Color.FromArgb(74, 173, 255);
-            logoutBtn.ForeColor = Color.Black;
-        }
 
-        private void logoutBtn_Leave(object sender, EventArgs e)
-        {
-            logoutBtn.BackColor = Color.FromArgb(59, 116, 192);
-            logoutBtn.ForeColor = Color.White;
-        }
 
         private void CloseBTN_Click(object sender, EventArgs e)
         {
@@ -160,7 +151,6 @@ namespace InventorySystemGalaxy
             DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
             string username = documentSnapshot.GetValue<string>("Username");
             lbl_GreetUser.Text = "Hi, " + username;
-
         }
 
         private async void HomeScreenForm_Load(object sender, EventArgs e)
@@ -171,11 +161,14 @@ namespace InventorySystemGalaxy
             db = FirestoreDb.Create("imsgalaxy-f7419");
 
             LoadUserName();
+            
             loadForm(new DashboardForm());
 
 
 
 
         }
+
+       
     }
 }

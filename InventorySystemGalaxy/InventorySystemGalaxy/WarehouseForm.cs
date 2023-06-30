@@ -420,9 +420,17 @@ namespace InventorySystemGalaxy
 
         private void ShowModal_Click_1(object sender, EventArgs e)
         {
-            WarehouseModalForm warehouseModalForm = new WarehouseModalForm();
-            warehouseModalForm.ShowDialog();
-            warehouseModalForm.StartPosition = FormStartPosition.CenterParent;
+            if(LoginForm.username=="Admin")
+            {
+                WarehouseModalForm warehouseModalForm = new WarehouseModalForm();
+                warehouseModalForm.ShowDialog();
+                warehouseModalForm.StartPosition = FormStartPosition.CenterParent;
+            }
+            else
+            {
+                MessageBox.Show("You're not an Admin");
+            }
+            
 
         }
 

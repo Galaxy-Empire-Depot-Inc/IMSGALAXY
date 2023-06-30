@@ -63,6 +63,46 @@ namespace InventorySystemGalaxy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1200px_Ic_refresh_48px_svg {
+            get {
+                object obj = ResourceManager.GetObject("1200px-Ic_refresh_48px.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1564529_mechanism_options_settings_configuration_setting_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("1564529_mechanism_options_settings_configuration_setting_icon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1814117_gear_options_preferences_setting_icon {
+            get {
+                object obj = ResourceManager.GetObject("1814117_gear_options_preferences_setting_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1814117_gear_options_preferences_setting_icon__2___1_ {
+            get {
+                object obj = ResourceManager.GetObject("1814117_gear_options_preferences_setting_icon (2) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_add_100__1___1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-100 (1) (1)", resourceCulture);

@@ -37,6 +37,7 @@
             WarehouseTable = new DataGridView();
             panel3 = new Panel();
             panel4 = new Panel();
+            pictureBox2 = new PictureBox();
             categoryComboBox = new ComboBox();
             panel7 = new Panel();
             SearchBTN = new PictureBox();
@@ -51,19 +52,18 @@
             tmsRB = new RadioButton();
             allRB = new RadioButton();
             timer1 = new System.Windows.Forms.Timer(components);
-            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)WarehouseTable).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SearchBTN).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             GBWarehouse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // WarehouseLabel
@@ -175,8 +175,21 @@
             panel4.Size = new Size(794, 100);
             panel4.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox2.Image = Properties.Resources._1200px_Ic_refresh_48px_svg;
+            pictureBox2.Location = new Point(316, 67);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(34, 25);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // categoryComboBox
             // 
+            categoryComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             categoryComboBox.FlatStyle = FlatStyle.Flat;
             categoryComboBox.Font = new Font("SimSun", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -341,17 +354,6 @@
             timer1.Interval = 5000;
             timer1.Tick += timer1_Tick;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.icons8_warning_100__2_;
-            pictureBox2.Location = new Point(316, 67);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(34, 25);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            // 
             // WarehouseForm
             // 
             AutoScaleDimensions = new SizeF(6F, 12F);
@@ -372,6 +374,7 @@
             ((System.ComponentModel.ISupportInitialize)WarehouseTable).EndInit();
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SearchBTN).EndInit();
             panel5.ResumeLayout(false);
@@ -380,12 +383,10 @@
             panel2.PerformLayout();
             GBWarehouse.ResumeLayout(false);
             GBWarehouse.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private CustomButton ShowModal;
         private Panel panel1;
         private Panel panel6;
         private DataGridView WarehouseTable;
@@ -407,5 +408,6 @@
         private RadioButton allRB;
         private ComboBox categoryComboBox;
         private PictureBox pictureBox2;
+        public CustomButton ShowModal;
     }
 }

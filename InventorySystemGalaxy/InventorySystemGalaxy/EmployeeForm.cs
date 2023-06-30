@@ -124,8 +124,10 @@ namespace InventorySystemGalaxy
 
         private void employeeTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EmployeeModalForm employeeModalForm = new EmployeeModalForm();
 
+
+            EmployeeModalForm employeeModalForm = new EmployeeModalForm();
+            employeeModalForm.statusComboBox.Enabled = true;
             employeeModalForm.add_UpdateBtn.Text = "Update";
 
             //Display the Data into Modal
@@ -612,58 +614,66 @@ namespace InventorySystemGalaxy
 
         private async Task SearchAndUpdateDataGridView(string searchTerm)
         {
-            // Manually query Firestore for documents that match the search term
-            Query query = db.Collection("Employees")
-                            .WhereEqualTo("Username", searchTerm);
-
-            // Execute the query and retrieve the matching documents
-            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-            List<DocumentSnapshot> documents = querySnapshot.Documents.ToList();
-
-            // Clear the DataGridView
-            //dataTable.Rows.Clear();
-
-            tableEmployee = new System.Data.DataTable();
-            tableEmployee.Columns.Add("Image", typeof(Image));
-            tableEmployee.Columns.Add("ID number");
-            tableEmployee.Columns.Add("Department");
-            tableEmployee.Columns.Add("First Name");
-            tableEmployee.Columns.Add("Middle Name");
-            tableEmployee.Columns.Add("Last Name");
-            tableEmployee.Columns.Add("Contact No.");
-            tableEmployee.Columns.Add("Username");
-            tableEmployee.Columns.Add("Password");
-            tableEmployee.Columns.Add("Status");
-
-
-            foreach (DocumentSnapshot document in documents)
+            if (SearchEmployeeTxtBox.Text != null)
             {
+                // Manually query Firestore for documents that match the search term
+                Query query = db.Collection("Employees")
+                                .WhereEqualTo("Username", searchTerm);
 
-                string imageUrl = document.GetValue<string>("imageUrl");
+                // Execute the query and retrieve the matching documents
+                QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+                List<DocumentSnapshot> documents = querySnapshot.Documents.ToList();
 
-                if (document.Exists)
+                // Clear the DataGridView
+                //dataTable.Rows.Clear();
+
+                tableEmployee = new System.Data.DataTable();
+                tableEmployee.Columns.Add("Image", typeof(Image));
+                tableEmployee.Columns.Add("ID number");
+                tableEmployee.Columns.Add("Department");
+                tableEmployee.Columns.Add("First Name");
+                tableEmployee.Columns.Add("Middle Name");
+                tableEmployee.Columns.Add("Last Name");
+                tableEmployee.Columns.Add("Contact No.");
+                tableEmployee.Columns.Add("Username");
+                tableEmployee.Columns.Add("Password");
+                tableEmployee.Columns.Add("Status");
+
+
+                foreach (DocumentSnapshot document in documents)
                 {
-                    var data = document.ToDictionary();
 
-                    var storageClient = StorageClient.Create();
-                    string fileName = Path.GetFileName(imageUrl);
-                    var downloadStream = new MemoryStream();
-                    storageClient.DownloadObject(bucketName, fileName, downloadStream);
-                    downloadStream.Position = 0;
-                    Image downloadedImage = Image.FromStream(downloadStream);
+                    string imageUrl = document.GetValue<string>("imageUrl");
 
-                    tableEmployee.Rows.Add(downloadedImage, data["IdNumber"], data["Department"], data["FirstName"], data["MiddleName"], data["LastName"], data["ContactNo"]
-                        , data["Username"], data["Password"], data["Status"]);
+                    if (document.Exists)
+                    {
+                        var data = document.ToDictionary();
+
+                        var storageClient = StorageClient.Create();
+                        string fileName = Path.GetFileName(imageUrl);
+                        var downloadStream = new MemoryStream();
+                        storageClient.DownloadObject(bucketName, fileName, downloadStream);
+                        downloadStream.Position = 0;
+                        Image downloadedImage = Image.FromStream(downloadStream);
+
+                        tableEmployee.Rows.Add(downloadedImage, data["IdNumber"], data["Department"], data["FirstName"], data["MiddleName"], data["LastName"], data["ContactNo"]
+                            , data["Username"], data["Password"], data["Status"]);
+
+                    }
+
+
+
+
+                    // Handle the CellFormatting event
+                    employeeTable.CellFormatting += DataGridView1_CellFormatting;
+                    employeeTable.DataSource = tableEmployee;
+
 
                 }
-
-
-
-
-                // Handle the CellFormatting event
-                employeeTable.CellFormatting += DataGridView1_CellFormatting;
-                employeeTable.DataSource = tableEmployee;
-
+            }
+            else if (SearchEmployeeTxtBox.Text == null)
+            {
+                DisplayEmployeeTable();
             }
         }
 
@@ -677,6 +687,16 @@ namespace InventorySystemGalaxy
         {
             /*string searchTerm = SearchEmployeeTxtBox.Text;
             await SearchAndUpdateDataGridView(searchTerm);*/
+            string searchTerm = SearchEmployeeTxtBox.Text;
+            await SearchAndUpdateDataGridView(searchTerm);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            DisplayEmployeeTable();
+            positionComboBox.SelectedIndex = 0;
+            SearchEmployeeTxtBox.Text = "";
+
         }
     }
 }

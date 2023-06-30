@@ -37,11 +37,11 @@
             MaxBtn = new Button();
             MinBtn = new Button();
             panel2 = new Panel();
-            logoutBtn = new CustomButton();
+            customButton1 = new CustomButton();
             warehouseBtn = new CustomButton();
             panel3 = new Panel();
             lbl_GreetUser = new Label();
-            pictureBox1 = new PictureBox();
+            showImagesPictureBox = new PictureBox();
             dashboardBtn = new CustomButton();
             employeeBtn = new CustomButton();
             panel1.SuspendLayout();
@@ -49,7 +49,7 @@
             panel5.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)showImagesPictureBox).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -107,6 +107,7 @@
             CloseBTN.Size = new Size(30, 30);
             CloseBTN.TabIndex = 2;
             CloseBTN.UseVisualStyleBackColor = false;
+            CloseBTN.Click += CloseBTN_Click;
             // 
             // MaxBtn
             // 
@@ -120,6 +121,7 @@
             MaxBtn.Size = new Size(30, 30);
             MaxBtn.TabIndex = 1;
             MaxBtn.UseVisualStyleBackColor = false;
+            MaxBtn.Click += MaxBtn_Click;
             // 
             // MinBtn
             // 
@@ -133,11 +135,12 @@
             MinBtn.Size = new Size(30, 30);
             MinBtn.TabIndex = 0;
             MinBtn.UseVisualStyleBackColor = false;
+            MinBtn.Click += MinBtn_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(59, 116, 192);
-            panel2.Controls.Add(logoutBtn);
+            panel2.Controls.Add(customButton1);
             panel2.Controls.Add(warehouseBtn);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(dashboardBtn);
@@ -148,30 +151,29 @@
             panel2.Size = new Size(200, 768);
             panel2.TabIndex = 0;
             // 
-            // logoutBtn
+            // customButton1
             // 
-            logoutBtn.FlatAppearance.BorderSize = 0;
-            logoutBtn.FlatStyle = FlatStyle.Flat;
-            logoutBtn.Font = new Font("SimSun", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            logoutBtn.ForeColor = Color.White;
-            logoutBtn.HoverForeColor1 = Color.Black;
-            logoutBtn.HoverImage1 = Properties.Resources.icons8_logout_100__1___1_;
-            logoutBtn.Image = Properties.Resources.icons8_logout_100__2_;
-            logoutBtn.ImageAlign = ContentAlignment.TopLeft;
-            logoutBtn.Location = new Point(0, 399);
-            logoutBtn.Name = "logoutBtn";
-            logoutBtn.NormalForeColor1 = Color.White;
-            logoutBtn.NormalImage1 = Properties.Resources.icons8_logout_100__2_;
-            logoutBtn.OnFocusEnterImage = Properties.Resources.icons8_logout_100__1___1_;
-            logoutBtn.OnFocusLeaveImage = Properties.Resources.icons8_logout_100__2_;
-            logoutBtn.Padding = new Padding(10);
-            logoutBtn.Size = new Size(200, 58);
-            logoutBtn.TabIndex = 4;
-            logoutBtn.Text = "    Logout";
-            logoutBtn.TextAlign = ContentAlignment.MiddleLeft;
-            logoutBtn.Tooltip1 = null;
-            logoutBtn.UseVisualStyleBackColor = true;
-            logoutBtn.Click += logoutBtn_Click;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = FlatStyle.Flat;
+            customButton1.Font = new Font("SimSun", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            customButton1.ForeColor = Color.White;
+            customButton1.HoverForeColor1 = Color.Black;
+            customButton1.HoverImage1 = Properties.Resources._1564529_mechanism_options_settings_configuration_setting_icon__1_;
+            customButton1.Image = (Image)resources.GetObject("customButton1.Image");
+            customButton1.ImageAlign = ContentAlignment.TopLeft;
+            customButton1.Location = new Point(-3, 405);
+            customButton1.Name = "customButton1";
+            customButton1.NormalForeColor1 = Color.White;
+            customButton1.NormalImage1 = Properties.Resources._1564529_mechanism_options_settings_configuration_setting_icon__1_;
+            customButton1.OnFocusEnterImage = Properties.Resources.icons8_warehouse_80__1_;
+            customButton1.OnFocusLeaveImage = Properties.Resources._1814117_gear_options_preferences_setting_icon__2___1_;
+            customButton1.Padding = new Padding(10);
+            customButton1.Size = new Size(200, 67);
+            customButton1.TabIndex = 5;
+            customButton1.Text = "Change \r\nPassword\r\n";
+            customButton1.Tooltip1 = null;
+            customButton1.UseVisualStyleBackColor = true;
+            customButton1.Click += customButton1_Click;
             // 
             // warehouseBtn
             // 
@@ -201,7 +203,7 @@
             // panel3
             // 
             panel3.Controls.Add(lbl_GreetUser);
-            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(showImagesPictureBox);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
@@ -220,15 +222,15 @@
             lbl_GreetUser.Text = "Hi, Username";
             lbl_GreetUser.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // showImagesPictureBox
             // 
-            pictureBox1.Image = Properties.Resources.icons8_user_144__2_;
-            pictureBox1.Location = new Point(54, 67);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(90, 90);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            showImagesPictureBox.Image = Properties.Resources.icons8_user_144__2_;
+            showImagesPictureBox.Location = new Point(45, 45);
+            showImagesPictureBox.Name = "showImagesPictureBox";
+            showImagesPictureBox.Size = new Size(100, 100);
+            showImagesPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            showImagesPictureBox.TabIndex = 0;
+            showImagesPictureBox.TabStop = false;
             // 
             // dashboardBtn
             // 
@@ -298,7 +300,7 @@
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)showImagesPictureBox).EndInit();
             ResumeLayout(false);
         }
 
@@ -312,12 +314,12 @@
         private Button MaxBtn;
         private Button MinBtn;
         private Panel panel2;
-        private CustomButton logoutBtn;
         private CustomButton warehouseBtn;
         private Panel panel3;
         private Label lbl_GreetUser;
-        private PictureBox pictureBox1;
+        private PictureBox showImagesPictureBox;
         private CustomButton dashboardBtn;
         private CustomButton employeeBtn;
+        private CustomButton customButton1;
     }
 }
